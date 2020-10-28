@@ -12,3 +12,5 @@ public class customAvatar extends AppCompatActivity {
         setContentView(R.layout.activity_custom_avatar);
     }
 }
+
+// avatar skal ind her
