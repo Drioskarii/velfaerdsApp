@@ -15,9 +15,7 @@
         android:hint="@string/editTextEmail"
         android:inputType="textEmailAddress"/>
 
-
     <ImageView
-
         android:id="@+id/addNewEmail"
         android:layout_width="60dp"
         android:layout_height="47dp"
