@@ -32,7 +32,6 @@ public class introPage extends AppCompatActivity
         setContentView(R.layout.activity_intro_page);
 
         // instantiating
-        showText = findViewById(R.id.textView);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
 
