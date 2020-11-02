@@ -45,13 +45,13 @@ public class introPage extends AppCompatActivity
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
 
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add("Choose gender");
         list.add("Mand");
         list.add("kvinde");
         list.add("andet");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Set the ArrayAdapter to the spinner
@@ -67,7 +67,7 @@ public class introPage extends AppCompatActivity
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectedItem = parent.getItemAtPosition(position).toString();
-            if(selectedItem != "Choose gender" && selectedItem != null)
+            if(!selectedItem.equals("Choose gender"))
             {
                 Toast.makeText(parent.getContext(), "gender selected is " + selectedItem, Toast.LENGTH_LONG).show();
             }
