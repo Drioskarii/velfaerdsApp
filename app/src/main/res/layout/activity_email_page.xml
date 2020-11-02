@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/emailPage"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp"
     tools:context=".emailPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/textEmail"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/editTextEmail"
+        android:inputType="textEmailAddress"/>
+
+    <ImageView
+        android:id="@+id/addNewEmail"
+        android:layout_width="60dp"
+        android:layout_height="47dp"
+        android:padding="60dp"
+        android:onClick="addEmail"
+        android:background="@drawable/plusvcircle"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="604dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:onClick="back"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="619dp"
+            android:layout_margin="20dp"></Button>
+
+        <Button
+            android:id="@+id/btnnext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_arrow_forward_24"
+            android:onClick="send"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="279dp"
+            tools:layout_editor_absoluteY="619dp"
+            android:layout_margin="20dp"></Button>
+
+    </LinearLayout>
+
+</LinearLayout>
