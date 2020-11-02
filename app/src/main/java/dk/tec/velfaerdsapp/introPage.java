@@ -79,16 +79,6 @@ public class introPage extends AppCompatActivity
         }
     }
 
-    // Test til at se input er gemt i variablerne :)
-    public void myButton(View view)
-    {
-        String name = enterName.getText().toString();
-        String job = enterJob.getText().toString();
-        String gender = selectedItem;
-        showText.setText("Hello " + name + " job: " + job + " gender: " + gender);
-    }
-
-
 
     public void forward(View view) {
         Intent intent = new Intent(this, customAvatar.class);
