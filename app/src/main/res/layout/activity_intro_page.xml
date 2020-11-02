@@ -6,4 +6,73 @@
     android:layout_height="match_parent"
     tools:context=".introPage">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="112dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="68dp"
+        android:onClick="myButton"
+        android:text="@string/Next_Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGender"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="223dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:hint="@string/introPage_Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextJob"
+        android:layout_width="229dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="@string/introPage_job"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+    <Spinner
+        android:id="@+id/spinnerGender"
+        android:layout_width="181dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp"
+        android:autofillHints="@string/introPage_Gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextJob" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="112dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/Back_Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
