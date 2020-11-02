@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">velfaerdsApp</string>
+    <string name="editTextEmail">Email</string>
 </resources>
