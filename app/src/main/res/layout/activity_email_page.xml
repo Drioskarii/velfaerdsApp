@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/emailPage"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
+
     <EditText
         android:id="@+id/textEmail"
         android:layout_width="203dp"
@@ -20,46 +21,29 @@
         android:inputType="textEmailAddress"/>
 
     <ImageView
-        android:id="@+id/addNewEmail"
         android:layout_width="60dp"
         android:layout_height="47dp"
         android:padding="60dp"
         android:onClick="addEmail"
-        android:background="@drawable/plusvcircle"
-        />
+        android:background="@drawable/plusvcircle"/>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
+        android:id="@+id/emailPage"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
 
-        android:orientation="horizontal">
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/ic_baseline_arrow_back_24"
+        android:onClick="back"
 
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/ic_baseline_arrow_back_24"
-            android:onClick="back"
-
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="64dp"
-            tools:layout_editor_absoluteY="619dp"></Button>
-
-        <Button
-            android:id="@+id/btnnext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/ic_baseline_arrow_forward_24"
-            android:onClick="send"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="279dp"
-            tools:layout_editor_absoluteY="619dp"></Button>
-
-    </LinearLayout>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="619dp"></Button>
 
 </LinearLayout>

@@ -20,32 +20,33 @@ public class emailPage extends AppCompatActivity {
     }
     int id = 0;
     public void addEmail(View view) {
-        ++id;
+        if (id == 4){
+System.out.println("ree");
+        }else  {
+            ++id;
+
+
+            //EditText is created here
+            EditText editTextMail = new EditText(this);
+
+            //This is where the parameter goes.
+            editTextMail.setHint(getString(R.string.editTextEmail));
+            view.setId(View.generateViewId());
+            editTextMail.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+            //This is where the EditText gets added to activity_email_page.xml
+            LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPage);
+            emailPage.addView(editTextMail);
 
 
 
-        //EditText is created here
-        EditText editTextMail = new EditText(this);
-
-        //This is where the parameter goes.
-        editTextMail.setHint(getString(R.string.editTextEmail));
-        editTextMail.setId(id);
-        editTextMail.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-
-        //This is where the EditText gets added to activity_email_page.xml
-        LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPage);
-        emailPage.addView(editTextMail);
-
-        System.out.println(id);
+            System.out.println(id);
+        }
     }
-
 
     public void back(View view) {
         Intent intent = new Intent(this, selectPage.class);
 
         startActivity(intent);
-    }
-
-    public void send(View view) {
     }
 }
