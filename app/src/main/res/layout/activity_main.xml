@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forside"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="61dp"
+        tools:ignore="MissingConstraints"/>
 
     <LinearLayout
         android:layout_width="match_parent"

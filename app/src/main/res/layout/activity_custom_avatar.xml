@@ -6,6 +6,11 @@
     tools:context=".customAvatar"
     android:orientation="vertical">
 
+    <TextView
+        android:textSize="50dp"
+        android:text="Custom Avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <ImageView
         android:id="@+id/characterPlaceholder"
         android:layout_width="250dp"

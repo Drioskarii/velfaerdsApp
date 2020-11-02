@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".questionsPage">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Questions"
+        android:textSize="50sp"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="61dp"
+        tools:ignore="MissingConstraints"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -32,7 +32,6 @@ public class introPage extends AppCompatActivity
         setContentView(R.layout.activity_intro_page);
 
         // instantiating
-        showText = findViewById(R.id.textView);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
 
@@ -45,13 +44,13 @@ public class introPage extends AppCompatActivity
 
         Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
 
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add("Choose gender");
         list.add("Mand");
         list.add("kvinde");
         list.add("andet");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Set the ArrayAdapter to the spinner
@@ -67,7 +66,7 @@ public class introPage extends AppCompatActivity
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectedItem = parent.getItemAtPosition(position).toString();
-            if(selectedItem != "Choose gender" && selectedItem != null)
+            if(!selectedItem.equals("Choose gender"))
             {
                 Toast.makeText(parent.getContext(), "gender selected is " + selectedItem, Toast.LENGTH_LONG).show();
             }
@@ -78,16 +77,6 @@ public class introPage extends AppCompatActivity
 
         }
     }
-
-    // Test til at se input er gemt i variablerne :)
-    public void myButton(View view)
-    {
-        String name = enterName.getText().toString();
-        String job = enterJob.getText().toString();
-        String gender = selectedItem;
-        showText.setText("Hello " + name + " job: " + job + " gender: " + gender);
-    }
-
 
 
     public void forward(View view) {
