@@ -19,5 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+    public void strenghts(View view) {
+        Intent intent = new Intent(this, the24Strenght.class);
+
+        startActivity(intent);
+    }
+
 
 }
