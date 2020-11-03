@@ -6,10 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:background="@drawable/gradient_background"
     >
 
     <LinearLayout
-        android:id="@+id/titleBar"
+        android:id="@+id/layoutTitleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,30 +20,20 @@
         >
 
         <TextView
+            android:id="@+id/txtForside"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Placeholder"
+            android:text="Forside"
             android:textSize="40dp"
             />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtForside"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/titleBar"
-        android:gravity="center"
-        android:text="Forside"
-        android:textSize="35sp"
-        />
-
-
     <LinearLayout
         android:id="@+id/layoutLogos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/txtForside"
+        app:layout_constraintTop_toBottomOf="@+id/layoutTitleBar"
         android:gravity="center"
         android:orientation="vertical"
         >
