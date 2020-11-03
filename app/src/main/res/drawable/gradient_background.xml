@@ -7,7 +7,7 @@
     så den bare fylder lidt ud uden at forstyrre
     -->
     <gradient
-        android:startColor="#cce4ff"
+        android:startColor="#99c9ff"
         android:endColor="#ccffff"
-        android:angle="90" />
+        android:angle="45" />
 </shape>
