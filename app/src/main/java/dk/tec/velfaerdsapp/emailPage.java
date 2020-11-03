@@ -1,7 +1,9 @@
 package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -67,12 +69,12 @@ public class emailPage extends AppCompatActivity {
 
     public void sendMail(View view) {
         //For loop that fills in and sends mail I suppose
-        for (int i = 0; i <= id; i++){
-            System.out.println(editTextList.get(i).getText().toString());
+        //for (int i = 0; i <= id; i++){
+            //System.out.println(editTextList.get(i).getText().toString());
 
             Intent email = new Intent(Intent.ACTION_SEND);
             //to
-            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"williamchinh@gmail.com"});
+            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"Niclasschaeffer96@gmail.com"});
             //Subject
             email.putExtra(Intent.EXTRA_SUBJECT, "subject");
             //Message
@@ -82,6 +84,6 @@ public class emailPage extends AppCompatActivity {
             email.setType("message/rfc822");
 
             startActivity(Intent.createChooser(email, "kagekrigeren@mail.com"));
-        }
+        //}
     }
 }
