@@ -35,7 +35,7 @@
             android:layout_height="100dp"
             android:src="@drawable/logo_tec"
             android:contentDescription="TEC"
-            android:onClick="tec"
+            android:onClick="logoClicked"
             />
 
         <ImageView
@@ -44,7 +44,7 @@
             android:layout_height="130dp"
             android:src="@drawable/logo_vfvoe"
             android:contentDescription="Videnscenter for Velfærdsteknologi OEst"
-            android:onClick="vfvoe"
+            android:onClick="logoClicked"
             />
 
         <ImageView
@@ -54,7 +54,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/logo_mindhelper"
             android:contentDescription="Mindhelper"
-            android:onClick="mindhelper"
+            android:onClick="logoClicked"
             />
 
 
