@@ -5,34 +5,95 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+
+    >
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Forside"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="61dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="16dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="430dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="113dp">
+
+        <ImageView
+            android:id="@+id/imgLogoTec"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_tec"
+            android:contentDescription="TEC"
+            android:onClick="tec"
+            />
+
+        <ImageView
+            android:id="@+id/imgLogoVfvoe"
+            android:layout_width="350dp"
+            android:layout_height="130dp"
+            android:src="@drawable/logo_vfvoe"
+            android:contentDescription="Videnscenter for Velfærdsteknologi OEst"
+            android:onClick="vfvoe"
+            />
+
+        <ImageView
+            android:id="@+id/imgLogoMindhelper"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_mindhelper"
+            android:contentDescription="Mindhelper"
+            android:onClick="mindhelper"
+            />
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="604dp"
-        android:gravity="center">
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/btnstrenghts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:onClick="strenghts"
+            android:text="De 24 styrker"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="144dp"
+            tools:layout_editor_absoluteY="237dp">
+        </Button>
 
         <Button
             android:id="@+id/btnnext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:background="@drawable/ic_baseline_arrow_forward_24"
             android:onClick="forward"
+            android:text="Gå videre til Spørgsmål"
             tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="279dp"
-            tools:layout_editor_absoluteY="619dp"></Button>
+            tools:layout_editor_absoluteX="104dp"
+            tools:layout_editor_absoluteY="233dp">
+        </Button>
 
     </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
