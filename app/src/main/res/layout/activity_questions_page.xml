@@ -8,13 +8,14 @@
     tools:context=".questionsPage">
 
     <TextView
+        android:id="@+id/TitleHolder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Questions"
+        android:text="Spørgsmål"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="61dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

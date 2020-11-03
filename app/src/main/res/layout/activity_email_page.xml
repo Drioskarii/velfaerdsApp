@@ -7,35 +7,25 @@
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".emailPage">
+        <LinearLayout
+            android:id="@+id/emailPlacer"
+            android:layout_width="match_parent"
+            android:layout_height="620dp"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="47dp"
+                android:layout_gravity="center"
+                android:background="@drawable/addemail"
+                android:gravity="center"
+                android:onClick="addEmail" />
+        </LinearLayout>
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-
-    <LinearLayout
-        android:id="@+id/emailPage"
-        android:layout_width="wrap_content"
-        android:layout_height="620dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
-
-
-
-    </LinearLayout>
-
-        <ImageView
-        android:layout_width="60dp"
-        android:layout_height="47dp"
-        android:background="@drawable/addemail"
-        android:onClick="addEmail"
-        android:padding="60dp"
-        tools:layout_editor_absoluteX="231dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
