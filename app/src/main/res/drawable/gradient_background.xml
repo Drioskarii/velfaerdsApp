@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--
+    denne gradient er meget lysere end den til titlebaren,
+    så den bare fylder lidt ud uden at forstyrre
+    -->
+    <gradient
+        android:startColor="#99c9ff"
+        android:endColor="#ccffff"
+        android:angle="45" />
+</shape>
