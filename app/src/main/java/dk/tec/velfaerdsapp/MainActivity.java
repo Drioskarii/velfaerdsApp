@@ -50,4 +50,28 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void logoClicked(View view){
+        String url = "";
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+        switch(view.getId())
+        {
+            case R.id.imgLogoTec:
+                url = "https://www.tec.dk/";
+                break;
+            case R.id.imgLogoVfvoe:
+                url = "https://videnscenterportalen.dk/vtoe/";
+                break;
+            case R.id.imgLogoMindhelper:
+                url = "https://mindhelper.dk/";
+                break;
+        }
+
+        intent.setData(Uri.parse(url));
+        startActivity(intent);
+    }
+
 }
