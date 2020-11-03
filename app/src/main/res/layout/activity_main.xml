@@ -1,41 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity"
-
     >
 
+    <LinearLayout
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:background="@drawable/titlebar_gradient_background"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Placeholder"
+            android:textSize="40dp"
+            />
+
+    </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/txtForside"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleBar"
+        android:gravity="center"
         android:text="Forside"
-        android:textSize="50sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="16dp"
+        android:textSize="35sp"
         />
 
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="430dp"
+        android:id="@+id/layoutLogos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txtForside"
         android:gravity="center"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="113dp">
+        >
 
         <ImageView
             android:id="@+id/imgLogoTec"
             android:layout_width="250dp"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:src="@drawable/logo_tec"
             android:contentDescription="TEC"
-            android:onClick="tec"
+            android:onClick="logoClicked"
             />
 
         <ImageView
@@ -44,26 +62,25 @@
             android:layout_height="130dp"
             android:src="@drawable/logo_vfvoe"
             android:contentDescription="Videnscenter for Velfærdsteknologi OEst"
-            android:onClick="vfvoe"
+            android:onClick="logoClicked"
             />
 
         <ImageView
             android:id="@+id/imgLogoMindhelper"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="130dp"
             android:scaleType="centerCrop"
             android:src="@drawable/logo_mindhelper"
             android:contentDescription="Mindhelper"
-            android:onClick="mindhelper"
+            android:onClick="logoClicked"
             />
-
-
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutButtons"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="604dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center"
         >
 
@@ -74,9 +91,7 @@
             android:layout_margin="20dp"
             android:onClick="strenghts"
             android:text="De 24 styrker"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="144dp"
-            tools:layout_editor_absoluteY="237dp">
+            >
         </Button>
 
         <Button
@@ -86,14 +101,7 @@
             android:layout_margin="20dp"
             android:onClick="forward"
             android:text="Gå videre til Spørgsmål"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="104dp"
-            tools:layout_editor_absoluteY="233dp">
+            >
         </Button>
-
     </LinearLayout>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
