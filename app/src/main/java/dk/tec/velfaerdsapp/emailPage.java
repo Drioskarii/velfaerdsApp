@@ -1,13 +1,8 @@
 package dk.tec.velfaerdsapp;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.Layout;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
