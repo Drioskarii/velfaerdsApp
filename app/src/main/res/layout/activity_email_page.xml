@@ -48,7 +48,7 @@
             android:onClick="back"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="69dp"
-            tools:layout_editor_absoluteY="524dp"></Button>
+            tools:layout_editor_absoluteY="524dp" />
 
         <Button
             android:id="@+id/sendMail"
@@ -59,7 +59,7 @@
             android:onClick="sendMail"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="219dp"
-            tools:layout_editor_absoluteY="524dp"></Button>
+            tools:layout_editor_absoluteY="524dp" />
 
     </LinearLayout>
 

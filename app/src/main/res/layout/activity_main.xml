@@ -81,9 +81,7 @@
             android:layout_margin="20dp"
             android:onClick="strenghts"
             android:text="@string/btnstrenghts_text"
-            style="@style/Widget.AppCompat.Button.Colored"
-            >
-        </Button>
+            style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
             android:id="@+id/btnnext"
@@ -92,8 +90,6 @@
             android:layout_margin="20dp"
             android:onClick="forward"
             android:text="@string/btnnext"
-            style="@style/Widget.AppCompat.Button.Colored"
-            >
-        </Button>
+            style="@style/Widget.AppCompat.Button.Colored" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
