@@ -20,13 +20,15 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="321dp"
         android:layout_height="137dp"
         android:layout_marginTop="104dp"
-        android:text="Ug.dk video"
-        android:textSize="30sp"
-        android:textAlignment="center"
         android:background="#8AB5E6"
+        android:text="Ug.dk video"
+        android:textAlignment="center"
+
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,5 +101,15 @@
             android:layout_margin="20dp"></Button>
 
     </LinearLayout>
+
+   <!-- <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="319dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGender"
+        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
