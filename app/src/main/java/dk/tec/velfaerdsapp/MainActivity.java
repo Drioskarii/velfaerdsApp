@@ -26,27 +26,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void tec(View view){
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse("https://www.tec.dk/"));
-        startActivity(intent);
-    }
+    public void logoClicked(View view){
+        String url = "";
 
-    public void vfvoe(View view){
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse("https://videnscenterportalen.dk/vtoe/"));
-        startActivity(intent);
-    }
 
-    public void mindhelper(View view){
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-        intent.setData(Uri.parse("https://mindhelper.dk/"));
+        switch(view.getId())
+        {
+            case R.id.imgLogoTec:
+                url = "https://www.tec.dk/";
+                break;
+            case R.id.imgLogoVfvoe:
+                url = "https://videnscenterportalen.dk/vtoe/";
+                break;
+            case R.id.imgLogoMindhelper:
+                url = "https://mindhelper.dk/";
+                break;
+        }
+
+        intent.setData(Uri.parse(url));
         startActivity(intent);
     }
 

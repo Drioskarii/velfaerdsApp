@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- titlebar gradienten er mere "intens" end den til baggrunden -->
+    <gradient
+        android:startColor="#00A9A9"
+        android:endColor="#0078FF"
+        android:angle="90" />
+</shape>

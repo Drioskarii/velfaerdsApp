@@ -4,30 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".introPage">
+    tools:context=".introPage"
+    android:background="@drawable/gradient_background">
+
 
     <TextView
-        android:textSize="50sp"
-        android:text="Intro Page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:text="Intro Page"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="321dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="104dp"
+        android:background="#8AB5E6"
+        android:text="Ug.dk video"
+        android:textAlignment="center"
+
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerGender"
-
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="223dp"
         android:layout_height="43dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="124dp"
         android:ems="10"
         android:hint="@string/introPage_Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,7 +65,6 @@
         android:layout_width="181dp"
         android:layout_height="35dp"
         android:layout_marginTop="24dp"
-        android:autofillHints="@string/introPage_Gender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="604dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center">
 
         <Button
@@ -70,7 +87,7 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="64dp"
             tools:layout_editor_absoluteY="619dp"
-            android:layout_margin="20dp"></Button>
+            android:layout_margin="20dp" />
 
         <Button
             android:id="@+id/btnnext"
@@ -81,8 +98,18 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="279dp"
             tools:layout_editor_absoluteY="619dp"
-            android:layout_margin="20dp"></Button>
+            android:layout_margin="20dp" />
 
     </LinearLayout>
+
+   <!-- <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="319dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGender"
+        tools:ignore="MissingConstraints" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
