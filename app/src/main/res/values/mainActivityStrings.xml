@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="txtForside_text">Forside</string>
+    <string name="txtForside_text">Styrk Dit Valg</string>
     <string name="imgLogoTec_contentDescription">TEC</string>
     <string name="imgLogoVfVOE_contentDescription">Videnscenter for Velfærdsteknologi Øst</string>
     <string name="imgLogoMindhelper_contentDescription">Mindhelper</string>

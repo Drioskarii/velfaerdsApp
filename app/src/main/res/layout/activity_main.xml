@@ -30,17 +30,21 @@
 
     <LinearLayout
         android:id="@+id/layoutLogos"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/layoutTitleBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center"
         android:orientation="vertical"
         >
 
         <ImageView
             android:id="@+id/imgLogoTec"
-            android:layout_width="250dp"
-            android:layout_height="130dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="25dp"
             android:src="@drawable/logo_tec"
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
@@ -48,8 +52,9 @@
 
         <ImageView
             android:id="@+id/imgLogoVfvoe"
-            android:layout_width="350dp"
-            android:layout_height="130dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="25dp"
             android:src="@drawable/logo_vfvoe"
             android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
@@ -57,9 +62,9 @@
 
         <ImageView
             android:id="@+id/imgLogoMindhelper"
-            android:layout_width="350dp"
-            android:layout_height="130dp"
-            android:scaleType="centerCrop"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="25dp"
             android:src="@drawable/logo_mindhelper"
             android:contentDescription="@string/imgLogoMindhelper_contentDescription"
             android:onClick="logoClicked"
