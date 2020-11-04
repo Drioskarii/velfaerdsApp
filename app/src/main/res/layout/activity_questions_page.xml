@@ -14,7 +14,16 @@
         android:layout_height="620dp"
         android:orientation="vertical"
         tools:ignore="MissingConstraints"></LinearLayout>
+    <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
 
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="599dp">
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
@@ -36,5 +45,6 @@
         tools:layout_editor_absoluteX="279dp"
         tools:layout_editor_absoluteY="619dp"
         android:layout_margin="20dp" />
+    </LinearLayout>
 
 </LinearLayout>
