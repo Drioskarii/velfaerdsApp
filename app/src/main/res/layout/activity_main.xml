@@ -23,8 +23,8 @@
             android:id="@+id/txtForside"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forside"
-            android:textSize="40dp"
+            android:text="@string/txtForside_text"
+            android:textSize="40sp"
             />
 
     </LinearLayout>
@@ -43,7 +43,7 @@
             android:layout_width="250dp"
             android:layout_height="130dp"
             android:src="@drawable/logo_tec"
-            android:contentDescription="TEC"
+            android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
             />
 
@@ -52,7 +52,7 @@
             android:layout_width="350dp"
             android:layout_height="130dp"
             android:src="@drawable/logo_vfvoe"
-            android:contentDescription="Videnscenter for Velfærdsteknologi OEst"
+            android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
             />
 
@@ -62,7 +62,7 @@
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             android:src="@drawable/logo_mindhelper"
-            android:contentDescription="Mindhelper"
+            android:contentDescription="@string/imgLogoMindhelper_contentDescription"
             android:onClick="logoClicked"
             />
     </LinearLayout>
@@ -81,7 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:onClick="strenghts"
-            android:text="De 24 styrker"
+            android:text="@string/btnstrenghts_text"
+            style="@style/Widget.AppCompat.Button.Colored"
             >
         </Button>
 
@@ -91,7 +92,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:onClick="forward"
-            android:text="Gå videre til Spørgsmål"
+            android:text="@string/btnnext"
+            style="@style/Widget.AppCompat.Button.Colored"
             >
         </Button>
     </LinearLayout>
