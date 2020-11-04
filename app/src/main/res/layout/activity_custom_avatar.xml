@@ -69,8 +69,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:background="@drawable/ic_baseline_arrow_forward_24"
-            android:onClick="forward"
-            >
-        </Button>
+            android:onClick="forward" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

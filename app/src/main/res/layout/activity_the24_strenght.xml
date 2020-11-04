@@ -30,7 +30,7 @@
                 android:onClick="back"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="64dp"
-                tools:layout_editor_absoluteY="619dp"></Button>
+                tools:layout_editor_absoluteY="619dp" />
         </LinearLayout>
     </LinearLayout>
 
