@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".emailPage">
+    tools:context=".emailPage"
+    android:background="@drawable/gradient_background">
         <LinearLayout
             android:id="@+id/emailPlacer"
             android:layout_width="match_parent"
