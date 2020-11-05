@@ -26,7 +26,3 @@ public class customAvatar extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
-// avatar skal ind her
-// hej
-// github over slack
