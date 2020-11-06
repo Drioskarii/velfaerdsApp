@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-    app:cardBackgroundColor="@color/design_default_color_primary_dark">
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="#FF018786"
+    android:layout_marginBottom="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
-        android:layout_gravity="center_vertical"
-        >
+        android:layout_gravity="center_vertical">
 
         <ImageView
             android:id="@+id/imageIcon"
@@ -30,56 +30,73 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageIcon"
+            android:layout_toEndOf="@+id/imageIcon" />
 
-            />
+        <TextView
+            android:id="@+id/txtExplanationTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line2"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_below="@id/txtExplanation"
+            android:layout_toRightOf="@id/imageIcon"/>
 
         <Button
             android:id="@+id/btnOne"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="1"
             android:textSize="15sp"
-            android:layout_below="@+id/txtExplanation"
+            android:layout_below="@+id/txtExplanationTwo"
             android:layout_toEndOf="@+id/imageIcon"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp"
+            android:background="@color/red"/>
+
         <Button
             android:id="@+id/btnTwo"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="2"
             android:textSize="15sp"
-            android:layout_below="@+id/txtExplanation"
+            android:layout_below="@+id/txtExplanationTwo"
             android:layout_toEndOf="@+id/btnOne"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp"
+            android:background="@color/orange"/>
+
         <Button
             android:id="@+id/btnThree"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="3"
             android:textSize="15sp"
-            android:layout_below="@+id/txtExplanation"
+            android:layout_below="@+id/txtExplanationTwo"
             android:layout_toEndOf="@+id/btnTwo"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp"
+            android:background="@color/yellow"/>
+
         <Button
             android:id="@+id/btnFour"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="4"
             android:textSize="15sp"
-            android:layout_below="@+id/txtExplanation"
+            android:layout_below="@+id/txtExplanationTwo"
             android:layout_toEndOf="@+id/btnThree"
-            android:layout_marginStart="4dp"/>
+            android:layout_marginStart="4dp"
+            android:background="@color/lightgreen"/>
+
         <Button
             android:id="@+id/btnFive"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="5"
             android:textSize="15sp"
-            android:layout_below="@+id/txtExplanation"
+            android:layout_below="@+id/txtExplanationTwo"
             android:layout_toEndOf="@+id/btnFour"
-            android:layout_marginStart="4dp"/>
-
+            android:layout_marginStart="4dp"
+            android:background="@color/green"/>
 
     </RelativeLayout>
 
