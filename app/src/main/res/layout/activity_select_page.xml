@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".selectPage"
     android:background="@drawable/gradient_background">
 
@@ -15,11 +16,41 @@
         tools:layout_editor_absoluteY="61dp"
         tools:ignore="MissingConstraints"/>
 
+    <github.hellocsl.cursorwheel.CursorWheelLayout
+        android:layout_centerHorizontal="true"
+        android:id="@+id/wheel_text"
+        android:layout_width="280dip"
+        android:layout_height="280dip"
+        android:layout_gravity="center_vertical|right|bottom"
+
+        app:wheelBackgroundColor="@color/colorAccent_Translucent"
+        app:wheelCursorColor="@color/red"
+        app:wheelCursorHeight="19dip"
+        app:wheelItemRotateMode="none"
+        app:wheelSelectedAngle="270"
+
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="149dp">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Large.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wheelCenterItem"
+            android:padding="6dip"
+            android:textSize="14sp"
+            android:text="Wheel text"
+            />
+
+    </github.hellocsl.cursorwheel.CursorWheelLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="604dp"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
         <Button
             android:id="@+id/btnBack"
