@@ -60,9 +60,9 @@ public class selectPage extends AppCompatActivity implements CursorWheelLayout.O
 
     @Override
     public void onItemSelected(CursorWheelLayout parent, View view, int pos) {
-        if(parent.getId() == R.id.wheel_text);
+        if(parent.getId() == R.id.wheel_text)
             Toast.makeText(getBaseContext(), "Selected: "+
-                    lstText.get(pos), Toast.LENGTH_SHORT).show();
+                    lstText.get(pos) .mTitle, Toast.LENGTH_SHORT).show();
     }
 
 

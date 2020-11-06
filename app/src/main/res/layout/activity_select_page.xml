@@ -23,7 +23,7 @@
         android:layout_height="280dip"
         android:layout_gravity="center_vertical|right|bottom"
 
-        app:wheelBackgroundColor="@color/colorAccent_Translucent"
+
         app:wheelCursorColor="@color/red"
         app:wheelCursorHeight="19dip"
         app:wheelItemRotateMode="none"
@@ -37,7 +37,7 @@
             style="@style/TextAppearance.AppCompat.Large.Inverse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/wheelCenterItem"
+            android:id="@id/id_wheel_menu_center_item"
             android:padding="6dip"
             android:textSize="14sp"
             android:text="Wheel text"
