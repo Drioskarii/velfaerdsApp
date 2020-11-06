@@ -3,7 +3,9 @@ package dk.tec.velfaerdsapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,11 +25,10 @@ public class introPage extends AppCompatActivity
     private TextView showText;
     private EditText enterName;
     private EditText enterJob;
-    /*private VideoView videoview;
-    private MediaController mediaC;*/
+    private VideoView videoView;
+
 
     String selectedItem = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,19 +39,20 @@ public class introPage extends AppCompatActivity
         // instantiating
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
-        // videoview = findViewById(R.id.videoView);
+         videoView = findViewById(R.id.videoView);
 
-        // Calling the method to create the spinnerdropdown
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.video;
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+
+
+                // Calling the method to create the spinnerdropdown
         createSpinnerDropdown();
 
-        // er lidt buggy da det vises på hele skærmen og ikke kun på videoen
-        /*MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(videoview);
-        videoview.setMediaController(mediaController);*/
-
-        // Test af hvordan videoview bruges til at vise video fra link (random mp4 video fundet på nettet)
-        /*videoview.setVideoPath("https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4");
-        videoview.start();*/
 
     }
 
