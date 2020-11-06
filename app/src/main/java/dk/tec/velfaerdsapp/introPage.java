@@ -30,7 +30,6 @@ public class introPage extends AppCompatActivity
 
     String selectedItem = "";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
