@@ -1,4 +1,4 @@
-package dk.tec.velfaerdsapp;
+package Adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -16,8 +16,9 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import dk.tec.velfaerdsapp.R;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class customavataradapter extends RecyclerView.Adapter<customavataradapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -26,7 +27,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
+    public customavataradapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
         mNames = names;
         mImageUrls = imageUrls;
         mContext = context;
