@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="txtForside_text">Styrk Dit Valg</string>
-    <string name="imgLogoTec_contentDescription">TEC</string>
+    <string name="imgLogoTec_contentDescription">Technical Education Copenhagen</string>
     <string name="imgLogoVfVOE_contentDescription">Videnscenter for Velfærdsteknologi Øst</string>
-    <string name="imgLogoMindhelper_contentDescription">Mindhelper</string>
+    <string name="imgLogoUG_contentDescription">Uddannelsesguiden</string>
     <string name="btnstrenghts_text">DE 24 STYRKER</string>
     <string name="btnnext_text">GÅ VIDERE TIL SPØRGSMÅL</string>
 </resources>

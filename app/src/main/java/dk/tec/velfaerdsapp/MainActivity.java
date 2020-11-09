@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.imgLogoVfvoe:
                 url = "https://videnscenterportalen.dk/vtoe/";
                 break;
-            case R.id.imgLogoMindhelper:
-                url = "https://mindhelper.dk/";
+            case R.id.imgLogoUg:
+                url = "https://www.ug.dk/";
                 break;
         }
 

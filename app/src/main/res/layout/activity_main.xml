@@ -42,33 +42,65 @@
         android:orientation="vertical"
         >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/imgLogoTec_contentDescription"
+            />
+
         <ImageView
             android:id="@+id/imgLogoTec"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="45dp"
             android:src="@drawable/logo_tec"
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
             />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/imgLogoVfVOE_contentDescription"
+            />
+
         <ImageView
             android:id="@+id/imgLogoVfvoe"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="45dp"
             android:src="@drawable/logo_vfvoe"
             android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
             />
 
-        <ImageView
-            android:id="@+id/imgLogoMindhelper"
-            android:layout_width="300dp"
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="30dp"
-            android:src="@drawable/logo_mindhelper"
-            android:contentDescription="@string/imgLogoMindhelper_contentDescription"
+            android:gravity="center"
+            android:text="@string/imgLogoUG_contentDescription"
+            />
+
+        <ImageView
+            android:id="@+id/imgLogoUg"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="45dp"
+            android:src="@drawable/logo_ug"
+            android:contentDescription="@string/imgLogoUG_contentDescription"
             android:onClick="logoClicked"
             />
     </LinearLayout>
