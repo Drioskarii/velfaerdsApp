@@ -13,6 +13,8 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import Adapter.customavataradapter;
+
 public class customAvatar extends AppCompatActivity {
 
     private static final String TAG = "customAvatar";
@@ -76,7 +78,7 @@ public class customAvatar extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls);
+        customavataradapter adapter = new customavataradapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 

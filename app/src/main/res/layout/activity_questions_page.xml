@@ -16,11 +16,11 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-    <ImageView
-        android:id="@+id/characterHolder"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/character_placeholder"/>
+        <ImageView
+            android:id="@+id/characterHolder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/character_placeholder"/>
 
     </LinearLayout>
 

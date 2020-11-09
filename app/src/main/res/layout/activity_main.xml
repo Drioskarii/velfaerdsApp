@@ -19,6 +19,7 @@
         android:background="@drawable/titlebar_gradient_background"
         >
 
+        <!-- @string values til activity_main findes under  res > values > mainActivityStrings.xml -->
         <TextView
             android:id="@+id/txtForside"
             android:layout_width="wrap_content"
@@ -36,6 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="35dp"
         android:gravity="center"
         android:orientation="vertical"
         >
@@ -44,7 +46,7 @@
             android:id="@+id/imgLogoTec"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="25dp"
+            android:layout_marginVertical="30dp"
             android:src="@drawable/logo_tec"
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
@@ -54,7 +56,7 @@
             android:id="@+id/imgLogoVfvoe"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="25dp"
+            android:layout_marginVertical="30dp"
             android:src="@drawable/logo_vfvoe"
             android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
@@ -64,7 +66,7 @@
             android:id="@+id/imgLogoMindhelper"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="25dp"
+            android:layout_marginVertical="30dp"
             android:src="@drawable/logo_mindhelper"
             android:contentDescription="@string/imgLogoMindhelper_contentDescription"
             android:onClick="logoClicked"
@@ -94,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:onClick="forward"
-            android:text="@string/btnnext"
+            android:text="@string/btnnext_text"
             style="@style/Widget.AppCompat.Button.Colored" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
