@@ -5,5 +5,5 @@
     <string name="imgLogoVfVOE_contentDescription">Videnscenter for Velfærdsteknologi Øst</string>
     <string name="imgLogoMindhelper_contentDescription">Mindhelper</string>
     <string name="btnstrenghts_text">DE 24 STYRKER</string>
-    <string name="btnnext">GÅ VIDERE TIL SPØRGSMÅL</string>
+    <string name="btnnext_text">GÅ VIDERE TIL SPØRGSMÅL</string>
 </resources>
