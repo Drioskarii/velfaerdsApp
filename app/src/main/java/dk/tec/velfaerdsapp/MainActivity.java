@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
 
     public void strengths(View view)
     {
-        Intent intent = new Intent(this, the24Strenght.class);
+        Intent intent = new Intent(this, the24Strength.class);
 
         startActivity(intent);
     }
