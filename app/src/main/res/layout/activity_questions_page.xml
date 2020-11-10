@@ -26,10 +26,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:orientation="vertical"
         android:layout_margin="4dp">
 <ScrollView
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -43,25 +44,19 @@
 </ScrollView>
     </RelativeLayout>
 
-    <LinearLayout
-        app:layout_constraintBottom_toBottomOf="parent"
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:gravity="center">
 
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="599dp">
+
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_baseline_arrow_back_24"
         android:onClick="back"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="619dp"
         android:layout_margin="20dp" />
 
     <Button
@@ -70,10 +65,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_baseline_arrow_forward_24"
         android:onClick="forward"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="619dp"
+        android:layout_toRightOf="@id/btnBack"
         android:layout_margin="20dp" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
