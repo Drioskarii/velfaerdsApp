@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,10 +16,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import android.view.View;
 import android.widget.VideoView;
+
+import com.google.android.exoplayer2.DefaultLoadControl;
+import com.google.android.exoplayer2.DefaultRenderersFactory;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
 public class introPage extends AppCompatActivity
 {
@@ -26,7 +39,6 @@ public class introPage extends AppCompatActivity
     private EditText enterName;
     private EditText enterJob;
     private VideoView videoView;
-
 
     String selectedItem = "";
 
@@ -41,20 +53,21 @@ public class introPage extends AppCompatActivity
         enterJob = findViewById(R.id.editTextJob);
          videoView = findViewById(R.id.videoView);
 
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.video;
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
 
         MediaController mediaController = new MediaController(this);
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
-
+        
 
                 // Calling the method to create the spinnerdropdown
         createSpinnerDropdown();
-
+        
 
     }
+
 
     // creating and populating the dropdown
     private void createSpinnerDropdown() {

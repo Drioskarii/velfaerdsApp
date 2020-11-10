@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-    public void strenghts(View view) {
+    public void strengths(View view) {
         Intent intent = new Intent(this, the24Strenght.class);
 
         startActivity(intent);
@@ -35,14 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch(view.getId())
         {
-            case R.id.imgLogoTec:
-                url = "https://www.tec.dk/";
-                break;
             case R.id.imgLogoVfvoe:
                 url = "https://videnscenterportalen.dk/vtoe/";
                 break;
-            case R.id.imgLogoMindhelper:
-                url = "https://mindhelper.dk/";
+            case R.id.imgLogoTec:
+                url = "https://www.tec.dk/";
+                break;
+            case R.id.imgLogoUg:
+                url = "https://www.ug.dk/";
                 break;
         }
 
