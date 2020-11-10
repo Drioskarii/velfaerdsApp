@@ -8,55 +8,54 @@
     tools:context=".selectPage"
     android:background="@drawable/gradient_background">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Page"
-        android:textSize="50sp"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="61dp"
-        tools:ignore="MissingConstraints"/>
-
-
-
-
 
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/goodRelativeLayout"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
         android:orientation="vertical"
         android:layout_margin="4dp"
         tools:ignore="MissingConstraints">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewGood"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="4dp"
+            android:orientation="horizontal">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/selectRecyclerGood"
-                android:layout_width="match_parent"
-                android:layout_height="310dp"
-                android:padding="4dp"
-                android:scrollbars="vertical"
-                android:background="@drawable/gradient_background"/>
+        </androidx.recyclerview.widget.RecyclerView>
+
     </RelativeLayout>
 
-
+<RelativeLayout
+    android:id="@+id/picLayout"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    app:layout_constraintTop_toBottomOf="@id/goodRelativeLayout"/>
 
     <RelativeLayout
         android:id="@+id/badRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:orientation="vertical"
         android:layout_margin="4dp"
-        app:layout_constraintTop_toBottomOf="@+id/goodRelativeLayout">
+        app:layout_constraintTop_toBottomOf="@+id/picLayout">
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/selectRecyclerBad"
+            android:id="@+id/recyclerViewBad"
             android:layout_width="match_parent"
-            android:layout_height="310dip"
-            android:padding="4dp"
-            android:scrollbars="vertical"
-            android:background="@drawable/gradient_background"/>
+            android:layout_height="250dp"
+            android:layout_marginTop="8dp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="4dp"
+            android:orientation="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
 
@@ -64,9 +63,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="604dp"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/badRelativeLayout">
 
         <Button
             android:id="@+id/btnBack"

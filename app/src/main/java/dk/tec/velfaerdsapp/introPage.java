@@ -60,6 +60,7 @@ public class introPage extends AppCompatActivity
         MediaController mediaController = new MediaController(this);
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
+        videoView.setFocusable(true);
         
 
                 // Calling the method to create the spinnerdropdown

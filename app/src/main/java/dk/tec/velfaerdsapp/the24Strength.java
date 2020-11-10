@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class the24Strenght extends AppCompatActivity {
+public class the24Strength extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_the24_strenght);
+        setContentView(R.layout.activity_the24_strength);
     }
 
     public void back(View view) {

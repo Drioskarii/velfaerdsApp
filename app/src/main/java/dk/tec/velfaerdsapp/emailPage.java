@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,13 +68,17 @@ public class emailPage extends AppCompatActivity {
     }
     //lortet virker ikke kun delvist
     public void sendMail(View view) {
+        ArrayList<String> emailList = new ArrayList<String>();
         //For loop that fills in and sends mail I suppose
-        //for (int i = 0; i <= id; i++){
-            //System.out.println(editTextList.get(i).getText().toString());
 
+        for (int i = 0; i <= id; i++) {
+            emailList.add(editTextList.get(i).getText().toString());
+            //System.out.println(emailList);
+        }
             Intent email = new Intent(Intent.ACTION_SEND);
             //to
-            email.putExtra(Intent.EXTRA_EMAIL, new String[]{"Niclasschaeffer96@gmail.com"});
+            email.putExtra(android.content.Intent.EXTRA_EMAIL,
+                    emailList.toArray(new String[emailList.size()]));
             //Subject
             email.putExtra(Intent.EXTRA_SUBJECT, "subject");
             //Message
@@ -82,6 +87,6 @@ public class emailPage extends AppCompatActivity {
             //need this to prompts email client only
             email.setType("message/rfc822");
 
-            startActivity(Intent.createChooser(email, "kagekrigeren@mail.com"));
+            startActivity(Intent.createChooser(email, "TestMail+fisk@gmail.com"));
     }
 }
