@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VelfaerdsApp">
-        <activity android:name=".the24Strenght"></activity>
+        <activity android:name=".the24Strength"></activity>
         <activity android:name=".emailPage" />
         <activity android:name=".selectPage" />
         <activity android:name=".introPage" />
