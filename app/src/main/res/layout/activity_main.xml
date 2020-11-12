@@ -102,7 +102,6 @@
                 android:layout_column="0"
                 android:layout_columnWeight="1"
                 android:contentDescription="@string/SwipeBackward_contentDescription"
-                android:onClick="logoClicked"
                 android:src="@drawable/swipebackward"></ImageView>
 
             <ImageView
@@ -113,7 +112,6 @@
                 android:layout_column="1"
                 android:layout_columnWeight="1"
                 android:contentDescription="@string/SwipeForward_contentDescription"
-                android:onClick="logoClicked"
                 android:src="@drawable/swipeforward"></ImageView>
 
             <TextView
