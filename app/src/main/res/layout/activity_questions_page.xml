@@ -9,22 +9,45 @@
     tools:context=".questionsPage"
     android:background="@drawable/gradient_background">
 
-    <LinearLayout
-        android:id="@+id/llContainer"
+
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="De 24 Spørgsmål"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:textColor="#FFF"
+        android:fontFamily="sans-serif"
+        android:shadowColor="#474747"
+        android:shadowDx="1"
+        android:shadowDy="4"
+        android:shadowRadius="15" />
+
+    <FrameLayout
+        android:id="@+id/videoFrame"
+        android:layout_width="360dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        >
 
         <ImageView
             android:id="@+id/characterHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/character_placeholder"/>
+            android:background="@drawable/placeholder"/>
 
-    </LinearLayout>
+    </FrameLayout>
 
-    <RelativeLayout
+    <View style="@style/Divider"
+        android:layout_width="360dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="0dp"
+        />
+
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:orientation="vertical"
@@ -42,5 +65,5 @@
                     android:scrollbars="vertical"
                     android:background="@drawable/gradient_background"/>
         </ScrollView>
-    </RelativeLayout>
+    </FrameLayout>
 </LinearLayout>
