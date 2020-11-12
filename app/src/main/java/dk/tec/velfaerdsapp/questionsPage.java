@@ -45,7 +45,6 @@ public class questionsPage extends AppCompatActivity implements GestureDetector.
         mQuestionRecyclerView.setLayoutManager(mLayoutManager);
         mQuestionRecyclerView.setAdapter(mAdapter);
 
-
 //        String[] questionArray = {"One", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four"};
 //        Object answersToQuestions = new Object();
 //
