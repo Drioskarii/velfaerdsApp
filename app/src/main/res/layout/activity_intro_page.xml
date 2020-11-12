@@ -9,10 +9,17 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Intro Page"
-        android:textSize="50sp"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:text="Introducer Dig Selv"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:textColor="#FFF"
+        android:fontFamily="sans-serif"
+        android:shadowColor="#474747"
+        android:shadowDx="1"
+        android:shadowDy="4"
+        android:shadowRadius="15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
