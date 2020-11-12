@@ -20,13 +20,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:shadowDx="0"
-                android:shadowDy="5"
-                android:shadowRadius="5"
+
                 android:text="Send Resultat"
                 android:textSize="32dp"
                 android:textColor="@color/white"
-                android:shadowColor="@android:color/black"
+
+                android:shadowColor="#474747"
+                android:shadowDx="1"
+                android:shadowDy="4"
+                android:shadowRadius="15"
                 android:layout_marginBottom="50dp"/>
 
             <LinearLayout
@@ -73,6 +75,4 @@
         tools:layout_editor_absoluteY="599dp">
 
     </LinearLayout>
-
-
 </LinearLayout>

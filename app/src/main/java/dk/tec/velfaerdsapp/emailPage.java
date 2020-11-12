@@ -66,7 +66,7 @@ public class emailPage extends AppCompatActivity {
 
         startActivity(intent);
     }
-    //lortet virker ikke kun delvist
+    //lortet er ikke testet
     public void sendMail(View view) {
         ArrayList<String> emailList = new ArrayList<String>();
         //For loop that fills in and sends mail I suppose
