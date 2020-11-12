@@ -91,7 +91,7 @@
             android:layout_marginTop="20sp"
             android:contentDescription="@string/SwipeBackward_contentDescription"
             android:onClick="logoClicked"
-            android:src="@drawable/SwipeBackward" />
+            android:src="@drawable/swipebackward" />
 
         <ImageView
             android:id="@+id/imgSwipeForward"
@@ -100,6 +100,6 @@
             android:layout_marginTop="20sp"
             android:contentDescription="@string/SwipeForward_contentDescription"
             android:onClick="logoClicked"
-            android:src="@drawable/SwipeForward" />
+            android:src="@drawable/swipeforward" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
