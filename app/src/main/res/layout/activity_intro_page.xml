@@ -11,7 +11,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginTop="20dp"
         android:text="Introducer Dig Selv"
         android:gravity="center_horizontal"
@@ -46,25 +46,17 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_gravity="center_horizontal"
         />
 
-    <TextView
-        android:id="@+id/videoStartText"
-        android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:text="Press on box to start video"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:textColor="@color/black"
-        />
+
 
     <FrameLayout
         android:id="@+id/videoFrame"
         android:layout_width="360dp"
         android:layout_height="250dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="75dp"
         android:layout_gravity="center_horizontal"
         >
 
