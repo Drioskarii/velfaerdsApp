@@ -62,8 +62,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:scrollbars="vertical"
-                    android:background="@drawable/gradient_background"/>
+                    android:scrollbars="vertical">
+                </androidx.recyclerview.widget.RecyclerView>
         </ScrollView>
     </FrameLayout>
 </LinearLayout>

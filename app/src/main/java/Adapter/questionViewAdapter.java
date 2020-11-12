@@ -46,7 +46,7 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
 
                @Override
                public void onStopTrackingTouch(SeekBar seekBar) {
-
+                    mSeekBar.getProgress();
                }
            });
        }
