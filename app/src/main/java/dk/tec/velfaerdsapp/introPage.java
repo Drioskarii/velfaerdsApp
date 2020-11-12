@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.view.View;
 import android.widget.VideoView;
 
@@ -33,25 +36,26 @@ import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
-public class introPage extends AppCompatActivity
-{
+public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
+
+    private float x1, x2;
+    private static int MIN_DISTANCE = 100;
+    private GestureDetector gestureDetector;
     private TextView showText;
     private EditText enterName;
     private EditText enterJob;
     private VideoView videoView;
-
     String selectedItem = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_page);
 
         // instantiating
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
-         videoView = findViewById(R.id.videoView);
+        videoView = findViewById(R.id.videoView);
 
         String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
         Uri uri = Uri.parse(videoPath);
@@ -61,14 +65,52 @@ public class introPage extends AppCompatActivity
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
         videoView.setFocusable(true);
-        
-
-                // Calling the method to create the spinnerdropdown
+        // Calling the method to create the spinnerdropdown
         createSpinnerDropdown();
-        
 
+        //init gestureDetector
+        this.gestureDetector = new GestureDetector(introPage.this, this);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        switch (event.getAction()) {
+            //press
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                break;
+
+            //lift
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                //horizontal swipe
+                float valueX = x2 - x1;
+                if (Math.abs(valueX) > MIN_DISTANCE) {
+                    if (x2 > x1) {
+                        backward();
+                    } else {
+                        forward();
+                    }
+                }
+        }
+        return super.onTouchEvent(event);
+    }
+
+    public void forward() {
+        Intent intent = new Intent(introPage.this, customAvatar.class);
+
+        startActivity(intent);
+    }
+
+    public void backward() {
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 
     // creating and populating the dropdown
     private void createSpinnerDropdown() {
@@ -97,8 +139,7 @@ public class introPage extends AppCompatActivity
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectedItem = parent.getItemAtPosition(position).toString();
-            if(!selectedItem.equals("Vælg køn"))
-            {
+            if (!selectedItem.equals("Vælg køn")) {
                 Toast.makeText(parent.getContext(), "Køn valgt: " + selectedItem, Toast.LENGTH_LONG).show();
             }
         }
@@ -109,16 +150,33 @@ public class introPage extends AppCompatActivity
         }
     }
 
-
-    public void forward(View view) {
-        Intent intent = new Intent(this, customAvatar.class);
-
-        startActivity(intent);
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
     }
 
-    public void back(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    @Override
+    public void onShowPress(MotionEvent e) {
 
-        startActivity(intent);
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
     }
 }
