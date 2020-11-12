@@ -1,11 +1,13 @@
 package Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,9 +33,8 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
            mTxtExplanation = itemView.findViewById(R.id.txtExplanation);
            mSeekBar = itemView.findViewById(R.id.seekBar);
            mSeekBar.setProgress(0);
-           mSeekBar.setMax(4);
+           mSeekBar.setMax(5);
            mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-
                @Override
                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
@@ -46,7 +47,7 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
 
                @Override
                public void onStopTrackingTouch(SeekBar seekBar) {
-                    mSeekBar.getProgress();
+                   int progress = mSeekBar.getProgress();
                }
            });
        }
