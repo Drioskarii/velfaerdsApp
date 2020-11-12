@@ -16,9 +16,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:background="@drawable/titlebar_gradient_background"
-        >
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/txtCustomAvatar"
@@ -56,32 +54,5 @@
             android:layout_gravity="center"
             tools:layout_editor_absoluteX="92dp"
             tools:layout_editor_absoluteY="240dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/ic_baseline_arrow_back_24"
-            android:onClick="back"
-            >
-        </Button>
-
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/ic_baseline_arrow_forward_24"
-            android:onClick="forward" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -84,37 +84,4 @@
             android:layout_height="250dp" />
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/videoFrame"
-        android:gravity="center"
-        android:layout_marginTop="20dp">
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_baseline_arrow_back_24"
-            android:onClick="back"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="64dp"
-            tools:layout_editor_absoluteY="619dp"
-            android:layout_margin="20dp" />
-
-        <Button
-            android:id="@+id/btnnext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_baseline_arrow_forward_24"
-            android:onClick="forward"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="279dp"
-            tools:layout_editor_absoluteY="619dp"
-            android:layout_margin="20dp" />
-
-    </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

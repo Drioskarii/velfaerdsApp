@@ -15,9 +15,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        android:background="@drawable/titlebar_gradient_background"
-        >
+        android:gravity="center_horizontal">
 
         <!-- @string values til activity_main findes under  res > values > mainActivityStrings.xml -->
         <TextView
@@ -25,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtForside_text"
+            android:fontFamily="sans-serif"
             android:textSize="40sp"
             />
     </LinearLayout>
