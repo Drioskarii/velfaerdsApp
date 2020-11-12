@@ -32,71 +32,40 @@
         android:id="@+id/layoutLogos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="35sp"
         android:gravity="center"
         android:orientation="vertical"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/imgLogoVfVOE_contentDescription"
-            android:textSize="18sp"
-            />
+        app:layout_constraintBottom_toTopOf="@+id/layoutButtons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imgLogoVfvoe"
             android:layout_width="300sp"
             android:layout_height="100sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginBottom="45sp"
-            android:src="@drawable/logo_vfvoe"
+            android:layout_marginTop="20sp"
             android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
-            />
-
-        <View style="@style/Divider"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/imgLogoTec_contentDescription"
-            android:textSize="18sp"
-            />
-
+            android:src="@drawable/logo_vfvoe" />
+        <View style="@style/Divider" />
         <ImageView
             android:id="@+id/imgLogoTec"
             android:layout_width="300sp"
             android:layout_height="100sp"
-            android:layout_marginBottom="45sp"
-            android:src="@drawable/logo_tec"
+            android:layout_marginTop="20sp"
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
-            />
-
-        <View style="@style/Divider"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/imgLogoUG_contentDescription"
-            android:textSize="18sp"
-            />
-
+            android:src="@drawable/logo_tec" />
+        <View style="@style/Divider" />
         <ImageView
             android:id="@+id/imgLogoUg"
             android:layout_width="300sp"
             android:layout_height="100sp"
-            android:layout_marginBottom="45sp"
-            android:src="@drawable/logo_ug"
+            android:layout_marginTop="20sp"
             android:contentDescription="@string/imgLogoUG_contentDescription"
             android:onClick="logoClicked"
-            />
+            android:src="@drawable/logo_ug" />
+        <View style="@style/Divider" />
     </LinearLayout>
 
     <LinearLayout
@@ -107,22 +76,30 @@
         android:gravity="center"
         >
 
-        <Button
-            android:id="@+id/btnStrengths"
-            android:layout_width="wrap_content"
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            android:onClick="strengths"
-            android:text="@string/btnStrengths_text"
-            style="@style/Widget.AppCompat.Button.Colored" />
+            android:rowCount="2"
+            android:columnCount="2">
 
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp"
-            android:onClick="forward"
-            android:text="@string/btnNext_text"
-            style="@style/Widget.AppCompat.Button.Colored" />
+        </GridLayout>
+
+        <ImageView
+            android:id="@+id/imgSwipeBackward"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_marginTop="20sp"
+            android:contentDescription="@string/SwipeBackward_contentDescription"
+            android:onClick="logoClicked"
+            android:src="@drawable/SwipeBackward" />
+
+        <ImageView
+            android:id="@+id/imgSwipeForward"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_marginTop="20sp"
+            android:contentDescription="@string/SwipeForward_contentDescription"
+            android:onClick="logoClicked"
+            android:src="@drawable/SwipeForward" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
