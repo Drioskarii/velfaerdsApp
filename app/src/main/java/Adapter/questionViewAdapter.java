@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,12 +22,33 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
 
        public ImageView mImageIcon;
        public TextView mTxtExplanation;
+       public SeekBar mSeekBar;
 
        public questionViewHolder(@NonNull View itemView) {
            super(itemView);
 
            mImageIcon = itemView.findViewById(R.id.imageIcon);
            mTxtExplanation = itemView.findViewById(R.id.txtExplanation);
+           mSeekBar = itemView.findViewById(R.id.seekBar);
+           mSeekBar.setProgress(0);
+           mSeekBar.setMax(4);
+           mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
+               @Override
+               public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+               }
+
+               @Override
+               public void onStartTrackingTouch(SeekBar seekBar) {
+
+               }
+
+               @Override
+               public void onStopTrackingTouch(SeekBar seekBar) {
+
+               }
+           });
        }
    }
 
@@ -55,3 +77,5 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
         return mQuestionBoxes.size();
     }
 }
+
+
