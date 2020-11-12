@@ -60,10 +60,22 @@
         android:layout_gravity="center_horizontal"
         >
 
-        <VideoView
-            android:id="@+id/videoView"
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/player_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:resize_mode="fit"
+            app:hide_on_touch="true"
+            app:show_timeout="5000"
+            app:rewind_increment="10000"
+            app:fastforward_increment="10000"
+            app:use_controller="true"
+            android:background="@android:color/background_dark"
+            app:player_layout_id="@layout/exo_simple_player_view"
+            app:controller_layout_id="@layout/exo_playback_control_view"
+            />
+
     </FrameLayout>
 
 </LinearLayout>
