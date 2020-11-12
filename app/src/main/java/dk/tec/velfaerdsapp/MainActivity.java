@@ -18,6 +18,13 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public void tomail(View view) //TEMP!!!!!!!!!!!!!!!!!!
+    {
+        Intent intent = new Intent(this, emailPage.class);
+
+        startActivity(intent);
+    }
+
     public void forward(View view)
     {
         Intent intent = new Intent(this, introPage.class);
