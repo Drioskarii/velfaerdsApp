@@ -51,7 +51,7 @@ public class emailPage extends AppCompatActivity {
             editTextList.add(etm);
             //This is where the parameter goes.
             etm.setHint(getString(R.string.editTextEmail));
-            etm.setGravity(Gravity.CENTER);
+            etm.setGravity(Gravity.LEFT);
             etm.setTag("mails");
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
