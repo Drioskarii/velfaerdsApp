@@ -23,6 +23,7 @@
                 android:text="Send Resultat"
                 android:textSize="32dp"
                 android:textColor="@color/white"
+                android:fontFamily="sans-serif"
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
                 android:shadowDy="2"

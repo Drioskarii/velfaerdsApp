@@ -23,7 +23,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtForside_text"
+            android:textColor="@color/white"
             android:fontFamily="sans-serif"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
             android:textSize="40sp"
             />
     </LinearLayout>
@@ -98,10 +103,11 @@
                 android:textSize="17sp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:fontFamily="sans-serif"
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="3"></TextView>
+                android:shadowRadius="3" ></TextView>
 
             <TextView
                 android:layout_width="150dp"
@@ -113,10 +119,11 @@
                 android:textSize="17sp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:fontFamily="sans-serif"
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="3"></TextView>
+                android:shadowRadius="3" ></TextView>
 
             <ImageView
                 android:id="@+id/imgSwipeBackward"
