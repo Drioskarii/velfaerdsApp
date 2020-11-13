@@ -99,6 +99,7 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
             etm.setHint(getString(R.string.editTextEmail));
             etm.setGravity(Gravity.LEFT);
             etm.setTag("mails");
+            etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
             //This is where the EditText gets added to activity_email_page.xml
