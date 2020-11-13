@@ -1,5 +1,7 @@
 package dk.tec.velfaerdsapp;
 
+import android.widget.SeekBar;
+
 public class questionboxes {
     private final int mImageIcon;
     private final String mTxtExplanation;
@@ -8,7 +10,6 @@ public class questionboxes {
         mImageIcon = imageIcon;
         mTxtExplanation = txtExplanation;
     }
-
 
     public int getImageIcon(){
         return mImageIcon;

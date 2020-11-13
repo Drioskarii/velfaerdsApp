@@ -9,64 +9,61 @@
     tools:context=".questionsPage"
     android:background="@drawable/gradient_background">
 
-    <LinearLayout
-        android:id="@+id/llContainer"
+
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="De 24 Spørgsmål"
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"
+        android:shadowColor="@color/black"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3" />
+
+    <FrameLayout
+        android:id="@+id/videoFrame"
+        android:layout_width="360dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        >
 
         <ImageView
             android:id="@+id/characterHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/character_placeholder"/>
+            android:background="@drawable/placeholder"/>
 
-    </LinearLayout>
+    </FrameLayout>
 
-    <RelativeLayout
+    <View style="@style/Divider"
+        android:layout_width="360dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="0dp"
+        />
+
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:orientation="vertical"
         android:layout_margin="4dp">
-<ScrollView
-    android:id="@+id/scrollView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:scrollbars="vertical"
-            android:background="@drawable/gradient_background"/>
-</ScrollView>
-    </RelativeLayout>
+            android:layout_height="match_parent">
 
-    <RelativeLayout
-        app:layout_constraintTop_toBottomOf="@id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-
-
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_baseline_arrow_back_24"
-        android:onClick="back"
-        android:layout_margin="20dp" />
-
-    <Button
-        android:id="@+id/btnnext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_baseline_arrow_forward_24"
-        android:onClick="forward"
-        android:layout_toRightOf="@id/btnBack"
-        android:layout_margin="20dp" />
-    </RelativeLayout>
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:scrollbars="vertical">
+                </androidx.recyclerview.widget.RecyclerView>
+        </ScrollView>
+    </FrameLayout>
 </LinearLayout>

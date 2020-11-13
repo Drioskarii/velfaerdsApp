@@ -3,7 +3,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.GestureDetector;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,8 +14,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class emailPage extends AppCompatActivity {
+public class emailPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
+    private float x1, x2;
+    private static int MIN_DISTANCE = 100;
+    private GestureDetector gestureDetector;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +36,48 @@ public class emailPage extends AppCompatActivity {
         //This is where the EditText gets added to activity_email_page.xml
         LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
         emailPage.addView(etm);
+        //init gestureDetector
+        this.gestureDetector = new GestureDetector(emailPage.this, this);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        switch (event.getAction()) {
+            //press
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                break;
+
+            //lift
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                //horizontal swipe
+                float valueX = x2 - x1;
+                if (Math.abs(valueX) > MIN_DISTANCE) {
+                    if (x2 > x1) {
+                        backward();
+                    } else {
+                        forward();
+                    }
+                }
+        }
+        return super.onTouchEvent(event);
+    }
+
+    public void forward() {
+
+    }
+
+    public void backward() {
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
     List<EditText> editTextList = new ArrayList<EditText>();
 
     int id = 0;
@@ -51,7 +97,7 @@ public class emailPage extends AppCompatActivity {
             editTextList.add(etm);
             //This is where the parameter goes.
             etm.setHint(getString(R.string.editTextEmail));
-            etm.setGravity(Gravity.CENTER);
+            etm.setGravity(Gravity.LEFT);
             etm.setTag("mails");
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
@@ -66,7 +112,7 @@ public class emailPage extends AppCompatActivity {
 
         startActivity(intent);
     }
-    //lortet virker ikke kun delvist
+    //lortet er ikke testet
     public void sendMail(View view) {
         ArrayList<String> emailList = new ArrayList<String>();
         //For loop that fills in and sends mail I suppose
@@ -88,5 +134,35 @@ public class emailPage extends AppCompatActivity {
             email.setType("message/rfc822");
 
             startActivity(Intent.createChooser(email, "TestMail+fisk@gmail.com"));
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
     }
 }

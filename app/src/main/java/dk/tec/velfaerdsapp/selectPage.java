@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,8 +20,11 @@ import Adapter.questionViewAdapter;
 import Adapter.selectViewAdapter;
 
 
-public class selectPage extends AppCompatActivity {
+public class selectPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
+    private float x1, x2;
+    private static int MIN_DISTANCE = 100;
+    private GestureDetector gestureDetector;
     private static final String TAG = "selectpage";
 
     //vars
@@ -69,9 +74,51 @@ public class selectPage extends AppCompatActivity {
 
         getGoodImages();
         getBadImages();
+        //init gestureDetector
+        this.gestureDetector = new GestureDetector(selectPage.this, this);
     }
 
-    private void getGoodImages(){
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        switch (event.getAction()) {
+            //press
+            case MotionEvent.ACTION_DOWN:
+                x1 = event.getX();
+                break;
+
+            //lift
+            case MotionEvent.ACTION_UP:
+                x2 = event.getX();
+                //horizontal swipe
+                float valueX = x2 - x1;
+                if (Math.abs(valueX) > MIN_DISTANCE) {
+                    if (x2 > x1) {
+                        backward();
+                    } else {
+                        forward();
+                    }
+                }
+        }
+        return super.onTouchEvent(event);
+    }
+
+    public void forward() {
+        Intent intent = new Intent(selectPage.this, emailPage.class);
+
+        startActivity(intent);
+    }
+
+    public void backward() {
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    private void getGoodImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         GoodselectmImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
@@ -92,7 +139,7 @@ public class selectPage extends AppCompatActivity {
         initRecyclerView();
     }
 
-    private void getBadImages(){
+    private void getBadImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         BadselectmImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
@@ -114,7 +161,7 @@ public class selectPage extends AppCompatActivity {
 
     }
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview");
 
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -130,15 +177,33 @@ public class selectPage extends AppCompatActivity {
         recyclerViewBad.setAdapter(Badadapter);
     }
 
-    public void forward(View view) {
-        Intent intent = new Intent(this, emailPage.class);
-
-        startActivity(intent);
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
     }
 
-    public void back(View view) {
-        Intent intent = new Intent(this, questionsPage.class);
+    @Override
+    public void onShowPress(MotionEvent e) {
 
-        startActivity(intent);
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        return false;
     }
 }

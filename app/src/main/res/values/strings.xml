@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Velfærdsteknologi</string>
-    <string name="editTextEmail">Email</string>
+    <string name="editTextEmail">Indtast E-mail</string>
     <string name="Next_Button">Næste</string>
     <string name="Back_Button">Tilbage</string>
     <string name="introPage_Gender">Vælg køn</string>

@@ -9,25 +9,58 @@
     android:padding="16dp"
     tools:context=".emailPage"
     android:background="@drawable/gradient_background">
+
         <LinearLayout
-            android:id="@+id/emailPlacer"
-            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
             android:layout_height="620dp"
-            android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="47dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/addemail"
-                android:gravity="center"
-                android:onClick="addEmail" />
+                android:text="Send Resultat"
+                android:textSize="32dp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:layout_marginBottom="50dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/emailPlacer"
+                android:orientation="vertical">
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="47dp"
+            android:layout_gravity="center"
+            android:background="@drawable/addemail"
+            android:gravity="center"
+            android:onClick="addEmail" />
+
+        <ImageView
+            android:gravity="center"
+            android:id="@+id/sendMail"
+            android:layout_width="60dp"
+            android:layout_height="47dp"
+            android:layout_marginLeft="180dp"
+            android:background="@drawable/sendmail"
+            android:onClick="sendMail" />
+    </LinearLayout>
+
+
         </LinearLayout>
-
-
-
-
 
     <LinearLayout
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,29 +73,5 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="599dp">
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/ic_baseline_arrow_back_24"
-            android:onClick="back"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="69dp"
-            tools:layout_editor_absoluteY="524dp" />
-
-        <Button
-            android:id="@+id/sendMail"
-            android:layout_width="89dp"
-            android:layout_height="79dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/sendmail"
-            android:onClick="sendMail"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="219dp"
-            tools:layout_editor_absoluteY="524dp" />
-
     </LinearLayout>
-
-
 </LinearLayout>
