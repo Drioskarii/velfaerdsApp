@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -52,30 +59,25 @@
 
 
 
-    <FrameLayout
-        android:id="@+id/videoFrame"
-        android:layout_width="360dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="75dp"
-        android:layout_gravity="center_horizontal"
-        >
 
-
-        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-            android:id="@+id/player_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:resize_mode="fit"
-            app:hide_on_touch="true"
-            app:show_timeout="5000"
-            app:rewind_increment="10000"
-            app:fastforward_increment="10000"
-            app:use_controller="true"
-            android:background="@android:color/background_dark"
-            app:player_layout_id="@layout/exo_simple_player_view"
-            app:controller_layout_id="@layout/exo_playback_control_view"
-            />
-
-    </FrameLayout>
 
 </LinearLayout>
+
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/player_view"
+        android:layout_width="360dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="50dp"
+        app:resize_mode="fit"
+        app:hide_on_touch="true"
+        app:show_timeout="5000"
+        app:rewind_increment="10000"
+        app:fastforward_increment="10000"
+        app:use_controller="true"
+        android:background="@android:color/background_dark"
+        app:player_layout_id="@layout/exo_simple_player_view"
+        app:controller_layout_id="@layout/exo_playback_control_view"
+        />
+
+</FrameLayout>
