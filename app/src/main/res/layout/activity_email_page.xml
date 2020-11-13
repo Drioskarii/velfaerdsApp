@@ -35,31 +35,36 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/emailPlacer"
                 android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent">
+
+                </TableLayout>
             </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="47dp"
-            android:layout_gravity="center"
-            android:background="@drawable/addemail"
-            android:gravity="center"
-            android:onClick="addEmail" />
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="47dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/addemail"
+                    android:gravity="center"
+                    android:onClick="addEmail" />
 
-        <ImageView
-            android:gravity="center"
-            android:id="@+id/sendMail"
-            android:layout_width="60dp"
-            android:layout_height="47dp"
-            android:layout_marginLeft="180dp"
-            android:background="@drawable/sendmail"
-            android:onClick="sendMail" />
-    </LinearLayout>
-
-
+                <ImageView
+                    android:gravity="center"
+                    android:id="@+id/sendMail"
+                    android:layout_width="60dp"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="180dp"
+                    android:background="@drawable/sendmail"
+                    android:onClick="sendMail" />
+            </LinearLayout>
         </LinearLayout>
 
     <LinearLayout

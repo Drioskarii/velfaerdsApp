@@ -5,10 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.GestureDetector;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +23,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,18 +37,14 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
     private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
     List<EditText> TextList = new ArrayList<EditText>();
-    LinearLayout.LayoutParams tbrParams;
-    TableRow.LayoutParams txtParams, btnParams;
+    TableLayout tableLayout;
     int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_page);
-
-
-
-
+        tableLayout = findViewById(R.id.tableLayout);
 
         //init gestureDetector
         this.gestureDetector = new GestureDetector(emailPage.this, this);
@@ -84,64 +89,76 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
     }
 
     public void addEmail(View view) {
-        if (id == 4){
+        if (tableLayout.getChildCount() >= 8){
 
         }else  {
             ++id;
-            LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
+            TableRow tableRow = new TableRow(this);
+            tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
-            TableRow tbr = new TableRow(this);
-            emailPage.addView(tbr);
-            tbrParams = (LinearLayout.LayoutParams) tbr.getLayoutParams();
-            LinearLayout.LayoutParams tbrParam = new LinearLayout.LayoutParams(tbrParams);
-            tbrParam.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            tbrParam.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            tbr.setBackgroundResource(R.drawable.logo_ug);
-            tbr.setLayoutParams(tbrParam);
-
-            //EditText is created here
             EditText etm = new EditText(this);
-            tbr.addView(etm);
-            //EditText Parameters
             etm.setHint(getString(R.string.editTextEmail));
             etm.setTag("mails");
             etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-            txtParams = (TableRow.LayoutParams) etm.getLayoutParams();
-            TableRow.LayoutParams txtParam = new TableRow.LayoutParams(txtParams);
-            txtParam.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-            txtParam.width = ViewGroup.LayoutParams.MATCH_PARENT;
-            txtParam.weight=1;
-            etm.setLayoutParams(txtParam);
+            etm.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
+            int maxLength = 30;
+            InputFilter[] filterArr = new InputFilter[1];
+            filterArr[0] = new InputFilter.LengthFilter(maxLength);
+            etm.setFilters(filterArr);
+            tableRow.addView(etm);
+            etm.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            //Button is created here
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (TextList.contains(etm)){
+                        TextList.remove(etm);
+                    }
+                    if (validate(etm.getText().toString())){
+                      TextList.add(etm);
+                    }
+                }
+            });
+
+            //creating button
             Button btn = new Button(this);
-            tbr.addView(btn);
-            //Button Parameters
+            //button Parameters
             btn.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
-            btnParams=(TableRow.LayoutParams)btn.getLayoutParams();
-            TableRow.LayoutParams btnParam = new TableRow.LayoutParams(btnParams);
-            btnParam.height = dpToPx(24, this);
-            btnParam.width = dpToPx(24, this);
-            btn.setLayoutParams(btnParam);
+            btn.setLayoutParams(new TableRow.LayoutParams(dpToPx(24, this), dpToPx(24, emailPage.this)));
+            //adding button
+            tableRow.addView(btn);
+            //adds tableRow to Tablelayout
+            tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    tbr.removeAllViews();
-                    emailPage.removeView(tbr);
-                    --id;
+                    //removes the specific one clicked.
+                    tableLayout.removeView(tableRow);
+                    if (TextList.contains(etm)){
+                        TextList.remove(etm);
+                    }
                 }
             });
-            //This is where the EditText gets added to activity_email_page.xml
-            tbr.getChildAt(1);
-            tbr.getChildAt(2);
         }
     }
 
-    public static int dpToPx(int dp, Context context) {
-        float density = context.getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density);
+    //pixels til dp
+    public static int dpToPx(int dp, Context context){
+        return dp * ((int) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+    }
+
+    public static boolean validate(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
     //lortet er ikke testet
@@ -150,8 +167,12 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
         //For loop that fills in and sends mail I suppose
 
         for (int i = 0; i <= id; i++) {
+
             emailList.add(TextList.get(i).getText().toString());
             //System.out.println(emailList);
+            for (int x=0; x<emailList.size(); x++) {
+                System.out.println(emailList.get(x));
+            }
         }
             Intent email = new Intent(Intent.ACTION_SEND);
             //to
