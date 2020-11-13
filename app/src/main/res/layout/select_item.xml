@@ -7,17 +7,19 @@
         app:cardBackgroundColor="#00000000"
         app:cardElevation="1dp"
         android:layout_width="100dp"
-        android:layout_height="135dp"
+        android:layout_height="150dp"
         android:layout_margin="10dp"
         android:layout_centerInParent="true">
 
         <RelativeLayout
+            android:id="@+id/onClickbtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:layout_margin="5dp"
                 android:scaleType="centerCrop"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imageIcon"
@@ -26,6 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
+
                 android:text="Question"
                 android:layout_below="@+id/imageIcon"
                 android:id="@+id/txtQuestion"

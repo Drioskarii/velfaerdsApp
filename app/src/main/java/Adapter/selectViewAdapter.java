@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,8 +55,7 @@ public class selectViewAdapter extends RecyclerView.Adapter<selectViewAdapter.Vi
         holder.answer.setText(answerList.get(position));
         holder.question.setText(questionList.get(position));
 
-
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on a image: " + questionList.get(position) + answerList.get(position));
@@ -71,12 +71,14 @@ public class selectViewAdapter extends RecyclerView.Adapter<selectViewAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView image;
+        RelativeLayout btn;
         TextView question;
         TextView answer;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            btn = itemView.findViewById(R.id.onClickbtn);
             image = itemView.findViewById(R.id.imageIcon);
             question = itemView.findViewById(R.id.txtQuestion);
             answer = itemView.findViewById(R.id.txtAnswer);

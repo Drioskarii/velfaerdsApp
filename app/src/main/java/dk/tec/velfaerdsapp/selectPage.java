@@ -123,24 +123,24 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         BadselectmImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        badQuestions.add("Question 1");
-        badAnswers.add("Bad Answer 1");
+        badQuestions.add("BQuestion 1");
+        badAnswers.add("BAnswer 1");
 
         BadselectmImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        badQuestions.add("Question 2");
-        badAnswers.add("Bad Answer 2");
+        badQuestions.add("BQuestion 2");
+        badAnswers.add("BAnswer 2");
 
         BadselectmImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
-        badQuestions.add("Question 3");
-        badAnswers.add("Bad Answer 3");
+        badQuestions.add("BQuestion 3");
+        badAnswers.add("BAnswer 3");
 
         BadselectmImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        badQuestions.add("Question 4");
-        badAnswers.add("Bad Answer 4");
+        badQuestions.add("BQuestion 4");
+        badAnswers.add("BAnswer 4");
 
         BadselectmImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
-        badQuestions.add("Question 5");
-        badAnswers.add("Bad Answer 5");
+        badQuestions.add("BQuestion 5");
+        badAnswers.add("BAnswer 5");
 
         initRecyclerView();
 
