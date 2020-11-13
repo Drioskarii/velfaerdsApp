@@ -1,15 +1,22 @@
 package dk.tec.velfaerdsapp;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.InputType;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -20,23 +27,21 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
     private float x1, x2;
     private static int MIN_DISTANCE = 100;
     private GestureDetector gestureDetector;
+    List<TableRow> TableList = new ArrayList<TableRow>();
+    List<EditText> TextList = new ArrayList<EditText>();
+    List<Button> BtnList = new ArrayList<Button>();
+    LinearLayout.LayoutParams tbrParams, txtParams, btnParams;
+    int id = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_page);
 
-        EditText etm = new EditText(this);
-        editTextList.add(etm);
 
-        //This is where the parameter goes.
-        etm.setGravity(Gravity.CENTER);
-        etm.setHint(getString(R.string.editTextEmail));
-        etm.setTag("mails");
-        etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-        //This is where the EditText gets added to activity_email_page.xml
-        LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
-        emailPage.addView(etm);
+
+
         //init gestureDetector
         this.gestureDetector = new GestureDetector(emailPage.this, this);
     }
@@ -79,46 +84,56 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
         finish();
     }
 
-    List<EditText> editTextList = new ArrayList<EditText>();
-    List<Button> editbtnList = new ArrayList<Button>();
-
-    int id = 0;
     public void addEmail(View view) {
-
-
         if (id == 4){
-    System.out.println("ree");
 
         }else  {
             ++id;
+            LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
+            TableRow tbr = new TableRow(this);
 
-            //EditText is created here (Etm is Edit text mail)
-
+            //EditText is created here
             EditText etm = new EditText(this);
-            editTextList.add(etm);
-            //This is where the parameter goes.
+            tbr.addView(etm);
+            //EditText Parameters
             etm.setHint(getString(R.string.editTextEmail));
-            etm.setGravity(Gravity.CENTER);
             etm.setTag("mails");
+            etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            txtParams=(LinearLayout.LayoutParams)etm.getLayoutParams();
+            LinearLayout.LayoutParams txtParam = new LinearLayout.LayoutParams(txtParams);
+            txtParam.height= ViewGroup.LayoutParams.WRAP_CONTENT;
+            txtParam.width= ViewGroup.LayoutParams.MATCH_PARENT;
+            txtParam.weight=1;
+            etm.setLayoutParams(txtParam);
 
+            //Button is created here
             Button btn = new Button(this);
-            editbtnList.add(btn);
-            btn.setText("hello world");
+            tbr.addView(btn);
+            //Button Parameters
+            btn.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
+            btnParams=(LinearLayout.LayoutParams)btn.getLayoutParams();
+            LinearLayout.LayoutParams btnParam = new LinearLayout.LayoutParams(btnParams);
+            btnParam.height= dpToPx(24, this);
+            btnParam.width= dpToPx(24, this);
+            btn.setLayoutParams(btnParam);
+
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
-                    emailPage.removeView(etm);
-                    emailPage.removeView(btn);
+                    tbr.removeAllViews();
+                    emailPage.removeView(tbr);
                     --id;
                 }
             });
             //This is where the EditText gets added to activity_email_page.xml
-            LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
-            emailPage.addView(etm);
-            emailPage.addView(btn);
+            emailPage.addView(tbr);
         }
+    }
+
+    public static int dpToPx(int dp, Context context) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 
     //lortet er ikke testet
@@ -127,7 +142,7 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
         //For loop that fills in and sends mail I suppose
 
         for (int i = 0; i <= id; i++) {
-            emailList.add(editTextList.get(i).getText().toString());
+            emailList.add(TextList.get(i).getText().toString());
             //System.out.println(emailList);
         }
             Intent email = new Intent(Intent.ACTION_SEND);
