@@ -8,8 +8,105 @@
     tools:context=".selectPage"
     android:background="@drawable/gradient_background">
 
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingConstraints">
 
-    <RelativeLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:textSize="38sp"
+            android:textColor="@color/white"
+
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Vælg De Vigtigste"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Vælg de 5 vigtigste svar"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </LinearLayout>
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Højeste svar"
+
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:textColor="@color/white"/>
+
+        <View style="@style/Divider"
+            android:id="@+id/topScore"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewGood"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="4dp"
+            android:orientation="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bottom Score"
+
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:textColor="@color/white"/>
+
+        <View style="@style/Divider"
+            android:id="@+id/bottomScore"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBad"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="4dp"
+            android:orientation="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</LinearLayout>
+ <!--   <RelativeLayout
         android:id="@+id/goodRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -26,7 +123,6 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="4dp"
             android:orientation="horizontal">
-
         </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
@@ -57,6 +153,6 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

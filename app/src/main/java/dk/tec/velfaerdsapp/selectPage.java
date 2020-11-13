@@ -28,10 +28,12 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
     private static final String TAG = "selectpage";
 
     //vars
-    private ArrayList<String> GoodNames = new ArrayList<>();
+    private ArrayList<String> goodQuestions = new ArrayList<>();
+    private ArrayList<String> goodAnswers = new ArrayList<>();
     private ArrayList<String> GoodselectmImageUrls = new ArrayList<>();
 
-    private ArrayList<String> BadNames = new ArrayList<>();
+    private ArrayList<String> badQuestions = new ArrayList<>();
+    private ArrayList<String> badAnswers = new ArrayList<>();
     private ArrayList<String> BadselectmImageUrls = new ArrayList<>();
 
     @Override
@@ -39,41 +41,10 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
 
-//        // select list good
-//        ArrayList<selectBoxes> selectListGood = new ArrayList<>();
-//        selectListGood.add(new selectBoxes(R.drawable.intellectual, "SelectGood 1"));
-//        selectListGood.add(new selectBoxes(R.drawable.people_person, "SelectGood 2"));
-//        selectListGood.add(new selectBoxes(R.drawable.sharp_brained, "SelectGood 3"));
-//        selectListGood.add(new selectBoxes(R.drawable.intellectual, "SelectGood 4"));
-//        selectListGood.add(new selectBoxes(R.drawable.people_person, "SelectGood 5"));
-//
-//        RecyclerView mSelectRecyclerViewGood = findViewById(R.id.selectRecyclerGood);
-//        mSelectRecyclerViewGood.setHasFixedSize(true);
-//        RecyclerView.LayoutManager mLayoutManagerGood = new LinearLayoutManager(this);
-//        RecyclerView.Adapter mAdapterGood = new selectViewAdapter(selectListGood);
-//
-//        mSelectRecyclerViewGood.setLayoutManager(mLayoutManagerGood);
-//        mSelectRecyclerViewGood.setAdapter(mAdapterGood);
-//
-//        // select list bad
-//        ArrayList<selectBoxes> selectListBad = new ArrayList<>();
-//        selectListBad.add(new selectBoxes(R.drawable.intellectual, "SelectBad 5"));
-//        selectListBad.add(new selectBoxes(R.drawable.people_person, "SelectBad 2"));
-//        selectListBad.add(new selectBoxes(R.drawable.sharp_brained, "SelectBad 3"));
-//        selectListBad.add(new selectBoxes(R.drawable.intellectual, "SelectBad 4"));
-//        selectListBad.add(new selectBoxes(R.drawable.people_person, "SelectBad 5"));
-//        selectListBad.add(new selectBoxes(R.drawable.sharp_brained, "SelectBad 6"));
-//
-//        RecyclerView mSelectRecyclerViewBad = findViewById(R.id.selectRecyclerBad);
-//        mSelectRecyclerViewBad.setHasFixedSize(true);
-//        RecyclerView.LayoutManager mLayoutManagerBad = new LinearLayoutManager(this);
-//        RecyclerView.Adapter mAdapterBad = new selectViewAdapter(selectListBad);
-//
-//        mSelectRecyclerViewBad.setLayoutManager(mLayoutManagerBad);
-//        mSelectRecyclerViewBad.setAdapter(mAdapterBad);
 
         getGoodImages();
         getBadImages();
+
         //init gestureDetector
         this.gestureDetector = new GestureDetector(selectPage.this, this);
     }
@@ -122,19 +93,28 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         GoodselectmImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        GoodNames.add("Good 1");
+        goodQuestions.add("Question 1");
+        goodAnswers.add("Good Answer 1");
 
         GoodselectmImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        GoodNames.add("Good 2");
+        goodQuestions.add("Question 2");
+        goodAnswers.add("Good Answer 2");
 
         GoodselectmImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
-        GoodNames.add("Good 3");
+        goodQuestions.add("Question 3");
+        goodAnswers.add("Good Answer 3");
 
         GoodselectmImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        GoodNames.add("Good 4");
+        goodQuestions.add("Question 4");
+        goodAnswers.add("Good Answer 4");
 
         GoodselectmImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
-        GoodNames.add("Good 5");
+        goodQuestions.add("Question 5");
+        goodAnswers.add("Good Answer 5");
+
+        GoodselectmImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
+        goodQuestions.add("Question 6");
+        goodAnswers.add("Good Answer 6");
 
         initRecyclerView();
     }
@@ -143,19 +123,24 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         BadselectmImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        BadNames.add("Bad 1");
+        badQuestions.add("Question 1");
+        badAnswers.add("Bad Answer 1");
 
         BadselectmImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        BadNames.add("Bad 2");
+        badQuestions.add("Question 2");
+        badAnswers.add("Bad Answer 2");
 
         BadselectmImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
-        BadNames.add("Bad 3");
+        badQuestions.add("Question 3");
+        badAnswers.add("Bad Answer 3");
 
         BadselectmImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        BadNames.add("Bad 4");
+        badQuestions.add("Question 4");
+        badAnswers.add("Bad Answer 4");
 
         BadselectmImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
-        BadNames.add("Bad 5");
+        badQuestions.add("Question 5");
+        badAnswers.add("Bad Answer 5");
 
         initRecyclerView();
 
@@ -167,13 +152,13 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewGod = findViewById(R.id.recyclerViewGood);
         recyclerViewGod.setLayoutManager(layoutManagerGood);
-        customavataradapter Goodadapter = new customavataradapter(this, GoodNames, GoodselectmImageUrls);
+        selectViewAdapter Goodadapter = new selectViewAdapter(this, goodQuestions,goodAnswers, GoodselectmImageUrls);
         recyclerViewGod.setAdapter(Goodadapter);
 
         LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
-        customavataradapter Badadapter = new customavataradapter(this, BadNames, BadselectmImageUrls);
+        selectViewAdapter Badadapter = new selectViewAdapter(this, badQuestions, badAnswers, BadselectmImageUrls);
         recyclerViewBad.setAdapter(Badadapter);
     }
 
