@@ -12,7 +12,7 @@ import android.widget.ImageView;
 public class the24Strength extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
 
     @Override

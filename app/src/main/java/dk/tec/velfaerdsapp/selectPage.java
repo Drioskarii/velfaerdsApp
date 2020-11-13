@@ -23,7 +23,7 @@ import Adapter.selectViewAdapter;
 public class selectPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
     private static final String TAG = "selectpage";
 

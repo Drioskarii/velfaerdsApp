@@ -68,7 +68,7 @@ import com.google.android.exoplayer2.util.Util;
 public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
     private TextView showText;
     private EditText enterName;

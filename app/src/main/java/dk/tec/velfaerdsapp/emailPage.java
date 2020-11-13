@@ -25,12 +25,11 @@ import java.util.List;
 public class emailPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
-    List<TableRow> TableList = new ArrayList<TableRow>();
     List<EditText> TextList = new ArrayList<EditText>();
-    List<Button> BtnList = new ArrayList<Button>();
-    LinearLayout.LayoutParams tbrParams, txtParams, btnParams;
+    LinearLayout.LayoutParams tbrParams;
+    TableRow.LayoutParams txtParams, btnParams;
     int id = 0;
 
     @Override
@@ -90,7 +89,15 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
         }else  {
             ++id;
             LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
+
             TableRow tbr = new TableRow(this);
+            emailPage.addView(tbr);
+            tbrParams = (LinearLayout.LayoutParams) tbr.getLayoutParams();
+            LinearLayout.LayoutParams tbrParam = new LinearLayout.LayoutParams(tbrParams);
+            tbrParam.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            tbrParam.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            tbr.setBackgroundResource(R.drawable.logo_ug);
+            tbr.setLayoutParams(tbrParam);
 
             //EditText is created here
             EditText etm = new EditText(this);
@@ -100,10 +107,10 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
             etm.setTag("mails");
             etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-            txtParams=(LinearLayout.LayoutParams)etm.getLayoutParams();
-            LinearLayout.LayoutParams txtParam = new LinearLayout.LayoutParams(txtParams);
-            txtParam.height= ViewGroup.LayoutParams.WRAP_CONTENT;
-            txtParam.width= ViewGroup.LayoutParams.MATCH_PARENT;
+            txtParams = (TableRow.LayoutParams) etm.getLayoutParams();
+            TableRow.LayoutParams txtParam = new TableRow.LayoutParams(txtParams);
+            txtParam.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            txtParam.width = ViewGroup.LayoutParams.MATCH_PARENT;
             txtParam.weight=1;
             etm.setLayoutParams(txtParam);
 
@@ -112,10 +119,10 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
             tbr.addView(btn);
             //Button Parameters
             btn.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
-            btnParams=(LinearLayout.LayoutParams)btn.getLayoutParams();
-            LinearLayout.LayoutParams btnParam = new LinearLayout.LayoutParams(btnParams);
-            btnParam.height= dpToPx(24, this);
-            btnParam.width= dpToPx(24, this);
+            btnParams=(TableRow.LayoutParams)btn.getLayoutParams();
+            TableRow.LayoutParams btnParam = new TableRow.LayoutParams(btnParams);
+            btnParam.height = dpToPx(24, this);
+            btnParam.width = dpToPx(24, this);
             btn.setLayoutParams(btnParam);
 
             btn.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +134,8 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
                 }
             });
             //This is where the EditText gets added to activity_email_page.xml
-            emailPage.addView(tbr);
+            tbr.getChildAt(1);
+            tbr.getChildAt(2);
         }
     }
 
