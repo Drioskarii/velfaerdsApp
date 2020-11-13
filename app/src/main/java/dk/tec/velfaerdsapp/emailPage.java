@@ -7,6 +7,7 @@ import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -79,6 +80,7 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
     }
 
     List<EditText> editTextList = new ArrayList<EditText>();
+    List<Button> editbtnList = new ArrayList<Button>();
 
     int id = 0;
     public void addEmail(View view) {
@@ -90,7 +92,6 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
         }else  {
             ++id;
 
-
             //EditText is created here (Etm is Edit text mail)
 
             EditText etm = new EditText(this);
@@ -101,9 +102,22 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
             etm.setTag("mails");
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
+            Button btn = new Button(this);
+            editbtnList.add(btn);
+            btn.setText("hello world");
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
+                    emailPage.removeView(etm);
+                    emailPage.removeView(btn);
+                    --id;
+                }
+            });
             //This is where the EditText gets added to activity_email_page.xml
             LinearLayout emailPage = (LinearLayout) findViewById(R.id.emailPlacer);
             emailPage.addView(etm);
+            emailPage.addView(btn);
         }
     }
 
