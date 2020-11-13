@@ -65,8 +65,10 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
 
+import global.gVariables;
+
 public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
-//Initialising
+    //Initialising
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
@@ -239,6 +241,9 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         gestureDetector.onTouchEvent(event);
+
+        gVariables test = new gVariables((enterName.getText().toString()), enterJob.getText().toString());
+        System.out.println( test.getStudentName()+test.getStudentJob());
 
         switch (event.getAction()) {
             //press
