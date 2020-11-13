@@ -97,9 +97,8 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
             editTextList.add(etm);
             //This is where the parameter goes.
             etm.setHint(getString(R.string.editTextEmail));
-            etm.setGravity(Gravity.LEFT);
+            etm.setGravity(Gravity.CENTER);
             etm.setTag("mails");
-            etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
             //This is where the EditText gets added to activity_email_page.xml
@@ -108,11 +107,6 @@ public class emailPage extends AppCompatActivity implements GestureDetector.OnGe
         }
     }
 
-    public void back(View view) {
-        Intent intent = new Intent(this, selectPage.class);
-
-        startActivity(intent);
-    }
     //lortet er ikke testet
     public void sendMail(View view) {
         ArrayList<String> emailList = new ArrayList<String>();
