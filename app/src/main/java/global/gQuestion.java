@@ -1,12 +1,10 @@
 package global;
 
-import android.widget.EditText;
-
-public class gVariables {
+public class gQuestion {
     private String studentName;
     private String studentJob;
 
-    public gVariables(String studentName, String studentJob) {
+    public gQuestion(String studentName, String studentJob) {
         this.studentName = studentName;
         this.studentJob = studentJob;
     }
@@ -27,4 +25,3 @@ public class gVariables {
         this.studentJob = studentJob;
     }
 }
-

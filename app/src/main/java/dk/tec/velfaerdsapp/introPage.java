@@ -1,71 +1,51 @@
 package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.media.AudioManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.os.IResultReceiver;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.view.View;
 import android.widget.VideoView;
 
-import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.extractor.ExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
+import com.google.gson.Gson;
 
-import global.gVariables;
+import global.gIntro;
+
+import static global.userPrefs.editor;
+import static global.userPrefs.settings;
 
 public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
     //Initialising
@@ -94,7 +74,6 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         enterJob = findViewById(R.id.editTextJob);
         playerView = (PlayerView)findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
-
 
 
 //Useless piece of shit code that didn't work, but i keep it for the memories.
@@ -242,8 +221,6 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     public boolean onTouchEvent(MotionEvent event) {
         gestureDetector.onTouchEvent(event);
 
-        gVariables test = new gVariables((enterName.getText().toString()), enterJob.getText().toString());
-        System.out.println( test.getStudentName()+test.getStudentJob());
 
         switch (event.getAction()) {
             //press
@@ -272,11 +249,25 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     public void forward() {
         Intent intent = new Intent(introPage.this, customAvatar.class);
 
+
+
         startActivity(intent);
+
     }
 
     public void backward() {
         finish();
+
+       /* gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
+        Gson gson = new Gson();
+        String  gIntro_json = gson.toJson(gIntroInput);
+        String name = "" + gIntroInput.getStudentName();
+        String job = "" + gIntroInput.getStudentJob();
+        editor.putString(name,gIntro_json);
+        editor.putString(job,gIntro_json);
+        editor.commit();
+        gIntro_json = settings.getString(name,"");
+        gIntro = gson.fromJson(gIntro_json, gIntro.class); */
     }
 
     @Override
