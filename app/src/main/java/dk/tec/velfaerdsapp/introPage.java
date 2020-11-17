@@ -44,7 +44,7 @@ import com.google.android.exoplayer2.util.Util;
 
 import global.gIntro;
 
-public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class introPage extends touchActivityHandler {
     //Initialising
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
@@ -314,11 +314,6 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
     // creating and populating the dropdown
     private void createSpinnerDropdown() {
 
@@ -355,36 +350,6 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         public void onNothingSelected(AdapterView<?> parent) {
 
         }
-    }
-
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
     }
 
     @Override

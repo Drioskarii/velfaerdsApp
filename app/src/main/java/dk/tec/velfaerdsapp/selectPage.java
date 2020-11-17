@@ -20,7 +20,7 @@ import Adapter.questionViewAdapter;
 import Adapter.selectViewAdapter;
 
 
-public class selectPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class selectPage extends touchActivityHandler {
 
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
@@ -81,11 +81,6 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
     }
 
     public void backward() {
-        finish();
-    }
-
-    @Override
-    public void onBackPressed() {
         finish();
     }
 
@@ -160,35 +155,5 @@ public class selectPage extends AppCompatActivity implements GestureDetector.OnG
         recyclerViewBad.setLayoutManager(layoutManagerBad);
         selectViewAdapter Badadapter = new selectViewAdapter(this, badQuestions, badAnswers, BadselectmImageUrls);
         recyclerViewBad.setAdapter(Badadapter);
-    }
-
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
     }
 }
