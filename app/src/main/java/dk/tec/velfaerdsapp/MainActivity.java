@@ -86,6 +86,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     @Override
+    protected void onStop() {
+        SharedPreferences settings = getSharedPreferences("myKey", Context.MODE_PRIVATE);
+        settings.edit().clear().commit();
+        super.onStop();
+    }
+
+    @Override
     public boolean onDown(MotionEvent e) {
         return false;
     }
