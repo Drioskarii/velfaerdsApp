@@ -41,12 +41,8 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
-import com.google.gson.Gson;
 
 import global.gIntro;
-
-import static global.userPrefs.editor;
-import static global.userPrefs.settings;
 
 public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
     //Initialising
@@ -58,6 +54,7 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     private EditText enterJob;
     private VideoView videoView;
     private static Context context;
+
 
     String selectedItem = "";
     PlayerView playerView;
@@ -78,6 +75,13 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
         clickpage = findViewById(R.id.clickPage);
 
+        //Print any old data stored in sharedPrefs
+        SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
+        String s1 = sharedPreferences.getString("gName","");
+        String s2 = sharedPreferences.getString("gJob","");
+
+        enterName.setText(s1);
+        enterJob.setText(s2);
 
 //Useless piece of shit code that didn't work, but i keep it for the memories.
 
@@ -179,7 +183,6 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
                 }
             }
         });
-
 
 
 
@@ -288,26 +291,27 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
 
     public void forward() {
         Intent intent = new Intent(introPage.this, customAvatar.class);
-
-
-
         startActivity(intent);
-
     }
 
     public void backward() {
-        finish();
 
-       /* gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
-        Gson gson = new Gson();
-        String  gIntro_json = gson.toJson(gIntroInput);
+        //This garbage works that's pretty cool, this saves info in SharedPrefs so ye cool init fam
+        //Make object.png
+        gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
         String name = "" + gIntroInput.getStudentName();
         String job = "" + gIntroInput.getStudentJob();
-        editor.putString(name,gIntro_json);
-        editor.putString(job,gIntro_json);
-        editor.commit();
-        gIntro_json = settings.getString(name,"");
-        gIntro = gson.fromJson(gIntro_json, gIntro.class); */
+        String test = "Fisk";
+        //
+        SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        //Inset data into the SharedPreferences
+        editor.putString("gName", name);
+        editor.putString("gJob", job);
+        editor.apply();
+
+        finish();
     }
 
     @Override

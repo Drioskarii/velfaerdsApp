@@ -2,8 +2,10 @@ package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         //init gestureDetector
         this.gestureDetector = new GestureDetector(MainActivity.this, this);
+
+
     }
 
     @Override
@@ -53,14 +57,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     //Forward er altid swipe ( højre mod venstre )
     public void forward() {
         Intent intent = new Intent(MainActivity.this, introPage.class);
-
         startActivity(intent);
     }
 
     //Backward er altid swipe ( venstre mod højre )
     public void backward() {
         Intent intent = new Intent(MainActivity.this, the24Strength.class);
-
         startActivity(intent);
     }
 
