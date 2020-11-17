@@ -1,74 +1,53 @@
 package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.media.AudioManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.os.IResultReceiver;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.view.View;
 import android.widget.VideoView;
 
-import com.google.android.exoplayer2.DefaultLoadControl;
-import com.google.android.exoplayer2.DefaultRenderersFactory;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
-import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
-import com.google.android.exoplayer2.extractor.ExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
-import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
 
-public class introPage extends AppCompatActivity implements GestureDetector.OnGestureListener {
+import global.gIntro;
 
+public class introPage extends touchActivityHandler {
+    //Initialising
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
     private TextView showText;
     private EditText enterName;
@@ -76,57 +55,63 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     private VideoView videoView;
     private static Context context;
 
+
     String selectedItem = "";
     PlayerView playerView;
     ImageView fullscreenButton;
     SimpleExoPlayer exoplayer;
     boolean fullscreen = false;
     FrameLayout.LayoutParams paramsNotFullscreen;
+    LinearLayout clickpage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Binding to ID's
         setContentView(R.layout.activity_intro_page);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
         playerView = (PlayerView)findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
+        clickpage = findViewById(R.id.clickPage);
+
+        //Print any old data stored in sharedPrefs
+        SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
+        String s1 = sharedPreferences.getString("gName","");
+        String s2 = sharedPreferences.getString("gJob","");
+
+        enterName.setText(s1);
+        enterJob.setText(s2);
+
+//Useless piece of shit code that didn't work, but i keep it for the memories.
+
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
+//                , WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        LoadControl loadControl = new DefaultLoadControl();
+//        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
+//        TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
+//        exoplayer = ExoPlayerFactory.newSimpleInstance(new DefaultRenderersFactory(introPage.this), new DefaultTrackSelector(), new DefaultLoadControl());
+//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
+//        Uri videoUrl = Uri.parse(videoPath);
+//        DefaultHttpDataSourceFactory factory = new DefaultHttpDataSourceFactory("exoplayer_video");
+//        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+//        MediaSource mediaSource = new ExtractorMediaSource(videoUrl, factory, extractorsFactory, null, null);
+//        playerView.setPlayer(exoplayer);
+//        playerView.setKeepScreenOn(true);
+//        exoplayer.prepare(audioSource);
+//        exoplayer.setPlayWhenReady(true);
 
 
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
-        //        , WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-
-       // LoadControl loadControl = new DefaultLoadControl();
-       // BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-       // TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
-
-       // exoplayer = ExoPlayerFactory.newSimpleInstance(new DefaultRenderersFactory(introPage.this), new DefaultTrackSelector(), new DefaultLoadControl());
-
-       // String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
-      //  Uri videoUrl = Uri.parse(videoPath);
-
-        //DefaultHttpDataSourceFactory factory = new DefaultHttpDataSourceFactory("exoplayer_video");
-       //ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-       //MediaSource mediaSource = new ExtractorMediaSource(videoUrl, factory, extractorsFactory, null, null);
-
-
-
-       // playerView.setPlayer(exoplayer);
-      //  playerView.setKeepScreenOn(true);
-       // exoplayer.prepare(audioSource);
-       // exoplayer.setPlayWhenReady(true);
-
-
+        //Videoplayer initialisation and binding to video file.
         exoplayer= ExoPlayerFactory.newSimpleInstance(this,new DefaultTrackSelector());
         DefaultDataSourceFactory defaultDataSourceFactory=new DefaultDataSourceFactory(this, Util.getUserAgent(this,"velfaerdsapp"));
-        exoplayer.setPlayWhenReady(true);
         ExtractorMediaSource extractorMediaSource = new ExtractorMediaSource.Factory(defaultDataSourceFactory).createMediaSource(RawResourceDataSource.buildRawResourceUri(R.raw.styrker_video));
         exoplayer.prepare(extractorMediaSource);
         playerView.setPlayer(exoplayer);
         playerView.setKeepScreenOn(true);
-        exoplayer.setPlayWhenReady(true);
+        //Pause on initialise
+        exoplayer.setPlayWhenReady(false);
+
 
 
 
@@ -201,25 +186,63 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
 
 
 
+// Old videoplayer
+//        videoView = findViewById(R.id.videoView);
+//
+//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
+//        Uri uri = Uri.parse(videoPath);
+//        videoView.setVideoURI(uri);
+//
+//        MediaController mediaController = new MediaController(this);
+//        videoView.setMediaController(mediaController);
+//        mediaController.setAnchorView(videoView);
+//        videoView.setFocusable(true);
+//        setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
 
-        // videoView = findViewById(R.id.videoView);
-
-       // String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
-        //Uri uri = Uri.parse(videoPath);
-        //videoView.setVideoURI(uri);
-
-       // MediaController mediaController = new MediaController(this);
-       // videoView.setMediaController(mediaController);
-      //  mediaController.setAnchorView(videoView);
-       // videoView.setFocusable(true);
-       // setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        // Calling the method to create the spinnerdropdown
-       // createSpinnerDropdown();
+//        Calling the method to create the spinnerdropdown
+//        createSpinnerDropdown();
 
         //init gestureDetector
         this.gestureDetector = new GestureDetector(introPage.this, this);
+
+
+    clickpage.setOnTouchListener(new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+
+            gestureDetector.onTouchEvent(event);
+
+
+            switch (event.getAction()) {
+                //press
+                case MotionEvent.ACTION_DOWN:
+                    x1 = event.getX();
+                    break;
+
+                //lift
+                case MotionEvent.ACTION_UP:
+                    x2 = event.getX();
+
+                    //horizontal swipe
+                    float valueX = x2 - x1;
+                    if (Math.abs(valueX) > MIN_DISTANCE) {
+                        if (x2 > x1) {
+                            backward();
+                        } else {
+                            forward();
+                        }
+                    }
+            }
+           return true;
+
+
+
+        }
+    });
     }
+
+
 
     @Override
     protected void onPause() {
@@ -237,45 +260,57 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         exoplayer.getPlaybackState();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        gestureDetector.onTouchEvent(event);
+//
+//
+//        switch (event.getAction()) {
+//            //press
+//            case MotionEvent.ACTION_DOWN:
+//                x1 = event.getX();
+//                break;
+//
+//            //lift
+//            case MotionEvent.ACTION_UP:
+//                x2 = event.getX();
+//
+//                //horizontal swipe
+//                float valueX = x2 - x1;
+//                if (Math.abs(valueX) > MIN_DISTANCE) {
+//                    if (x2 > x1) {
+//                        backward();
+//                    } else {
+//                        forward();
+//                    }
+//                }
+//        }
+//        return super.onTouchEvent(event);
+//    }
 
 
     public void forward() {
         Intent intent = new Intent(introPage.this, customAvatar.class);
-
         startActivity(intent);
     }
 
     public void backward() {
-        finish();
-    }
 
-    @Override
-    public void onBackPressed() {
+        //This garbage works that's pretty cool, this saves info in SharedPrefs so ye cool init fam
+        //Make object.png
+        gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
+        String name = "" + gIntroInput.getStudentName();
+        String job = "" + gIntroInput.getStudentJob();
+        String test = "Fisk";
+        //
+        SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        //Inset data into the SharedPreferences
+        editor.putString("gName", name);
+        editor.putString("gJob", job);
+        editor.apply();
+
         finish();
     }
 
@@ -318,44 +353,15 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     }
 
     @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
-    }
-
-    @Override
     public void onConfigurationChanged(Configuration newConfig)
     {
         super.onConfigurationChanged(newConfig);
 
 
-
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) //To fullscreen
+        //To fullscreen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
         {
+            fullscreenButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_close));
             paramsNotFullscreen=(FrameLayout.LayoutParams)playerView.getLayoutParams();
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(paramsNotFullscreen);
             params.setMargins(0, 0, 0, 0);
@@ -365,8 +371,11 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
             playerView.setLayoutParams(params);
 
         }
+
+        //To portrait
         else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
         {
+            fullscreenButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_open));
             playerView.setLayoutParams(paramsNotFullscreen);
         }
     }

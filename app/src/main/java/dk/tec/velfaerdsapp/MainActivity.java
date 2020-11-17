@@ -2,18 +2,20 @@ package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class MainActivity extends touchActivityHandler {
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
 
     @Override
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         //init gestureDetector
         this.gestureDetector = new GestureDetector(MainActivity.this, this);
+
+
     }
 
     @Override
@@ -53,14 +57,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     //Forward er altid swipe ( højre mod venstre )
     public void forward() {
         Intent intent = new Intent(MainActivity.this, introPage.class);
-
         startActivity(intent);
     }
 
     //Backward er altid swipe ( venstre mod højre )
     public void backward() {
         Intent intent = new Intent(MainActivity.this, the24Strength.class);
-
         startActivity(intent);
     }
 
@@ -84,32 +86,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
+    protected void onStop() {
+        SharedPreferences settings = getSharedPreferences("myKey", Context.MODE_PRIVATE);
+        settings.edit().clear().commit();
+        super.onStop();
     }
 
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
-    }
 }

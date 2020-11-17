@@ -1,98 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
-    app:cardBackgroundColor="#FF018786"
-    android:layout_marginBottom="10dp">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="4dp"
+        app:cardMaxElevation="2dp"
+        app:cardBackgroundColor="#00000000"
+        app:cardElevation="1dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+
+        android:layout_centerInParent="true">
 
         <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:layout_margin="4dp">
+            android:id="@+id/onClickbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="5dp"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imageIcon"
+                android:src="@drawable/ic_launcher_background" />
 
-        <ImageView
-        android:id="@+id/imageIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:padding="4dp" />
-
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="20dp"
 
-            <LinearLayout
+                android:text="Question"
+                android:layout_below="@+id/imageIcon"
+                android:id="@+id/txtQuestion"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="15sp"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/txtExplanation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/imageIcon"
-                    android:text="Line1"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:layout_height="20dp"
+                android:text="Answer"
+                android:layout_below="@+id/txtQuestion"
+                android:id="@+id/txtAnswer"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="15sp"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
 
-                <TextView
-                    android:id="@+id/txtExplanationTwo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/txtExplanation"
-                    android:layout_toRightOf="@id/imageIcon"
-                    android:text="Line2"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                />
 
-            //horizontal view goes here
+        </RelativeLayout>
 
-            <HorizontalScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="140dp"
-                android:layout_below="@id/txtExplanationTwo"
-                tools:ignore="NotSibling">
 
-                <LinearLayout
-                    android:id="@+id/ll"
-                    android:layout_width="fill_parent"
-                    android:layout_height="90dip"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Button1" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Button2" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Button3" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Button4" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Button5" />
-                </LinearLayout>
-            </HorizontalScrollView>
-        </LinearLayout>
-    </RelativeLayout>
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>

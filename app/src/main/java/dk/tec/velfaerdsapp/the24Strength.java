@@ -9,10 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
-public class the24Strength extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class the24Strength extends touchActivityHandler{
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 100;
+    private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
 
     @Override
@@ -50,40 +50,5 @@ public class the24Strength extends AppCompatActivity implements GestureDetector.
 
     public void forward() {
         finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
     }
 }
