@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,6 +65,7 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
     SimpleExoPlayer exoplayer;
     boolean fullscreen = false;
     FrameLayout.LayoutParams paramsNotFullscreen;
+    LinearLayout clickpage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,7 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         enterJob = findViewById(R.id.editTextJob);
         playerView = (PlayerView)findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
+        clickpage = findViewById(R.id.clickPage);
 
 
 //Useless piece of shit code that didn't work, but i keep it for the memories.
@@ -199,7 +202,44 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
 
         //init gestureDetector
         this.gestureDetector = new GestureDetector(introPage.this, this);
+
+
+    clickpage.setOnTouchListener(new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+
+            gestureDetector.onTouchEvent(event);
+
+
+            switch (event.getAction()) {
+                //press
+                case MotionEvent.ACTION_DOWN:
+                    x1 = event.getX();
+                    break;
+
+                //lift
+                case MotionEvent.ACTION_UP:
+                    x2 = event.getX();
+
+                    //horizontal swipe
+                    float valueX = x2 - x1;
+                    if (Math.abs(valueX) > MIN_DISTANCE) {
+                        if (x2 > x1) {
+                            backward();
+                        } else {
+                            forward();
+                        }
+                    }
+            }
+           return true;
+
+
+
+        }
+    });
     }
+
+
 
     @Override
     protected void onPause() {
@@ -217,33 +257,33 @@ public class introPage extends AppCompatActivity implements GestureDetector.OnGe
         exoplayer.getPlaybackState();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-
-
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        gestureDetector.onTouchEvent(event);
+//
+//
+//        switch (event.getAction()) {
+//            //press
+//            case MotionEvent.ACTION_DOWN:
+//                x1 = event.getX();
+//                break;
+//
+//            //lift
+//            case MotionEvent.ACTION_UP:
+//                x2 = event.getX();
+//
+//                //horizontal swipe
+//                float valueX = x2 - x1;
+//                if (Math.abs(valueX) > MIN_DISTANCE) {
+//                    if (x2 > x1) {
+//                        backward();
+//                    } else {
+//                        forward();
+//                    }
+//                }
+//        }
+//        return super.onTouchEvent(event);
+//    }
 
 
     public void forward() {

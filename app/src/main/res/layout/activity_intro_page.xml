@@ -13,6 +13,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".introPage"
+    android:id="@+id/clickPage"
     android:background="@drawable/gradient_background">
 
 
