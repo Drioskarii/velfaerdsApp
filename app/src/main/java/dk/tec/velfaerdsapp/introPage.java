@@ -2,6 +2,7 @@ package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -64,6 +65,7 @@ public class introPage extends touchActivityHandler {
     FrameLayout.LayoutParams paramsNotFullscreen;
     LinearLayout clickpage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,29 +73,28 @@ public class introPage extends touchActivityHandler {
         setContentView(R.layout.activity_intro_page);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
-        playerView = (PlayerView)findViewById(R.id.player_view);
+        playerView = (PlayerView) findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
         clickpage = findViewById(R.id.clickPage);
 
+
         //Print any old data stored in sharedPrefs
         SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
-        String s1 = sharedPreferences.getString("gName","");
-        String s2 = sharedPreferences.getString("gJob","");
+        String s1 = sharedPreferences.getString("gName", "");
+        String s2 = sharedPreferences.getString("gJob", "");
 
         enterName.setText(s1);
         enterJob.setText(s2);
 
         //Videoplayer initialisation and binding to video file.
-        exoplayer= ExoPlayerFactory.newSimpleInstance(this,new DefaultTrackSelector());
-        DefaultDataSourceFactory defaultDataSourceFactory=new DefaultDataSourceFactory(this, Util.getUserAgent(this,"velfaerdsapp"));
+        exoplayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
+        DefaultDataSourceFactory defaultDataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "velfaerdsapp"));
         ExtractorMediaSource extractorMediaSource = new ExtractorMediaSource.Factory(defaultDataSourceFactory).createMediaSource(RawResourceDataSource.buildRawResourceUri(R.raw.styrker_video));
         exoplayer.prepare(extractorMediaSource);
         playerView.setPlayer(exoplayer);
         playerView.setKeepScreenOn(true);
         //Pause on initialise
         exoplayer.setPlayWhenReady(false);
-
-
 
 
         exoplayer.addListener(new Player.EventListener() {
@@ -164,8 +165,56 @@ public class introPage extends touchActivityHandler {
                 }
             }
         });
-    }
 
+        this.gestureDetector = new GestureDetector(introPage.this, this);
+        clickpage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+                switch (event.getAction()) {
+                    //press
+                    case MotionEvent.ACTION_DOWN:
+                        x1 = event.getX();
+                        break;
+
+                    //lift
+                    case MotionEvent.ACTION_UP:
+                        x2 = event.getX();
+
+                        //horizontal swipe
+                        float valueX = x2 - x1;
+                        if (Math.abs(valueX) > MIN_DISTANCE) {
+                            if (x2 > x1) {
+                                backward();
+                            } else {
+                                forward();
+                            }
+                        }
+                }
+                return true;
+            }
+        });
+
+
+// Old videoplayer
+//        videoView = findViewById(R.id.videoView);
+//
+//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
+//        Uri uri = Uri.parse(videoPath);
+//        videoView.setVideoURI(uri);
+//
+//        MediaController mediaController = new MediaController(this);
+//        videoView.setMediaController(mediaController);
+//        mediaController.setAnchorView(videoView);
+//        videoView.setFocusable(true);
+//        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+
+//        Calling the method to create the spinnerdropdown
+        createSpinnerDropdown();
+
+
+    }
 
     @Override
     protected void onPause() {
@@ -247,28 +296,25 @@ public class introPage extends touchActivityHandler {
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
 
         //To fullscreen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             fullscreenButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_close));
-            paramsNotFullscreen=(FrameLayout.LayoutParams)playerView.getLayoutParams();
+            paramsNotFullscreen = (FrameLayout.LayoutParams) playerView.getLayoutParams();
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(paramsNotFullscreen);
             params.setMargins(0, 0, 0, 0);
-            params.height= ViewGroup.LayoutParams.MATCH_PARENT;
-            params.width=ViewGroup.LayoutParams.MATCH_PARENT;
+            params.height = ViewGroup.LayoutParams.MATCH_PARENT;
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
             //params.addRule(FrameLayout.CENTER_IN_PARENT);
             playerView.setLayoutParams(params);
 
         }
 
         //To portrait
-        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
+        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             fullscreenButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_open));
             playerView.setLayoutParams(paramsNotFullscreen);
         }
