@@ -55,7 +55,7 @@ public class introPage extends touchActivityHandler {
     private EditText enterJob;
     private VideoView videoView;
     private static Context context;
-
+    boolean hasBeenPaused = false;
 
     String selectedItem = "";
     PlayerView playerView;
@@ -222,23 +222,6 @@ public class introPage extends touchActivityHandler {
         exoplayer.setPlayWhenReady(false);
         exoplayer.getPlaybackState();
 
-    }
-
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        exoplayer.setPlayWhenReady(true);
-        exoplayer.getPlaybackState();
-    }
-
-    public void forward() {
-        Intent intent = new Intent(introPage.this, customAvatar.class);
-        startActivity(intent);
-    }
-
-    public void backward() {
-
         //This garbage works that's pretty cool, this saves info in SharedPrefs so ye cool init fam
         //Make object.png
         gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
@@ -253,6 +236,23 @@ public class introPage extends touchActivityHandler {
         editor.putString("gName", name);
         editor.putString("gJob", job);
         editor.apply();
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        exoplayer.setPlayWhenReady(true);
+        exoplayer.getPlaybackState();
+
+    }
+
+    public void forward() {
+        Intent intent = new Intent(introPage.this, customAvatar.class);
+        startActivity(intent);
+    }
+
+    public void backward() {
 
         finish();
     }
