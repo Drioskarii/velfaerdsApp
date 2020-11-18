@@ -9,54 +9,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.LinearLayout;
 
 public class touchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
-    public MainActivity mainActivity;
-    public introPage introPage;
-    public customAvatar customAvatar;
-    public the24Strength the24Strength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.gestureDetector = new GestureDetector(this, this);
     }
-
-//
-//    clickpage.setOnTouchListener((v, event) -> {
-//
-//        gestureDetector.onTouchEvent(event);
-//
-//
-//        switch (event.getAction()) {
-//            //press
-//            case MotionEvent.ACTION_DOWN:
-//                x1 = event.getX();
-//                break;
-//
-//            //lift
-//            case MotionEvent.ACTION_UP:
-//                x2 = event.getX();
-//
-//                //horizontal swipe
-//                float valueX = x2 - x1;
-//                if (Math.abs(valueX) > MIN_DISTANCE) {
-//                    if (x2 > x1) {
-//                        backward();
-//                    } else {
-//                        forward();
-//                    }
-//                }
-//        }
-//        return true;
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        this.gestureDetector = new GestureDetector(this, this);
         gestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             //press
