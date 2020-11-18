@@ -1,20 +1,21 @@
 package Adapter;
-
-import android.util.Log;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.tec.velfaerdsapp.R;
 import dk.tec.velfaerdsapp.questionboxes;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapter.questionViewHolder> {
 
@@ -34,6 +35,13 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
            mSeekBar = itemView.findViewById(R.id.seekBar);
            mSeekBar.setProgress(0);
            mSeekBar.setMax(5);
+
+
+           SharedPreferences sharedPref = mSeekBar.getContext().getSharedPreferences("myKey", MODE_PRIVATE);
+           SharedPreferences.Editor editor = sharedPref.edit();
+
+
+
            mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
                @Override
                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -48,6 +56,12 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
                @Override
                public void onStopTrackingTouch(SeekBar seekBar) {
                    int progress = mSeekBar.getProgress();
+
+                   String id = String.valueOf(mTxtExplanation.getText());
+
+                   //Insert data into the SharedPreferences
+                   editor.putString(id, String.valueOf  (progress));
+                   editor.apply();
                }
            });
        }
@@ -62,6 +76,7 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
     public questionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_item, parent, false);
         questionViewHolder qvh = new questionViewHolder(v);
+
         return qvh;
     }
 
@@ -69,8 +84,19 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
     public void onBindViewHolder(@NonNull questionViewHolder holder, int position) {
         questionboxes currentItem = mQuestionBoxes.get(position);
 
+
         holder.mImageIcon.setImageResource(currentItem.getImageIcon());
         holder.mTxtExplanation.setText(currentItem.getTxtExplanation());
+
+       View view = holder.itemView.findViewById(holder.mSeekBar.getId());
+
+        SharedPreferences sharedPref = view.getContext().getSharedPreferences("myKey", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        String s1 = sharedPref.getString(String.valueOf(holder.mTxtExplanation.getText()),"");
+        if (!s1.isEmpty()){
+            holder.mSeekBar.setProgress(Integer.parseInt(s1));
+        }
+
     }
 
     @Override

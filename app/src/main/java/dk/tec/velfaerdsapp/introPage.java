@@ -195,8 +195,8 @@ public class introPage extends touchActivityHandler {
         gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
         String name = "" + gIntroInput.getStudentName();
         String job = "" + gIntroInput.getStudentJob();
-        String test = "Fisk";
-        //
+
+        // Create SharePref to store data in
         SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
