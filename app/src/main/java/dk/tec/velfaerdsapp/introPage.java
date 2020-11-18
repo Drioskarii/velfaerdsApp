@@ -43,8 +43,6 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.RawResourceDataSource;
 import com.google.android.exoplayer2.util.Util;
 
-import global.gIntro;
-
 public class introPage extends touchActivityHandler {
     //Initialising
     private float x1, x2;
@@ -55,7 +53,6 @@ public class introPage extends touchActivityHandler {
     private EditText enterJob;
     private VideoView videoView;
     private static Context context;
-    boolean hasBeenPaused = false;
 
     String selectedItem = "";
     PlayerView playerView;
@@ -224,11 +221,9 @@ public class introPage extends touchActivityHandler {
 
         //This garbage works that's pretty cool, this saves info in SharedPrefs so ye cool init fam
         //Make object.png
-        gIntro gIntroInput = new gIntro((enterName.getText().toString()), enterJob.getText().toString());
-        String name = "" + gIntroInput.getStudentName();
-        String job = "" + gIntroInput.getStudentJob();
-        String test = "Fisk";
-        //
+        String name = "" + enterName.getText();
+        String job = "" + enterJob.getText();
+
         SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 

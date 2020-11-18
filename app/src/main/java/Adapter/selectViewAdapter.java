@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class selectViewAdapter extends RecyclerView.Adapter<selectViewAdapter.ViewHolder> {
 
@@ -55,11 +58,15 @@ public class selectViewAdapter extends RecyclerView.Adapter<selectViewAdapter.Vi
         holder.answer.setText(answerList.get(position));
         holder.question.setText(questionList.get(position));
 
+
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked on a image: " + questionList.get(position) + answerList.get(position));
                 Toast.makeText(mContext, questionList.get(position)+answerList.get(position), Toast.LENGTH_SHORT).show();
+
+
+
             }
         });
     }
