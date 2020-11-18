@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import Adapter.customavataradapter;
 
-public class customAvatar extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class customAvatar extends touchActivityHandler{
 
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
@@ -41,49 +41,6 @@ public class customAvatar extends AppCompatActivity implements GestureDetector.O
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
-
-        //init gestureDetector
-        this.gestureDetector = new GestureDetector(customAvatar.this, this);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    public void forward() {
-        Intent intent = new Intent(customAvatar.this, questionsPage.class);
-
-        startActivity(intent);
-    }
-
-    public void backward() {
-        finish();
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
     }
 
     private void getImages() {

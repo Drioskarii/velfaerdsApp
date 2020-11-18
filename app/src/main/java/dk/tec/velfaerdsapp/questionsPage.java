@@ -26,8 +26,6 @@ public class questionsPage extends touchActivityHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_page);
 
-
-
         // questions list
         ArrayList<questionboxes> questionList = new ArrayList<>();
         questionList.add(new questionboxes(R.drawable.intellectual, "Question 1"));
@@ -77,42 +75,5 @@ public class questionsPage extends touchActivityHandler {
 //            llContainer.addView(slider);
 //
 //        }
-        //init gestureDetector
-        this.gestureDetector = new GestureDetector(questionsPage.this, this);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    public void forward() {
-        Intent intent = new Intent(questionsPage.this, selectPage.class);
-
-        startActivity(intent);
-    }
-
-    public void backward() {
-        finish();
     }
 }

@@ -44,44 +44,6 @@ public class selectPage extends touchActivityHandler {
 
         getGoodImages();
         getBadImages();
-
-        //init gestureDetector
-        this.gestureDetector = new GestureDetector(selectPage.this, this);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    public void forward() {
-        Intent intent = new Intent(selectPage.this, emailPage.class);
-
-        startActivity(intent);
-    }
-
-    public void backward() {
-        finish();
     }
 
     private void getGoodImages() {

@@ -46,42 +46,6 @@ public class emailPage extends touchActivityHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_page);
         tableLayout = findViewById(R.id.tableLayout);
-
-        //init gestureDetector
-        this.gestureDetector = new GestureDetector(emailPage.this, this);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    public void forward() {
-
-    }
-
-    public void backward() {
-        finish();
     }
 
     public void addEmail(View view) {

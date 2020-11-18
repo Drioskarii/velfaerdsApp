@@ -203,43 +203,7 @@ public class introPage extends touchActivityHandler {
 //        Calling the method to create the spinnerdropdown
 //        createSpinnerDropdown();
 
-        //init gestureDetector
-        this.gestureDetector = new GestureDetector(introPage.this, this);
 
-
-    clickpage.setOnTouchListener(new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-
-            gestureDetector.onTouchEvent(event);
-
-
-            switch (event.getAction()) {
-                //press
-                case MotionEvent.ACTION_DOWN:
-                    x1 = event.getX();
-                    break;
-
-                //lift
-                case MotionEvent.ACTION_UP:
-                    x2 = event.getX();
-
-                    //horizontal swipe
-                    float valueX = x2 - x1;
-                    if (Math.abs(valueX) > MIN_DISTANCE) {
-                        if (x2 > x1) {
-                            backward();
-                        } else {
-                            forward();
-                        }
-                    }
-            }
-           return true;
-
-
-
-        }
-    });
     }
 
 
