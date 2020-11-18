@@ -187,7 +187,7 @@ public class introPage extends touchActivityHandler {
 
 
 
-
+fsffsf
 
 
 // Old videoplayer
