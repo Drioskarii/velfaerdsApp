@@ -25,6 +25,35 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
         super.onCreate(savedInstanceState);
     }
 
+//
+//    clickpage.setOnTouchListener((v, event) -> {
+//
+//        gestureDetector.onTouchEvent(event);
+//
+//
+//        switch (event.getAction()) {
+//            //press
+//            case MotionEvent.ACTION_DOWN:
+//                x1 = event.getX();
+//                break;
+//
+//            //lift
+//            case MotionEvent.ACTION_UP:
+//                x2 = event.getX();
+//
+//                //horizontal swipe
+//                float valueX = x2 - x1;
+//                if (Math.abs(valueX) > MIN_DISTANCE) {
+//                    if (x2 > x1) {
+//                        backward();
+//                    } else {
+//                        forward();
+//                    }
+//                }
+//        }
+//        return true;
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.gestureDetector = new GestureDetector(this, this);

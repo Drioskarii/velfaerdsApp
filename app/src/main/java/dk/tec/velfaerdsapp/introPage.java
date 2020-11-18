@@ -186,6 +186,10 @@ public class introPage extends touchActivityHandler {
 
 
 
+
+
+
+
 // Old videoplayer
 //        videoView = findViewById(R.id.videoView);
 //
