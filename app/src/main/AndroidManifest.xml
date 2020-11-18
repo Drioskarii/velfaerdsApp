@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VelfaerdsApp">
-        <activity android:name=".touchActivityHandler"></activity>
+        <activity android:name=".touchActivityHandler" />
         <activity android:name=".the24Strength" />
         <activity android:name=".emailPage" />
         <activity android:name=".selectPage" />
@@ -27,10 +27,10 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

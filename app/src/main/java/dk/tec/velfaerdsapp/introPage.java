@@ -83,25 +83,6 @@ public class introPage extends touchActivityHandler {
         enterName.setText(s1);
         enterJob.setText(s2);
 
-//Useless piece of shit code that didn't work, but i keep it for the memories.
-
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
-//                , WindowManager.LayoutParams.FLAG_FULLSCREEN);
-//        LoadControl loadControl = new DefaultLoadControl();
-//        BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
-//        TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
-//        exoplayer = ExoPlayerFactory.newSimpleInstance(new DefaultRenderersFactory(introPage.this), new DefaultTrackSelector(), new DefaultLoadControl());
-//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
-//        Uri videoUrl = Uri.parse(videoPath);
-//        DefaultHttpDataSourceFactory factory = new DefaultHttpDataSourceFactory("exoplayer_video");
-//        ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
-//        MediaSource mediaSource = new ExtractorMediaSource(videoUrl, factory, extractorsFactory, null, null);
-//        playerView.setPlayer(exoplayer);
-//        playerView.setKeepScreenOn(true);
-//        exoplayer.prepare(audioSource);
-//        exoplayer.setPlayWhenReady(true);
-
-
         //Videoplayer initialisation and binding to video file.
         exoplayer= ExoPlayerFactory.newSimpleInstance(this,new DefaultTrackSelector());
         DefaultDataSourceFactory defaultDataSourceFactory=new DefaultDataSourceFactory(this, Util.getUserAgent(this,"velfaerdsapp"));
@@ -183,33 +164,7 @@ public class introPage extends touchActivityHandler {
                 }
             }
         });
-
-
-
-
-
-
-
-// Old videoplayer
-//        videoView = findViewById(R.id.videoView);
-//
-//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
-//        Uri uri = Uri.parse(videoPath);
-//        videoView.setVideoURI(uri);
-//
-//        MediaController mediaController = new MediaController(this);
-//        videoView.setMediaController(mediaController);
-//        mediaController.setAnchorView(videoView);
-//        videoView.setFocusable(true);
-//        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-
-//        Calling the method to create the spinnerdropdown
-//        createSpinnerDropdown();
-
-
     }
-
 
 
     @Override
@@ -227,35 +182,6 @@ public class introPage extends touchActivityHandler {
         exoplayer.setPlayWhenReady(true);
         exoplayer.getPlaybackState();
     }
-
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        gestureDetector.onTouchEvent(event);
-//
-//
-//        switch (event.getAction()) {
-//            //press
-//            case MotionEvent.ACTION_DOWN:
-//                x1 = event.getX();
-//                break;
-//
-//            //lift
-//            case MotionEvent.ACTION_UP:
-//                x2 = event.getX();
-//
-//                //horizontal swipe
-//                float valueX = x2 - x1;
-//                if (Math.abs(valueX) > MIN_DISTANCE) {
-//                    if (x2 > x1) {
-//                        backward();
-//                    } else {
-//                        forward();
-//                    }
-//                }
-//        }
-//        return super.onTouchEvent(event);
-//    }
-
 
     public void forward() {
         Intent intent = new Intent(introPage.this, customAvatar.class);
