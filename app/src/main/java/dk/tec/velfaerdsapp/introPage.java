@@ -1,6 +1,7 @@
 package dk.tec.velfaerdsapp;
 
 import Adapter.NothingSelectedSpinnerAdapter;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -75,28 +77,31 @@ public class introPage extends touchActivityHandler {
 
 
         //Print any old data stored in sharedPrefs
-        SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-        String s3 = sharedPreferences.getString("gGendor", "");
-        int s3int = 0;
+        String s3 = sharedPreferences.getString("gGender", "");
+        System.out.println(s3);
+
         enterName.setText(s1);
         enterJob.setText(s2);
-        switch (s3){
-            case "Vælg køn":
-                s3int = 0;
-                break;
-            case "Mand":
-                s3int = 1;
-                break;
-            case "Kvinde":
-                s3int = 2;
-                break;
-            case "Andet":
-                s3int = 3;
-                break;
+        if(s3 == "Mand"){
+            spinnerGender.setSelection(0);
+            System.out.println(spinnerGender.getSelectedItem());
+            System.out.println("Mand");
         }
-        spinnerGender.setSelection(s3int);
+
+        else if(s3 == "Kvinde"){
+            spinnerGender.setSelection(1);
+            System.out.println(spinnerGender.getSelectedItem());
+            System.out.println("Kvinde");
+        }
+
+        else if(s3 == "Andet"){
+            spinnerGender.setSelection(2);
+            System.out.println(spinnerGender.getSelectedItem());
+            System.out.println("Andet");
+        }
 
 
 
@@ -253,15 +258,15 @@ public class introPage extends touchActivityHandler {
         //Make object.png
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();
-        String gendor = selectedItem;
+        String gender = "" + selectedItem;
 
-        SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("introValues", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         //Inset data into the SharedPreferences
         editor.putString("gName", name);
         editor.putString("gJob", job);
-        editor.putString("gGendor" , gendor);
+        editor.putString("gGender" , gender);
         editor.apply();
     }
 
