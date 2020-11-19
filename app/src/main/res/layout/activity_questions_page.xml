@@ -10,7 +10,11 @@
     android:background="@drawable/gradient_background">
 
 
-
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/clickPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,4 +72,5 @@
                 </androidx.recyclerview.widget.RecyclerView>
         </ScrollView>
     </FrameLayout>
+</LinearLayout>
 </LinearLayout>
