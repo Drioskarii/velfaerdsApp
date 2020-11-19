@@ -269,8 +269,7 @@ public class introPage extends touchActivityHandler {
     @Override
     protected void onRestart() {
         super.onRestart();
-        exoplayer.setPlayWhenReady(true);
-        exoplayer.getPlaybackState();
+
 
     }
 
