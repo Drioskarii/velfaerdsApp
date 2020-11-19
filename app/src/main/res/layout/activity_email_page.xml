@@ -51,14 +51,14 @@
                 android:columnCount="2">
 
                 <ImageView
+                    android:id="@+id/btnNewMail"
                     android:layout_height="57dp"
                     android:layout_width="70dp"
                     android:layout_gravity="center"
                     android:layout_columnWeight="1"
                     android:layout_column="0"
                     android:background="@drawable/addemail"
-                    android:gravity="center"
-                    android:onClick="addEmail" />
+                    android:gravity="center"/>
 
                 <ImageView
                     android:id="@+id/sendMail"

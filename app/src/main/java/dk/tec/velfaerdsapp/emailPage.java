@@ -1,9 +1,9 @@
 package dk.tec.velfaerdsapp;
 import androidx.appcompat.app.AppCompatActivity;
-//import global.gIntro; Ødelægger build for mig somehow "Har prøvet sync" - Daniel
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
@@ -23,12 +23,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
+import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +44,7 @@ public class emailPage extends touchActivityHandler {
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
-    List<EditText> TextList = new ArrayList<EditText>();
+    List<EditText> EditTextList = new ArrayList<>();
     TableLayout tableLayout;
     int id = 0;
 
@@ -46,9 +53,25 @@ public class emailPage extends touchActivityHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_page);
         tableLayout = findViewById(R.id.tableLayout);
+
+        ImageView imgBtn = findViewById(R.id.btnNewMail);
+        imgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addEmail(v, null);
+            }
+        });
+
+        SharedPreferences sharedPreferences = getSharedPreferences("emailArray", MODE_PRIVATE);
+        for (int i = 0; i < sharedPreferences.getAll().size(); i++){
+            String s1 = sharedPreferences.getString("email_"+i, "");
+            if (s1.length() > 0) {
+                addEmail(this.tableLayout, s1);
+            }
+        }
     }
 
-    public void addEmail(View view) {
+    public void addEmail(View view, String email) {
         if (tableLayout.getChildCount() >= 8){
 
         }else  {
@@ -57,7 +80,12 @@ public class emailPage extends touchActivityHandler {
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
             EditText etm = new EditText(this);
-            etm.setHint(getString(R.string.editTextEmail));
+            if (email != null){
+                etm.setText(email);
+            }
+            else{
+                etm.setHint("Indtast Email");
+            }
             etm.setTag("mails");
             etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
@@ -80,11 +108,11 @@ public class emailPage extends touchActivityHandler {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    if (TextList.contains(etm)){
-                        TextList.remove(etm);
+                    if (EditTextList.contains(etm)){
+                        EditTextList.remove(etm);
                     }
                     if (validate(etm.getText().toString())){
-                      TextList.add(etm);
+                        EditTextList.add(etm);
                     }
                 }
             });
@@ -98,19 +126,24 @@ public class emailPage extends touchActivityHandler {
             tableRow.addView(btn);
             //adds tableRow to Tablelayout
             tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-
+            //remove email row
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //removes the specific one clicked.
                     tableLayout.removeView(tableRow);
-                    if (TextList.contains(etm)){
-                        TextList.remove(etm);
+                    if (EditTextList.contains(etm)){
+                        EditTextList.remove(etm);
                     }
                 }
             });
+            if (email != null){
+                EditTextList.add(etm);
+            }
         }
     }
+
+
 
     //pixels til dp
     public static int dpToPx(int dp, Context context){
@@ -128,7 +161,7 @@ public class emailPage extends touchActivityHandler {
 
         for (int i = 0; i <= id; i++) {
 
-            emailList.add(TextList.get(i).getText().toString());
+            emailList.add(EditTextList.get(i).getText().toString());
             //System.out.println(emailList);
             for (int x=0; x<emailList.size(); x++) {
                 System.out.println(emailList.get(x));
@@ -148,4 +181,18 @@ public class emailPage extends touchActivityHandler {
 
             startActivity(Intent.createChooser(email, "TestMail+fisk@gmail.com"));
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences sharedPref = getSharedPreferences("emailArray", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear().commit();
+            for (int i = 0; i < EditTextList.size(); i++) {
+                if (validate(EditTextList.get(i).getText().toString()) && !sharedPref.contains("email_"+i)) {
+                    editor.putString("email_"+i, EditTextList.get(i).getText().toString());
+                    editor.apply();
+                }
+            }
+        }
 }
