@@ -1,5 +1,6 @@
 package dk.tec.velfaerdsapp;
 import androidx.appcompat.app.AppCompatActivity;
+//import global.gIntro; Ødelægger build for mig somehow "Har prøvet sync" - Daniel
 
 import android.content.Context;
 import android.content.Intent;

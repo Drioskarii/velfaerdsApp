@@ -1,5 +1,9 @@
 package dk.tec.velfaerdsapp;
 
+import Adapter.NothingSelectedSpinnerAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -222,7 +226,19 @@ public class introPage extends touchActivityHandler {
 
 
 //        Calling the method to create the spinnerdropdown
-        createSpinnerDropdown();
+        //createSpinnerDropdown();
+
+
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.køn_array, R.layout.spinner_item_nomargin);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(
+                new NothingSelectedSpinnerAdapter(
+                        adapter,
+                        R.layout.contact_spinner_row_nothing_selected,
+                        this));
 
 
     }
@@ -271,22 +287,22 @@ public class introPage extends touchActivityHandler {
     // creating and populating the dropdown
     private void createSpinnerDropdown() {
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
-
-        List<String> list = new ArrayList<>();
-        list.add("Vælg køn");
-        list.add("Mand");
-        list.add("Kvinde");
-        list.add("Andet");
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Set the ArrayAdapter to the spinner
-        spinner.setAdapter(dataAdapter);
-
-        // Attaching the listener to the spinner
-        spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+//        Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
+//
+//        List<String> list = new ArrayList<>();
+//        list.add("Vælg køn");
+//        list.add("Mand");
+//        list.add("Kvinde");
+//        list.add("Andet");
+//
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//
+//        // Set the ArrayAdapter to the spinner
+//        spinner.setAdapter(dataAdapter);
+//
+//        // Attaching the listener to the spinner
+//        spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
     }
 

@@ -54,8 +54,10 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:gravity="left"
         android:layout_gravity="center_horizontal"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:spinnerMode="dialog"
         />
 
 
