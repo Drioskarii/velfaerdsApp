@@ -61,6 +61,7 @@ public class introPage extends touchActivityHandler {
     boolean fullscreen = false;
     FrameLayout.LayoutParams paramsNotFullscreen;
     LinearLayout clickpage;
+    Spinner spinnerGender;
 
 
     @Override
@@ -73,15 +74,34 @@ public class introPage extends touchActivityHandler {
         playerView = (PlayerView) findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
         clickpage = findViewById(R.id.clickPage);
+        spinnerGender = findViewById(R.id.spinnerGender);
 
 
         //Print any old data stored in sharedPrefs
         SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-
+        String s3 = sharedPreferences.getString("gGendor", "");
+        int s3int = 0;
         enterName.setText(s1);
         enterJob.setText(s2);
+        switch (s3){
+            case "Vælg køn":
+                s3int = 0;
+                break;
+            case "Mand":
+                s3int = 1;
+                break;
+            case "Kvinde":
+                s3int = 2;
+                break;
+            case "Andet":
+                s3int = 3;
+                break;
+        }
+        spinnerGender.setSelection(s3int);
+
+
 
         //Videoplayer initialisation and binding to video file.
         exoplayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
@@ -223,6 +243,7 @@ public class introPage extends touchActivityHandler {
         //Make object.png
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();
+        String gendor = selectedItem;
 
         SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -230,6 +251,7 @@ public class introPage extends touchActivityHandler {
         //Inset data into the SharedPreferences
         editor.putString("gName", name);
         editor.putString("gJob", job);
+        editor.putString("gGendor" , gendor);
         editor.apply();
     }
 

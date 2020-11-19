@@ -1,6 +1,5 @@
 package dk.tec.velfaerdsapp;
 import androidx.appcompat.app.AppCompatActivity;
-import global.gIntro;
 
 import android.content.Context;
 import android.content.Intent;
