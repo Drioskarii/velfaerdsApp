@@ -42,38 +42,38 @@ public class questionsPage extends touchActivityHandler {
 
         mQuestionRecyclerView.setLayoutManager(mLayoutManager);
         mQuestionRecyclerView.setAdapter(mAdapter);
+/*
+        String[] questionArray = {"One", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four"};
+        Object answersToQuestions = new Object();
 
-//        String[] questionArray = {"One", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four", "Two", "Three", "Four"};
-//        Object answersToQuestions = new Object();
-//
-//        LinearLayout llContainer = (LinearLayout) findViewById(R.id.llContainer);
-//        LinearLayout linearLayout = new LinearLayout(this);
-//        linearLayout.setGravity(LinearLayout.TEXT_ALIGNMENT_CENTER);
-//        linearLayout.setOrientation(LinearLayout.VERTICAL);
-//
-//        TableLayout.LayoutParams params = new TableLayout.LayoutParams();
-//
-//
-//        params.setMargins(5, 5, 5, 100);
-//        for( int i = 0; i < questionArray.length; i++ )
-//        {
-//            //button are created
-//            TextView etq = new TextView(this);
-//            SeekBar slider = new SeekBar(this);
-//            TextView fisk = new TextView(this);
-//
-//            //This is where editText the parameter goes.
-//            etq.setText(questionArray[i]);
-//            etq.setGravity(Gravity.CENTER);
-//            fisk.setLayoutParams(params);
-//
-//            //This is where SeekBar the parameter goes.
-//
-//
-//            //This is where the EditText gets added to activity_email_page.xml
-//            llContainer.addView(etq);
-//            llContainer.addView(slider);
-//
-//        }
+        LinearLayout llContainer = (LinearLayout) findViewById(R.id.llContainer);
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setGravity(LinearLayout.TEXT_ALIGNMENT_CENTER);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+        TableLayout.LayoutParams params = new TableLayout.LayoutParams();
+
+
+        params.setMargins(5, 5, 5, 100);
+        for( int i = 0; i < questionArray.length; i++ )
+        {
+            //button are created
+            TextView etq = new TextView(this);
+            SeekBar slider = new SeekBar(this);
+            TextView fisk = new TextView(this);
+
+            //This is where editText the parameter goes.
+            etq.setText(questionArray[i]);
+            etq.setGravity(Gravity.CENTER);
+            fisk.setLayoutParams(params);
+
+            //This is where SeekBar the parameter goes.
+
+
+            //This is where the EditText gets added to activity_email_page.xml
+            llContainer.addView(etq);
+            llContainer.addView(slider);
+
+        }*/
     }
 }

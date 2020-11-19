@@ -109,13 +109,13 @@ public class selectPage extends touchActivityHandler {
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewGod = findViewById(R.id.recyclerViewGood);
         recyclerViewGod.setLayoutManager(layoutManagerGood);
-        selectViewAdapter Goodadapter = new selectViewAdapter(this, goodQuestions,goodAnswers, GoodselectmImageUrls);
-        recyclerViewGod.setAdapter(Goodadapter);
+        selectViewAdapter goodAdapter = new selectViewAdapter(this, goodQuestions,goodAnswers, GoodselectmImageUrls);
+        recyclerViewGod.setAdapter(goodAdapter);
 
         LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
-        selectViewAdapter Badadapter = new selectViewAdapter(this, badQuestions, badAnswers, BadselectmImageUrls);
-        recyclerViewBad.setAdapter(Badadapter);
+        selectViewAdapter badAdapter = new selectViewAdapter(this, badQuestions, badAnswers, BadselectmImageUrls);
+        recyclerViewBad.setAdapter(badAdapter);
     }
 }

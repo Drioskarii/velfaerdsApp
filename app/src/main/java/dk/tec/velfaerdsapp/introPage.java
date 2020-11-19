@@ -1,8 +1,5 @@
 package dk.tec.velfaerdsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,12 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import android.widget.VideoView;
-
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.PlaybackParameters;
@@ -48,11 +42,9 @@ public class introPage extends touchActivityHandler {
     private float x1, x2;
     private static int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
-    private TextView showText;
     private EditText enterName;
     private EditText enterJob;
-    private VideoView videoView;
-    private static Context context;
+
 
     String selectedItem = "";
     PlayerView playerView;
@@ -67,6 +59,7 @@ public class introPage extends touchActivityHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //Binding to ID's
         setContentView(R.layout.activity_intro_page);
         enterName = findViewById(R.id.editTextName);
@@ -110,6 +103,7 @@ public class introPage extends touchActivityHandler {
         exoplayer.prepare(extractorMediaSource);
         playerView.setPlayer(exoplayer);
         playerView.setKeepScreenOn(true);
+
         //Pause on initialise
         exoplayer.setPlayWhenReady(false);
 

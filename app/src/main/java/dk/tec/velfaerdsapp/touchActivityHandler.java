@@ -89,7 +89,6 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
 
     @Override
     public void onShowPress(MotionEvent e) {
-
     }
 
     @Override
