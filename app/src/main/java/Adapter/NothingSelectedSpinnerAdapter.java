@@ -22,7 +22,6 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
     public NothingSelectedSpinnerAdapter(
             SpinnerAdapter spinnerAdapter,
             int nothingSelectedLayout, Context context) {
-
         this(spinnerAdapter, nothingSelectedLayout, -1, context);
     }
 
@@ -38,14 +37,12 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
 
     @Override
     public final View getView(int position, View convertView, ViewGroup parent) {
-        // This provides the View for the Selected Item in the Spinner, not
-        // the dropdown (unless dropdownView is not set).
         if (position == 0) {
             return getNothingSelectedView(parent);
         }
 
         return adapter.getView(position - EXTRA, null, parent); // Could re-use
-        // the convertView if possible.
+
     }
 
 
@@ -55,15 +52,14 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        // Android BUG! http://code.google.com/p/android/issues/detail?id=17128 -
-        // Spinner does not support multiple view types
+
         if (position == 0) {
             return nothingSelectedDropdownLayout == -1 ?
                     new View(context) :
                     getNothingSelectedDropdownView(parent);
         }
 
-        // Could re-use the convertView if possible, use setTag...
+
         return adapter.getDropDownView(position - EXTRA, null, parent);
     }
 
@@ -125,8 +121,7 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
 
     @Override
     public boolean isEnabled(int position) {
-        return position != 0; // Don't allow the 'nothing selected'
-        // item to be picked.
+        return position != 0;
     }
 
 }
