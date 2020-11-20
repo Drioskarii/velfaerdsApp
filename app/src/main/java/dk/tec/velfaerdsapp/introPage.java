@@ -25,12 +25,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import android.widget.VideoView;
-
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.PlaybackParameters;
@@ -83,24 +80,18 @@ public class introPage extends touchActivityHandler {
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-        String s3 = sharedPreferences.getString("gGender", "");
+        int s3 = sharedPreferences.getInt("gGender", 0);
         System.out.println(s3);
+        // Mand = ID 1
+        // Kvinde = ID 2
+        // Andet = ID 3
 
         enterName.setText(s1);
         enterJob.setText(s2);
-        if (s3 == "Mand") {
-            spinnerGender.setSelection(0);
-            System.out.println(spinnerGender.getSelectedItem());
-            System.out.println("Mand");
-        } else if (s3 == "Kvinde") {
-            spinnerGender.setSelection(1);
-            System.out.println(spinnerGender.getSelectedItem());
-            System.out.println("Kvinde");
-        } else if (s3 == "Andet") {
-            spinnerGender.setSelection(2);
-            System.out.println(spinnerGender.getSelectedItem());
-            System.out.println("Andet");
-        }
+        spinnerGender.setSelection(s3);
+
+
+
 
 
         //Videoplayer initialisation and binding to video file.
@@ -236,7 +227,11 @@ public class introPage extends touchActivityHandler {
         //Make object.png
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();
-        String gender = "" + selectedItem;
+        int selectedID = spinnerGender.getSelectedItemPosition();
+
+
+
+
 
         SharedPreferences sharedPref = getSharedPreferences("introValues", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -244,7 +239,7 @@ public class introPage extends touchActivityHandler {
         //Inset data into the SharedPreferences
         editor.putString("gName", name);
         editor.putString("gJob", job);
-        editor.putString("gGender", gender);
+        editor.putInt("gGender" , selectedID);
         editor.apply();
     }
 
