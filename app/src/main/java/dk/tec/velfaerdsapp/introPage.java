@@ -25,9 +25,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import android.widget.VideoView;
+
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.PlaybackParameters;
@@ -85,24 +88,19 @@ public class introPage extends touchActivityHandler {
 
         enterName.setText(s1);
         enterJob.setText(s2);
-        if(s3 == "Mand"){
+        if (s3 == "Mand") {
             spinnerGender.setSelection(0);
             System.out.println(spinnerGender.getSelectedItem());
             System.out.println("Mand");
-        }
-
-        else if(s3 == "Kvinde"){
+        } else if (s3 == "Kvinde") {
             spinnerGender.setSelection(1);
             System.out.println(spinnerGender.getSelectedItem());
             System.out.println("Kvinde");
-        }
-
-        else if(s3 == "Andet"){
+        } else if (s3 == "Andet") {
             spinnerGender.setSelection(2);
             System.out.println(spinnerGender.getSelectedItem());
             System.out.println("Andet");
         }
-
 
 
         //Videoplayer initialisation and binding to video file.
@@ -215,26 +213,6 @@ public class introPage extends touchActivityHandler {
             }
         });
 
-
-// Old videoplayer
-//        videoView = findViewById(R.id.videoView);
-//
-//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.styrker_video;
-//        Uri uri = Uri.parse(videoPath);
-//        videoView.setVideoURI(uri);
-//
-//        MediaController mediaController = new MediaController(this);
-//        videoView.setMediaController(mediaController);
-//        mediaController.setAnchorView(videoView);
-//        videoView.setFocusable(true);
-//        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-
-//        Calling the method to create the spinnerdropdown
-        //createSpinnerDropdown();
-
-
-
         Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.køn_array, R.layout.spinner_item_nomargin);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -266,7 +244,7 @@ public class introPage extends touchActivityHandler {
         //Inset data into the SharedPreferences
         editor.putString("gName", name);
         editor.putString("gJob", job);
-        editor.putString("gGender" , gender);
+        editor.putString("gGender", gender);
         editor.apply();
     }
 
@@ -286,28 +264,6 @@ public class introPage extends touchActivityHandler {
     public void backward() {
 
         finish();
-    }
-
-    // creating and populating the dropdown
-    private void createSpinnerDropdown() {
-
-//        Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
-//
-//        List<String> list = new ArrayList<>();
-//        list.add("Vælg køn");
-//        list.add("Mand");
-//        list.add("Kvinde");
-//        list.add("Andet");
-//
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, list);
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        // Set the ArrayAdapter to the spinner
-//        spinner.setAdapter(dataAdapter);
-//
-//        // Attaching the listener to the spinner
-//        spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
-
     }
 
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
