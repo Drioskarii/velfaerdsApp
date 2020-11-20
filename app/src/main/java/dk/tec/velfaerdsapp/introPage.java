@@ -46,7 +46,7 @@ import com.google.android.exoplayer2.util.Util;
 public class introPage extends touchActivityHandler {
     //Initialising
     private float x1, x2;
-    private static int MIN_DISTANCE = 400;
+    private static final int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
     private EditText enterName;
     private EditText enterJob;
@@ -81,18 +81,9 @@ public class introPage extends touchActivityHandler {
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-        //int s3 = sharedPreferences.getInt("gGender", 0);
-        // Mand = ID 1
-        // Kvinde = ID 2
-        // Andet = ID 3
 
         enterName.setText(s1);
         enterJob.setText(s2);
-        //spinnerGender.setSelection(s3); // Dosn't select item in application
-
-
-
-
 
         //Videoplayer initialisation and binding to video file.
         exoplayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
@@ -204,11 +195,10 @@ public class introPage extends touchActivityHandler {
             }
         });
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerGender);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.køn_array, R.layout.spinner_item_nomargin);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinner.setAdapter(
+        spinnerGender.setAdapter(
                 new NothingSelectedSpinnerAdapter(
                         adapter,
                         R.layout.contact_spinner_row_nothing_selected,
@@ -228,10 +218,6 @@ public class introPage extends touchActivityHandler {
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();
         int selectedID = spinnerGender.getSelectedItemPosition();
-
-
-
-
 
         SharedPreferences sharedPref = getSharedPreferences("introValues", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();

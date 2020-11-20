@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,6 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
     protected int nothingSelectedLayout;
     protected int nothingSelectedDropdownLayout;
     protected LayoutInflater layoutInflater;
-
 
     public NothingSelectedSpinnerAdapter(
             SpinnerAdapter spinnerAdapter,

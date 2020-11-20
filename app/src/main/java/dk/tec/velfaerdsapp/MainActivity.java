@@ -14,10 +14,6 @@ import android.view.View;
 
 public class MainActivity extends touchActivityHandler {
 
-    private float x1, x2;
-    private static int MIN_DISTANCE = 400;
-    private GestureDetector gestureDetector;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +38,4 @@ public class MainActivity extends touchActivityHandler {
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
-
-    @Override
-    protected void onStop() {
-        SharedPreferences settings1 = getSharedPreferences("myKey", Context.MODE_PRIVATE);
-        settings1.edit().clear().commit();
-        SharedPreferences settings2 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
-        settings2.edit().clear().commit();
-        super.onStop();
-    }
-
 }

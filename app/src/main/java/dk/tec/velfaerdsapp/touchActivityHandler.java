@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 public class touchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static int MIN_DISTANCE = 400;
+    private static final int MIN_DISTANCE = 400;
     private GestureDetector gestureDetector;
 
     @Override
@@ -66,14 +67,12 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
 
     //Forward er altid swipe ( højre mod venstre )
     public Intent forward(Context context, Class toClass) {
-        Intent intent = new Intent(context, toClass);
-        return intent;
+        return new Intent(context, toClass);
     }
 
     //Backward er altid swipe ( venstre mod højre )
     public Intent backward(Context context, Class toClass) {
-        Intent intent = new Intent(context, toClass);
-        return intent;
+        return new Intent(context, toClass);
     }
 
     public void backward() {

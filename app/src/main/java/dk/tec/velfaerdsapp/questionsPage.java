@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class questionsPage extends touchActivityHandler {
 
-    public static ProgressBar questionsProgressBar;
+    public ProgressBar questionsProgressBar;
     public static int count;
     public static int answered;
     LinearLayout questionsPageView;
