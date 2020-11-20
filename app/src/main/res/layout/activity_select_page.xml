@@ -33,7 +33,7 @@
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="3"
-                android:text="Vælg De Vigtigste"/>
+                android:text="@string/v_lg_de_vigtigste"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,7 +43,7 @@
 
                 android:shadowDy="2"
                 android:shadowRadius="3"
-                android:text="Vælg de 5 vigtigste svar"
+                android:text="@string/v_lg_de_5_vigtigste_svar"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
         </LinearLayout>
@@ -58,7 +58,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Højeste svar"
+                android:text="@string/h_jeste_svar"
 
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
@@ -116,7 +116,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bottom Score"
+                android:text="@string/laveste_svar"
 
                 android:shadowColor="@color/black"
                 android:shadowDx="2"

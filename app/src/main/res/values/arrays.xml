@@ -4,5 +4,6 @@
         <item>Mand</item>
         <item>Kvinde</item>
         <item>Andet</item>
+        <item>Ikke angivet</item>
     </string-array>
 </resources>

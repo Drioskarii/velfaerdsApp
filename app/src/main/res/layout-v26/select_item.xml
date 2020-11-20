@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="4dp"
+        app:cardMaxElevation="2dp"
+        app:cardBackgroundColor="#00000000"
+        app:cardElevation="1dp"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/onClickbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_margin="5dp"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imageIcon"
+                android:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+
+                android:text="Question"
+                android:layout_below="@+id/imageIcon"
+                android:id="@+id/txtQuestion"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="15sp"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Answer"
+                android:layout_below="@+id/txtQuestion"
+                android:id="@+id/txtAnswer"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="5dp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeMaxTextSize="15sp"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>

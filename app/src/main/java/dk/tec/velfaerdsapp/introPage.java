@@ -62,6 +62,7 @@ public class introPage extends touchActivityHandler {
     Spinner spinnerGender;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,15 +81,14 @@ public class introPage extends touchActivityHandler {
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-        int s3 = sharedPreferences.getInt("gGender", 0);
-        System.out.println(s3);
+        //int s3 = sharedPreferences.getInt("gGender", 0);
         // Mand = ID 1
         // Kvinde = ID 2
         // Andet = ID 3
 
         enterName.setText(s1);
         enterJob.setText(s2);
-        spinnerGender.setSelection(s3); // Dosn't select item in application
+        //spinnerGender.setSelection(s3); // Dosn't select item in application
 
 
 

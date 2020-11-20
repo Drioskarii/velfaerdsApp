@@ -1,30 +1,37 @@
 package Adapter;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.tec.velfaerdsapp.R;
 import dk.tec.velfaerdsapp.questionboxes;
+import dk.tec.velfaerdsapp.questionsPage;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapter.questionViewHolder> {
 
     private final ArrayList<questionboxes> mQuestionBoxes;
+    public static questionsPage questionsPage;
 
    public static class questionViewHolder extends RecyclerView.ViewHolder{
 
-       public ImageView mImageIcon;
        public TextView mTxtExplanation;
+       public ImageView mImageIcon;
+       public ImageView questionsConfirm;
        public SeekBar mSeekBar;
 
        public questionViewHolder(@NonNull View itemView) {
@@ -32,8 +39,9 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
 
            mImageIcon = itemView.findViewById(R.id.imageIcon);
            mTxtExplanation = itemView.findViewById(R.id.txtExplanation);
+           questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
            mSeekBar = itemView.findViewById(R.id.seekBar);
-           mSeekBar.setProgress(0);
+           mSeekBar.setProgress(3);
            mSeekBar.setMax(5);
 
            //Get SharedPreference shared_Pref myKey.xml
@@ -56,11 +64,16 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
                @Override
                public void onStopTrackingTouch(SeekBar seekBar) {
                    int progress = mSeekBar.getProgress();
-
                    String id = String.valueOf(mTxtExplanation.getText());
-
                    //Insert data into the SharedPreferences
+                   String s1 = sharedPref.getString(String.valueOf(mTxtExplanation.getText()),"");
+                   if (s1.isEmpty()){
+                       questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
+                       questionsPage.answered++;
+                       questionsPage.questionsProgressBar.setProgress(questionsPage.answered);
+                   }
                    editor.putString(id, String.valueOf  (progress));
+                   editor.putString(id+"_q", id);
                    editor.apply();
                }
            });
@@ -98,9 +111,9 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
         //get data stored from seekBar
         String s1 = sharedPref.getString(String.valueOf(holder.mTxtExplanation.getText()),"");
         if (!s1.isEmpty()){
+            holder.questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             holder.mSeekBar.setProgress(Integer.parseInt(s1));
         }
-
     }
 
     @Override

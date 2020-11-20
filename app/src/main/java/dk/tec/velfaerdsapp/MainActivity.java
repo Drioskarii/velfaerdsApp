@@ -45,8 +45,10 @@ public class MainActivity extends touchActivityHandler {
 
     @Override
     protected void onStop() {
-        SharedPreferences settings = getSharedPreferences("myKey", Context.MODE_PRIVATE);
-        settings.edit().clear().commit();
+        SharedPreferences settings1 = getSharedPreferences("myKey", Context.MODE_PRIVATE);
+        settings1.edit().clear().commit();
+        SharedPreferences settings2 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
+        settings2.edit().clear().commit();
         super.onStop();
     }
 

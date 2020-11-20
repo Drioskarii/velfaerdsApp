@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class touchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -44,7 +45,7 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
                         else if (this.toString().contains("the24Strength")){backward(); }
                         else if (this.toString().contains("introPage")){backward(); }
                         else if (this.toString().contains("customAvatar")){backward(); }
-                        else if (this.toString().contains("questionsPage")){backward(); }
+                        else if (this.toString().contains("questionsPage")){backward();}
                         else if (this.toString().contains("selectPage")){backward(); }
                         else if (this.toString().contains("emailPage")){backward(); }
                     } else {
@@ -53,7 +54,9 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
                         else if (this.toString().contains("the24Strength")){backward();}
                         else if (this.toString().contains("introPage")){startActivity(forward(this, customAvatar.class));}
                         else if (this.toString().contains("customAvatar")){startActivity(forward(this, questionsPage.class));}
-                        else if (this.toString().contains("questionsPage")){startActivity(forward(this, selectPage.class));}
+                        else if (this.toString().contains("questionsPage")) {
+                            if (questionsPage.answered == questionsPage.count){ startActivity(forward(this, selectPage.class)); }
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
                         else if (this.toString().contains("selectPage")){startActivity(forward(this, emailPage.class));}
                     }
                 }

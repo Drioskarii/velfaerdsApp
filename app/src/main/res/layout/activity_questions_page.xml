@@ -2,24 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/questionsPageView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".questionsPage"
     android:background="@drawable/gradient_background">
 
-
-<LinearLayout
-    android:orientation="vertical"
-    android:id="@+id/clickPage"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="De 24 Spørgsmål"
+        android:text="@string/de_24_sp_rgsm_l"
         android:gravity="center_horizontal"
         android:textSize="30sp"
         android:textColor="@color/white"
@@ -27,50 +21,47 @@
         android:shadowColor="@color/black"
         android:shadowDx="2"
         android:shadowDy="2"
-        android:shadowRadius="3" />
+        android:shadowRadius="3">
+    </TextView>
 
     <FrameLayout
         android:id="@+id/videoFrame"
         android:layout_width="360dp"
         android:layout_height="250dp"
-        android:layout_gravity="center_horizontal"
-        >
-
+        android:layout_gravity="center_horizontal">
         <ImageView
             android:id="@+id/characterHolder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/placeholder"/>
-
+            android:background="@drawable/placeholder">
+        </ImageView>
     </FrameLayout>
 
-    <View style="@style/Divider"
-        android:layout_width="360dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="0dp"
-        />
-
+    <ProgressBar
+        android:id="@+id/questionsProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="26dp"
+        android:layout_marginLeft="26dp">
+    </ProgressBar>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_margin="4dp">
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp">
-
+            android:layout_height="match_parent">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="4dp"
                     android:scrollbars="vertical">
                 </androidx.recyclerview.widget.RecyclerView>
         </ScrollView>
     </FrameLayout>
-</LinearLayout>
 </LinearLayout>
