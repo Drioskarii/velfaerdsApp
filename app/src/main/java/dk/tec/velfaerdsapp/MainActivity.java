@@ -38,4 +38,15 @@ public class MainActivity extends touchActivityHandler {
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
+        settings1.edit().clear().commit();
+        SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
+        settings2.edit().clear().commit();
+        SharedPreferences settings3 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
+        settings3.edit().clear().commit();
+    }
 }

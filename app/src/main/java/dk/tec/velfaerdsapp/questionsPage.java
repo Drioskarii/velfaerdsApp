@@ -22,17 +22,15 @@ import java.util.ArrayList;
 
 public class questionsPage extends touchActivityHandler {
 
-    public ProgressBar questionsProgressBar;
+    public static ProgressBar questionsProgressBar;
     public static int count;
     public static int answered;
-    LinearLayout questionsPageView;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions_page);
-        questionsPageView = findViewById(R.id.questionsPageView);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
 
         // questions list
