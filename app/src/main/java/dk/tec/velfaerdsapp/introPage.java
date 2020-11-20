@@ -88,7 +88,7 @@ public class introPage extends touchActivityHandler {
 
         enterName.setText(s1);
         enterJob.setText(s2);
-        spinnerGender.setSelection(s3);
+        spinnerGender.setSelection(s3); // Dosn't select item in application
 
 
 
