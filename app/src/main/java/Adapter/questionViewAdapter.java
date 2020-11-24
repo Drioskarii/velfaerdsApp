@@ -45,7 +45,7 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
            mSeekBar.setMax(5);
 
            //Get SharedPreference shared_Pref myKey.xml
-           SharedPreferences sharedPref = mSeekBar.getContext().getSharedPreferences("questionArray", MODE_PRIVATE);
+           SharedPreferences sharedPref = mSeekBar.getContext().getSharedPreferences("introValues", MODE_PRIVATE);
            SharedPreferences.Editor editor = sharedPref.edit();
 
 
@@ -108,9 +108,10 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
         SharedPreferences sharedPref = view.getContext().getSharedPreferences("questionArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        //get data stored from seekBar
+        //get data stored from seekBar and insert into
         String s1 = sharedPref.getString(String.valueOf(holder.mTxtExplanation.getText()),"");
         if (!s1.isEmpty()){
+            //insert data if empty
             holder.questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             holder.mSeekBar.setProgress(Integer.parseInt(s1));
         }

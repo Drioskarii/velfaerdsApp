@@ -81,9 +81,13 @@ public class introPage extends touchActivityHandler {
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
+        int s3 = sharedPreferences.getInt("gGender", -1);
+
+
 
         enterName.setText(s1);
         enterJob.setText(s2);
+
 
         //Videoplayer initialisation and binding to video file.
         exoplayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapter {
 
@@ -33,6 +35,11 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
         this.nothingSelectedLayout = nothingSelectedLayout;
         this.nothingSelectedDropdownLayout = nothingSelectedDropdownLayout;
         layoutInflater = LayoutInflater.from(context);
+        System.out.println("test 0");
+
+        SharedPreferences sharedPreferences = this.context.getSharedPreferences("introValues", MODE_PRIVATE);
+        String s1 = sharedPreferences.getString("gGender", "");
+
     }
 
     @Override
@@ -40,7 +47,6 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
         if (position == 0) {
             return getNothingSelectedView(parent);
         }
-
         return adapter.getView(position - EXTRA, null, parent); // Could re-use
 
     }
