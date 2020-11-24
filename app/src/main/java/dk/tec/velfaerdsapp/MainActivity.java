@@ -14,56 +14,10 @@ import android.view.View;
 
 public class MainActivity extends touchActivityHandler {
 
-    private float x1, x2;
-    private static int MIN_DISTANCE = 400;
-    private GestureDetector gestureDetector;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //init gestureDetector
-        this.gestureDetector = new GestureDetector(MainActivity.this, this);
-
-
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        switch (event.getAction()) {
-            //press
-            case MotionEvent.ACTION_DOWN:
-                x1 = event.getX();
-                break;
-
-            //lift
-            case MotionEvent.ACTION_UP:
-                x2 = event.getX();
-                //horizontal swipe
-                float valueX = x2 - x1;
-                if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
-                        backward();
-                    } else {
-                        forward();
-                    }
-                }
-        }
-        return super.onTouchEvent(event);
-    }
-
-    //Forward er altid swipe ( højre mod venstre )
-    public void forward() {
-        Intent intent = new Intent(MainActivity.this, introPage.class);
-        startActivity(intent);
-    }
-
-    //Backward er altid swipe ( venstre mod højre )
-    public void backward() {
-        Intent intent = new Intent(MainActivity.this, the24Strength.class);
-        startActivity(intent);
     }
 
     public void logoClicked(View view) {
@@ -87,9 +41,12 @@ public class MainActivity extends touchActivityHandler {
 
     @Override
     protected void onStop() {
-        SharedPreferences settings = getSharedPreferences("myKey", Context.MODE_PRIVATE);
-        settings.edit().clear().commit();
         super.onStop();
+        SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
+        settings1.edit().clear().commit();
+        SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
+        settings2.edit().clear().commit();
+        SharedPreferences settings3 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
+        settings3.edit().clear().commit();
     }
-
 }
