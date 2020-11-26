@@ -1,5 +1,4 @@
 package Adapter;
-
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,34 +7,35 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.QuestionBoxes;
-import dk.tec.velfaerdsapp.The24Strength;
-import dk.tec.velfaerdsapp.The24StrengthsBoxes;
+import dk.tec.velfaerdsapp.QuestionsPage;
+import dk.tec.velfaerdsapp.Strengths;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class The24thStrengthAdapter {
-    private final ArrayList<The24StrengthsBoxes> mThe24StrengthsBoxes;
-    public static The24Strength the24Strength;
+public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.questionViewHolder> {
 
-    public static class the24StrengthViewHolder extends RecyclerView.ViewHolder{
+    private final ArrayList<Strengths> mQuestionBoxes;
+    public static QuestionsPage questionsPage;
 
-        public TextView mTxtExplanation;
+    public static class questionViewHolder extends RecyclerView.ViewHolder{
+
         public ImageView mImageIcon;
+        public TextView  mTxtTitle;
+        public TextView mTxtQuestion;
         public ImageView questionsConfirm;
         public SeekBar mSeekBar;
 
-        public the24StrengthViewHolder(@NonNull View itemView) {
+        public questionViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mImageIcon = itemView.findViewById(R.id.imageIcon);
-            mTxtExplanation = itemView.findViewById(R.id.txtExplanation);
+            mTxtTitle = itemView.findViewById(R.id.questions_txtTitle);
+            mTxtQuestion = itemView.findViewById(R.id.questions_txtQuestion);
             questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
             mSeekBar = itemView.findViewById(R.id.seekBar);
             mSeekBar.setProgress(3);
@@ -61,9 +61,9 @@ public class The24thStrengthAdapter {
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     int progress = mSeekBar.getProgress();
-                    String id = String.valueOf(mTxtExplanation.getText());
+                    String id = String.valueOf(mTxtTitle.getText());
                     //Insert data into the SharedPreferences
-                    String s1 = sharedPref.getString(String.valueOf(mTxtExplanation.getText()),"");
+                    String s1 = sharedPref.getString(String.valueOf(mTxtTitle.getText()),"");
                     if (s1.isEmpty()){
                         questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
                         questionsPage.answered++;
@@ -77,26 +77,26 @@ public class The24thStrengthAdapter {
         }
     }
 
-    public The24thStrengthAdapter(ArrayList<The24StrengthsBoxes> <the24StrengthsBoxesList){
-        mThe24StrengthsBoxes = mThe24StrengthsBoxes;
+    public QuestionAdapter(ArrayList<Strengths> strengthsList){
+        mQuestionBoxes = strengthsList;
     }
 
     @NonNull
     @Override
-    public QuestionViewAdapter.questionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public questionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_item, parent, false);
-        QuestionViewAdapter.questionViewHolder qvh = new QuestionViewAdapter.questionViewHolder(v);
+        questionViewHolder qvh = new questionViewHolder(v);
 
         return qvh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuestionViewAdapter.questionViewHolder holder, int position) {
-        QuestionBoxes currentItem = mThe24StrengthsBoxes.get(position);
+    public void onBindViewHolder(@NonNull questionViewHolder holder, int position) {
+        Strengths currentItem = mQuestionBoxes.get(position);
 
-
-        holder.mImageIcon.setImageResource(currentItem.getImageIcon());
-        holder.mTxtExplanation.setText(currentItem.getTxtExplanation());
+        holder.mImageIcon.setImageResource(currentItem.getIcon());
+        holder.mTxtTitle.setText(currentItem.getTitle());
+        holder.mTxtQuestion.setText(currentItem.getQuestion());
 
         //get view from seekbar id
         View view = holder.itemView.findViewById(holder.mSeekBar.getId());
@@ -105,7 +105,7 @@ public class The24thStrengthAdapter {
         SharedPreferences sharedPref = view.getContext().getSharedPreferences("questionArray", MODE_PRIVATE);
 
         //get data stored from seekBar and insert into
-        String s1 = sharedPref.getString(String.valueOf(holder.mTxtExplanation.getText()+"_answer"),"");
+        String s1 = sharedPref.getString(holder.mTxtTitle.getText() + "_answer","");
         if (!s1.isEmpty()){
             //insert data if empty
             holder.questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
@@ -115,6 +115,8 @@ public class The24thStrengthAdapter {
 
     @Override
     public int getItemCount() {
-        return mThe24StrengthsBoxes.size();
+        return mQuestionBoxes.size();
     }
 }
+
+

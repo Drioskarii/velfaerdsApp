@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import Adapter.SelectViewAdapter;
+import Adapter.SelectAdapter;
 
 
 public class SelectPage extends TouchActivityHandler {
@@ -56,13 +56,13 @@ public class SelectPage extends TouchActivityHandler {
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewGod = findViewById(R.id.recyclerViewGood);
         recyclerViewGod.setLayoutManager(layoutManagerGood);
-        SelectViewAdapter goodAdapter = new SelectViewAdapter(this, questions, answers, selectImageUrls);
+        SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
         recyclerViewGod.setAdapter(goodAdapter);
 
         LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
-        SelectViewAdapter badAdapter = new SelectViewAdapter(this, questions, answers, selectImageUrls);
+        SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
         recyclerViewBad.setAdapter(badAdapter);
     }
 }
