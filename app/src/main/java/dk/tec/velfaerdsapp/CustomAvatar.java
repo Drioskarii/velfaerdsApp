@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import Adapter.CustomAvatarAdapter;
+import Adapter.AvatarAdapter;
 
 public class CustomAvatar extends TouchActivityHandler {
 
@@ -75,7 +75,7 @@ public class CustomAvatar extends TouchActivityHandler {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        CustomAvatarAdapter adapter = new CustomAvatarAdapter(this, mNames, mImageUrls);
+        AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 

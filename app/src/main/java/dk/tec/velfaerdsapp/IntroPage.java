@@ -1,7 +1,7 @@
 package dk.tec.velfaerdsapp;
 
-import Adapter.NothingSelectedSpinnerAdapter;
-import Adapter.CustomAvatarAdapter;
+import Adapter.SpinnerAdapter;
+import Adapter.AvatarAdapter;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -66,7 +66,7 @@ public class IntroPage extends TouchActivityHandler {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerGender.setAdapter(
-                new NothingSelectedSpinnerAdapter(
+                new SpinnerAdapter(
                         adapter,
                         R.layout.contact_spinner_row_nothing_selected,
                         this));
@@ -160,7 +160,7 @@ public class IntroPage extends TouchActivityHandler {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        CustomAvatarAdapter adapter = new CustomAvatarAdapter(this, mNames, mImageUrls);
+        AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 

@@ -7,29 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import android.widget.SpinnerAdapter;
 
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapter {
+public class SpinnerAdapter implements android.widget.SpinnerAdapter, ListAdapter {
 
     protected static final int EXTRA = 1;
-    protected SpinnerAdapter adapter;
+    protected android.widget.SpinnerAdapter adapter;
     protected Context context;
     protected int nothingSelectedLayout;
     protected int nothingSelectedDropdownLayout;
     protected LayoutInflater layoutInflater;
 
-    public NothingSelectedSpinnerAdapter(
-            SpinnerAdapter spinnerAdapter,
+    public SpinnerAdapter(
+            android.widget.SpinnerAdapter spinnerAdapter,
             int nothingSelectedLayout, Context context) {
         this(spinnerAdapter, nothingSelectedLayout, -1, context);
     }
 
 
-    public NothingSelectedSpinnerAdapter(SpinnerAdapter spinnerAdapter,
-                                         int nothingSelectedLayout, int nothingSelectedDropdownLayout, Context context) {
+    public SpinnerAdapter(android.widget.SpinnerAdapter spinnerAdapter,
+                          int nothingSelectedLayout, int nothingSelectedDropdownLayout, Context context) {
         this.adapter = spinnerAdapter;
         this.context = context;
         this.nothingSelectedLayout = nothingSelectedLayout;
