@@ -84,8 +84,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             super(itemView);
             btn = itemView.findViewById(R.id.onClickbtn);
             image = itemView.findViewById(R.id.imageIcon);
-            question = itemView.findViewById(R.id.txtQuestion);
-            answer = itemView.findViewById(R.id.txtAnswer);
+            question = itemView.findViewById(R.id.select_txtQuestion);
+            answer = itemView.findViewById(R.id.select_txtAnswer);
 
         }
     }
