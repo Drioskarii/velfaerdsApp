@@ -1,7 +1,6 @@
 package dk.tec.velfaerdsapp;
 
 import Adapter.QuestionAdapter;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,19 +27,10 @@ public class QuestionsPage extends TouchActivityHandler {
         setContentView(R.layout.activity_questions_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
 
-        // questions list
-        ArrayList<QuestionBoxes> questionList = new ArrayList<>();
-        questionList.add(new QuestionBoxes(R.drawable.intellectual, "Question 1"));
-        questionList.add(new QuestionBoxes(R.drawable.people_person, "Question 2"));
-        questionList.add(new QuestionBoxes(R.drawable.sharp_brained, "Question 3"));
-        questionList.add(new QuestionBoxes(R.drawable.intellectual, "Question 4"));
-        questionList.add(new QuestionBoxes(R.drawable.people_person, "Question 5"));
-        questionList.add(new QuestionBoxes(R.drawable.sharp_brained, "Question 6"));
-
         RecyclerView mQuestionRecyclerView = findViewById(R.id.recyclerView);
         mQuestionRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter mAdapter = new QuestionAdapter(questionList);
+        RecyclerView.Adapter mAdapter = new QuestionAdapter(Strengths.getQuestionList());
 
         mQuestionRecyclerView.setLayoutManager(mLayoutManager);
         mQuestionRecyclerView.setAdapter(mAdapter);

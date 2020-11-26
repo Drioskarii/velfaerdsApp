@@ -31,7 +31,7 @@
                 android:paddingStart="25dp">
 
                 <TextView
-                    android:id="@+id/txtExplanation"
+                    android:id="@+id/questions_txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
@@ -48,7 +48,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"/>
                 <TextView
-                    android:id="@+id/txtExplanationTwo"
+                    android:id="@+id/questions_txtQuestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="1"
