@@ -9,6 +9,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 import Adapter.QuestionAdapter;
+import Adapter.The24StrengthsAdapter;
 
 import static dk.tec.velfaerdsapp.R.layout.activity_the24_strength;
 
@@ -30,12 +31,11 @@ public class The24Strengths extends TouchActivityHandler {
         Strengths.add(new The24StrengthsBoxes(R.drawable.people_person, "Question 5"));
         Strengths.add(new The24StrengthsBoxes(R.drawable.sharp_brained, "Question 6"));
 
-        RecyclerView m24StrengthsRecyclerView = findViewById(R.id.the24StrenghtsRecyclerView);
-        m24StrengthsRecyclerView.setHasFixedSize(true);
+        RecyclerView mthe24StrenghtsRecyclerView = findViewById(R.id.the24StrenghtsRecyclerView);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter mAdapter = new QuestionAdapter(Strengths);
+        RecyclerView.Adapter mAdapter = new The24StrengthsAdapter(Strengths);
 
-        m24StrengthsRecyclerView.setLayoutManager(mLayoutManager);
-        m24StrengthsRecyclerView.setAdapter(mAdapter);
+        mthe24StrenghtsRecyclerView.setLayoutManager(mLayoutManager);
+        mthe24StrenghtsRecyclerView.setAdapter(mAdapter);
     }
 }

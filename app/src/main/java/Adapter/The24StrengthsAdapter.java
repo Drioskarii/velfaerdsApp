@@ -14,13 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.QuestionBoxes;
 import dk.tec.velfaerdsapp.The24Strengths;
 import dk.tec.velfaerdsapp.The24StrengthsBoxes;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class The24StrengthsAdapter {
+public class The24StrengthsAdapter extends RecyclerView.Adapter<The24StrengthsAdapter.the24StrengthViewHolder> {
     private final ArrayList<The24StrengthsBoxes> mThe24StrengthsBoxes;
     public static The24Strengths the24Strength;
 
@@ -37,84 +36,33 @@ public class The24StrengthsAdapter {
             mImageIcon = itemView.findViewById(R.id.imageIcon);
             mTxtExplanation = itemView.findViewById(R.id.txtExplanation);
             questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
-            mSeekBar = itemView.findViewById(R.id.seekBar);
-            mSeekBar.setProgress(3);
-            mSeekBar.setMax(5);
-
-            //Get SharedPreference shared_Pref myKey.xml
-            SharedPreferences sharedPref = mSeekBar.getContext().getSharedPreferences("questionArray", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
 
 
-
-            mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                }
-
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-
-                }
-
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                    int progress = mSeekBar.getProgress();
-                    String id = String.valueOf(mTxtExplanation.getText());
-                    //Insert data into the SharedPreferences
-                    String s1 = sharedPref.getString(String.valueOf(mTxtExplanation.getText()),"");
-                    if (s1.isEmpty()){
-                        questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                        questionsPage.answered++;
-                        questionsPage.questionsProgressBar.setProgress(questionsPage.answered);
-                    }
-                    editor.putString(id+"_answer", String.valueOf  (progress));
-                    editor.putString(id, id);
-                    editor.apply();
-                }
-            });
         }
     }
 
-    public The24StrengthsAdapter(ArrayList<The24StrengthsBoxes> <the24StrengthsBoxesList){
-        mThe24StrengthsBoxes = mThe24StrengthsBoxes;
+    public The24StrengthsAdapter(ArrayList<The24StrengthsBoxes> the24StrengthsBoxesList){
+        mThe24StrengthsBoxes = the24StrengthsBoxesList;
     }
 
     @NonNull
-    @Override
-    public QuestionAdapter.questionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_item, parent, false);
-        QuestionAdapter.questionViewHolder qvh = new QuestionAdapter.questionViewHolder(v);
+    public The24StrengthsAdapter.the24StrengthViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.the24strengths_item, parent, false);
+        The24StrengthsAdapter.the24StrengthViewHolder svh = new The24StrengthsAdapter.the24StrengthViewHolder(v);
 
-        return qvh;
+        return svh;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull QuestionAdapter.questionViewHolder holder, int position) {
-        QuestionBoxes currentItem = mThe24StrengthsBoxes.get(position);
-
+    public void onBindViewHolder(@NonNull The24StrengthsAdapter.the24StrengthViewHolder holder, int position) {
+        The24StrengthsBoxes currentItem = mThe24StrengthsBoxes.get(position);
 
         holder.mImageIcon.setImageResource(currentItem.getImageIcon());
         holder.mTxtExplanation.setText(currentItem.getTxtExplanation());
-
-        //get view from seekbar id
-        View view = holder.itemView.findViewById(holder.mSeekBar.getId());
-
-        //Get SharedPreference shared_Pref myKey.xml
-        SharedPreferences sharedPref = view.getContext().getSharedPreferences("questionArray", MODE_PRIVATE);
-
-        //get data stored from seekBar and insert into
-        String s1 = sharedPref.getString(String.valueOf(holder.mTxtExplanation.getText()+"_answer"),"");
-        if (!s1.isEmpty()){
-            //insert data if empty
-            holder.questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-            holder.mSeekBar.setProgress(Integer.parseInt(s1));
-        }
     }
 
     @Override
     public int getItemCount() {
-        return mThe24StrengthsBoxes.size();
-    }
+            return mThe24StrengthsBoxes.size();
+        }
+
 }
