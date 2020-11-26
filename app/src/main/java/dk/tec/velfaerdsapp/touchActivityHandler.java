@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class touchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static final int MIN_DISTANCE = 400;
+    private static final int MIN_DISTANCE = 500;
     private GestureDetector gestureDetector;
 
     @Override
