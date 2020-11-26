@@ -36,8 +36,6 @@ public class The24StrengthsAdapter extends RecyclerView.Adapter<The24StrengthsAd
             mImageIcon = itemView.findViewById(R.id.imageIcon);
             mTxtExplanation = itemView.findViewById(R.id.txtExplanation);
             questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
-
-
         }
     }
 
