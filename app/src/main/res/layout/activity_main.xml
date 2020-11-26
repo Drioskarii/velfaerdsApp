@@ -37,6 +37,7 @@
         android:id="@+id/layoutLogos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,32 +48,18 @@
             android:id="@+id/imgLogoVfvoe"
             android:layout_width="300sp"
             android:layout_height="100sp"
-            android:layout_marginTop="20sp"
             android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
             android:src="@drawable/logo_vfvoe" />
-
         <View style="@style/Divider" />
-
         <ImageView
             android:id="@+id/imgLogoTec"
             android:layout_width="300sp"
             android:layout_height="100sp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="30sp"
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
             android:src="@drawable/logo_tec" />
-
-        <View style="@style/Divider" />
-
-        <ImageView
-            android:id="@+id/imgLogoUg"
-            android:layout_width="300sp"
-            android:layout_height="100sp"
-            android:layout_marginTop="20sp"
-            android:contentDescription="@string/imgLogoUG_contentDescription"
-            android:onClick="logoClicked"
-            android:src="@drawable/logo_ug" />
 
         <View style="@style/Divider" />
     </LinearLayout>
@@ -80,9 +67,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutLogos">
@@ -92,38 +77,6 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:rowCount="2">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_gravity="center_horizontal"
-                android:text="Swipe mod højre for at se de 24 styrker"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3" ></TextView>
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:layout_gravity="center_horizontal"
-                android:text="Swipe mod venstre for at fortsætte"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3" ></TextView>
 
             <ImageView
                 android:id="@+id/imgSwipeBackward"
@@ -144,6 +97,38 @@
                 android:layout_columnWeight="1"
                 android:contentDescription="@string/SwipeForward_contentDescription"
                 android:src="@drawable/swipeforward"></ImageView>
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="Swipe mod højre for at se de 24 styrker"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="17sp"></TextView>
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="sans-serif"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="Swipe mod venstre for at fortsætte"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="17sp"></TextView>
         </GridLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

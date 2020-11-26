@@ -4,19 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".the24Strength"
+    tools:context=".The24Strength"
     android:background="@drawable/gradient_background">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/the24Strenghts"
+        <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="490dp"
-            android:layout_gravity="center"
-            android:src="@drawable/the24strenghts" />
+            android:scrollbars="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/the24StrenghtsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/the24strenghts" />
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"

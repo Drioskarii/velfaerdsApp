@@ -1,12 +1,10 @@
 package dk.tec.velfaerdsapp;
 
-import android.widget.SeekBar;
-
-public class questionboxes {
+public class The24StrengthsBoxes {
     private final int mImageIcon;
     private final String mTxtExplanation;
 
-    public questionboxes(int imageIcon, String txtExplanation){
+    public The24StrengthsBoxes(int imageIcon, String txtExplanation){
         mImageIcon = imageIcon;
         mTxtExplanation = txtExplanation;
     }

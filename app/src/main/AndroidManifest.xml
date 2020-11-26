@@ -10,15 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VelfaerdsApp">
-        <activity android:name=".touchActivityHandler" />
-        <activity android:name=".the24Strength" />
-        <activity android:name=".emailPage" />
-        <activity android:name=".selectPage" />
+        <activity android:name=".TouchActivityHandler" />
+        <activity android:name=".The24Strength" />
+        <activity android:name=".EmailPage" />
+        <activity android:name=".SelectPage" />
         <activity
-            android:name=".introPage"
+            android:name=".IntroPage"
             android:configChanges="orientation|screenSize|layoutDirection" />
-        <activity android:name=".questionsPage" />
-        <activity android:name=".customAvatar" />
+        <activity android:name=".QuestionsPage" />
+        <activity android:name=".CustomAvatar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

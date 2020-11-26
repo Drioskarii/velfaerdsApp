@@ -1,11 +1,11 @@
 package dk.tec.velfaerdsapp;
 
-public class selectBoxes {
+public class SelectBoxes {
     private final int mImageIcon;
     private final String txtQuestion;
     private final String txtAnswer;
 
-    public selectBoxes(int mImageIcon, String txtQuestion, String txtAnswer) {
+    public SelectBoxes(int mImageIcon, String txtQuestion, String txtAnswer) {
         this.mImageIcon = mImageIcon;
         this.txtQuestion = txtQuestion;
         this.txtAnswer = txtAnswer;

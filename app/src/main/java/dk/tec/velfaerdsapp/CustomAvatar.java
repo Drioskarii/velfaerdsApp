@@ -1,27 +1,20 @@
 package dk.tec.velfaerdsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import Adapter.customavataradapter;
+import Adapter.AvatarAdapter;
 
-public class customAvatar extends touchActivityHandler{
+public class CustomAvatar extends TouchActivityHandler {
 
-    private float x1, x2;
-    private static int MIN_DISTANCE = 400;
-    private GestureDetector gestureDetector;
     private static final String TAG = "customAvatar";
 
     //vars
@@ -41,8 +34,8 @@ public class customAvatar extends touchActivityHandler{
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
-    }
 
+    }
     private void getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
@@ -82,7 +75,7 @@ public class customAvatar extends touchActivityHandler{
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        customavataradapter adapter = new customavataradapter(this, mNames, mImageUrls);
+        AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 

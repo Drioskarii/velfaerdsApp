@@ -1,52 +1,33 @@
 package dk.tec.velfaerdsapp;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.Patterns;
-import android.view.GestureDetector;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.List;
 
-public class emailPage extends touchActivityHandler {
+public class EmailPage extends TouchActivityHandler {
 
-    private float x1, x2;
-    private static int MIN_DISTANCE = 400;
-    private GestureDetector gestureDetector;
+    private static final String TAG = "emailPage";
+
     List<EditText> EditTextList = new ArrayList<>();
     TableLayout tableLayout;
-    int id = 0;
+    int maxEmails = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +56,7 @@ public class emailPage extends touchActivityHandler {
         if (tableLayout.getChildCount() >= 8){
 
         }else  {
-            ++id;
+            ++maxEmails;
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -121,7 +102,7 @@ public class emailPage extends touchActivityHandler {
             Button btn = new Button(this);
             //button Parameters
             btn.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
-            btn.setLayoutParams(new TableRow.LayoutParams(dpToPx(24, this), dpToPx(24, emailPage.this)));
+            btn.setLayoutParams(new TableRow.LayoutParams(dpToPx(24, this), dpToPx(24, EmailPage.this)));
             //adding button
             tableRow.addView(btn);
             //adds tableRow to Tablelayout
@@ -159,7 +140,7 @@ public class emailPage extends touchActivityHandler {
         ArrayList<String> emailList = new ArrayList<String>();
         //For loop that fills in and sends mail I suppose
 
-        for (int i = 0; i <= id; i++) {
+        for (int i = 0; i <= maxEmails; i++) {
 
             emailList.add(EditTextList.get(i).getText().toString());
             //System.out.println(emailList);
