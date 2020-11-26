@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<ScrollView
+<!--<ScrollView -->
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
     <LinearLayout
@@ -124,7 +124,7 @@
     </LinearLayout>
 
 
-</ScrollView>
+<!--</ScrollView> -->
 
     <View style="@style/Divider" />
     <!--    De træk sig så vi har ikke adgang til filmen dog er den på youtube-->
