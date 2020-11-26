@@ -32,7 +32,7 @@
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="3"
-                android:text="@string/introducer_dig_selv"
+                android:text="@string/IntroPage_Title"
                 android:textColor="@color/white"
                 android:textSize="25sp" />
 
