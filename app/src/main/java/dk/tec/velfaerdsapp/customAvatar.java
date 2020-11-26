@@ -38,8 +38,8 @@ public class customAvatar extends touchActivityHandler{
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
-    }
 
+    }
     private void getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 

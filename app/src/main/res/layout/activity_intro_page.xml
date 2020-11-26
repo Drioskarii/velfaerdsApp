@@ -1,70 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout android:layout_height="match_parent"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".introPage"
-    android:id="@+id/clickPage"
-    android:background="@drawable/gradient_background">
-
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/clickPage"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/introducer_dig_selv"
-        android:gravity="center_horizontal"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif"
-        android:shadowColor="@color/black"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="3" />
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        android:orientation="vertical"
+        tools:context=".introPage">
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:hint="@string/introPage_Name"
-        android:inputType="textPersonName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/editTextJob"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:hint="@string/introPage_job"
-        android:inputType="textPersonName" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center_horizontal"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="@string/introducer_dig_selv"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
 
-    <Spinner
-        android:id="@+id/spinnerGender"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:gravity="left"
-        android:layout_gravity="center_horizontal"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:spinnerMode="dialog"
-        />
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:hint="@string/introPage_Name"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextJob"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:hint="@string/introPage_job"
+                android:inputType="textPersonName" />
+
+            <Spinner
+                android:id="@+id/spinnerGender"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="left"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/costemAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:orientation="vertical"
+            tools:context=".introPage">
+
+            <TextView
+                android:id="@+id/txtCustomAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:text="@string/din_avatar"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/txtCustomAvatarPreset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/v_lg_en_eksisterende"
+                android:textColor="@color/white"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
+                android:textSize="15sp"/>
+
+            <View style="@style/Divider" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <View style="@style/Divider" />
+
+            <ImageView
+                android:id="@+id/characterPlaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" />
+
+            <View style="@style/Divider" />
 
 
 
+        </LinearLayout>
 
 
-</LinearLayout>
+
+    </LinearLayout>
+
+
+
 <!--    De træk sig så vi har ikke adgang til filmen dog er den på youtube-->
 <!--    <com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
 <!--        android:id="@+id/player_view"-->
