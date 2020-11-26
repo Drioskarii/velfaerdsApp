@@ -12,7 +12,7 @@ import Adapter.QuestionAdapter;
 
 import static dk.tec.velfaerdsapp.R.layout.activity_the24_strength;
 
-public class The24Strength extends TouchActivityHandler {
+public class The24Strengths extends TouchActivityHandler {
 
     private static final String TAG = "the24Strength";
 

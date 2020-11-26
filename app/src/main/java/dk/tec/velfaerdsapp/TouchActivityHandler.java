@@ -38,7 +38,7 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                 if (Math.abs(valueX) > MIN_DISTANCE) {
                     if (x2 > x1) {
                         //swipe left / back
-                        if (this.toString().contains("MainActivity")) {startActivity(/* "Backward" */forward(this, The24Strength.class));}
+                        if (this.toString().contains("MainActivity")) {startActivity(/* "Backward" */forward(this, The24Strengths.class));}
                         else{backward(); }
                     } else {
                         //swipe right / forward

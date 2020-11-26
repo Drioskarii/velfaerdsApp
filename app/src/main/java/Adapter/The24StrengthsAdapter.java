@@ -15,14 +15,14 @@ import java.util.ArrayList;
 
 import dk.tec.velfaerdsapp.R;
 import dk.tec.velfaerdsapp.QuestionBoxes;
-import dk.tec.velfaerdsapp.The24Strength;
+import dk.tec.velfaerdsapp.The24Strengths;
 import dk.tec.velfaerdsapp.The24StrengthsBoxes;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class The24thStrengthAdapter {
+public class The24StrengthsAdapter {
     private final ArrayList<The24StrengthsBoxes> mThe24StrengthsBoxes;
-    public static The24Strength the24Strength;
+    public static The24Strengths the24Strength;
 
     public static class the24StrengthViewHolder extends RecyclerView.ViewHolder{
 
@@ -77,7 +77,7 @@ public class The24thStrengthAdapter {
         }
     }
 
-    public The24thStrengthAdapter(ArrayList<The24StrengthsBoxes> <the24StrengthsBoxesList){
+    public The24StrengthsAdapter(ArrayList<The24StrengthsBoxes> <the24StrengthsBoxesList){
         mThe24StrengthsBoxes = mThe24StrengthsBoxes;
     }
 
