@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class IntroPage extends TouchActivityHandler {
 
-    private static final String TAG = "introPage";
+    private static final String TAG = "IntroPage";
     //Initialising
     private EditText enterName;
     private EditText enterJob;
@@ -33,7 +33,6 @@ public class IntroPage extends TouchActivityHandler {
 
     AnimationDrawable animation;
     ImageView characterPlaceholder;
-
 
     String selectedItem = "";
     FrameLayout.LayoutParams paramsNotFullscreen;
@@ -49,35 +48,28 @@ public class IntroPage extends TouchActivityHandler {
         setContentView(R.layout.activity_intro_page);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
-        //playerView = (PlayerView) findViewById(R.id.player_view);
         spinnerGender = findViewById(R.id.spinnerGender);
-
 
         //Insert specific data stored in sharedPrefs
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-        //int s3 = sharedPreferences.getInt("gGender", -1);
-
         enterName.setText(s1);
         enterJob.setText(s2);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.køn_array, R.layout.spinner_item_nomargin);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spinnerGender.setAdapter(
                 new SpinnerAdapter(
                         adapter,
                         R.layout.contact_spinner_row_nothing_selected,
                         this));
 
-
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
-
     }
 
     @Override
@@ -97,12 +89,6 @@ public class IntroPage extends TouchActivityHandler {
         editor.putString("gJob", job);
         editor.putInt("gGender" , selectedID);
         editor.apply();
-    }
-
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
     }
 
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
@@ -169,38 +155,6 @@ public class IntroPage extends TouchActivityHandler {
         super.onWindowFocusChanged(hasFocus);
         animation.start();
     }
-
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
-    }
-
-
 }
 
 

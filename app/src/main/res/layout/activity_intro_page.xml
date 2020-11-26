@@ -6,10 +6,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
-    -->
     <LinearLayout
         android:id="@+id/clickPage"
         android:layout_width="match_parent"
@@ -119,8 +115,5 @@
             <View style="@style/Divider" />
 
         </LinearLayout>
-
     </LinearLayout>
-
-<!--</ScrollView> -->
 </FrameLayout>

@@ -43,12 +43,12 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                     } else {
                         //swipe right / forward
                         if (this.toString().contains("MainActivity")){startActivity(forward(this, IntroPage.class));}
-                        else if (this.toString().contains("the24Strength")){backward();}
-                        else if (this.toString().contains("introPage")){startActivity(forward(this, QuestionsPage.class));}
-                        else if (this.toString().contains("questionsPage")) {
+                        else if (this.toString().contains("The24Strength")){backward();}
+                        else if (this.toString().contains("IntroPage")){startActivity(forward(this, QuestionsPage.class));}
+                        else if (this.toString().contains("QuestionsPage")) {
                             if (QuestionsPage.answered == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
                             else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
-                        else if (this.toString().contains("selectPage")){startActivity(forward(this, EmailPage.class));}
+                        else if (this.toString().contains("SelectPage")){startActivity(forward(this, EmailPage.class));}
                     }
                 }
         }
