@@ -6,7 +6,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/clickPage"
         android:layout_width="match_parent"
@@ -83,19 +85,27 @@
                 android:text="@string/din_avatar"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="32sp" />
+
+
+            <ImageView
+                android:id="@+id/characterPlaceholder"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/txtCustomAvatarPreset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/v_lg_en_eksisterende"
-                android:textColor="@color/white"
                 android:shadowColor="@color/black"
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="3"
-                android:textSize="15sp"/>
+                android:text="@string/v_lg_en_eksisterende"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
             <View style="@style/Divider" />
 
@@ -103,31 +113,21 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
 
             <View style="@style/Divider" />
-
-            <ImageView
-                android:id="@+id/characterPlaceholder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp" />
-
-            <View style="@style/Divider" />
-
 
 
         </LinearLayout>
 
 
-
     </LinearLayout>
 
 
+</ScrollView>
 
-<!--    De træk sig så vi har ikke adgang til filmen dog er den på youtube-->
+    <View style="@style/Divider" />
+    <!--    De træk sig så vi har ikke adgang til filmen dog er den på youtube-->
 <!--    <com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
 <!--        android:id="@+id/player_view"-->
 <!--        android:layout_width="360dp"-->
