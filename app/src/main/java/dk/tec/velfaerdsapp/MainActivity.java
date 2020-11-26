@@ -20,6 +20,13 @@ public class MainActivity extends touchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
+        settings1.edit().clear().apply();
+        SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
+        settings2.edit().clear().apply();
+        SharedPreferences settings3 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
+        settings3.edit().clear().apply();
     }
 
     public void logoClicked(View view) {
@@ -34,22 +41,8 @@ public class MainActivity extends touchActivityHandler {
             url = "https://videnscenterportalen.dk/vtoe/";
         else if (id == R.id.imgLogoTec)
             url = "https://www.tec.dk/";
-        //De Træk sig
-        //else if (id == R.id.imgLogoUg)
-        //url = "https://www.ug.dk/";
 
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
-        settings1.edit().clear().apply();
-        SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
-        settings2.edit().clear().apply();
-        SharedPreferences settings3 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
-        settings3.edit().clear().apply();
-    } 
 }
