@@ -83,15 +83,15 @@ public class The24thStrengthAdapter {
 
     @NonNull
     @Override
-    public QuestionViewAdapter.questionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public QuestionAdapter.questionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.questions_item, parent, false);
-        QuestionViewAdapter.questionViewHolder qvh = new QuestionViewAdapter.questionViewHolder(v);
+        QuestionAdapter.questionViewHolder qvh = new QuestionAdapter.questionViewHolder(v);
 
         return qvh;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull QuestionViewAdapter.questionViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull QuestionAdapter.questionViewHolder holder, int position) {
         QuestionBoxes currentItem = mThe24StrengthsBoxes.get(position);
 
 

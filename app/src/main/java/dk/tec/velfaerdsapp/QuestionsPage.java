@@ -1,6 +1,6 @@
 package dk.tec.velfaerdsapp;
 
-import Adapter.QuestionViewAdapter;
+import Adapter.QuestionAdapter;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,7 +40,7 @@ public class QuestionsPage extends TouchActivityHandler {
         RecyclerView mQuestionRecyclerView = findViewById(R.id.recyclerView);
         mQuestionRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter mAdapter = new QuestionViewAdapter(questionList);
+        RecyclerView.Adapter mAdapter = new QuestionAdapter(questionList);
 
         mQuestionRecyclerView.setLayoutManager(mLayoutManager);
         mQuestionRecyclerView.setAdapter(mAdapter);

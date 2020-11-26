@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
 
-public class SelectViewAdapter extends RecyclerView.Adapter<SelectViewAdapter.ViewHolder> {
+public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -29,7 +29,7 @@ public class SelectViewAdapter extends RecyclerView.Adapter<SelectViewAdapter.Vi
     private ArrayList<String> imageList = new ArrayList<>();
     private Context mContext;
 
-    public SelectViewAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls) {
+    public SelectAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls) {
         answerList = answers;
         questionList = questions;
         imageList = imageUrls;

@@ -17,7 +17,7 @@ import dk.tec.velfaerdsapp.QuestionsPage;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class QuestionViewAdapter extends RecyclerView.Adapter<QuestionViewAdapter.questionViewHolder> {
+public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.questionViewHolder> {
 
     private final ArrayList<QuestionBoxes> mQuestionBoxes;
     public static QuestionsPage questionsPage;
@@ -75,7 +75,7 @@ public class QuestionViewAdapter extends RecyclerView.Adapter<QuestionViewAdapte
        }
    }
 
-   public QuestionViewAdapter(ArrayList<QuestionBoxes> questionBoxesList){
+   public QuestionAdapter(ArrayList<QuestionBoxes> questionBoxesList){
         mQuestionBoxes = questionBoxesList;
    }
 
