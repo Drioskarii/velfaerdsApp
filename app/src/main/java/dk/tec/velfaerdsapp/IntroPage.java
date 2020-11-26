@@ -1,55 +1,28 @@
 package dk.tec.velfaerdsapp;
 
 import Adapter.NothingSelectedSpinnerAdapter;
-import Adapter.customavataradapter;
+import Adapter.CustomAvatarAdapter;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.drawable.AnimationDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-import java.util.List;
-import android.widget.VideoView;
-import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.ExoPlayerFactory;
-import com.google.android.exoplayer2.PlaybackParameters;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.SimpleExoPlayer;
-import com.google.android.exoplayer2.Timeline;
-import com.google.android.exoplayer2.source.ExtractorMediaSource;
-import com.google.android.exoplayer2.source.TrackGroupArray;
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-import com.google.android.exoplayer2.ui.PlayerView;
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
-import com.google.android.exoplayer2.upstream.RawResourceDataSource;
-import com.google.android.exoplayer2.util.Util;
 
-public class introPage extends touchActivityHandler {
+public class IntroPage extends TouchActivityHandler {
 
     private static final String TAG = "introPage";
     //Initialising
@@ -187,7 +160,7 @@ public class introPage extends touchActivityHandler {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        customavataradapter adapter = new customavataradapter(this, mNames, mImageUrls);
+        CustomAvatarAdapter adapter = new CustomAvatarAdapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 

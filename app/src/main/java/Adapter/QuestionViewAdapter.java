@@ -1,31 +1,26 @@
 package Adapter;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.questionboxes;
-import dk.tec.velfaerdsapp.questionsPage;
+import dk.tec.velfaerdsapp.QuestionBoxes;
+import dk.tec.velfaerdsapp.QuestionsPage;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapter.questionViewHolder> {
+public class QuestionViewAdapter extends RecyclerView.Adapter<QuestionViewAdapter.questionViewHolder> {
 
-    private final ArrayList<questionboxes> mQuestionBoxes;
-    public static questionsPage questionsPage;
+    private final ArrayList<QuestionBoxes> mQuestionBoxes;
+    public static QuestionsPage questionsPage;
 
    public static class questionViewHolder extends RecyclerView.ViewHolder{
 
@@ -80,7 +75,7 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
        }
    }
 
-   public questionViewAdapter(ArrayList<questionboxes> questionBoxesList){
+   public QuestionViewAdapter(ArrayList<QuestionBoxes> questionBoxesList){
         mQuestionBoxes = questionBoxesList;
    }
 
@@ -95,7 +90,7 @@ public class questionViewAdapter extends RecyclerView.Adapter<questionViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull questionViewHolder holder, int position) {
-        questionboxes currentItem = mQuestionBoxes.get(position);
+        QuestionBoxes currentItem = mQuestionBoxes.get(position);
 
 
         holder.mImageIcon.setImageResource(currentItem.getImageIcon());

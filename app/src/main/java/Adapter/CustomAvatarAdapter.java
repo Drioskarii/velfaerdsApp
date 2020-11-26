@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
 
-public class customavataradapter extends RecyclerView.Adapter<customavataradapter.ViewHolder> {
+public class CustomAvatarAdapter extends RecyclerView.Adapter<CustomAvatarAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -27,7 +27,7 @@ public class customavataradapter extends RecyclerView.Adapter<customavataradapte
     private ArrayList<String> mImageUrls = new ArrayList<>();
     private Context mContext;
 
-    public customavataradapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
+    public CustomAvatarAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
         mNames = names;
         mImageUrls = imageUrls;
         mContext = context;

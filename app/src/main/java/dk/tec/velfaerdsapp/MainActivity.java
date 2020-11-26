@@ -1,18 +1,13 @@
 package dk.tec.velfaerdsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 
-public class MainActivity extends touchActivityHandler {
+public class MainActivity extends TouchActivityHandler {
 
     private static final String TAG = "mainActivity";
 

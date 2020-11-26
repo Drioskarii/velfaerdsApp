@@ -1,7 +1,6 @@
 package Adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +19,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
 
-import static android.content.Context.MODE_PRIVATE;
-
-public class selectViewAdapter extends RecyclerView.Adapter<selectViewAdapter.ViewHolder> {
+public class SelectViewAdapter extends RecyclerView.Adapter<SelectViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -32,7 +29,7 @@ public class selectViewAdapter extends RecyclerView.Adapter<selectViewAdapter.Vi
     private ArrayList<String> imageList = new ArrayList<>();
     private Context mContext;
 
-    public selectViewAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls) {
+    public SelectViewAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls) {
         answerList = answers;
         questionList = questions;
         imageList = imageUrls;

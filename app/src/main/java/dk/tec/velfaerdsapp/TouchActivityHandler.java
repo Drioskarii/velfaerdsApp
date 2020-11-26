@@ -2,18 +2,14 @@ package dk.tec.velfaerdsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class touchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class TouchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
     private static final int MIN_DISTANCE = 500;
@@ -42,17 +38,17 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
                 if (Math.abs(valueX) > MIN_DISTANCE) {
                     if (x2 > x1) {
                         //swipe left / back
-                        if (this.toString().contains("MainActivity")) {startActivity(/* "Backward" */forward(this, the24Strength.class));}
+                        if (this.toString().contains("MainActivity")) {startActivity(/* "Backward" */forward(this, The24Strength.class));}
                         else{backward(); }
                     } else {
                         //swipe right / forward
-                        if (this.toString().contains("MainActivity")){startActivity(forward(this, introPage.class));}
+                        if (this.toString().contains("MainActivity")){startActivity(forward(this, IntroPage.class));}
                         else if (this.toString().contains("the24Strength")){backward();}
-                        else if (this.toString().contains("introPage")){startActivity(forward(this, questionsPage.class));}
+                        else if (this.toString().contains("introPage")){startActivity(forward(this, QuestionsPage.class));}
                         else if (this.toString().contains("questionsPage")) {
-                            if (questionsPage.answered == questionsPage.count){ startActivity(forward(this, selectPage.class)); }
+                            if (QuestionsPage.answered == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
                             else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
-                        else if (this.toString().contains("selectPage")){startActivity(forward(this, emailPage.class));}
+                        else if (this.toString().contains("selectPage")){startActivity(forward(this, EmailPage.class));}
                     }
                 }
         }

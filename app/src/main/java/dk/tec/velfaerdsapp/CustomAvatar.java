@@ -1,23 +1,19 @@
 package dk.tec.velfaerdsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 
-import Adapter.customavataradapter;
+import Adapter.CustomAvatarAdapter;
 
-public class customAvatar extends touchActivityHandler{
+public class CustomAvatar extends TouchActivityHandler {
 
     private static final String TAG = "customAvatar";
 
@@ -79,7 +75,7 @@ public class customAvatar extends touchActivityHandler{
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        customavataradapter adapter = new customavataradapter(this, mNames, mImageUrls);
+        CustomAvatarAdapter adapter = new CustomAvatarAdapter(this, mNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 
