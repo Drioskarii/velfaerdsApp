@@ -19,9 +19,6 @@ import Adapter.customavataradapter;
 
 public class customAvatar extends touchActivityHandler{
 
-    private float x1, x2;
-    private static int MIN_DISTANCE = 400;
-    private GestureDetector gestureDetector;
     private static final String TAG = "customAvatar";
 
     //vars

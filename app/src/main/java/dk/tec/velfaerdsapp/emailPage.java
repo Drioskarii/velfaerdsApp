@@ -41,12 +41,11 @@ import java.util.List;
 
 public class emailPage extends touchActivityHandler {
 
-    private float x1, x2;
-    private static int MIN_DISTANCE = 400;
-    private GestureDetector gestureDetector;
+    private static final String TAG = "emailPage";
+
     List<EditText> EditTextList = new ArrayList<>();
     TableLayout tableLayout;
-    int id = 0;
+    int maxEmails = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +74,7 @@ public class emailPage extends touchActivityHandler {
         if (tableLayout.getChildCount() >= 8){
 
         }else  {
-            ++id;
+            ++maxEmails;
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
@@ -159,7 +158,7 @@ public class emailPage extends touchActivityHandler {
         ArrayList<String> emailList = new ArrayList<String>();
         //For loop that fills in and sends mail I suppose
 
-        for (int i = 0; i <= id; i++) {
+        for (int i = 0; i <= maxEmails; i++) {
 
             emailList.add(EditTextList.get(i).getText().toString());
             //System.out.println(emailList);

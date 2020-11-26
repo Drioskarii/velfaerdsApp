@@ -14,6 +14,8 @@ import android.view.View;
 
 public class MainActivity extends touchActivityHandler {
 
+    private static final String TAG = "mainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +35,8 @@ public class MainActivity extends touchActivityHandler {
         else if (id == R.id.imgLogoTec)
             url = "https://www.tec.dk/";
         //De Træk sig
-//        else if (id == R.id.imgLogoUg)
-//            url = "https://www.ug.dk/";
+        //else if (id == R.id.imgLogoUg)
+        //url = "https://www.ug.dk/";
 
         intent.setData(Uri.parse(url));
         startActivity(intent);
@@ -49,5 +51,5 @@ public class MainActivity extends touchActivityHandler {
         settings2.edit().clear().commit();
         SharedPreferences settings3 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
         settings3.edit().clear().commit();
-    }
+    } 
 }

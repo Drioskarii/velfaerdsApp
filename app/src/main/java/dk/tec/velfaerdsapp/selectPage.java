@@ -23,6 +23,7 @@ import Adapter.selectViewAdapter;
 
 public class selectPage extends touchActivityHandler {
 
+    private static final String TAG = "selectPage";
     //vars
     private ArrayList<String> questions = new ArrayList<>();
     private ArrayList<String> answers = new ArrayList<>();

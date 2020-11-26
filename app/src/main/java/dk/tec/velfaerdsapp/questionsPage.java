@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class questionsPage extends touchActivityHandler {
 
+    private static final String TAG = "questionsPage";
+
     public static ProgressBar questionsProgressBar;
     public static int count;
     public static int answered;

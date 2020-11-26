@@ -42,18 +42,13 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
                 if (Math.abs(valueX) > MIN_DISTANCE) {
                     if (x2 > x1) {
                         //swipe left / back
-                        if (this.toString().contains("MainActivity")) {startActivity(backward(this, the24Strength.class));}
-                        else if (this.toString().contains("the24Strength")){backward(); }
-                        //else if (this.toString().contains("introPage")){backward(); }
-                        else if (this.toString().contains("customAvatar")){backward(); }
-                        else if (this.toString().contains("questionsPage")){backward();}
-                        else if (this.toString().contains("selectPage")){backward(); }
-                        else if (this.toString().contains("emailPage")){backward(); }
+                        if (this.toString().contains("MainActivity")) {startActivity(/* "Backward" */forward(this, the24Strength.class));}
+                        else{backward(); }
                     } else {
                         //swipe right / forward
                         if (this.toString().contains("MainActivity")){startActivity(forward(this, introPage.class));}
                         else if (this.toString().contains("the24Strength")){backward();}
-                        //else if (this.toString().contains("introPage")){startActivity(forward(this, customAvatar.class));}
+                        else if (this.toString().contains("introPage")){startActivity(forward(this, customAvatar.class));}
                         else if (this.toString().contains("customAvatar")){startActivity(forward(this, questionsPage.class));}
                         else if (this.toString().contains("questionsPage")) {
                             if (questionsPage.answered == questionsPage.count){ startActivity(forward(this, selectPage.class)); }
@@ -71,10 +66,6 @@ public class touchActivityHandler extends AppCompatActivity implements GestureDe
     }
 
     //Backward er altid swipe ( venstre mod højre )
-    public Intent backward(Context context, Class toClass) {
-        return new Intent(context, toClass);
-    }
-
     public void backward() {
         finish();
     }
