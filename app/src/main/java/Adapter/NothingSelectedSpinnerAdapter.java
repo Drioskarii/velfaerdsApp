@@ -38,7 +38,7 @@ public class NothingSelectedSpinnerAdapter implements SpinnerAdapter, ListAdapte
         System.out.println("test 0");
 
         SharedPreferences sharedPreferences = this.context.getSharedPreferences("introValues", MODE_PRIVATE);
-        String s1 = sharedPreferences.getString("gGender", "");
+//        String s1 = sharedPreferences.getString("gGender", "");
 
     }
 

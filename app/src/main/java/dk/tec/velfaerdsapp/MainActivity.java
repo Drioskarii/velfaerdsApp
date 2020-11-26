@@ -32,8 +32,9 @@ public class MainActivity extends touchActivityHandler {
             url = "https://videnscenterportalen.dk/vtoe/";
         else if (id == R.id.imgLogoTec)
             url = "https://www.tec.dk/";
-        else if (id == R.id.imgLogoUg)
-            url = "https://www.ug.dk/";
+        //De Træk sig
+//        else if (id == R.id.imgLogoUg)
+//            url = "https://www.ug.dk/";
 
         intent.setData(Uri.parse(url));
         startActivity(intent);

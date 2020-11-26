@@ -65,22 +65,22 @@
 
 
 </LinearLayout>
-
-    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-        android:id="@+id/player_view"
-        android:layout_width="360dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="50dp"
-        app:resize_mode="fit"
-        app:hide_on_touch="true"
-        app:show_timeout="5000"
-        app:rewind_increment="10000"
-        app:fastforward_increment="10000"
-        app:use_controller="true"
-        android:background="@android:color/background_dark"
-        app:player_layout_id="@layout/exo_simple_player_view"
-        app:controller_layout_id="@layout/exo_playback_control_view"
-        />
+<!--    De træk sig så vi har ikke adgang til filmen dog er den på youtube-->
+<!--    <com.google.android.exoplayer2.ui.SimpleExoPlayerView-->
+<!--        android:id="@+id/player_view"-->
+<!--        android:layout_width="360dp"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_gravity="center_horizontal|bottom"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        app:resize_mode="fit"-->
+<!--        app:hide_on_touch="true"-->
+<!--        app:show_timeout="5000"-->
+<!--        app:rewind_increment="10000"-->
+<!--        app:fastforward_increment="10000"-->
+<!--        app:use_controller="true"-->
+<!--        android:background="@android:color/background_dark"-->
+<!--        app:player_layout_id="@layout/exo_simple_player_view"-->
+<!--        app:controller_layout_id="@layout/exo_playback_control_view"-->
+<!--        />-->
 
 </FrameLayout>

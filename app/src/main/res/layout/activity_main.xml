@@ -62,19 +62,19 @@
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
             android:src="@drawable/logo_tec" />
+<!--    De træk sug-->
+<!--      <View style="@style/Divider" />-->
 
-        <View style="@style/Divider" />
+<!--        <ImageView-->
+<!--            android:id="@+id/imgLogoUg"-->
+<!--            android:layout_width="300sp"-->
+<!--            android:layout_height="100sp"-->
+<!--            android:layout_marginTop="20sp"-->
+<!--            android:contentDescription="@string/imgLogoUG_contentDescription"-->
+<!--            android:onClick="logoClicked"-->
+<!--            android:src="@drawable/logo_ug" />-->
 
-        <ImageView
-            android:id="@+id/imgLogoUg"
-            android:layout_width="300sp"
-            android:layout_height="100sp"
-            android:layout_marginTop="20sp"
-            android:contentDescription="@string/imgLogoUG_contentDescription"
-            android:onClick="logoClicked"
-            android:src="@drawable/logo_ug" />
-
-        <View style="@style/Divider" />
+<!--        <View style="@style/Divider" />-->
     </LinearLayout>
 
     <LinearLayout

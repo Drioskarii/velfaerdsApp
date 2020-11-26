@@ -71,26 +71,26 @@ public class introPage extends touchActivityHandler {
         setContentView(R.layout.activity_intro_page);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
-        playerView = (PlayerView) findViewById(R.id.player_view);
+        //playerView = (PlayerView) findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
         clickpage = findViewById(R.id.clickPage);
         spinnerGender = findViewById(R.id.spinnerGender);
 
 
-        //Print any old data stored in sharedPrefs
+        //Insert specific data stored in sharedPrefs
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
-        int s3 = sharedPreferences.getInt("gGender", -1);
+//        int s3 = sharedPreferences.getInt("gGender", -1);
 
 
 
         enterName.setText(s1);
         enterJob.setText(s2);
 
-
+        //VI HARD IKKE RETTIGHEDER TIL FILMENE LÆNGERE
         //Videoplayer initialisation and binding to video file.
-        exoplayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
+  /*      exoplayer = ExoPlayerFactory.newSimpleInstance(this, new DefaultTrackSelector());
         DefaultDataSourceFactory defaultDataSourceFactory = new DefaultDataSourceFactory(this, Util.getUserAgent(this, "velfaerdsapp"));
         ExtractorMediaSource extractorMediaSource = new ExtractorMediaSource.Factory(defaultDataSourceFactory).createMediaSource(RawResourceDataSource.buildRawResourceUri(R.raw.styrker_video));
         exoplayer.prepare(extractorMediaSource);
@@ -98,10 +98,10 @@ public class introPage extends touchActivityHandler {
         playerView.setKeepScreenOn(true);
 
         //Pause on initialise
-        exoplayer.setPlayWhenReady(false);
+        exoplayer.setPlayWhenReady(false);*/
 
 
-        exoplayer.addListener(new Player.EventListener() {
+        /*exoplayer.addListener(new Player.EventListener() {
             @Override
             public void onTimelineChanged(Timeline timeline, Object manifest, int reason) {
 
@@ -152,9 +152,9 @@ public class introPage extends touchActivityHandler {
             public void onSeekProcessed() {
 
             }
-        });
+        });*/
 
-        fullscreenButton.setOnClickListener(new View.OnClickListener() {
+/*        fullscreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -168,7 +168,7 @@ public class introPage extends touchActivityHandler {
                     fullscreen = true;
                 }
             }
-        });
+        });*/
 
         this.gestureDetector = new GestureDetector(introPage.this, this);
         clickpage.setOnTouchListener(new View.OnTouchListener() {
@@ -266,8 +266,8 @@ public class introPage extends touchActivityHandler {
 
         }
     }
-
-    @Override
+ //To fullscreen Video
+/*    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
@@ -290,5 +290,5 @@ public class introPage extends touchActivityHandler {
             fullscreenButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_fullscreen_open));
             playerView.setLayoutParams(paramsNotFullscreen);
         }
-    }
+    }*/
 }
