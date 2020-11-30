@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.Toast;
 
 public class TouchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -49,7 +48,8 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                             startActivity(forward(this, SelectPage.class));}
                             //if (QuestionsPage.answered == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
                             //else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
-                        else if (this.toString().contains("SelectPage")){startActivity(forward(this, EmailPage.class));}
+                        else if (this.toString().contains("SelectPage")){startActivity(forward(this, ResultPage.class));}
+                        else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }
                 }
         }
