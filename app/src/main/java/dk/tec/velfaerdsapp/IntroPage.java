@@ -18,7 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
@@ -28,7 +30,11 @@ public class IntroPage extends TouchActivityHandler {
     //Initialising
     private EditText enterName;
     private EditText enterJob;
+    private ArrayList<String> mNames1 = new ArrayList<>();
+    private ArrayList<String> mNames2 = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls1 = new ArrayList<>();
+    private ArrayList<String> mImageUrls2 = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
     AnimationDrawable animation;
@@ -70,6 +76,21 @@ public class IntroPage extends TouchActivityHandler {
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
+
+        spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                System.out.println("Positionen er: " + position);
+                initRecyclerView();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
     }
 
     @Override
@@ -95,9 +116,12 @@ public class IntroPage extends TouchActivityHandler {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            System.out.println("Positionen er:" + position);
             selectedItem = parent.getItemAtPosition(position).toString();
             if (!selectedItem.equals("Vælg køn")) {
                 Toast.makeText(parent.getContext(), "Køn valgt: " + selectedItem, Toast.LENGTH_LONG).show();
+
+                initRecyclerView();
             }
         }
 
@@ -110,33 +134,38 @@ public class IntroPage extends TouchActivityHandler {
     private void getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        mNames.add("Trondheim");
+        mImageUrls.add("https://sigurdbarrett.dk/wp-content/uploads/2020/09/Syng-julen-ind-med-Sigurd-og-Bjornen-Bjorn-FORSIDE.jpg");
+        mImageUrls1.add("https://sigurdbarrett.dk/wp-content/uploads/2020/09/Syng-julen-ind-med-Sigurd-og-Bjornen-Bjorn-FORSIDE.jpg");
+        mNames.add("Sigurd");
+        mNames1.add("Sigurd");
 
-        mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        mNames.add("Portugal");
+        mImageUrls.add("https://spejder.dk/sites/default/files/styles/page_width_16_9/public/laks_track.jpg?itok=VN5da_ab");
+        mImageUrls1.add("https://spejder.dk/sites/default/files/styles/page_width_16_9/public/laks_track.jpg?itok=VN5da_ab");
+        mNames.add("Lakserytteren");
+        mNames1.add("Lakserytteren");
 
-        mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
-        mNames.add("Rocky Mountain National Park");
-
-
-        mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        mNames.add("Mahahual");
-
-        mImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
-        mNames.add("Frozen Lake");
+        mImageUrls.add("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg/1920px-Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg");
+        mImageUrls1.add("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg/1920px-Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg");
+        mNames.add("Hr. Skæg");
+        mNames1.add("Hr. Skæg");
 
 
-        mImageUrls.add("https://i.redd.it/glin0nwndo501.jpg");
-        mNames.add("White Sands Desert");
+        mImageUrls.add("https://musikhuzet.dk/nonsec/Pix05/20121212114418.jpg.ashx?Width=760");
+        mImageUrls2.add("https://musikhuzet.dk/nonsec/Pix05/20121212114418.jpg.ashx?Width=760");
+        mNames.add("Katrine");
+        mNames2.add("Katrine");
 
-        mImageUrls.add("https://i.redd.it/obx4zydshg601.jpg");
-        mNames.add("Austrailia");
+        mImageUrls.add("https://images.sn.dk/37/1327237_0_398_0_0_0_0_4.jpg");
+        mImageUrls2.add("https://images.sn.dk/37/1327237_0_398_0_0_0_0_4.jpg");
+        mNames.add("Mille");
+        mNames2.add("Mille");
 
-        mImageUrls.add("https://i.imgur.com/ZcLLrkY.jpg");
-        mNames.add("Washington");
 
-        initRecyclerView();
+        mImageUrls.add("https://asset.dr.dk/imagescaler/?protocol=http&server=dr-billeder-s3-cdn.dr.dk&file=%2FDR%2FPublic%2F97110746b7a5da1930088ab986ba0bd4dab7af63.jpg&scaleAfter=crop&quality=70&w=720&h=480");
+        mImageUrls2.add("https://asset.dr.dk/imagescaler/?protocol=http&server=dr-billeder-s3-cdn.dr.dk&file=%2FDR%2FPublic%2F97110746b7a5da1930088ab986ba0bd4dab7af63.jpg&scaleAfter=crop&quality=70&w=720&h=480");
+        mNames.add("Silja");
+        mNames2.add("Silja");
+
 
     }
 
@@ -144,10 +173,26 @@ public class IntroPage extends TouchActivityHandler {
         Log.d(TAG, "initRecyclerView: init recyclerview");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        TextView textView = findViewById(R.id.txtCustomAvatarPreset);
+
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
-        recyclerView.setAdapter(adapter);
+
+        int selectedID =  spinnerGender.getSelectedItemPosition();
+        if(selectedID == 1){
+            AvatarAdapter adapter = new AvatarAdapter(this, mNames1, mImageUrls1);
+            textView.setVisibility(TextView.VISIBLE);
+            recyclerView.setAdapter(adapter);
+        } else if(selectedID == 2){
+            AvatarAdapter adapter = new AvatarAdapter(this, mNames2, mImageUrls2);
+            textView.setVisibility(TextView.VISIBLE);
+            recyclerView.setAdapter(adapter);
+        }else if(selectedID == 3){
+            AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
+            textView.setVisibility(TextView.VISIBLE);
+            recyclerView.setAdapter(adapter);
+        } else{ }
     }
 
     @Override

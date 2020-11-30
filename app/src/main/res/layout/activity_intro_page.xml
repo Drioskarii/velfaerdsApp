@@ -4,15 +4,20 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/gradient_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
 
     <LinearLayout
         android:id="@+id/clickPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_background"
         android:orientation="vertical"
-        tools:context=".IntroPage">
+        tools:context=".IntroPage"
+        android:layout_margin="25dp">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,8 +72,9 @@
             android:id="@+id/costemAvatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
             android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             tools:context=".IntroPage">
 
             <TextView
@@ -88,9 +94,10 @@
             <ImageView
                 android:id="@+id/characterPlaceholder"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp" />
+
 
             <TextView
                 android:id="@+id/txtCustomAvatarPreset"
@@ -102,7 +109,8 @@
                 android:shadowRadius="3"
                 android:text="@string/v_lg_en_eksisterende"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:visibility="invisible"/>
 
             <View style="@style/Divider" />
 
@@ -114,6 +122,8 @@
 
             <View style="@style/Divider" />
 
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
+
 </FrameLayout>
