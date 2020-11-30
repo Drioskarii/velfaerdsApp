@@ -32,8 +32,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private ArrayList<String> answerList;
     private ArrayList<String> imageList = new ArrayList<>();
     private Context mContext;
-    boolean isClicked = false;
-
+    int confirmCounter = 0;
 
 
     public SelectAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls) {
@@ -48,6 +47,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_item, parent, false);
         return new ViewHolder(view);
+
     }
 
     @Override
@@ -63,31 +63,57 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.question.setText(questionList.get(position));
         holder.selectConfirm.setVisibility(View.GONE);
 
+        SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+
         holder.btn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
-                Log.d(TAG, "onClick: clicked on a image: " + questionList.get(position) + answerList.get(position));
-                Toast.makeText(mContext, questionList.get(position)+answerList.get(position), Toast.LENGTH_SHORT).show();
+                boolean isClicked = true;
+                //Log.d(TAG, "onClick: clicked on a image: " + questionList.get(position) + answerList.get(position));
+                //Toast.makeText(mContext, questionList.get(position)+answerList.get(position), Toast.LENGTH_SHORT).show();
 
                 String id = questionList.get(position)+answerList.get(position);
-                String s1 = questionList.get(position)+answerList.get(position);
 
-                if (!isClicked){
-                    holder.selectConfirm.setVisibility(View.VISIBLE);
-                    isClicked = true;
-                } else {
+                if (confirmCounter <= 4){
+                    if (holder.selectConfirm.isShown()){
+                        holder.selectConfirm.setVisibility(View.GONE);
+                        confirmCounter--;
+                        System.out.println(confirmCounter);
+                    } else {
+
+                        holder.selectConfirm.setVisibility(View.VISIBLE);
+                        editor.putString(id+"_selected",id);
+                        editor.apply();
+                        confirmCounter++;
+                        System.out.println(confirmCounter);
+                    }
+                   // System.out.println(isClicked);
+
+                } else if (holder.selectConfirm.isShown()){
+
                     holder.selectConfirm.setVisibility(View.GONE);
-                    isClicked = !isClicked;
+                    confirmCounter--;
+                    System.out.println(confirmCounter);
+                } else {
+                    Toast.makeText(mContext, "Too many are selected", Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(isClicked);
             }
+
         });
     }
 
     @Override
     public int getItemCount() {
         return imageList.size();
+    }
+
+    public int getCount(){
+        int count = confirmCounter;
+        System.out.println("getCount() = "+count);
+        return count;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

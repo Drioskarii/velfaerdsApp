@@ -1,17 +1,20 @@
 package dk.tec.velfaerdsapp;
 
 import android.os.Bundle;
+import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import Adapter.QuestionsAdapter;
 import Adapter.SelectAdapter;
 
 
 public class SelectPage extends TouchActivityHandler {
-
+    public static ProgressBar goodProgressBar;
+    public static ProgressBar badProgressBar;
     private static final String TAG = "selectPage";
     //vars
     private ArrayList<String> questions = new ArrayList<>();
@@ -26,6 +29,8 @@ public class SelectPage extends TouchActivityHandler {
         getImages();
         getGoodImages();
         getBadImages();
+
+
     }
 
     public class question {
@@ -39,30 +44,70 @@ public class SelectPage extends TouchActivityHandler {
         questions.add("Question 1");
         answers.add("5");
 
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 2");
+        answers.add("5");
+
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 3");
+        answers.add("5");
+
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 4");
+        answers.add("5");
+
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 5");
+        answers.add("5");
+
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 6");
+        answers.add("5");
+
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 7");
+        answers.add("5");
+
+        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        questions.add("Question 8");
+        answers.add("5");
+
     }
 
     private void getGoodImages() {
-
+       // badProgressBar = findViewById(R.id.badProgressBar);
+       // badProgressBar.setProgress(badAdapter.getCount());
         initRecyclerView();
+
+
+
+
     }
 
     private void getBadImages() {
-
+       // goodProgressBar = findViewById(R.id.goodProgressBar);
+       // goodProgressBar.setProgress(goodAdapter.getCount());
         initRecyclerView();
 
     }
 
     private void initRecyclerView() {
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerViewGod = findViewById(R.id.recyclerViewGood);
-        recyclerViewGod.setLayoutManager(layoutManagerGood);
+        RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
+        recyclerViewGood.setLayoutManager(layoutManagerGood);
         SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
-        recyclerViewGod.setAdapter(goodAdapter);
+        recyclerViewGood.setAdapter(goodAdapter);
+
+
+
 
         LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
         SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
         recyclerViewBad.setAdapter(badAdapter);
+
+
+
     }
 }
