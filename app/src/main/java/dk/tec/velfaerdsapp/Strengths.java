@@ -39,6 +39,7 @@ public class Strengths {
         //Nysgerrighed
         questionList.add(new Strengths("Question5", R.drawable.people_person, "KREATIVITET","Du tænker tit ‘Hmm, måske kan det gøres på en anden eller bedre måde?’ Du er god til at få idéer."));
         questionList.add(new Strengths("Question6", R.drawable.sharp_brained, "NYSGERRIGHED","Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”."));
+        /*
         questionList.add(new Strengths("Question7", R.drawable.people_person, "VIDEBEGÆR","Du elsker at lære nye ting! Du suger viden til dig både i skolen og i fritiden og undersøger hvorfor ting virker, som de gør."));
         questionList.add(new Strengths("Question8", R.drawable.sharp_brained, "VISDOM","Dine venner kommer ofte til dig for at få gode råd. Du er nemlig god til at se nye perspektiver hele tiden."));
         //Beskedenhed
@@ -59,7 +60,7 @@ public class Strengths {
         questionList.add(new Strengths("Question20", R.drawable.sharp_brained, "SOCIAL INTELLIGENS","Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab."));
         questionList.add(new Strengths("Question21", R.drawable.sharp_brained, "OMSORG","Du står altid klar, når folk omkring dig har brug for hjælp. Du tænker på andre og hjælper, når der er brug for det."));
         questionList.add(new Strengths("Question22", R.drawable.sharp_brained, "RELATIONER","Du er god til at lære andre at kende. Det betyder meget for dig at være tæt på folk, du holder af."));
-
+        */
         return questionList;
     }
 }

@@ -1,12 +1,17 @@
 package dk.tec.velfaerdsapp;
 
+import Adapter.QuestionsAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class TouchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -45,9 +50,8 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         else if (this.toString().contains("The24Strength")){backward();}
                         else if (this.toString().contains("IntroPage")){startActivity(forward(this, QuestionsPage.class));}
                         else if (this.toString().contains("QuestionsPage")) {
-                            startActivity(forward(this, SelectPage.class));}
-                            //if (QuestionsPage.answered == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
-                            //else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
+                            if (QuestionsPage.answeredCount == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
                         else if (this.toString().contains("SelectPage")){startActivity(forward(this, ResultPage.class));}
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }

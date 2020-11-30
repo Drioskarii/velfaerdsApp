@@ -4,8 +4,11 @@ import Adapter.QuestionsAdapter;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+
+import java.util.ArrayList;
 
 //import com.google.android.material.slider.Slider;
 
@@ -16,7 +19,7 @@ public class QuestionsPage extends TouchActivityHandler {
 
     public static ProgressBar questionsProgressBar;
     public static int count;
-    public static int answered;
+    public static int answeredCount;
     ListView listOfQuestions;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -31,6 +34,6 @@ public class QuestionsPage extends TouchActivityHandler {
 
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
-        questionsProgressBar.setProgress(answered);
+        questionsProgressBar.setProgress(answeredCount);
     }
 }

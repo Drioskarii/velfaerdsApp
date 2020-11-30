@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -24,8 +25,8 @@ public class QuestionsAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
+    public static ArrayList<Strengths> answers = new ArrayList<>();
     private ArrayList<Strengths> strengths;
-    public static QuestionsPage questionsPage;
     Context mContext;
 
     public QuestionsAdapter(Context context, ArrayList<Strengths> strengths){
@@ -76,6 +77,7 @@ public class QuestionsAdapter extends BaseAdapter {
             //insert data if empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
+            answers.add(tempStrengths);
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -93,12 +95,18 @@ public class QuestionsAdapter extends BaseAdapter {
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
                 //Insert data into the SharedPreferences
+                if (answers.contains(tempStrengths)) {
+                    answers.remove(tempStrengths);
+                }
+                answers.add(tempStrengths);
+
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    questionsPage.answered++;
-                    questionsPage.questionsProgressBar.setProgress(questionsPage.answered);
+                    QuestionsPage.answeredCount++;
+                    QuestionsPage.questionsProgressBar.setProgress(QuestionsPage.answeredCount);
                 }
+
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
