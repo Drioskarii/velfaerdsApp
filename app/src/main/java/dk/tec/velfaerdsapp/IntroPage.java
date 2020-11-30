@@ -28,7 +28,11 @@ public class IntroPage extends TouchActivityHandler {
     //Initialising
     private EditText enterName;
     private EditText enterJob;
+    private ArrayList<String> mNames1 = new ArrayList<>();
+    private ArrayList<String> mNames2 = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls1 = new ArrayList<>();
+    private ArrayList<String> mImageUrls2 = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
     AnimationDrawable animation;
@@ -70,6 +74,21 @@ public class IntroPage extends TouchActivityHandler {
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
+
+        spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                System.out.println("Positionen er: " + position);
+                initRecyclerView();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
     }
 
     @Override
@@ -95,9 +114,12 @@ public class IntroPage extends TouchActivityHandler {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            System.out.println("Positionen er:" + position);
             selectedItem = parent.getItemAtPosition(position).toString();
             if (!selectedItem.equals("Vælg køn")) {
                 Toast.makeText(parent.getContext(), "Køn valgt: " + selectedItem, Toast.LENGTH_LONG).show();
+
+                initRecyclerView();
             }
         }
 
@@ -111,32 +133,37 @@ public class IntroPage extends TouchActivityHandler {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
         mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        mImageUrls1.add("https://i.redd.it/tpsnoz5bzo501.jpg");
         mNames.add("Trondheim");
+        mNames1.add("Trondheim");
 
         mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
+        mImageUrls1.add("https://i.redd.it/qn7f9oqu7o501.jpg");
         mNames.add("Portugal");
+        mNames1.add("Portugal");
 
         mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
+        mImageUrls1.add("https://i.redd.it/j6myfqglup501.jpg");
         mNames.add("Rocky Mountain National Park");
+        mNames1.add("Rocky Mountain National Park");
 
 
         mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
+        mImageUrls2.add("https://i.redd.it/0h2gm1ix6p501.jpg");
         mNames.add("Mahahual");
+        mNames2.add("Mahahual");
 
         mImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
+        mImageUrls2.add("https://i.redd.it/k98uzl68eh501.jpg");
         mNames.add("Frozen Lake");
+        mNames2.add("Frozen Lake");
 
 
         mImageUrls.add("https://i.redd.it/glin0nwndo501.jpg");
+        mImageUrls2.add("https://i.redd.it/glin0nwndo501.jpg");
         mNames.add("White Sands Desert");
+        mNames2.add("White Sands Desert");
 
-        mImageUrls.add("https://i.redd.it/obx4zydshg601.jpg");
-        mNames.add("Austrailia");
-
-        mImageUrls.add("https://i.imgur.com/ZcLLrkY.jpg");
-        mNames.add("Washington");
-
-        initRecyclerView();
 
     }
 
@@ -146,8 +173,20 @@ public class IntroPage extends TouchActivityHandler {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
-        recyclerView.setAdapter(adapter);
+
+        int selectedID =  spinnerGender.getSelectedItemPosition();
+        if(selectedID == 1){
+            AvatarAdapter adapter = new AvatarAdapter(this, mNames1, mImageUrls1);
+            recyclerView.setAdapter(adapter);
+        } else if(selectedID == 2){
+            AvatarAdapter adapter = new AvatarAdapter(this, mNames2, mImageUrls2);
+            recyclerView.setAdapter(adapter);
+        }else if(selectedID == 3){
+            AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
+            recyclerView.setAdapter(adapter);
+        } else{
+            System.out.println("Nothing Selected");
+        }
     }
 
     @Override
