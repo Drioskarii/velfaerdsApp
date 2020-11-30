@@ -25,7 +25,7 @@ public class EmailPage extends TouchActivityHandler {
 
     private static final String TAG = "emailPage";
 
-    List<EditText> EditTextList = new ArrayList<>();
+    List<EditText> editTextList = new ArrayList<>();
     TableLayout tableLayout;
     int maxEmails = 0;
 
@@ -35,8 +35,8 @@ public class EmailPage extends TouchActivityHandler {
         setContentView(R.layout.activity_email_page);
         tableLayout = findViewById(R.id.tableLayout);
 
-        ImageView imgBtn = findViewById(R.id.btnNewMail);
-        imgBtn.setOnClickListener(new View.OnClickListener() {
+        ImageView btnNewMail = findViewById(R.id.btnNewMail);
+        btnNewMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addEmail(v, null);
@@ -60,23 +60,23 @@ public class EmailPage extends TouchActivityHandler {
             TableRow tableRow = new TableRow(this);
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
-            EditText etm = new EditText(this);
+            EditText editText = new EditText(this);
             if (email != null){
-                etm.setText(email);
+                editText.setText(email);
             }
             else{
-                etm.setHint("Indtast Email");
+                editText.setHint("Indtast Email");
             }
-            etm.setTag("mails");
-            etm.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            etm.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-            etm.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
+            editText.setTag("mails");
+            editText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            editText.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
             int maxLength = 30;
             InputFilter[] filterArr = new InputFilter[1];
             filterArr[0] = new InputFilter.LengthFilter(maxLength);
-            etm.setFilters(filterArr);
-            tableRow.addView(etm);
-            etm.addTextChangedListener(new TextWatcher() {
+            editText.setFilters(filterArr);
+            tableRow.addView(editText);
+            editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -89,37 +89,37 @@ public class EmailPage extends TouchActivityHandler {
 
                 @Override
                 public void afterTextChanged(Editable s) {
-                    if (EditTextList.contains(etm)){
-                        EditTextList.remove(etm);
+                    if (editTextList.contains(editText)){
+                        editTextList.remove(editText);
                     }
-                    if (validate(etm.getText().toString())){
-                        EditTextList.add(etm);
+                    if (validate(editText.getText().toString())){
+                        editTextList.add(editText);
                     }
                 }
             });
 
             //creating button
-            Button btn = new Button(this);
+            Button btnDelete = new Button(this);
             //button Parameters
-            btn.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
-            btn.setLayoutParams(new TableRow.LayoutParams(dpToPx(24, this), dpToPx(24, EmailPage.this)));
+            btnDelete.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
+            btnDelete.setLayoutParams(new TableRow.LayoutParams(dpToPx(24, this), dpToPx(24, EmailPage.this)));
             //adding button
-            tableRow.addView(btn);
+            tableRow.addView(btnDelete);
             //adds tableRow to Tablelayout
             tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             //remove email row
-            btn.setOnClickListener(new View.OnClickListener() {
+            btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //removes the specific one clicked.
                     tableLayout.removeView(tableRow);
-                    if (EditTextList.contains(etm)){
-                        EditTextList.remove(etm);
+                    if (editTextList.contains(editText)){
+                        editTextList.remove(editText);
                     }
                 }
             });
             if (email != null){
-                EditTextList.add(etm);
+                editTextList.add(editText);
             }
         }
     }
@@ -142,25 +142,25 @@ public class EmailPage extends TouchActivityHandler {
 
         for (int i = 0; i <= maxEmails; i++) {
 
-            emailList.add(EditTextList.get(i).getText().toString());
+            emailList.add(editTextList.get(i).getText().toString());
             //System.out.println(emailList);
             for (int x=0; x<emailList.size(); x++) {
                 System.out.println(emailList.get(x));
             }
         }
-            Intent email = new Intent(Intent.ACTION_SEND);
+            Intent intent = new Intent(Intent.ACTION_SEND);
             //to
-            email.putExtra(android.content.Intent.EXTRA_EMAIL,
-                    emailList.toArray(new String[emailList.size()]));
+            intent.putExtra(android.content.Intent.EXTRA_EMAIL,
+                        emailList.toArray(new String[emailList.size()]));
             //Subject
-            email.putExtra(Intent.EXTRA_SUBJECT, "subject");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
             //Message
-            email.putExtra(Intent.EXTRA_TEXT, "message");
+            intent.putExtra(Intent.EXTRA_TEXT, "message");
 
             //need this to prompts email client only
-            email.setType("message/rfc822");
+            intent.setType("message/rfc822");
 
-            startActivity(Intent.createChooser(email, "TestMail+fisk@gmail.com"));
+            startActivity(Intent.createChooser(intent, "TestMail+fisk@gmail.com"));
     }
 
     @Override
@@ -168,10 +168,10 @@ public class EmailPage extends TouchActivityHandler {
         super.onPause();
         SharedPreferences sharedPref = getSharedPreferences("emailArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.clear().commit();
-            for (int i = 0; i < EditTextList.size(); i++) {
-                if (validate(EditTextList.get(i).getText().toString()) && !sharedPref.contains("email_"+i)) {
-                    editor.putString("email_"+i, EditTextList.get(i).getText().toString());
+        editor.clear().apply();
+            for (int i = 0; i < editTextList.size(); i++) {
+                if (validate(editTextList.get(i).getText().toString()) && !sharedPref.contains("email_"+i)) {
+                    editor.putString("email_"+i, editTextList.get(i).getText().toString());
                     editor.apply();
                 }
             }

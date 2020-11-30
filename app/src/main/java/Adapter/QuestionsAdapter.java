@@ -24,7 +24,7 @@ public class QuestionsAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
-    private final ArrayList<Strengths> strengths;
+    private ArrayList<Strengths> strengths;
     public static QuestionsPage questionsPage;
     Context mContext;
 
@@ -51,9 +51,7 @@ public class QuestionsAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View itemView, ViewGroup parent) {
 
-        if (itemView == null) {
-            itemView = LayoutInflater.from(mContext).inflate(R.layout.questions_item, parent, false);
-        }
+        itemView = LayoutInflater.from(mContext).inflate(R.layout.questions_item, parent, false);
 
         ImageView mImageIcon = itemView.findViewById(R.id.imageIcon);
         TextView mTxtTitle = itemView.findViewById(R.id.questions_txtTitle);
@@ -73,7 +71,7 @@ public class QuestionsAdapter extends BaseAdapter {
         SharedPreferences.Editor editor = sharedPref.edit();
 
         //get data stored from seekBar and insert into
-        String s1 = sharedPref.getString(mTxtTitle.getText() + "_answer","");
+        String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
         if (!s1.isEmpty()){
             //insert data if empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
@@ -93,17 +91,15 @@ public class QuestionsAdapter extends BaseAdapter {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                int progress = mSeekBar.getProgress();
-                String id = String.valueOf(mTxtTitle.getText());
+                int progress = seekBar.getProgress();
                 //Insert data into the SharedPreferences
-                String s1 = sharedPref.getString(String.valueOf(mTxtTitle.getText()),"");
+                String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
                     questionsPage.answered++;
                     questionsPage.questionsProgressBar.setProgress(questionsPage.answered);
                 }
-                editor.putString(id+"_answer", String.valueOf  (progress));
-                editor.putString(id, id);
+                editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
