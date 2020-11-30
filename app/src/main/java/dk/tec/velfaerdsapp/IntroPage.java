@@ -134,37 +134,37 @@ public class IntroPage extends TouchActivityHandler {
     private void getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        mImageUrls1.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        mNames.add("Trondheim");
-        mNames1.add("Trondheim");
+        mImageUrls.add("https://sigurdbarrett.dk/wp-content/uploads/2020/09/Syng-julen-ind-med-Sigurd-og-Bjornen-Bjorn-FORSIDE.jpg");
+        mImageUrls1.add("https://sigurdbarrett.dk/wp-content/uploads/2020/09/Syng-julen-ind-med-Sigurd-og-Bjornen-Bjorn-FORSIDE.jpg");
+        mNames.add("Sigurd");
+        mNames1.add("Sigurd");
 
-        mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        mImageUrls1.add("https://i.redd.it/qn7f9oqu7o501.jpg");
-        mNames.add("Portugal");
-        mNames1.add("Portugal");
+        mImageUrls.add("https://spejder.dk/sites/default/files/styles/page_width_16_9/public/laks_track.jpg?itok=VN5da_ab");
+        mImageUrls1.add("https://spejder.dk/sites/default/files/styles/page_width_16_9/public/laks_track.jpg?itok=VN5da_ab");
+        mNames.add("Lakserytteren");
+        mNames1.add("Lakserytteren");
 
-        mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
-        mImageUrls1.add("https://i.redd.it/j6myfqglup501.jpg");
-        mNames.add("Rocky Mountain National Park");
-        mNames1.add("Rocky Mountain National Park");
-
-
-        mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        mImageUrls2.add("https://i.redd.it/0h2gm1ix6p501.jpg");
-        mNames.add("Mahahual");
-        mNames2.add("Mahahual");
-
-        mImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
-        mImageUrls2.add("https://i.redd.it/k98uzl68eh501.jpg");
-        mNames.add("Frozen Lake");
-        mNames2.add("Frozen Lake");
+        mImageUrls.add("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg/1920px-Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg");
+        mImageUrls1.add("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg/1920px-Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg");
+        mNames.add("Hr. Skæg");
+        mNames1.add("Hr. Skæg");
 
 
-        mImageUrls.add("https://i.redd.it/glin0nwndo501.jpg");
-        mImageUrls2.add("https://i.redd.it/glin0nwndo501.jpg");
-        mNames.add("White Sands Desert");
-        mNames2.add("White Sands Desert");
+        mImageUrls.add("https://musikhuzet.dk/nonsec/Pix05/20121212114418.jpg.ashx?Width=760");
+        mImageUrls2.add("https://musikhuzet.dk/nonsec/Pix05/20121212114418.jpg.ashx?Width=760");
+        mNames.add("Katrine");
+        mNames2.add("Katrine");
+
+        mImageUrls.add("https://images.sn.dk/37/1327237_0_398_0_0_0_0_4.jpg");
+        mImageUrls2.add("https://images.sn.dk/37/1327237_0_398_0_0_0_0_4.jpg");
+        mNames.add("Mille");
+        mNames2.add("Mille");
+
+
+        mImageUrls.add("https://asset.dr.dk/imagescaler/?protocol=http&server=dr-billeder-s3-cdn.dr.dk&file=%2FDR%2FPublic%2F97110746b7a5da1930088ab986ba0bd4dab7af63.jpg&scaleAfter=crop&quality=70&w=720&h=480");
+        mImageUrls2.add("https://asset.dr.dk/imagescaler/?protocol=http&server=dr-billeder-s3-cdn.dr.dk&file=%2FDR%2FPublic%2F97110746b7a5da1930088ab986ba0bd4dab7af63.jpg&scaleAfter=crop&quality=70&w=720&h=480");
+        mNames.add("Silja");
+        mNames2.add("Silja");
 
 
     }
