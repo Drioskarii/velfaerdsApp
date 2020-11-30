@@ -1,14 +1,16 @@
 package dk.tec.velfaerdsapp;
 
+import Adapter.QuestionsAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 
 
 import java.util.ArrayList;
 
-import Adapter.QuestionAdapter;
 import Adapter.The24StrengthsAdapter;
 
 import static dk.tec.velfaerdsapp.R.layout.activity_the24_strength;
@@ -17,25 +19,15 @@ public class The24Strengths extends TouchActivityHandler {
 
     private static final String TAG = "The24Strength";
 
+    ListView the24StrenghtsListView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_the24_strength);
 
-        // questions list
-        ArrayList<The24StrengthsBoxes> Strengths = new ArrayList<>();
-        Strengths.add(new The24StrengthsBoxes(R.drawable.intellectual, "Question 1"));
-        Strengths.add(new The24StrengthsBoxes(R.drawable.people_person, "Question 2"));
-        Strengths.add(new The24StrengthsBoxes(R.drawable.sharp_brained, "Question 3"));
-        Strengths.add(new The24StrengthsBoxes(R.drawable.intellectual, "Question 4"));
-        Strengths.add(new The24StrengthsBoxes(R.drawable.people_person, "Question 5"));
-        Strengths.add(new The24StrengthsBoxes(R.drawable.sharp_brained, "Question 6"));
-
-        RecyclerView mthe24StrenghtsRecyclerView = findViewById(R.id.the24StrenghtsRecyclerView);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        RecyclerView.Adapter mAdapter = new The24StrengthsAdapter(Strengths);
-
-        mthe24StrenghtsRecyclerView.setLayoutManager(mLayoutManager);
-        mthe24StrenghtsRecyclerView.setAdapter(mAdapter);
+        the24StrenghtsListView = findViewById(R.id.the24StrenghtsListView);
+        The24StrengthsAdapter the24Adapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getQuestionList());
+        the24StrenghtsListView.setAdapter(the24Adapter);
     }
 }
