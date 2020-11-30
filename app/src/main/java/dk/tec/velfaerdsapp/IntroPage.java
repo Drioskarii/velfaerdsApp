@@ -18,7 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
@@ -171,22 +173,26 @@ public class IntroPage extends TouchActivityHandler {
         Log.d(TAG, "initRecyclerView: init recyclerview");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        TextView textView = findViewById(R.id.txtCustomAvatarPreset);
+
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
 
         int selectedID =  spinnerGender.getSelectedItemPosition();
         if(selectedID == 1){
             AvatarAdapter adapter = new AvatarAdapter(this, mNames1, mImageUrls1);
+            textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
         } else if(selectedID == 2){
             AvatarAdapter adapter = new AvatarAdapter(this, mNames2, mImageUrls2);
+            textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
         }else if(selectedID == 3){
             AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
+            textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
-        } else{
-            System.out.println("Nothing Selected");
-        }
+        } else{ }
     }
 
     @Override
