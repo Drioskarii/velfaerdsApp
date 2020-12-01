@@ -6,7 +6,9 @@ import android.widget.ProgressBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Adapter.QuestionsAdapter;
 import Adapter.SelectAdapter;
@@ -39,40 +41,27 @@ public class SelectPage extends TouchActivityHandler {
     }
 
     private void getImages(){
+        int size = QuestionsAdapter.answers.size();
+        int i = 0;
+        Iterator itr = QuestionsAdapter.answers.iterator();
+        while (i < size ){
+            System.out.println(size + "Test");
+            System.out.println(i);
 
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 1");
-        answers.add("5");
+         selectImageUrls.add(String.valueOf(QuestionsAdapter.answers.get(i).getIcon()));
+            questions.add(QuestionsAdapter.answers.get(i).getQuestion());
+            answers.add(String.valueOf(QuestionsAdapter.answers.get(i).getAnswer()));
 
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 2");
-        answers.add("5");
+            System.out.println(QuestionsAdapter.answers.get(i).getIcon());
+            System.out.println(QuestionsAdapter.answers.get(i).getQuestion());
+            System.out.println(QuestionsAdapter.answers.get(i).getAnswer());
+            i++;
+        }
 
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 3");
-        answers.add("5");
 
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 4");
-        answers.add("5");
-
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 5");
-        answers.add("5");
-
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 6");
-        answers.add("5");
-
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 7");
-        answers.add("5");
-
-        selectImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
-        questions.add("Question 8");
-        answers.add("5");
 
     }
+
 
     private void getGoodImages() {
        // badProgressBar = findViewById(R.id.badProgressBar);

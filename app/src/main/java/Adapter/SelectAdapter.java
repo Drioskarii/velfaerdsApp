@@ -54,8 +54,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        Glide.with(mContext)
-                .asBitmap()
+
+        Glide.with(mContext).asBitmap()
                 .load(imageList.get(position))
                 .into(holder.image);
 
