@@ -54,15 +54,15 @@ public class QuestionsAdapter extends BaseAdapter {
 
         itemView = LayoutInflater.from(mContext).inflate(R.layout.questions_item, parent, false);
 
+        Strengths tempStrengths = (Strengths) getItem(position);
+
         ImageView mImageIcon = itemView.findViewById(R.id.imageIcon);
         TextView mTxtTitle = itemView.findViewById(R.id.questions_txtTitle);
         TextView mTxtQuestion = itemView.findViewById(R.id.questions_txtQuestion);
         ImageView questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
         SeekBar mSeekBar = itemView.findViewById(R.id.seekBar);
-        mSeekBar.setProgress(3);
+        mSeekBar.setProgress(tempStrengths.getAnswer());
         mSeekBar.setMax(5);
-
-        Strengths tempStrengths = (Strengths) getItem(position);
 
         mImageIcon.setImageResource(tempStrengths.getIcon());
         mTxtTitle.setText(tempStrengths.getTitle());
@@ -98,6 +98,7 @@ public class QuestionsAdapter extends BaseAdapter {
                 if (answers.contains(tempStrengths)) {
                     answers.remove(tempStrengths);
                 }
+                tempStrengths.setAnswer(progress);
                 answers.add(tempStrengths);
 
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
