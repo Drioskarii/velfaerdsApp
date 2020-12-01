@@ -12,7 +12,7 @@ public class Strengths {
 
     public Strengths(String Identity, int Icon, String Title, String Question, int Answer) {
         icon = Icon;
-        title = Title;
+        title = Title;  
         question = Question;
         identity = Identity;
         answer = Answer;

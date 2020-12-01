@@ -45,15 +45,13 @@
         android:layout_marginRight="26dp"
         android:layout_marginLeft="26dp">
     </ProgressBar>
-    <FrameLayout
+
+    <ListView
+        android:id="@+id/listOfQuestions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-            <ListView
-                android:id="@+id/listOfQuestions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="25dp"
-                android:layout_marginLeft="25dp">
-            </ListView>
-    </FrameLayout>
+        android:layout_height="404dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="25dp"></ListView>
 </LinearLayout>
