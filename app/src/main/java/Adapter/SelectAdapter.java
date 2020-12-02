@@ -2,6 +2,7 @@ package Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,14 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
+import dk.tec.velfaerdsapp.SelectBoxes;
+import dk.tec.velfaerdsapp.Strengths;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
+    public static ArrayList<String> selected = new ArrayList<>();
+    private ArrayList<Strengths> strengths;
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -75,13 +80,16 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 //Log.d(TAG, "onClick: clicked on a image: " + questionList.get(position) + answerList.get(position));
                 //Toast.makeText(mContext, questionList.get(position)+answerList.get(position), Toast.LENGTH_SHORT).show();
 
-                String id = questionList.get(position)+answerList.get(position);
+                String id = answerList.get(position) + questionList.get(position);
 
                 if (confirmCounter <= 4){
                     if (holder.selectConfirm.isShown()){
                         holder.selectConfirm.setVisibility(View.GONE);
                         confirmCounter--;
-                        System.out.println(confirmCounter);
+                        //System.out.println(confirmCounter);
+
+                        selected.remove(id);
+                        System.out.println("Remove"+selected);
                     } else {
 
                         holder.selectConfirm.setVisibility(View.VISIBLE);
@@ -89,6 +97,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         editor.apply();
                         confirmCounter++;
                         System.out.println(confirmCounter);
+
+                        selected.add(id);
+                        System.out.println("added"+selected);
                     }
                    // System.out.println(isClicked);
 
@@ -97,6 +108,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     holder.selectConfirm.setVisibility(View.GONE);
                     confirmCounter--;
                     System.out.println(confirmCounter);
+
+                    selected.remove(id);
+                    System.out.println("Remove"+selected);
                 } else {
                     Toast.makeText(mContext, "Too many are selected", Toast.LENGTH_SHORT).show();
                 }

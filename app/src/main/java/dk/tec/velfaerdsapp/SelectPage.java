@@ -16,6 +16,7 @@ import Adapter.SelectAdapter;
 
 
 public class SelectPage extends TouchActivityHandler {
+
     public static ProgressBar goodProgressBar;
     public static ProgressBar badProgressBar;
     private static final String TAG = "selectPage";
@@ -46,17 +47,17 @@ public class SelectPage extends TouchActivityHandler {
         int i = 0;
         Iterator itr = QuestionsAdapter.answers.iterator();
         while (i < size ){
-            System.out.println(size + "Test");
-            System.out.println(i);
+/*            System.out.println(size + "Test");
+            System.out.println(i);*/
 
             //Den her metode virker kun med billeder som ikke er i xml form
             selectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ QuestionsAdapter.answers.get(i).getIcon())));
             questions.add(QuestionsAdapter.answers.get(i).getQuestion());
             answers.add(String.valueOf(QuestionsAdapter.answers.get(i).getAnswer()));
 
-            System.out.println(QuestionsAdapter.answers.get(i).getIcon());
+/*          System.out.println(QuestionsAdapter.answers.get(i).getIcon());
             System.out.println(QuestionsAdapter.answers.get(i).getQuestion());
-            System.out.println(QuestionsAdapter.answers.get(i).getAnswer());
+            System.out.println(QuestionsAdapter.answers.get(i).getAnswer());*/
             i++;
         }
 
@@ -87,6 +88,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
         SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
+
         recyclerViewGood.setAdapter(goodAdapter);
 
 
