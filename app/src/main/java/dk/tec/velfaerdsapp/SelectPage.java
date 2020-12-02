@@ -1,5 +1,6 @@
 package dk.tec.velfaerdsapp;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
@@ -48,7 +49,8 @@ public class SelectPage extends TouchActivityHandler {
             System.out.println(size + "Test");
             System.out.println(i);
 
-         selectImageUrls.add(String.valueOf(QuestionsAdapter.answers.get(i).getIcon()));
+            //Den her metode virker kun med billeder som ikke er i xml form
+            selectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ QuestionsAdapter.answers.get(i).getIcon())));
             questions.add(QuestionsAdapter.answers.get(i).getQuestion());
             answers.add(String.valueOf(QuestionsAdapter.answers.get(i).getAnswer()));
 
