@@ -45,9 +45,8 @@ public class SelectPage extends TouchActivityHandler {
     private void getImages(){
         int size = QuestionsAdapter.answers.size();
         int i = 0;
-        Iterator itr = QuestionsAdapter.answers.iterator();
         while (i < size ){
-/*            System.out.println(size + "Test");
+/*           System.out.println(size + "Test");
             System.out.println(i);*/
 
             //Den her metode virker kun med billeder som ikke er i xml form
@@ -69,6 +68,7 @@ public class SelectPage extends TouchActivityHandler {
     private void getGoodImages() {
        // badProgressBar = findViewById(R.id.badProgressBar);
        // badProgressBar.setProgress(badAdapter.getCount());
+
         initRecyclerView();
 
 
@@ -87,8 +87,7 @@ public class SelectPage extends TouchActivityHandler {
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
-        SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
-
+        SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, true);
         recyclerViewGood.setAdapter(goodAdapter);
 
 
@@ -97,7 +96,7 @@ public class SelectPage extends TouchActivityHandler {
         LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
-        SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls);
+        SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, false);
         recyclerViewBad.setAdapter(badAdapter);
 
 

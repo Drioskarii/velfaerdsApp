@@ -2,7 +2,6 @@ package Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.nfc.Tag;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +20,6 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.SelectBoxes;
 import dk.tec.velfaerdsapp.Strengths;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -37,14 +35,16 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private ArrayList<String> answerList;
     private ArrayList<String> imageList = new ArrayList<>();
     private Context mContext;
+    private boolean misGood;
     int confirmCounter = 0;
 
 
-    public SelectAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls) {
+    public SelectAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls, Boolean isGood) {
         answerList = answers;
         questionList = questions;
         imageList = imageUrls;
         mContext = context;
+        misGood = isGood;
     }
 
     @NonNull
@@ -81,6 +81,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 //Toast.makeText(mContext, questionList.get(position)+answerList.get(position), Toast.LENGTH_SHORT).show();
 
                 String id = answerList.get(position) + questionList.get(position);
+                int i = 1;
 
                 if (confirmCounter <= 4){
                     if (holder.selectConfirm.isShown()){
@@ -95,11 +96,20 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         holder.selectConfirm.setVisibility(View.VISIBLE);
                         editor.putString(id+"_selected",id);
                         editor.apply();
+
                         confirmCounter++;
                         System.out.println(confirmCounter);
+                        if (misGood == true){
+                            selected.add("good: "+id);
 
-                        selected.add(id);
-                        System.out.println("added"+selected);
+                            System.out.println("added Good"+selected);
+                        } else {
+                            selected.add("bad: "+id);
+                            System.out.println("added Bad"+selected);
+                        }
+                        //selected.add(id);
+
+                        //System.out.println("added"+selected);
                     }
                    // System.out.println(isClicked);
 
@@ -112,7 +122,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     selected.remove(id);
                     System.out.println("Remove"+selected);
                 } else {
-                    Toast.makeText(mContext, "Too many are selected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -136,7 +146,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView question;
         TextView answer;
         ImageView selectConfirm;
-
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
