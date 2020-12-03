@@ -29,41 +29,26 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
-        ArrayList<Strengths> strengths = getIntent().getParcelableArrayListExtra("ObjectList");
+
 
         getImages();
         getGoodImages();
         getBadImages();
-
-
-    }
-
-    public class question {
-        String name;
-        String formula;
     }
 
     private void getImages(){
-        int size = QuestionsAdapter.answers.size();
+        ArrayList<Strengths> strengths = getIntent().getParcelableArrayListExtra("ObjectList");
+        int size = strengths.size();
         int i = 0;
-        Iterator itr = QuestionsAdapter.answers.iterator();
+
+
         while (i < size ){
-/*           System.out.println(size + "Test");
-            System.out.println(i);*/
-
             //Den her metode virker kun med billeder som ikke er i xml form
-            selectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ QuestionsAdapter.answers.get(i).getIcon())));
-            questions.add(QuestionsAdapter.answers.get(i).getQuestion());
-            answers.add(String.valueOf(QuestionsAdapter.answers.get(i).getAnswer()));
-
-/*          System.out.println(QuestionsAdapter.answers.get(i).getIcon());
-            System.out.println(QuestionsAdapter.answers.get(i).getQuestion());
-            System.out.println(QuestionsAdapter.answers.get(i).getAnswer());*/
+            selectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ strengths.get(i).getIcon())));
+            questions.add(strengths.get(i).getQuestion());
+            answers.add(String.valueOf(strengths.get(i).getAnswer()));
             i++;
         }
-
-
-
     }
 
 
@@ -72,17 +57,12 @@ public class SelectPage extends TouchActivityHandler {
        // badProgressBar.setProgress(badAdapter.getCount());
 
         initRecyclerView();
-
-
-
-
     }
 
     private void getBadImages() {
        // goodProgressBar = findViewById(R.id.goodProgressBar);
        // goodProgressBar.setProgress(goodAdapter.getCount());
         initRecyclerView();
-
     }
 
     private void initRecyclerView() {
@@ -100,8 +80,5 @@ public class SelectPage extends TouchActivityHandler {
         recyclerViewBad.setLayoutManager(layoutManagerBad);
         SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, false);
         recyclerViewBad.setAdapter(badAdapter);
-
-
-
     }
 }
