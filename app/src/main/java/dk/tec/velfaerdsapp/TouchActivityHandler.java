@@ -12,6 +12,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TouchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -23,7 +26,7 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MIN_DISTANCE = dpToPx(100,this);
+        MIN_DISTANCE = dpToPx(125,this);
         this.gestureDetector = new GestureDetector(this, this);
     }
 
@@ -52,7 +55,11 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         else if (this.toString().contains("The24Strength")){backward();}
                         else if (this.toString().contains("IntroPage")){startActivity(forward(this, QuestionsPage.class));}
                         else if (this.toString().contains("QuestionsPage")) {
-                            if (QuestionsPage.answeredCount == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
+                            if (QuestionsPage.answeredCount == QuestionsPage.count){
+                                Intent intent = new Intent(this, SelectPage.class);
+                                intent.putParcelableArrayListExtra("ObjectList",QuestionsAdapter.answers);
+                                    startActivity(intent);
+                            }
                             else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
                         else if (this.toString().contains("SelectPage")){startActivity(forward(this, ResultPage.class));}
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}

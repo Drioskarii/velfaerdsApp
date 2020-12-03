@@ -22,7 +22,6 @@
         <activity android:name=".TouchActivityHandler" />
         <activity android:name=".The24Strengths" />
         <activity android:name=".EmailPage" />
-        <activity android:name=".SelectPage" />
         <activity
             android:name=".IntroPage"
             android:configChanges="orientation|screenSize|layoutDirection" />

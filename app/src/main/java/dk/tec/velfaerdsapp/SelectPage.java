@@ -29,6 +29,7 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
+        ArrayList<Strengths> strengths = getIntent().getParcelableArrayListExtra("ObjectList");
 
         getImages();
         getGoodImages();
@@ -45,6 +46,7 @@ public class SelectPage extends TouchActivityHandler {
     private void getImages(){
         int size = QuestionsAdapter.answers.size();
         int i = 0;
+        Iterator itr = QuestionsAdapter.answers.iterator();
         while (i < size ){
 /*           System.out.println(size + "Test");
             System.out.println(i);*/

@@ -1,5 +1,8 @@
 package dk.tec.velfaerdsapp;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 public class Strengths {
@@ -17,6 +20,26 @@ public class Strengths {
         identity = Identity;
         answer = Answer;
     }
+
+    protected Strengths(Parcel in) {
+        icon = in.readInt();
+        title = in.readString();
+        question = in.readString();
+        identity = in.readString();
+        answer = in.readInt();
+    }
+
+    public static final Creator<Strengths> CREATOR = new Creator<Strengths>() {
+        @Override
+        public Strengths createFromParcel(Parcel in) {
+            return new Strengths(in);
+        }
+
+        @Override
+        public Strengths[] newArray(int size) {
+            return new Strengths[size];
+        }
+    };
 
     public int getIcon() {
         return icon;
@@ -43,12 +66,12 @@ public class Strengths {
         questionList.add(new Strengths("2", R.drawable.iconmod, "VEDHOLDENHED","Du giver sjældent op. Når du er gået i gang med noget, så gør du det også færdigt. Også selvom det er svært!", progress));
         questionList.add(new Strengths("3", R.drawable.iconmod, "ENTUSIASME"," Når du bliver optaget af noget, går du 100 % ind i det. Du er begejstret og engageret – du har drive!.", progress));
         questionList.add(new Strengths("4", R.drawable.iconmod, "ÆRLIGHED","Du taler altid sandt og du gør sjældent ting, der går imod dine værdier og principper.", progress));
-       //Nysgerrighed
+       /* //Nysgerrighed
         questionList.add(new Strengths("5", R.drawable.iconnysgerrig, "KREATIVITET","Du tænker tit ‘Hmm, måske kan det gøres på en anden eller bedre måde?’ Du er god til at få idéer.", progress));
         questionList.add(new Strengths("6", R.drawable.iconnysgerrig, "NYSGERRIGHED","Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", progress));
         questionList.add(new Strengths("7", R.drawable.iconnysgerrig, "VIDEBEGÆR","Du elsker at lære nye ting! Du suger viden til dig både i skolen og i fritiden og undersøger hvorfor ting virker, som de gør.", progress));
         questionList.add(new Strengths("8", R.drawable.iconnysgerrig, "VISDOM","Dine venner kommer ofte til dig for at få gode råd. Du er nemlig god til at se nye perspektiver hele tiden.", progress));
-      /*   //Beskedenhed
+        //Beskedenhed
         questionList.add(new Strengths("9", R.drawable.iconbeskedenhed, "BESKEDENHED","Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", progress));
         questionList.add(new Strengths("10", R.drawable.iconbeskedenhed, "OMTANKE","Du tænker dig altid om, inden du gør eller siger noget. Du er meget grundig og træffer altid fornuftige valg.", progress));
         questionList.add(new Strengths("11", R.drawable.iconbeskedenhed, "SELVKONTROL","Du har stor selvdisciplin. Du tager ikke beslutninger med dine følelser og impulser.", progress));
@@ -66,6 +89,20 @@ public class Strengths {
         questionList.add(new Strengths("20", R.drawable.iconsocialintelligens, "SOCIAL INTELLIGENS","Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", progress));
         questionList.add(new Strengths("21", R.drawable.iconsocialintelligens, "OMSORG","Du står altid klar, når folk omkring dig har brug for hjælp. Du tænker på andre og hjælper, når der er brug for det.", progress));
         questionList.add(new Strengths("22", R.drawable.iconsocialintelligens, "RELATIONER","Du er god til at lære andre at kende. Det betyder meget for dig at være tæt på folk, du holder af.", progress));
-*/        return questionList;
+        return questionList;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(icon);
+        dest.writeString(title);
+        dest.writeString(question);
+        dest.writeString(identity);
+        dest.writeInt(answer);
     }
 }
