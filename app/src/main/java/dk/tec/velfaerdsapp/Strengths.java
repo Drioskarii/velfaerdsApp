@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Strengths {
+public class Strengths implements Parcelable{
     private final int icon;
     private final String title;
     private final String question;
@@ -66,7 +66,7 @@ public class Strengths {
         questionList.add(new Strengths("2", R.drawable.iconmod, "VEDHOLDENHED","Du giver sjældent op. Når du er gået i gang med noget, så gør du det også færdigt. Også selvom det er svært!", progress));
         questionList.add(new Strengths("3", R.drawable.iconmod, "ENTUSIASME"," Når du bliver optaget af noget, går du 100 % ind i det. Du er begejstret og engageret – du har drive!.", progress));
         questionList.add(new Strengths("4", R.drawable.iconmod, "ÆRLIGHED","Du taler altid sandt og du gør sjældent ting, der går imod dine værdier og principper.", progress));
-       /* //Nysgerrighed
+       //Nysgerrighed
         questionList.add(new Strengths("5", R.drawable.iconnysgerrig, "KREATIVITET","Du tænker tit ‘Hmm, måske kan det gøres på en anden eller bedre måde?’ Du er god til at få idéer.", progress));
         questionList.add(new Strengths("6", R.drawable.iconnysgerrig, "NYSGERRIGHED","Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", progress));
         questionList.add(new Strengths("7", R.drawable.iconnysgerrig, "VIDEBEGÆR","Du elsker at lære nye ting! Du suger viden til dig både i skolen og i fritiden og undersøger hvorfor ting virker, som de gør.", progress));
