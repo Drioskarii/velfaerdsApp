@@ -29,6 +29,7 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
+        ArrayList<Strengths> strengths = getIntent().getParcelableArrayListExtra("ObjectList");
 
         getImages();
         getGoodImages();
@@ -67,8 +68,8 @@ public class SelectPage extends TouchActivityHandler {
 
 
     private void getGoodImages() {
-       // badProgressBar = findViewById(R.id.badProgressBar);
-       // badProgressBar.setProgress(badAdapter.getCount());
+        // badProgressBar = findViewById(R.id.badProgressBar);
+        // badProgressBar.setProgress(badAdapter.getCount());
         initRecyclerView();
 
 
@@ -77,8 +78,8 @@ public class SelectPage extends TouchActivityHandler {
     }
 
     private void getBadImages() {
-       // goodProgressBar = findViewById(R.id.goodProgressBar);
-       // goodProgressBar.setProgress(goodAdapter.getCount());
+        // goodProgressBar = findViewById(R.id.goodProgressBar);
+        // goodProgressBar.setProgress(goodAdapter.getCount());
         initRecyclerView();
 
     }
