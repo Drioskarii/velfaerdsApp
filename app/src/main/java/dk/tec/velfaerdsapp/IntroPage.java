@@ -76,27 +76,23 @@ public class IntroPage extends TouchActivityHandler {
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
-
         spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 System.out.println("Positionen er: " + position);
                 initRecyclerView();
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
             }
-
         });
-
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //This garbage works that's pretty cool, this saves info in SharedPrefs so ye cool init fam
+        //This garbage works that's pretty cool, this saves info in SharedPrefs
         //Make object.png
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();

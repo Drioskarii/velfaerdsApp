@@ -1,15 +1,7 @@
 package dk.tec.velfaerdsapp;
 
-import Adapter.QuestionsAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-
-
-import java.util.ArrayList;
 
 import Adapter.The24StrengthsAdapter;
 
