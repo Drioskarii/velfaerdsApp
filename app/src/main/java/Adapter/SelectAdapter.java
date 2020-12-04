@@ -39,7 +39,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     //vars
     private ArrayList<String> questionList;
     private ArrayList<String> answerList;
-    private ArrayList<String> imageList = new ArrayList<>();
+    private ArrayList<String> imageList;
     private Context mContext;
     private boolean misGood;
 
@@ -69,11 +69,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
         if (misGood) {
             answerList.sort(Collections.reverseOrder());
-            System.out.println("is good true");
+
 
         } else {
             Collections.sort(answerList);
-            System.out.println("is good false");
         }
         Glide.with(mContext).asBitmap()
                 .load(imageList.get(position))
@@ -109,7 +108,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 } else {
 
                     holder.selectConfirm.setVisibility(View.VISIBLE);
-                    editor.putString(id+"_selected",id);
+                    editor.putString(questionList.get(position)+"_selected",id);
                     editor.apply();
 
                     confirmCounter++;
