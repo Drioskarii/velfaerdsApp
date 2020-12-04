@@ -25,8 +25,7 @@ public class QuestionsAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
-    public static ArrayList<Strengths> answers = new ArrayList<>();
-    private ArrayList<Strengths> strengths;
+    public static ArrayList<Strengths> strengths;
     Context mContext;
 
     public QuestionsAdapter(Context context, ArrayList<Strengths> strengths){
@@ -53,7 +52,6 @@ public class QuestionsAdapter extends BaseAdapter {
     public View getView(int position, View itemView, ViewGroup parent) {
 
         itemView = LayoutInflater.from(mContext).inflate(R.layout.questions_item, parent, false);
-
         Strengths tempStrengths = (Strengths) getItem(position);
 
         ImageView mImageIcon = itemView.findViewById(R.id.imageIcon);
@@ -74,10 +72,9 @@ public class QuestionsAdapter extends BaseAdapter {
         //get data stored from seekBar and insert into
         String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
         if (!s1.isEmpty()){
-            //insert data if empty
+            //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            answers.add(tempStrengths);
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -94,12 +91,11 @@ public class QuestionsAdapter extends BaseAdapter {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
-                //Insert data into the SharedPreferences
-                if (answers.contains(tempStrengths)) {
-                    answers.remove(tempStrengths);
-                }
                 tempStrengths.setAnswer(progress);
-                answers.add(tempStrengths);
+                //Insert data into the SharedPreferences
+                if (strengths.contains(tempStrengths)) {
+                    strengths.set(position,tempStrengths);
+                }
 
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
@@ -107,7 +103,6 @@ public class QuestionsAdapter extends BaseAdapter {
                     QuestionsPage.answeredCount++;
                     QuestionsPage.questionsProgressBar.setProgress(QuestionsPage.answeredCount);
                 }
-
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }

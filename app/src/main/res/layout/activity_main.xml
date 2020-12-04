@@ -64,73 +64,80 @@
         <View style="@style/Divider" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutLogos">
+        android:layout_height="match_parent"
+        android:background="#B3000000">
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:rowCount="2">
+        <RelativeLayout
+            android:id="@+id/swipeLeftView"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:background="@color/white"
+            android:layout_margin="5dp"
+            ></RelativeLayout>
 
-            <ImageView
-                android:id="@+id/imgSwipeBackward"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:layout_columnWeight="1"
-                android:contentDescription="@string/SwipeBackward_contentDescription"
-                android:layout_gravity="center"
-                android:src="@drawable/swipebackward"></ImageView>
+        <RelativeLayout
+            android:id="@+id/swipeRightView"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/white"
+            android:layout_margin="5dp"
+            ></RelativeLayout>
 
-            <ImageView
-                android:id="@+id/imgSwipeForward"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:layout_columnWeight="1"
-                android:contentDescription="@string/SwipeForward_contentDescription"
-                android:layout_gravity="center"
-                android:src="@drawable/swipeforward"></ImageView>
+        <TextView
+            android:id="@+id/txtSwipeLeft"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="50dp"
+            android:layout_alignParentStart="true"
+            android:fontFamily="sans-serif"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Swipe mod højre for at se de 24 styrker"
+            android:textColor="@color/white"
+            android:textSize="17sp"></TextView>
 
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_row="0"
-                android:layout_column="0"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="Swipe mod højre for at se de 24 styrker"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="17sp"></TextView>
+        <TextView
+            android:id="@+id/txtSwipeRight"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="sans-serif"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Swipe mod venstre for at fortsætte"
+            android:textColor="@color/white"
+            android:textSize="17sp"></TextView>
 
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_row="0"
-                android:layout_column="1"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="Swipe mod venstre for at fortsætte"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="17sp"></TextView>
-        </GridLayout>
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/imgSwipeBackward"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_below="@+id/txtSwipeLeft"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="50dp"
+            android:contentDescription="@string/SwipeBackward_contentDescription"
+            android:src="@drawable/swipebackward"></ImageView>
+
+        <ImageView
+            android:id="@+id/imgSwipeForward"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:layout_below="@+id/txtSwipeRight"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="50dp"
+            android:contentDescription="@string/SwipeForward_contentDescription"
+            android:src="@drawable/swipeforward"></ImageView>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

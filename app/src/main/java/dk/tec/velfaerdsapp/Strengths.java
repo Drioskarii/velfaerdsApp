@@ -65,7 +65,7 @@ public class Strengths implements Parcelable{
         questionList.add(new Strengths("1", R.drawable.iconmod, "MOD","Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", progress));
         questionList.add(new Strengths("2", R.drawable.iconmod, "VEDHOLDENHED","Du giver sjældent op. Når du er gået i gang med noget, så gør du det også færdigt. Også selvom det er svært!", progress));
         questionList.add(new Strengths("3", R.drawable.iconmod, "ENTUSIASME"," Når du bliver optaget af noget, går du 100 % ind i det. Du er begejstret og engageret – du har drive!.", progress));
-        questionList.add(new Strengths("4", R.drawable.iconmod, "ÆRLIGHED","Du taler altid sandt og du gør sjældent ting, der går imod dine værdier og principper.", progress));
+        /*questionList.add(new Strengths("4", R.drawable.iconmod, "ÆRLIGHED","Du taler altid sandt og du gør sjældent ting, der går imod dine værdier og principper.", progress));
        //Nysgerrighed
         questionList.add(new Strengths("5", R.drawable.iconnysgerrig, "KREATIVITET","Du tænker tit ‘Hmm, måske kan det gøres på en anden eller bedre måde?’ Du er god til at få idéer.", progress));
         questionList.add(new Strengths("6", R.drawable.iconnysgerrig, "NYSGERRIGHED","Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", progress));
@@ -88,7 +88,7 @@ public class Strengths implements Parcelable{
         //Social Intelligens
         questionList.add(new Strengths("20", R.drawable.iconsocialintelligens, "SOCIAL INTELLIGENS","Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", progress));
         questionList.add(new Strengths("21", R.drawable.iconsocialintelligens, "OMSORG","Du står altid klar, når folk omkring dig har brug for hjælp. Du tænker på andre og hjælper, når der er brug for det.", progress));
-        questionList.add(new Strengths("22", R.drawable.iconsocialintelligens, "RELATIONER","Du er god til at lære andre at kende. Det betyder meget for dig at være tæt på folk, du holder af.", progress));
+        */questionList.add(new Strengths("22", R.drawable.iconsocialintelligens, "RELATIONER","Du er god til at lære andre at kende. Det betyder meget for dig at være tæt på folk, du holder af.", progress));
         return questionList;
     }
 

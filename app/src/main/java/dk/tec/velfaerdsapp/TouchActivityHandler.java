@@ -57,8 +57,8 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         else if (this.toString().contains("QuestionsPage")) {
                             if (QuestionsPage.answeredCount == QuestionsPage.count){
                                 Intent intent = new Intent(this, SelectPage.class);
-                                intent.putParcelableArrayListExtra("ObjectList",QuestionsAdapter.answers);
-                                    startActivity(intent);
+                                intent.putParcelableArrayListExtra("ObjectList",QuestionsAdapter.strengths);
+                                startActivity(intent);
                             }
                             else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
                         else if (this.toString().contains("SelectPage")){startActivity(forward(this, ResultPage.class));}
