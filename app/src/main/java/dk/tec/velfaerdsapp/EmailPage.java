@@ -3,6 +3,7 @@ package dk.tec.velfaerdsapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -10,6 +11,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +19,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,32 +142,31 @@ public class EmailPage extends TouchActivityHandler {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
-    //lortet er ikke testet
     public void sendMail(View view) {
-        ArrayList<String> emailList = new ArrayList<String>();
-        //For loop that fills in and sends mail I suppose
 
-        for (int i = 0; i <= maxEmails; i++) {
 
-            emailList.add(editTextList.get(i).getText().toString());
-            //System.out.println(emailList);
-            for (int x=0; x<emailList.size(); x++) {
-                System.out.println(emailList.get(x));
-            }
+        String[] TO = new String[tableLayout.getChildCount()];
+        int i=0;
+        while (i < tableLayout.getChildCount())
+        {
+            TableRow row = (TableRow)  tableLayout.getChildAt(i);
+            EditText childtext = (EditText) row.getChildAt(0);
+            TO[i] = childtext.getText().toString();
+            i++;
         }
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            //to
-            intent.putExtra(android.content.Intent.EXTRA_EMAIL,
-                        emailList.toArray(new String[emailList.size()]));
-            //Subject
-            intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
-            //Message
-            intent.putExtra(Intent.EXTRA_TEXT, "message");
-
-            //need this to prompts email client only
-            intent.setType("message/rfc822");
-
-            startActivity(Intent.createChooser(intent, "TestMail+fisk@gmail.com"));
+        Log.i("Send email", "");
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("message/rfc822");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "De 24 værdier");
+        //Skal laves om til at indeholde svar fra shared preferences ELLER intent, hvad end vi går videre med
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Question 1: 4 \nQuestion 2: 2\nQuestion 3: 2 \nQuestion 4: 2 \nQuestion 5: 1");
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            Log.i("Sent email", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(EmailPage.this, "Der er ikke nogen email applikation installeret.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

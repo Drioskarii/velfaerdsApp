@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -24,8 +25,7 @@ public class QuestionsAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
-    private ArrayList<Strengths> strengths;
-    public static QuestionsPage questionsPage;
+    public static ArrayList<Strengths> strengths;
     Context mContext;
 
     public QuestionsAdapter(Context context, ArrayList<Strengths> strengths){
@@ -52,16 +52,15 @@ public class QuestionsAdapter extends BaseAdapter {
     public View getView(int position, View itemView, ViewGroup parent) {
 
         itemView = LayoutInflater.from(mContext).inflate(R.layout.questions_item, parent, false);
+        Strengths tempStrengths = (Strengths) getItem(position);
 
         ImageView mImageIcon = itemView.findViewById(R.id.imageIcon);
         TextView mTxtTitle = itemView.findViewById(R.id.questions_txtTitle);
         TextView mTxtQuestion = itemView.findViewById(R.id.questions_txtQuestion);
         ImageView questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
         SeekBar mSeekBar = itemView.findViewById(R.id.seekBar);
-        mSeekBar.setProgress(3);
+        mSeekBar.setProgress(tempStrengths.getAnswer());
         mSeekBar.setMax(5);
-
-        Strengths tempStrengths = (Strengths) getItem(position);
 
         mImageIcon.setImageResource(tempStrengths.getIcon());
         mTxtTitle.setText(tempStrengths.getTitle());
@@ -73,7 +72,7 @@ public class QuestionsAdapter extends BaseAdapter {
         //get data stored from seekBar and insert into
         String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
         if (!s1.isEmpty()){
-            //insert data if empty
+            //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
         }
@@ -92,12 +91,17 @@ public class QuestionsAdapter extends BaseAdapter {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
+                tempStrengths.setAnswer(progress);
                 //Insert data into the SharedPreferences
+                if (strengths.contains(tempStrengths)) {
+                    strengths.set(position,tempStrengths);
+                }
+
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    questionsPage.answered++;
-                    questionsPage.questionsProgressBar.setProgress(questionsPage.answered);
+                    QuestionsPage.answeredCount++;
+                    QuestionsPage.questionsProgressBar.setProgress(QuestionsPage.answeredCount);
                 }
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();

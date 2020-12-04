@@ -1,23 +1,32 @@
 package dk.tec.velfaerdsapp;
 
+import Adapter.QuestionsAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class TouchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private float x1, x2;
-    private static final int MIN_DISTANCE = 500;
+    private static int MIN_DISTANCE = 0;
     private GestureDetector gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MIN_DISTANCE = dpToPx(125,this);
         this.gestureDetector = new GestureDetector(this, this);
     }
 
@@ -46,14 +55,22 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         else if (this.toString().contains("The24Strength")){backward();}
                         else if (this.toString().contains("IntroPage")){startActivity(forward(this, QuestionsPage.class));}
                         else if (this.toString().contains("QuestionsPage")) {
-                            startActivity(forward(this, SelectPage.class));}
-                            //if (QuestionsPage.answered == QuestionsPage.count){ startActivity(forward(this, SelectPage.class)); }
-                            //else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
-                        else if (this.toString().contains("SelectPage")){startActivity(forward(this, EmailPage.class));}
+                            if (QuestionsPage.answeredCount == QuestionsPage.count){
+                                Intent intent = new Intent(this, SelectPage.class);
+                                intent.putParcelableArrayListExtra("ObjectList",QuestionsAdapter.strengths);
+                                startActivity(intent);
+                            }
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
+                        else if (this.toString().contains("SelectPage")){startActivity(forward(this, ResultPage.class));}
+                        else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }
                 }
         }
         return super.onTouchEvent(event);
+    }
+
+    public static int dpToPx(int dp, Context context){
+        return dp * ((int) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
     //Forward er altid swipe ( højre mod venstre )
