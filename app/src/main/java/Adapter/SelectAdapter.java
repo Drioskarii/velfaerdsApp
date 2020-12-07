@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,13 +23,11 @@ import java.util.Collections;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.SelectPage;
-import dk.tec.velfaerdsapp.Strengths;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
-    public static ArrayList<String> selected = new ArrayList<>();
+    public static ArrayList<String> selected = new ArrayList<String>();
     private static int confirmCounter = 0;
 
     private static final String TAG = "RecyclerViewAdapter";
@@ -66,7 +63,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        //Sorts selectpage List
+        //Sorts selectpage arrayList
         if (misGood) {
             answerList.sort(Collections.reverseOrder());
 
@@ -128,7 +125,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 System.out.println(confirmCounter);
 
                 selected.remove(id);
-                System.out.println("Remove"+selected);
+                System.out.println("Removed: "+selected);
             } else {
                 Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
             }

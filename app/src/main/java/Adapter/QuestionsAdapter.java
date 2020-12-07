@@ -89,6 +89,7 @@ public class QuestionsAdapter extends BaseAdapter {
             }
 
             @Override
+
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
                 tempStrengths.setAnswer(progress);

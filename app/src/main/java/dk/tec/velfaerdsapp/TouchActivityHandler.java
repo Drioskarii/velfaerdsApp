@@ -1,6 +1,8 @@
 package dk.tec.velfaerdsapp;
 
 import Adapter.QuestionsAdapter;
+import Adapter.SelectAdapter;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -61,7 +63,10 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                                 startActivity(intent);
                             }
                             else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
-                        else if (this.toString().contains("SelectPage")){startActivity(forward(this, ResultPage.class));}
+                        else if (this.toString().contains("SelectPage")){
+                            Intent intent = new Intent(this, ResultPage.class);
+                            intent.putStringArrayListExtra("SelectedList", SelectAdapter.selected);
+                            startActivity(intent);}
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }
                 }
