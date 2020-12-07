@@ -7,17 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import com.google.gson.Gson;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 public class TouchActivityHandler extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -47,15 +44,28 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                 //horizontal swipe
                 float valueX = x2 - x1;
                 if (Math.abs(valueX) > MIN_DISTANCE) {
-                    if (x2 > x1) {
+                    if (x2 > x1) { //-----------SWIPE LEFT TO RIGHT-----------
                         //swipe left / back
-                        if (this.toString().contains("MainActivity")) {startActivity(/* "Backward" */forward(this, The24Strengths.class));}
-                        else{backward(); }
-                    } else {
+                        if (this.toString().contains("MainActivity")) {
+                            if (!MainActivity.tutDone){
+                                tutorialDone();
+                            }
+                            startActivity(forward(this, The24Strengths.class));
+                        } else{backward(); }
+                    } else { //-----------SWIPE RIGHT TO LEFT-----------
                         //swipe right / forward
-                        if (this.toString().contains("MainActivity")){startActivity(forward(this, IntroPage.class));}
-                        else if (this.toString().contains("The24Strength")){backward();}
-                        else if (this.toString().contains("IntroPage")){startActivity(forward(this, QuestionsPage.class));}
+                        if (this.toString().contains("MainActivity")){
+                            if (!MainActivity.tutDone){
+                                tutorialDone();
+                            }
+                            startActivity(forward(this, IntroPage.class));
+                        }
+                        else if (this.toString().contains("The24Strength")){
+                            backward();
+                        }
+                        else if (this.toString().contains("IntroPage")){
+                            startActivity(forward(this, QuestionsPage.class));
+                        }
                         else if (this.toString().contains("QuestionsPage")) {
                             if (QuestionsPage.answeredCount == QuestionsPage.count){
                                 Intent intent = new Intent(this, SelectPage.class);
@@ -72,6 +82,16 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                 }
         }
         return super.onTouchEvent(event);
+    }
+
+    public void tutorialDone(){
+        MainActivity.tutDone = true;
+        RelativeLayout relativeLayout = findViewById(R.id.layoutTutorial);
+        relativeLayout.animate().alpha(0.0f).setDuration(1000);
+        SharedPreferences sharedPref = getSharedPreferences("tutorialState", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("tutorialState", ""+MainActivity.tutDone);
+        editor.apply();
     }
 
     public static int dpToPx(int dp, Context context){

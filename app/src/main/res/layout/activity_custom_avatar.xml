@@ -17,8 +17,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:paddingBottom="10dp">
 
         <TextView
