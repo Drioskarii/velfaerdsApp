@@ -68,15 +68,10 @@ public class SelectPage extends TouchActivityHandler {
 
 
     private void getGoodImages() {
-       // badProgressBar = findViewById(R.id.badProgressBar);
-       // badProgressBar.setProgress(badAdapter.getCount());
-
         initRecyclerView();
     }
 
     private void getBadImages() {
-       // goodProgressBar = findViewById(R.id.goodProgressBar);
-       // goodProgressBar.setProgress(goodAdapter.getCount());
         initRecyclerView();
     }
 
@@ -86,22 +81,13 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ArrayList<String> gAnswers =  answers;
-        gAnswers.sort(Collections.reverseOrder());
-
         SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, true);
-
         recyclerViewGood.setAdapter(goodAdapter);
-
-
 
 
         LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
-
-        ArrayList<String> bAnswers =  answers;
-        Collections.sort(bAnswers);
 
         SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, false);
         recyclerViewBad.setAdapter(badAdapter);

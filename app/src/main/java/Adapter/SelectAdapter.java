@@ -32,7 +32,6 @@ import static android.content.Context.MODE_PRIVATE;
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
     public static ArrayList<String> selected = new ArrayList<>();
     private static int confirmCounter = 0;
-    private ArrayList<Strengths> strengths;
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -67,6 +66,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
+        //Sorts selectpage List
         if (misGood) {
             answerList.sort(Collections.reverseOrder());
 
@@ -96,12 +96,11 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             String id = answerList.get(position) +" "+ questionList.get(position);
 
 
-
+//Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
             if (confirmCounter <= 4){
                 if (holder.selectConfirm.isShown()){
                     holder.selectConfirm.setVisibility(View.GONE);
                     confirmCounter--;
-                    //System.out.println(confirmCounter);
 
                     selected.remove(id);
                     System.out.println("Remove"+selected);
