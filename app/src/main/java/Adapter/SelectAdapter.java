@@ -20,6 +20,9 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
@@ -95,6 +98,14 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             String answerValue = answerList.get(position);
             String questionValue = questionList.get(position);
 
+            HashMap<String,String> gMap = new HashMap<>();
+            HashMap<String,String> bMap = new HashMap<>();
+            gMap.put("test", "tests");
+            gMap.put("test", "tests");
+            gMap.put("test", "tests");
+            gMap.put("test", "tests");
+
+
 
 //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
             if(misGood){
@@ -103,8 +114,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     holder.selectConfirm.setVisibility(View.GONE);
                     goodConfirmCounter--;
 
-                    goodSelected.remove(answerValue+questionValue);
-                    System.out.println("Remove"+goodSelected);
+                    //goodSelected.remove(answerValue+questionValue);
+                    gMap.remove(questionValue,answerValue);
+                    System.out.println("Remove "+goodSelected);
                 } else {
 
                     holder.selectConfirm.setVisibility(View.VISIBLE);
@@ -114,8 +126,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     goodConfirmCounter++;
                     System.out.println(goodConfirmCounter);
 
-                    goodSelected.add(misGood + answerValue+questionValue);
-                        System.out.println("added Good"+goodSelected);
+                  //  goodSelected.add(misGood + answerValue+questionValue);
+                    gMap.put(questionValue,answerValue);
+                        //System.out.println("added Good"+goodSelected);
+                    System.out.println("added Good"+gMap);
 
                 }
             } else if (holder.selectConfirm.isShown()){
@@ -124,8 +138,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 goodConfirmCounter--;
                 System.out.println(goodConfirmCounter);
 
-                goodSelected.remove(answerValue+questionValue);
-                System.out.println("Removed: "+goodSelected);
+                //goodSelected.remove(answerValue+questionValue);
+                gMap.remove(questionValue,answerValue);
+                //System.out.println("Removed: "+goodSelected);
+                System.out.println("Remove "+gMap);
             } else {
                 Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
             }
@@ -135,8 +151,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         holder.selectConfirm.setVisibility(View.GONE);
                         badConfirmCounter--;
 
-                        badSelected.remove(answerValue+questionValue);
-                        System.out.println("Remove"+badSelected);
+                        //badSelected.remove(answerValue+questionValue);
+                        bMap.remove(questionValue,answerValue);
+                        //System.out.println("Remove"+badSelected);
+                        System.out.println("Remove "+bMap);
                     } else {
 
                         holder.selectConfirm.setVisibility(View.VISIBLE);
@@ -146,9 +164,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         badConfirmCounter++;
                         System.out.println(badConfirmCounter);
 
-                        badSelected.add(misGood + answerValue+questionValue);
-                        System.out.println("added Good"+badSelected);
-
+                        //badSelected.add(misGood + answerValue+questionValue);
+                        bMap.put(questionValue,answerValue);
+                        //System.out.println("added Good"+badSelected);
+                        System.out.println("added Good"+bMap);
                     }
                 } else if (holder.selectConfirm.isShown()){
 
@@ -156,11 +175,16 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     badConfirmCounter--;
                     System.out.println(badConfirmCounter);
 
-                    badSelected.remove(answerValue+questionValue);
-                    System.out.println("Removed: "+badSelected);
+                    bMap.remove(questionValue,answerValue);
+                    //System.out.println("Removed: "+badSelected);
+                    System.out.println("Remove "+bMap);
                 } else {
                     Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
                 }
+                System.out.println(bMap.size());
+                System.out.println(gMap.size());
+                System.out.println(gMap.containsKey(gMap));
+                System.out.println(gMap.containsKey(bMap));
             }
         });
     }
