@@ -41,9 +41,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private Context mContext;
     private boolean misGood;
 
-
-
-
     public SelectAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls, Boolean isGood) {
         answerList = answers;
         questionList = questions;
