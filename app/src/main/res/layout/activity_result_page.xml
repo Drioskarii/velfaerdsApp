@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:id="@+id/costemAvatar"
+        android:id="@+id/Resultpage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,14 +16,14 @@
         tools:context=".ResultPage">
 
     <TextView
-        android:id="@+id/txtCustomAvatar"
+        android:id="@+id/txtResultPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:shadowColor="@color/black"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="3"
-        android:text="@string/din_avatar"
+        android:text="@string/result_page"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="32sp" />
@@ -35,6 +35,38 @@
         android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp" />
+
+
+        <View style="@style/Divider"
+            android:id="@+id/topScore"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewGood"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="4dp"
+            android:orientation="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View style="@style/Divider"
+            android:layout_marginBottom="5dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewBad"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="4dp"
+            android:orientation="horizontal">
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <View style="@style/Divider"
+            android:layout_marginBottom="5dp"/>
 
 
     </LinearLayout>

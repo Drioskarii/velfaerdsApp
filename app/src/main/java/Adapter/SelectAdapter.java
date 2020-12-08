@@ -27,8 +27,10 @@ import dk.tec.velfaerdsapp.R;
 import static android.content.Context.MODE_PRIVATE;
 
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
-    public static ArrayList<String> selected = new ArrayList<String>();
-    private static int confirmCounter = 0;
+    public static ArrayList<String> goodSelected = new ArrayList<String>();
+    public static ArrayList<String> badSelected = new ArrayList<String>();
+    private static int goodConfirmCounter = 0;
+    private static int badConfirmCounter = 0;
 
     private static final String TAG = "RecyclerViewAdapter";
 
@@ -94,43 +96,74 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
 
 //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
-            if (confirmCounter <= 4){
+            if(misGood){
+            if (goodConfirmCounter <= 4){
                 if (holder.selectConfirm.isShown()){
                     holder.selectConfirm.setVisibility(View.GONE);
-                    confirmCounter--;
+                    goodConfirmCounter--;
 
-                    selected.remove(id);
-                    System.out.println("Remove"+selected);
+                    goodSelected.remove(id);
+                    System.out.println("Remove"+goodSelected);
                 } else {
 
                     holder.selectConfirm.setVisibility(View.VISIBLE);
                     editor.putString(questionList.get(position)+"_selected",id);
                     editor.apply();
 
-                    confirmCounter++;
-                    System.out.println(confirmCounter);
-                    if (misGood){
-                        selected.add("good: "+id);
+                    goodConfirmCounter++;
+                    System.out.println(goodConfirmCounter);
 
-                        System.out.println("added Good"+selected);
-                    } else {
-                        selected.add("bad: "+id);
-                        System.out.println("added Bad"+selected);
-                    }
+                    goodSelected.add(misGood + id);
+                        System.out.println("added Good"+goodSelected);
+
                 }
             } else if (holder.selectConfirm.isShown()){
 
                 holder.selectConfirm.setVisibility(View.GONE);
-                confirmCounter--;
-                System.out.println(confirmCounter);
+                goodConfirmCounter--;
+                System.out.println(goodConfirmCounter);
 
-                selected.remove(id);
-                System.out.println("Removed: "+selected);
+                goodSelected.remove(id);
+                System.out.println("Removed: "+goodSelected);
             } else {
                 Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
             }
+            } else {
+                if (badConfirmCounter <= 4){
+                    if (holder.selectConfirm.isShown()){
+                        holder.selectConfirm.setVisibility(View.GONE);
+                        badConfirmCounter--;
+
+                        badSelected.remove(id);
+                        System.out.println("Remove"+badSelected);
+                    } else {
+
+                        holder.selectConfirm.setVisibility(View.VISIBLE);
+                        editor.putString(questionList.get(position)+"_selected",id);
+                        editor.apply();
+
+                        badConfirmCounter++;
+                        System.out.println(badConfirmCounter);
+
+                        badSelected.add(misGood + id);
+                        System.out.println("added Good"+badSelected);
+
+                    }
+                } else if (holder.selectConfirm.isShown()){
+
+                    holder.selectConfirm.setVisibility(View.GONE);
+                    badConfirmCounter--;
+                    System.out.println(badConfirmCounter);
+
+                    badSelected.remove(id);
+                    System.out.println("Removed: "+badSelected);
+                } else {
+                    Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -138,9 +171,11 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     }
 
     public static int getCount(){
-        int count = confirmCounter;
-        System.out.println("getCount() = "+count);
-        return count;
+        int goodCount = goodConfirmCounter;
+        int badCount = badConfirmCounter;
+        System.out.println("getCount() = "+badConfirmCounter);
+        System.out.println("getCount() = "+goodConfirmCounter);
+        return goodConfirmCounter + badConfirmCounter;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

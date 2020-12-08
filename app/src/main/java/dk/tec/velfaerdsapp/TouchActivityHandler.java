@@ -72,10 +72,12 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                                 intent.putParcelableArrayListExtra("ObjectList",QuestionsAdapter.strengths);
                                 startActivity(intent);
                             }
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); } }
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                        }
                         else if (this.toString().contains("SelectPage")){
                             Intent intent = new Intent(this, ResultPage.class);
-                            intent.putStringArrayListExtra("SelectedList", SelectAdapter.selected);
+                            intent.putStringArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                            intent.putStringArrayListExtra("badSelectedList", SelectAdapter.badSelected);
                             startActivity(intent);}
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }
