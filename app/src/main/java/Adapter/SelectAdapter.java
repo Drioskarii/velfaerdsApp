@@ -92,7 +92,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
 
         holder.btn.setOnClickListener(v -> {
-            String id = answerList.get(position) +" "+ questionList.get(position);
+            String answerValue = answerList.get(position);
+            String questionValue = questionList.get(position);
 
 
 //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
@@ -102,18 +103,18 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     holder.selectConfirm.setVisibility(View.GONE);
                     goodConfirmCounter--;
 
-                    goodSelected.remove(id);
+                    goodSelected.remove(answerValue+questionValue);
                     System.out.println("Remove"+goodSelected);
                 } else {
 
                     holder.selectConfirm.setVisibility(View.VISIBLE);
-                    editor.putString(questionList.get(position)+"_selected",id);
+                    editor.putString(questionList.get(position)+"_selected",answerValue+questionValue);
                     editor.apply();
 
                     goodConfirmCounter++;
                     System.out.println(goodConfirmCounter);
 
-                    goodSelected.add(misGood + id);
+                    goodSelected.add(misGood + answerValue+questionValue);
                         System.out.println("added Good"+goodSelected);
 
                 }
@@ -123,7 +124,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 goodConfirmCounter--;
                 System.out.println(goodConfirmCounter);
 
-                goodSelected.remove(id);
+                goodSelected.remove(answerValue+questionValue);
                 System.out.println("Removed: "+goodSelected);
             } else {
                 Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
@@ -134,18 +135,18 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         holder.selectConfirm.setVisibility(View.GONE);
                         badConfirmCounter--;
 
-                        badSelected.remove(id);
+                        badSelected.remove(answerValue+questionValue);
                         System.out.println("Remove"+badSelected);
                     } else {
 
                         holder.selectConfirm.setVisibility(View.VISIBLE);
-                        editor.putString(questionList.get(position)+"_selected",id);
+                        editor.putString(questionList.get(position)+"_selected",answerValue+questionValue);
                         editor.apply();
 
                         badConfirmCounter++;
                         System.out.println(badConfirmCounter);
 
-                        badSelected.add(misGood + id);
+                        badSelected.add(misGood + answerValue+questionValue);
                         System.out.println("added Good"+badSelected);
 
                     }
@@ -155,7 +156,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     badConfirmCounter--;
                     System.out.println(badConfirmCounter);
 
-                    badSelected.remove(id);
+                    badSelected.remove(answerValue+questionValue);
                     System.out.println("Removed: "+badSelected);
                 } else {
                     Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
@@ -175,7 +176,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         int badCount = badConfirmCounter;
         System.out.println("getCount() = "+badConfirmCounter);
         System.out.println("getCount() = "+goodConfirmCounter);
-        return goodConfirmCounter + badConfirmCounter;
+        return (goodConfirmCounter + badConfirmCounter);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
