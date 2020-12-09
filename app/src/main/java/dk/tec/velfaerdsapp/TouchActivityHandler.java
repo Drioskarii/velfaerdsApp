@@ -76,8 +76,8 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         }
                         else if (this.toString().contains("SelectPage")){
                             Intent intent = new Intent(this, ResultPage.class);
-                            intent.putStringArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                            intent.putStringArrayListExtra("badSelectedList", SelectAdapter.badSelected);
+                            intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                            intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
                             startActivity(intent);}
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }

@@ -26,7 +26,7 @@ public class QuestionsAdapter extends BaseAdapter {
     private static final String TAG = "QuestionsAdapter";
 
     public static ArrayList<Strengths> strengths;
-    Context mContext;
+    private Context mContext;
 
     public QuestionsAdapter(Context context, ArrayList<Strengths> strengths){
         mContext = context;
