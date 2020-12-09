@@ -37,7 +37,7 @@
         android:id="@+id/layoutLogos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,11 +56,10 @@
             android:id="@+id/imgLogoTec"
             android:layout_width="300sp"
             android:layout_height="100sp"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="50sp"
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
             android:src="@drawable/logo_tec" />
-
         <View style="@style/Divider" />
     </LinearLayout>
 

@@ -1,8 +1,17 @@
 package dk.tec.velfaerdsapp;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+import Adapter.ResultAdapter;
+import Adapter.SelectAdapter;
 
 public class ResultPage extends TouchActivityHandler{
 
@@ -10,6 +19,13 @@ public class ResultPage extends TouchActivityHandler{
     //Initialising
     AnimationDrawable animation;
     ImageView characterPlaceholder;
+    //vars
+    private ArrayList<String> goodQuestions = new ArrayList<>();
+    private ArrayList<String> goodAnswers = new ArrayList<>();
+    private ArrayList<String> goodSelectImageUrls = new ArrayList<>();
+    private ArrayList<String> badQuestions = new ArrayList<>();
+    private ArrayList<String> badAnswers = new ArrayList<>();
+    private ArrayList<String> badSelectImageUrls = new ArrayList<>();
 
 
     @Override
@@ -21,17 +37,69 @@ public class ResultPage extends TouchActivityHandler{
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
+        ArrayList<String> goodSelected = getIntent().getStringArrayListExtra("goodSelectedList");
+        ArrayList<String> badSelected = getIntent().getStringArrayListExtra("badSelectedList");
+
+
+        initRecyclerView();
+
     }
 
+    private void getValue() {
+        ArrayList<String> goodSelected = getIntent().getStringArrayListExtra("goodSelectedList");
+        ArrayList<String> badSelected = getIntent().getStringArrayListExtra("badSelectedList");
+        int goodSize = goodSelected.size();
+        int badSize = badSelected.size();
+        int iGood = 0;
+        int iBad = 0;
 
+        System.out.println("HELP");
+        System.out.println(goodSelected.size());
+        System.out.println(goodSelected);
+        System.out.println(badSelected.size());
+        System.out.println(badSelected);
 
+        /*while (iGood < goodSize ){
+            //Den her metode virker kun med billeder som ikke er i xml form
+            goodSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ goodSelected.get(iGood).getIcon())));
+            goodQuestions.add(goodSelected.get(iGood).getQuestion());
+            goodAnswers.add(String.valueOf(goodSelected.get(iGood).getAnswer()));
+            iGood++;
+        }
 
-
-
+        while (iBad < badSize ){
+            //Den her metode virker kun med billeder som ikke er i xml form
+            badSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ badSelected.get(iBad).getIcon())));
+            badQuestions.add(badSelected.get(iBad).getQuestion());
+            badAnswers.add(String.valueOf(badSelected.get(iBad).getAnswer()));
+            iBad++;
+        }*/
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         animation.start();
+    }
+
+    private void initRecyclerView() {
+
+        /*LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
+        recyclerViewGood.setLayoutManager(layoutManagerGood);
+
+        ResultAdapter goodAdapter = new ResultAdapter(this, questions, answers, selectImageUrls, true);
+        recyclerViewGood.setAdapter(goodAdapter);
+
+
+        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
+        recyclerViewBad.setLayoutManager(layoutManagerBad);
+
+        ResultAdapter badAdapter = new ResultAdapter(this, questions, answers, selectImageUrls, false);
+        recyclerViewBad.setAdapter(badAdapter);*/
+
+
+
     }
 }

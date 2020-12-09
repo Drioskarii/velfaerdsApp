@@ -75,6 +75,7 @@ public class QuestionsAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
+            QuestionsPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -85,12 +86,15 @@ public class QuestionsAdapter extends BaseAdapter {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
+                int progress = seekBar.getProgress();
+                QuestionsPage.setModPointsMinus(tempStrengths, progress);
             }
 
             @Override
+
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
+                QuestionsPage.setModPointsPlus(tempStrengths, progress);
                 tempStrengths.setAnswer(progress);
                 //Insert data into the SharedPreferences
                 if (strengths.contains(tempStrengths)) {
@@ -103,11 +107,16 @@ public class QuestionsAdapter extends BaseAdapter {
                     QuestionsPage.answeredCount++;
                     QuestionsPage.questionsProgressBar.setProgress(QuestionsPage.answeredCount);
                 }
+                QuestionsPage.checkPoints();
+                Log.d(TAG, "x: "+QuestionsPage.modPoints);
+                Log.d(TAG, "xx: "+QuestionsPage.nysPoints);
+
+
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-
+        QuestionsPage.checkPoints();
         return itemView;
     }
 }

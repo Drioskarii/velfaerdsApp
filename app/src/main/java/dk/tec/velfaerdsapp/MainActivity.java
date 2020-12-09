@@ -20,7 +20,7 @@ public class MainActivity extends TouchActivityHandler {
     private static final String TAG = "mainActivity";
     final Handler handler = new Handler();
     Runnable myRunnable;
-    boolean tutDone;
+    public static boolean tutDone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,24 +45,6 @@ public class MainActivity extends TouchActivityHandler {
                     tutorialText();
                 }
             }, 4000);
-            handler.postDelayed(myRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    tutDone = true;
-                    tutorialFrame();
-                }
-            }, 8000);
-            handler.postDelayed(myRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    RelativeLayout relativeLayout = findViewById(R.id.layoutTutorial);
-                    relativeLayout.setVisibility(View.GONE);
-                    SharedPreferences sharedPref = getSharedPreferences("tutorialState", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString("tutorialState", ""+tutDone);
-                    editor.apply();
-                }
-            }, 9000);
         }
     }
 
