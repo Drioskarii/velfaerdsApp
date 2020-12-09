@@ -70,5 +70,6 @@ public class SelectPage extends TouchActivityHandler {
 
         SelectAdapter badAdapter = new SelectAdapter(this, strengths, false);
         recyclerViewBad.setAdapter(badAdapter);
+
     }
 }

@@ -45,10 +45,12 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private Context mContext;
     private boolean misGood;
 
+
     public SelectAdapter(Context context, ArrayList<Strengths> strengths, boolean isGood){
         mContext = context;
         mStrengths = strengths;
         misGood = isGood;
+
     }
 
     @NonNull
@@ -56,7 +58,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_item, parent, false);
         return new ViewHolder(view);
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -64,17 +65,18 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
         //Sorts selectpage arrayList
-
         Log.d(TAG, "POSITION: "+position);
         Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
 
-        holder.answer.setText(mStrengths.get(position).getAnswer());
+
+        holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
 
-        holder.answer.setText(mStrengths.get(position).getAnswer());
-        holder.question.setText(mStrengths.get(position).getQuestion());
-        holder.selectConfirm.setVisibility(View.GONE);
+        //don't ask me
+//        holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
+//        holder.question.setText(mStrengths.get(position).getQuestion());
+//        holder.selectConfirm.setVisibility(View.GONE);
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
