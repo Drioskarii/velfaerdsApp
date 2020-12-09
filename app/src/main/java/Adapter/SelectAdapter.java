@@ -2,6 +2,8 @@ package Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,15 +70,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         Log.d(TAG, "POSITION: "+position);
         Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
 
-
+        holder.image.setImageResource(+ mStrengths.get(position).getIcon());
         holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
-
-        //don't ask me
-//        holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
-//        holder.question.setText(mStrengths.get(position).getQuestion());
-//        holder.selectConfirm.setVisibility(View.GONE);
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
