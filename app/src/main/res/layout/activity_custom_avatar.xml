@@ -26,23 +26,15 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="@string/din_avatar"
-            android:textColor="@color/white"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="3"
-            android:textSize="40sp" />
+            android:textColor="@color/designBlue"
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/txtCustomAvatarPreset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/v_lg_en_eksisterende"
-            android:textColor="@color/white"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="3"
+            android:textColor="@color/designBlue"
             android:textSize="15sp"/>
 
         <View style="@style/Divider" />

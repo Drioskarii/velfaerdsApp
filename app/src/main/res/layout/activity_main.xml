@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="@string/txtForside_text"
             android:textColor="@color/designBlue"
-            android:textSize="40sp" />
+            android:textSize="32sp" />
     </LinearLayout>
 
     <LinearLayout
