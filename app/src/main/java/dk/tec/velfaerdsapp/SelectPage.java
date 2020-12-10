@@ -34,15 +34,6 @@ public class SelectPage extends TouchActivityHandler {
 
         getGoodImages();
         getBadImages();
-
-        ProgressBar gProgressBar = findViewById(R.id.goodProgressBar);
-        ProgressBar bProgressBar = findViewById(R.id.badProgressBar);
-
-        bProgressBar.setMax(5);
-        bProgressBar.setProgress(SelectAdapter.getCount());
-
-        gProgressBar.setMax(5);
-        gProgressBar.setProgress(SelectAdapter.getCount());
     }
 
 
