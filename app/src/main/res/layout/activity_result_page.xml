@@ -16,16 +16,12 @@
         tools:context=".ResultPage">
 
     <TextView
-        android:id="@+id/txtResultPage"
+        android:id="@+id/txtResultDinAvatar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:shadowColor="@color/black"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="3"
-        android:text="@string/result_page"
+        android:text="Din Avatar"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/designBlue"
         android:textSize="32sp" />
 
 

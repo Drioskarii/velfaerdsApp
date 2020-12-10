@@ -30,36 +30,34 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center_horizontal"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
                 android:text="@string/IntroPage_Title"
-                android:textColor="@color/white"
+                android:textColor="@color/designBlue"
                 android:textSize="25sp" />
 
             <EditText
-                android:id="@+id/editTextName"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:hint="@string/introPage_Name"
-                android:inputType="textPersonName" />
-
-            <EditText
                 android:id="@+id/editTextJob"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:hint="@string/introPage_job"
+                android:textColor="@color/designBlue"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:hint="@string/introPage_Name"
+                android:textColor="@color/designBlue"
                 android:inputType="textPersonName" />
 
             <Spinner
                 android:id="@+id/spinnerGender"
                 style="@style/Widget.AppCompat.Spinner.Underlined"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
@@ -79,13 +77,9 @@
                 android:id="@+id/txtCustomAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
                 android:text="@string/din_avatar"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@color/designBlue"
                 android:textSize="32sp" />
 
 

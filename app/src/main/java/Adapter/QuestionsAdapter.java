@@ -79,17 +79,12 @@ public class QuestionsAdapter extends BaseAdapter {
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-            }
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) { }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                int progress = seekBar.getProgress();
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
-
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
                 tempStrengths.setAnswer(progress);

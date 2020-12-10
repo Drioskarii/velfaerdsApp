@@ -23,33 +23,17 @@
             tools:ignore="MissingConstraints">
 
             <TextView
+                android:id="@+id/txtSelectDinAvatar"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
                 android:textSize="38sp"
-                android:textColor="@color/white"
-
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="@string/v_lg_de_vigtigste"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="@string/v_lg_de_5_vigtigste_svar"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
+                android:textColor="@color/designBlue"
+                android:text="Din Avatar"/>
         </LinearLayout>
-        <LinearLayout
 
+        <LinearLayout
             android:orientation="vertical"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -60,12 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/h_jeste_svar"
-
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:textColor="@color/white"/>
+                android:textColor="@color/designBlue"/>
 
             <View style="@style/Divider"
                 android:id="@+id/topScore"/>
@@ -84,46 +63,12 @@
             <View style="@style/Divider"
                 android:layout_marginBottom="5dp"/>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ProgressBar
-                    android:id="@+id/goodProgressBar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp"
-
-                    android:max="5"
-                    android:progress="3"
-
-                    android:background="#fff"
-                    android:progressDrawable="@drawable/custom_progressbar"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-                <RelativeLayout
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="30dp">
-                    <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="3/5"/>
-                </RelativeLayout>
-            </FrameLayout>
-
             <TextView
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/laveste_svar"
-
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:textColor="@color/white"/>
+                android:textColor="@color/designBlue" />
 
             <View style="@style/Divider"
                 android:id="@+id/bottomScore"/>
@@ -138,38 +83,8 @@
                 android:orientation="horizontal">
             </androidx.recyclerview.widget.RecyclerView>
 
-
-
             <View style="@style/Divider"
                 android:layout_marginBottom="5dp"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ProgressBar
-                    android:id="@+id/badProgressBar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp"
-
-                    android:max="5"
-                    android:progress="3"
-
-                    android:background="#fff"
-                    android:progressDrawable="@drawable/custom_progressbar"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-                <RelativeLayout
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="3/5"/>
-                </RelativeLayout>
-            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
