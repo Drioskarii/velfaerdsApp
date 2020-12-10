@@ -24,17 +24,14 @@ public class SelectPage extends TouchActivityHandler {
 
     private static final String TAG = "selectPage";
     //vars
-    private ArrayList<String> questions = new ArrayList<>();
-    private ArrayList<String> answers = new ArrayList<>();
-    private ArrayList<String> selectImageUrls = new ArrayList<>();
+    ArrayList<Strengths> strengths = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
+        strengths = getIntent().getParcelableArrayListExtra("ObjectList");
 
-
-        getImages();
         getGoodImages();
         getBadImages();
 
@@ -46,24 +43,6 @@ public class SelectPage extends TouchActivityHandler {
 
         gProgressBar.setMax(5);
         gProgressBar.setProgress(SelectAdapter.getCount());
-    }
-
-    private void getImages(){
-        ArrayList<Strengths> strengths = getIntent().getParcelableArrayListExtra("ObjectList");
-
-        int size = strengths.size();
-        int i = 0;
-        System.out.println("HELP");
-        System.out.println(strengths.size());
-        System.out.println(strengths);
-
-        while (i < size ){
-            //Den her metode virker kun med billeder som ikke er i xml form
-            selectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ strengths.get(i).getIcon())));
-            questions.add(strengths.get(i).getQuestion());
-            answers.add(String.valueOf(strengths.get(i).getAnswer()));
-            i++;
-        }
     }
 
 
@@ -81,7 +60,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        SelectAdapter goodAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, true);
+        SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
         recyclerViewGood.setAdapter(goodAdapter);
 
 
@@ -89,7 +68,8 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
-        SelectAdapter badAdapter = new SelectAdapter(this, questions, answers, selectImageUrls, false);
+        SelectAdapter badAdapter = new SelectAdapter(this, strengths, false);
         recyclerViewBad.setAdapter(badAdapter);
+
     }
 }

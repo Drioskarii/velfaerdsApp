@@ -2,6 +2,8 @@ package Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,30 +28,31 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
+import dk.tec.velfaerdsapp.Strengths;
+import dk.tec.velfaerdsapp.StrengthsAnswers;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
-    public static ArrayList<String> goodSelected = new ArrayList<String>();
-    public static ArrayList<String> badSelected = new ArrayList<String>();
-    private static int goodConfirmCounter = 0;
-    private static int badConfirmCounter = 0;
 
     private static final String TAG = "RecyclerViewAdapter";
 
+    public static ArrayList<Strengths> goodSelected = new ArrayList<>();
+    public static ArrayList<Strengths> badSelected = new ArrayList<>();
+    private static int goodConfirmCounter = 0;
+    private static int badConfirmCounter = 0;
+
     //vars
-    private ArrayList<String> questionList;
-    private ArrayList<String> answerList;
-    private ArrayList<String> imageList;
+    private ArrayList<Strengths> mStrengths;
     private Context mContext;
     private boolean misGood;
 
-    public SelectAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls, Boolean isGood) {
-        answerList = answers;
-        questionList = questions;
-        imageList = imageUrls;
+
+    public SelectAdapter(Context context, ArrayList<Strengths> strengths, boolean isGood){
         mContext = context;
+        mStrengths = strengths;
         misGood = isGood;
+
     }
 
     @NonNull
@@ -57,34 +60,19 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_item, parent, false);
         return new ViewHolder(view);
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-
         //Sorts selectpage arrayList
-        if (misGood) {
-            answerList.sort(Collections.reverseOrder());
+        Log.d(TAG, "POSITION: "+position);
+        Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
 
-
-        } else {
-            Collections.sort(answerList);
-        }
-        Glide.with(mContext).asBitmap()
-                .load(imageList.get(position))
-                .into(holder.image);
-        holder.answer.setText(answerList.get(position));
-        holder.question.setText(questionList.get(position));
-        holder.selectConfirm.setVisibility(View.GONE);
-        Glide.with(mContext).asBitmap()
-                .load(imageList.get(position))
-                .into(holder.image);
-
-        holder.answer.setText(answerList.get(position));
-        holder.question.setText(questionList.get(position));
+        holder.image.setImageResource(+ mStrengths.get(position).getIcon());
+        holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
+        holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
@@ -92,96 +80,72 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
 
         holder.btn.setOnClickListener(v -> {
-            String answerValue = answerList.get(position);
-            String questionValue = questionList.get(position);
+            String answerValue = String.valueOf(mStrengths.get(position).getAnswer());
+            String questionValue = mStrengths.get(position).getQuestion();
 
-            HashMap<String,String> gMap = new HashMap<>();
-            HashMap<String,String> bMap = new HashMap<>();
-            gMap.put("test", "tests");
-            gMap.put("test", "tests");
-            gMap.put("test", "tests");
-            gMap.put("test", "tests");
-
-
-
-//Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
+            //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
             if(misGood){
-            if (goodConfirmCounter <= 4){
-                if (holder.selectConfirm.isShown()){
+                if (goodConfirmCounter <= 4){
+                    if (holder.selectConfirm.isShown()){
+                        holder.selectConfirm.setVisibility(View.GONE);
+                        goodConfirmCounter--;
+
+                        goodSelected.remove(mStrengths.get(position));
+                        System.out.println("Remove "+mStrengths.get(position));
+                    } else {
+
+                        holder.selectConfirm.setVisibility(View.VISIBLE);
+                        editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
+                        editor.apply();
+
+                        goodConfirmCounter++;
+                        System.out.println(goodConfirmCounter);
+
+                        goodSelected.add(mStrengths.get(position));
+                        //System.out.println("added Good"+goodSelected);
+                        System.out.println("added Good"+mStrengths.get(position));
+
+                    }
+                } else if (holder.selectConfirm.isShown()){
+
                     holder.selectConfirm.setVisibility(View.GONE);
                     goodConfirmCounter--;
-
-                    //goodSelected.remove(answerValue+questionValue);
-                    gMap.remove(questionValue,answerValue);
-                    System.out.println("Remove "+goodSelected);
-                } else {
-
-                    holder.selectConfirm.setVisibility(View.VISIBLE);
-                    editor.putString(questionList.get(position)+"_selected",answerValue+questionValue);
-                    editor.apply();
-
-                    goodConfirmCounter++;
                     System.out.println(goodConfirmCounter);
 
-                  //  goodSelected.add(misGood + answerValue+questionValue);
-                    gMap.put(questionValue,answerValue);
-                        //System.out.println("added Good"+goodSelected);
-                    System.out.println("added Good"+gMap);
-
+                    goodSelected.remove(mStrengths.get(position));
+                    //System.out.println("Removed: "+goodSelected);
+                    System.out.println("Remove "+mStrengths.get(position));
+                } else {
+                    Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
                 }
-            } else if (holder.selectConfirm.isShown()){
-
-                holder.selectConfirm.setVisibility(View.GONE);
-                goodConfirmCounter--;
-                System.out.println(goodConfirmCounter);
-
-                //goodSelected.remove(answerValue+questionValue);
-                gMap.remove(questionValue,answerValue);
-                //System.out.println("Removed: "+goodSelected);
-                System.out.println("Remove "+gMap);
-            } else {
-                Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
-            }
             } else {
                 if (badConfirmCounter <= 4){
                     if (holder.selectConfirm.isShown()){
                         holder.selectConfirm.setVisibility(View.GONE);
                         badConfirmCounter--;
 
-                        //badSelected.remove(answerValue+questionValue);
-                        bMap.remove(questionValue,answerValue);
-                        //System.out.println("Remove"+badSelected);
-                        System.out.println("Remove "+bMap);
+                        badSelected.remove(mStrengths.get(position));
+                        System.out.println("Remove "+mStrengths.get(position));
                     } else {
 
                         holder.selectConfirm.setVisibility(View.VISIBLE);
-                        editor.putString(questionList.get(position)+"_selected",answerValue+questionValue);
+                        editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
                         editor.apply();
 
                         badConfirmCounter++;
                         System.out.println(badConfirmCounter);
 
-                        //badSelected.add(misGood + answerValue+questionValue);
-                        bMap.put(questionValue,answerValue);
-                        //System.out.println("added Good"+badSelected);
-                        System.out.println("added Good"+bMap);
+                        badSelected.add(mStrengths.get(position));
+                        System.out.println("added Good"+mStrengths.get(position));
                     }
                 } else if (holder.selectConfirm.isShown()){
 
                     holder.selectConfirm.setVisibility(View.GONE);
                     badConfirmCounter--;
                     System.out.println(badConfirmCounter);
-
-                    bMap.remove(questionValue,answerValue);
-                    //System.out.println("Removed: "+badSelected);
-                    System.out.println("Remove "+bMap);
                 } else {
                     Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(bMap.size());
-                System.out.println(gMap.size());
-                System.out.println(gMap.containsKey(gMap));
-                System.out.println(gMap.containsKey(bMap));
             }
         });
     }
@@ -189,7 +153,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        return mStrengths.size();
     }
 
     public static int getCount(){
