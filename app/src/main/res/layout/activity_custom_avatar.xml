@@ -7,8 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CustomAvatar"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
-    >
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/layoutCustomAvatar"

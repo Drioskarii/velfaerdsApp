@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".SelectPage"
-    android:background="@drawable/gradient_background">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="fill_parent"

@@ -6,8 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
-    >
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/layoutTitleBar"
@@ -29,8 +28,7 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="3"
-            android:textSize="40sp"
-            />
+            android:textSize="40sp" />
     </LinearLayout>
 
     <LinearLayout

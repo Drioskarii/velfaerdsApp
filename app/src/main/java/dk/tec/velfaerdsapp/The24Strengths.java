@@ -19,7 +19,7 @@ public class The24Strengths extends TouchActivityHandler {
         setContentView(activity_the24_strength);
 
         the24StrenghtsListView = findViewById(R.id.the24StrenghtsListView);
-        The24StrengthsAdapter the24Adapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getQuestionList());
+        The24StrengthsAdapter the24Adapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getModList());
         the24StrenghtsListView.setAdapter(the24Adapter);
     }
 }

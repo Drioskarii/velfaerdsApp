@@ -54,15 +54,14 @@ public class QuestionsAdapter extends BaseAdapter {
         itemView = LayoutInflater.from(mContext).inflate(R.layout.questions_item, parent, false);
         Strengths tempStrengths = (Strengths) getItem(position);
 
-        ImageView mImageIcon = itemView.findViewById(R.id.imageIcon);
         TextView mTxtTitle = itemView.findViewById(R.id.questions_txtTitle);
         TextView mTxtQuestion = itemView.findViewById(R.id.questions_txtQuestion);
         ImageView questionsConfirm = itemView.findViewById(R.id.questionsConfirm);
         SeekBar mSeekBar = itemView.findViewById(R.id.seekBar);
+        questionsConfirm.setImageResource(R.drawable.ic_baseline_remove_circle_20);
         mSeekBar.setProgress(tempStrengths.getAnswer());
         mSeekBar.setMax(5);
 
-        mImageIcon.setImageResource(tempStrengths.getIcon());
         mTxtTitle.setText(tempStrengths.getTitle());
         mTxtQuestion.setText(tempStrengths.getQuestion());
 
@@ -87,14 +86,12 @@ public class QuestionsAdapter extends BaseAdapter {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
-                QuestionsPage.setModPointsMinus(tempStrengths, progress);
             }
 
             @Override
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int progress = seekBar.getProgress();
-                QuestionsPage.setModPointsPlus(tempStrengths, progress);
                 tempStrengths.setAnswer(progress);
                 //Insert data into the SharedPreferences
                 if (strengths.contains(tempStrengths)) {
@@ -108,8 +105,6 @@ public class QuestionsAdapter extends BaseAdapter {
                     QuestionsPage.questionsProgressBar.setProgress(QuestionsPage.answeredCount);
                 }
                 QuestionsPage.checkPoints();
-                Log.d(TAG, "x: "+QuestionsPage.modPoints);
-                Log.d(TAG, "xx: "+QuestionsPage.nysPoints);
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));

@@ -64,7 +64,6 @@ public class The24StrengthsAdapter extends BaseAdapter  {
 
         Strengths tempStrengths = (Strengths) getItem(position);
 
-        mImageIcon.setImageResource(tempStrengths.getIcon());
         mTxtTitle.setText(tempStrengths.getTitle());
         mTxtQuestion.setText(tempStrengths.getQuestion());
 

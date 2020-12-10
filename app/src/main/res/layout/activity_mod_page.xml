@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/questionsPageView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".QuestionsPage">
+
+        <TextView
+            android:id="@+id/txtAvatarName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="AvatarNavn"
+            android:gravity="center_horizontal"
+            android:textSize="30sp"
+            android:textColor="@color/designBlue"
+            android:fontFamily="sans-serif">
+        </TextView>
+
+        <View style="@style/Divider" />
+
+        <FrameLayout
+            android:id="@+id/videoFrame"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:id="@+id/characterHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/iconmod">
+            </ImageView>
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/questionsProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="26dp"
+            android:layout_marginLeft="26dp">
+        </ProgressBar>
+
+        <ListView
+            android:id="@+id/listOfQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp">
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right">
+            <ImageView
+                android:id="@+id/imgNextPage"
+                android:src="@mipmap/ic_baseline_arrow_right"
+                android:layout_width="70dp"
+                android:layout_height="50dp">
+            </ImageView>
+        </LinearLayout>
+</LinearLayout>
