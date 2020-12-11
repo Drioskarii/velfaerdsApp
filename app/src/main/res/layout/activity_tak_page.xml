@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".QuestionsPage">
+    tools:context=".TakPage">
 
     <TextView
         android:id="@+id/txtModDinAvatar"
@@ -61,7 +61,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:divider="@android:color/transparent"
-        android:dividerHeight="25dp"
+        android:dividerHeight="35dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp">
     </ListView>
