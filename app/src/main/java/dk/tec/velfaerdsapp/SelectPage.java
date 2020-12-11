@@ -1,22 +1,16 @@
 package dk.tec.velfaerdsapp;
 
 import android.annotation.SuppressLint;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 
-import Adapter.QuestionsAdapter;
 import Adapter.SelectAdapter;
+import Strengths.Strengths;
 
 
 public class SelectPage extends TouchActivityHandler {
@@ -34,6 +28,9 @@ public class SelectPage extends TouchActivityHandler {
 
         getGoodImages();
         getBadImages();
+
+        TextView txtSelectDinAvatar = findViewById(R.id.txtSelectDinAvatar);
+        txtSelectDinAvatar.setText(gJob + " " + gName);
     }
 
 

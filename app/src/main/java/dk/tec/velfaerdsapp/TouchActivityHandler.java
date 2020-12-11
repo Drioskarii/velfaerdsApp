@@ -21,6 +21,9 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
     private float x1, x2;
     private static int MIN_DISTANCE = 0;
     private GestureDetector gestureDetector;
+    public static String gName;
+    public static String gJob;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +32,10 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
         this.gestureDetector = new GestureDetector(this, this);
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
         gestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             //press

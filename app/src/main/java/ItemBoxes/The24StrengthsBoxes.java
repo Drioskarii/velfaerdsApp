@@ -1,4 +1,4 @@
-package dk.tec.velfaerdsapp;
+package ItemBoxes;
 
 public class The24StrengthsBoxes {
     private final int mImageIcon;

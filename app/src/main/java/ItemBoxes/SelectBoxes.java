@@ -1,4 +1,4 @@
-package dk.tec.velfaerdsapp;
+package ItemBoxes;
 
 public class SelectBoxes {
     private final int mImageIcon;

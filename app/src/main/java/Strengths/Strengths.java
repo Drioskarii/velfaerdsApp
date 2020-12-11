@@ -1,4 +1,4 @@
-package dk.tec.velfaerdsapp;
+package Strengths;
 
 import android.os.Parcel;
 import android.os.Parcelable;

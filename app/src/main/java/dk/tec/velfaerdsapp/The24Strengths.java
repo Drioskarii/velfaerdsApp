@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import Adapter.The24StrengthsAdapter;
+import Strengths.Strengths;
 
 import static dk.tec.velfaerdsapp.R.layout.activity_the24_strength;
 

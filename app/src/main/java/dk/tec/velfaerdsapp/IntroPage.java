@@ -106,6 +106,11 @@ public class IntroPage extends TouchActivityHandler {
         editor.putString("gJob", job);
         editor.putInt("gGender" , selectedID);
         editor.apply();
+
+        gName = name;
+        gJob = job;
+
+
     }
 
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {

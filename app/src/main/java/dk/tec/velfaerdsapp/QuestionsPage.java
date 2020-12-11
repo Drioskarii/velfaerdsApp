@@ -1,22 +1,18 @@
 package dk.tec.velfaerdsapp;
 
 import Adapter.QuestionsAdapter;
+import Strengths.Strengths;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 //import com.google.android.material.slider.Slider;
 
@@ -31,6 +27,7 @@ public class QuestionsPage extends TouchActivityHandler {
     public static int count;
     public static int answeredCount;
     ListView listOfQuestions;
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -47,6 +44,14 @@ public class QuestionsPage extends TouchActivityHandler {
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
+
+
+        //Get name from TouchActivityHandler
+        TextView txtModDinAvatar = findViewById(R.id.txtModDinAvatar);
+        txtModDinAvatar.setText(gJob + " " + gName);
+
+
+
     }
 
     public static void checkPoints(){

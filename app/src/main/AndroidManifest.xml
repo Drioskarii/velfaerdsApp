@@ -27,7 +27,6 @@
             android:name=".IntroPage"
             android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".QuestionsPage" />
-        <activity android:name=".CustomAvatar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

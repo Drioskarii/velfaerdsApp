@@ -4,6 +4,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +44,8 @@ public class ResultPage extends TouchActivityHandler{
 
         initRecyclerView();
 
+        TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
+        txtSelectDinAvatar.setText(gJob + " " + gName);
     }
 
     private void getValue() {

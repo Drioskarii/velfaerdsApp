@@ -2,7 +2,6 @@ package Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,11 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
 import dk.tec.velfaerdsapp.QuestionsPage;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.Strengths;
+import Strengths.Strengths;
 
 import static android.content.Context.MODE_PRIVATE;
 

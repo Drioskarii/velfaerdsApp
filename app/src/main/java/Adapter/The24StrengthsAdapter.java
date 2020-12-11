@@ -1,28 +1,17 @@
 package Adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import dk.tec.velfaerdsapp.QuestionsPage;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.Strengths;
-import dk.tec.velfaerdsapp.The24Strengths;
-import dk.tec.velfaerdsapp.The24StrengthsBoxes;
-
-import static android.content.Context.MODE_PRIVATE;
+import Strengths.Strengths;
 
 public class The24StrengthsAdapter extends BaseAdapter  {
 
