@@ -1,4 +1,4 @@
-package Adapter;
+package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import Strengths.Strengths;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.SamPage;
+import QuestionPages.SamPage;
 
 import static android.content.Context.MODE_PRIVATE;
 

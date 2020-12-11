@@ -1,4 +1,4 @@
-package Adapter;
+package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,19 +13,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import Strengths.Strengths;
-import dk.tec.velfaerdsapp.NysPage;
 import dk.tec.velfaerdsapp.R;
+import QuestionPages.TakPage;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class NysAdapter extends BaseAdapter {
+public class TakAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
     public static ArrayList<Strengths> strengths;
     private Context mContext;
 
-    public NysAdapter(Context context, ArrayList<Strengths> strengths){
+    public TakAdapter(Context context, ArrayList<Strengths> strengths){
         mContext = context;
         this.strengths = strengths;
     }
@@ -71,7 +71,7 @@ public class NysAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            NysPage.checkPoints();
+            TakPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -93,17 +93,17 @@ public class NysAdapter extends BaseAdapter {
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    NysPage.answeredCount++;
-                    NysPage.questionsProgressBar.setProgress(NysPage.answeredCount);
+                    TakPage.answeredCount++;
+                    TakPage.questionsProgressBar.setProgress(TakPage.answeredCount);
                 }
-                NysPage.checkPoints();
+                TakPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        NysPage.checkPoints();
+        TakPage.checkPoints();
         return itemView;
     }
 }

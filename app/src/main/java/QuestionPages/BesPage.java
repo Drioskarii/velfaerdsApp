@@ -1,4 +1,4 @@
-package dk.tec.velfaerdsapp;
+package QuestionPages;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -10,12 +10,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import Strengths.Strengths;
-import Adapter.TakAdapter;
+import QuestionsAdapter.BesAdapter;
+import dk.tec.velfaerdsapp.R;
+import dk.tec.velfaerdsapp.TouchActivityHandler;
 
 //import com.google.android.material.slider.Slider;
 
 
-public class TakPage extends TouchActivityHandler {
+public class BesPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
@@ -29,11 +31,11 @@ public class TakPage extends TouchActivityHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tak_page);
+        setContentView(R.layout.activity_bes_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
-        TakAdapter questionsAdapter = new TakAdapter(TakPage.this, Strengths.getTakList());
+        BesAdapter questionsAdapter = new BesAdapter(BesPage.this, Strengths.getBesList());
         listOfQuestions.setAdapter(questionsAdapter);
 
         count = questionsAdapter.getCount();

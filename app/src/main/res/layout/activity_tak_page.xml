@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".TakPage">
+    tools:context="QuestionPages.TakPage">
 
     <TextView
         android:id="@+id/txtModDinAvatar"

@@ -1,4 +1,4 @@
-package Adapter;
+package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,20 +11,21 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
 import Strengths.Strengths;
-import dk.tec.velfaerdsapp.ModPage;
+import QuestionPages.BesPage;
 import dk.tec.velfaerdsapp.R;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class ModAdapter extends BaseAdapter {
+public class BesAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
     public static ArrayList<Strengths> strengths;
     private Context mContext;
 
-    public ModAdapter(Context context, ArrayList<Strengths> strengths){
+    public BesAdapter(Context context, ArrayList<Strengths> strengths){
         mContext = context;
         this.strengths = strengths;
     }
@@ -70,7 +71,7 @@ public class ModAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            ModPage.checkPoints();
+            BesPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -92,17 +93,17 @@ public class ModAdapter extends BaseAdapter {
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    ModPage.answeredCount++;
-                    ModPage.questionsProgressBar.setProgress(ModPage.answeredCount);
+                    BesPage.answeredCount++;
+                    BesPage.questionsProgressBar.setProgress(BesPage.answeredCount);
                 }
-                ModPage.checkPoints();
+                BesPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        ModPage.checkPoints();
+        BesPage.checkPoints();
         return itemView;
     }
 }

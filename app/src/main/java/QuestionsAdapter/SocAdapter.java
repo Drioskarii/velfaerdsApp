@@ -1,4 +1,4 @@
-package Adapter;
+package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,19 +13,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import Strengths.Strengths;
-import dk.tec.velfaerdsapp.BesPage;
 import dk.tec.velfaerdsapp.R;
+import QuestionPages.SocPage;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class BesAdapter extends BaseAdapter {
+public class SocAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
     public static ArrayList<Strengths> strengths;
     private Context mContext;
 
-    public BesAdapter(Context context, ArrayList<Strengths> strengths){
+    public SocAdapter(Context context, ArrayList<Strengths> strengths){
         mContext = context;
         this.strengths = strengths;
     }
@@ -71,7 +71,7 @@ public class BesAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            BesPage.checkPoints();
+            SocPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -93,17 +93,17 @@ public class BesAdapter extends BaseAdapter {
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    BesPage.answeredCount++;
-                    BesPage.questionsProgressBar.setProgress(BesPage.answeredCount);
+                    SocPage.answeredCount++;
+                    SocPage.questionsProgressBar.setProgress(SocPage.answeredCount);
                 }
-                BesPage.checkPoints();
+                SocPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        BesPage.checkPoints();
+        SocPage.checkPoints();
         return itemView;
     }
 }

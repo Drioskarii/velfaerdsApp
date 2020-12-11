@@ -1,4 +1,4 @@
-package Adapter;
+package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,21 +11,20 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 import Strengths.Strengths;
+import QuestionPages.ModPage;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.SocPage;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class SocAdapter extends BaseAdapter {
+public class ModAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
     public static ArrayList<Strengths> strengths;
     private Context mContext;
 
-    public SocAdapter(Context context, ArrayList<Strengths> strengths){
+    public ModAdapter(Context context, ArrayList<Strengths> strengths){
         mContext = context;
         this.strengths = strengths;
     }
@@ -71,7 +70,7 @@ public class SocAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            SocPage.checkPoints();
+            ModPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -93,17 +92,17 @@ public class SocAdapter extends BaseAdapter {
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    SocPage.answeredCount++;
-                    SocPage.questionsProgressBar.setProgress(SocPage.answeredCount);
+                    ModPage.answeredCount++;
+                    ModPage.questionsProgressBar.setProgress(ModPage.answeredCount);
                 }
-                SocPage.checkPoints();
+                ModPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        SocPage.checkPoints();
+        ModPage.checkPoints();
         return itemView;
     }
 }

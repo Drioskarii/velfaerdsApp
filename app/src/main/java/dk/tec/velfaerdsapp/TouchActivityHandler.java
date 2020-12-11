@@ -1,25 +1,28 @@
 package dk.tec.velfaerdsapp;
 
-import Adapter.BesAdapter;
-import Adapter.ModAdapter;
-import Adapter.NysAdapter;
-import Adapter.SamAdapter;
+import QuestionPages.BesPage;
+import QuestionPages.ModPage;
+import QuestionPages.NysPage;
+import QuestionPages.SamPage;
+import QuestionPages.SocPage;
+import QuestionPages.TakPage;
+import QuestionsAdapter.BesAdapter;
+import QuestionsAdapter.ModAdapter;
+import QuestionsAdapter.NysAdapter;
+import QuestionsAdapter.SamAdapter;
 import Adapter.SelectAdapter;
-import Adapter.SocAdapter;
-import Adapter.TakAdapter;
+import QuestionsAdapter.SocAdapter;
+import QuestionsAdapter.TakAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import Strengths.Strengths;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
