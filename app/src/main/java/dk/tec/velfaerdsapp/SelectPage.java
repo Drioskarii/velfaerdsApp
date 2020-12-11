@@ -2,6 +2,7 @@ package dk.tec.velfaerdsapp;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +25,24 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
-        strengths = getIntent().getParcelableArrayListExtra("ObjectList");
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("ModList")){
+            strengths.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("NysList")){
+            strengths.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("BesList")){
+            strengths.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("TakList")){
+            strengths.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("SamList")){
+            strengths.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("SocList")){
+            strengths.add((Strengths)item);
+        }
 
         getGoodImages();
         getBadImages();

@@ -1,15 +1,22 @@
 package dk.tec.velfaerdsapp;
 
-import Adapter.QuestionsAdapter;
+import Adapter.BesAdapter;
+import Adapter.ModAdapter;
+import Adapter.NysAdapter;
+import Adapter.SamAdapter;
 import Adapter.SelectAdapter;
+import Adapter.SocAdapter;
+import Adapter.TakAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import Strengths.Strengths;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -32,10 +39,8 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
         this.gestureDetector = new GestureDetector(this, this);
     }
 
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         gestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             //press
@@ -69,14 +74,38 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                             backward();
                         }
                         else if (this.toString().contains("IntroPage")){
-                            startActivity(forward(this, QuestionsPage.class));
+                            startActivity(forward(this, ModPage.class));
                         }
-                        else if (this.toString().contains("QuestionsPage")) {
-                            if (QuestionsPage.answeredCount == QuestionsPage.count){
+                        else if (this.toString().contains("ModPage")) {
+                            if (ModPage.answeredCount == ModPage.count){ startActivity(forward(this, NysPage.class));}
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                        }
+                        else if (this.toString().contains("NysPage")) {
+                            if (NysPage.answeredCount == NysPage.count){ startActivity(forward(this, BesPage.class));}
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                        }
+                        else if (this.toString().contains("BesPage")) {
+                            if (BesPage.answeredCount == BesPage.count){ startActivity(forward(this, TakPage.class));}
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                        }
+                        else if (this.toString().contains("TakPage")) {
+                            if (TakPage.answeredCount == TakPage.count){ startActivity(forward(this, SamPage.class));}
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                        }
+                        else if (this.toString().contains("SamPage")) {
+                            if (SamPage.answeredCount == SamPage.count){ startActivity(forward(this, SocPage.class));}
+                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                        }
+                        else if (this.toString().contains("SocPage")) {
+                            if (SocPage.answeredCount == SocPage.count){
                                 Intent intent = new Intent(this, SelectPage.class);
-                                intent.putParcelableArrayListExtra("ObjectList",QuestionsAdapter.strengths);
-                                startActivity(intent);
-                            }
+                                intent.putParcelableArrayListExtra("ModList", ModAdapter.strengths);
+                                intent.putParcelableArrayListExtra("NysList", NysAdapter.strengths);
+                                intent.putParcelableArrayListExtra("BesList", BesAdapter.strengths);
+                                intent.putParcelableArrayListExtra("TakList", TakAdapter.strengths);
+                                intent.putParcelableArrayListExtra("SamList", SamAdapter.strengths);
+                                intent.putParcelableArrayListExtra("SocList", SocAdapter.strengths);
+                                startActivity(intent);}
                             else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
                         }
                         else if (this.toString().contains("SelectPage")){

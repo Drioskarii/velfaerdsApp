@@ -23,10 +23,18 @@
         <activity android:name=".The24Strengths" />
         <activity android:name=".EmailPage" />
         <activity android:name=".SelectPage" />
+        <activity android:name=".ModPage" />
+        <activity android:name=".NysPage" />
+        <activity android:name=".BesPage" />
+        <activity android:name=".TakPage" />
+        <activity android:name=".SamPage" />
+        <activity android:name=".SocPage" />
+
         <activity
             android:name=".IntroPage"
             android:configChanges="orientation|screenSize|layoutDirection" />
         <activity android:name=".QuestionsPage" />
+        <activity android:name=".CustomAvatar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

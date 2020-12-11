@@ -1,8 +1,5 @@
 package dk.tec.velfaerdsapp;
 
-import Adapter.QuestionsAdapter;
-import Strengths.Strengths;
-
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -12,46 +9,37 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import Strengths.Strengths;
+import Adapter.SocAdapter;
 
 //import com.google.android.material.slider.Slider;
 
 
-public class QuestionsPage extends TouchActivityHandler {
+public class SocPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
-    public static TextView trophyTxt;
     public static ProgressBar questionsProgressBar;
     public static ImageView imgNextPage;
     public static int count;
     public static int answeredCount;
     ListView listOfQuestions;
 
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mod_page);
+        setContentView(R.layout.activity_soc_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
-        QuestionsAdapter questionsAdapter = new QuestionsAdapter(QuestionsPage.this, Strengths.getModList());
+        SocAdapter questionsAdapter = new SocAdapter(SocPage.this, Strengths.getSocList());
         listOfQuestions.setAdapter(questionsAdapter);
 
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
-
-
-        //Get name from TouchActivityHandler
-        TextView txtModDinAvatar = findViewById(R.id.txtModDinAvatar);
-        txtModDinAvatar.setText(gJob + " " + gName);
-
-
-
     }
 
     public static void checkPoints(){
@@ -68,15 +56,15 @@ public class QuestionsPage extends TouchActivityHandler {
     }
 
     public static void imageBounce(){
-            ObjectAnimator pulse = ObjectAnimator.ofPropertyValuesHolder(
-                    imgNextPage,
-                    PropertyValuesHolder.ofFloat("scaleX", 1.2f),
-                    PropertyValuesHolder.ofFloat("scaleY", 1.2f));
-            pulse.setDuration(1500);
+        ObjectAnimator pulse = ObjectAnimator.ofPropertyValuesHolder(
+                imgNextPage,
+                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.2f));
+        pulse.setDuration(1500);
 
-            pulse.setRepeatCount(ValueAnimator.INFINITE);
-            pulse.setRepeatMode(ObjectAnimator.REVERSE);
+        pulse.setRepeatCount(ValueAnimator.INFINITE);
+        pulse.setRepeatMode(ObjectAnimator.REVERSE);
 
-            pulse.start();
+        pulse.start();
     }
 }

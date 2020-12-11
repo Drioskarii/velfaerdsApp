@@ -12,20 +12,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import dk.tec.velfaerdsapp.QuestionsPage;
-import dk.tec.velfaerdsapp.R;
 import Strengths.Strengths;
+import dk.tec.velfaerdsapp.BesPage;
+import dk.tec.velfaerdsapp.R;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class QuestionsAdapter extends BaseAdapter {
+public class BesAdapter extends BaseAdapter {
 
     private static final String TAG = "QuestionsAdapter";
 
     public static ArrayList<Strengths> strengths;
     private Context mContext;
 
-    public QuestionsAdapter(Context context, ArrayList<Strengths> strengths){
+    public BesAdapter(Context context, ArrayList<Strengths> strengths){
         mContext = context;
         this.strengths = strengths;
     }
@@ -71,7 +71,7 @@ public class QuestionsAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            QuestionsPage.checkPoints();
+            BesPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -93,17 +93,17 @@ public class QuestionsAdapter extends BaseAdapter {
                 String s1 = sharedPref.getString(tempStrengths.getIdentity(),"");
                 if (s1.isEmpty()){
                     questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
-                    QuestionsPage.answeredCount++;
-                    QuestionsPage.questionsProgressBar.setProgress(QuestionsPage.answeredCount);
+                    BesPage.answeredCount++;
+                    BesPage.questionsProgressBar.setProgress(BesPage.answeredCount);
                 }
-                QuestionsPage.checkPoints();
+                BesPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        QuestionsPage.checkPoints();
+        BesPage.checkPoints();
         return itemView;
     }
 }

@@ -32,7 +32,7 @@
             android:id="@+id/imageViewCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/iconmod">
+            android:background="@drawable/iconsamarbejde">
         </ImageView>
         <RelativeLayout
             android:layout_width="wrap_content"
