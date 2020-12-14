@@ -72,10 +72,10 @@ public class EmailPage extends TouchActivityHandler {
                 editText.setText(email);
             }
             else{
-                if(maxEmails == 0){
-                    editText.setHint("Indtast Din Email");
+                if(maxEmails == 1){
+                    editText.setHint("Indtast din Email");
                 } else{
-                    editText.setHint("Indtast andres Email");
+                    editText.setHint("Indtast Email");
                 }
 
             }
