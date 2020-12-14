@@ -1,6 +1,7 @@
 package dk.tec.velfaerdsapp;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.ScrollView;
 
@@ -13,12 +14,8 @@ public class The24Strengths extends TouchActivityHandler {
 
     private static final String TAG = "The24Strength";
 
-    ListView modListView;
-    ListView nysListView;
-    ListView besListView;
-    ListView takListView;
-    ListView samListView;
-    ListView socListView;
+    ListView listView;
+
 
 
     @Override
@@ -26,35 +23,38 @@ public class The24Strengths extends TouchActivityHandler {
         super.onCreate(savedInstanceState);
        setContentView(activity_the24_strength);
 
-        modListView = findViewById(R.id.modListView);
-
-        nysListView = findViewById(R.id.nysListView);
-
-        besListView = findViewById(R.id.besListView);
-
-        takListView = findViewById(R.id.takListView);
-
-        samListView = findViewById(R.id.samListView);
-
-        socListView = findViewById(R.id.socListView);
-
+        listView = findViewById(R.id.listView);
         The24StrengthsAdapter modAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getModList());
-        modListView.setAdapter(modAdapter);
+        listView.setAdapter(modAdapter);
+    }
 
+    public void modClick(View view) {
+        The24StrengthsAdapter modAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getModList());
+        listView.setAdapter(modAdapter);
+    }
+
+    public void nysClick(View view) {
         The24StrengthsAdapter nysAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getNysList());
-        nysListView.setAdapter(nysAdapter);
+        listView.setAdapter(nysAdapter);
+    }
 
+    public void besClick(View view) {
         The24StrengthsAdapter besAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getBesList());
-        besListView.setAdapter(besAdapter);
+        listView.setAdapter(besAdapter);
+    }
 
+    public void takClick(View view) {
         The24StrengthsAdapter takAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getTakList());
-        takListView.setAdapter(takAdapter);
+        listView.setAdapter(takAdapter);
+    }
 
+    public void samClick(View view) {
         The24StrengthsAdapter samAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getSamList());
-        samListView.setAdapter(samAdapter);
+        listView.setAdapter(samAdapter);
+    }
 
+    public void socClick(View view) {
         The24StrengthsAdapter socAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getSocList());
-        socListView.setAdapter(socAdapter);
-
+        listView.setAdapter(socAdapter);
     }
 }
