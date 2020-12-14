@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".The24Strengths"
     android:background="@color/white"
-    android:padding="25dp">
+    android:padding="15dp">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -16,52 +16,54 @@
     android:paddingBottom="24dp">
 
 <ImageButton
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="65dp"
+    android:layout_height="65dp"
     android:onClick="modClick"
     android:background="@drawable/iconmod"
     />
 
 <ImageButton
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="65dp"
+    android:layout_height="65dp"
     android:onClick="nysClick"
     android:background="@drawable/iconnysgerrig"/>
 
 <ImageButton
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="65dp"
+    android:layout_height="65dp"
     android:onClick="besClick"
     android:background="@drawable/iconbeskedenhed"/>
 
 <ImageButton
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="65dp"
+    android:layout_height="65dp"
     android:onClick="takClick"
     android:background="@drawable/icontaknemmelighed"/>
 
 <ImageButton
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="65dp"
+    android:layout_height="65dp"
     android:onClick="samClick"
     android:background="@drawable/iconsamarbejde"/>
 
 <ImageButton
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+    android:layout_width="65dp"
+    android:layout_height="65dp"
     android:onClick="socClick"
     android:background="@drawable/iconsocialintelligens"/>
 </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-                <ImageView
-                    android:id="@+id/selectedListImage"
-                    android:layout_width="240dp"
-                    android:layout_height="240dp"
-                    android:background="@drawable/iconmod"/>
-        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+        <ImageView
+            android:id="@+id/selectedListImage"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:background="@drawable/iconmod"/>
+</LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
