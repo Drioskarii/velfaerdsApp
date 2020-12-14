@@ -47,7 +47,6 @@ public class The24StrengthsAdapter extends BaseAdapter  {
             itemView = LayoutInflater.from(mContext).inflate(R.layout.the24strengths_item, parent, false);
         }
 
-        ImageView mImageIcon = itemView.findViewById(R.id.imageIcon24);
         TextView mTxtTitle = itemView.findViewById(R.id.the24_txtTitle);
         TextView mTxtQuestion = itemView.findViewById(R.id.the24_txtQuestion);
 
