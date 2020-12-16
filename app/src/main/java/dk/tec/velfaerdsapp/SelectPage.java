@@ -2,17 +2,20 @@ package dk.tec.velfaerdsapp;
 
 import android.annotation.SuppressLint;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -27,6 +30,8 @@ public class SelectPage extends TouchActivityHandler {
     private static final String TAG = "selectPage";
     //vars
     List<Points> points = new ArrayList<Points>();
+    ArrayList<Strengths> strengths = new ArrayList<>();
+    ArrayList<Strengths> weaknesses = new ArrayList<>();
     ArrayList<Strengths> mod = new ArrayList<>();
     ArrayList<Strengths> nys = new ArrayList<>();
     ArrayList<Strengths> bes = new ArrayList<>();
@@ -40,6 +45,7 @@ public class SelectPage extends TouchActivityHandler {
     int samPoints;
     int socPoints;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,20 +108,30 @@ public class SelectPage extends TouchActivityHandler {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void addAndSort(){
-        Points p1 = new Points(modPoints, R.drawable.iconmod);
-        Points p2 = new Points(nysPoints, R.drawable.iconnysgerrig);
-        Points p3 = new Points(besPoints, R.drawable.iconbeskedenhed);
-        Points p4 = new Points(takPoints, R.drawable.icontaknemmelighed);
-        Points p5 = new Points(samPoints, R.drawable.iconsamarbejde);
-        Points p6 = new Points(socPoints, R.drawable.iconsocialintelligens);
+        Points p1 = new Points("Mod", "Du tør være dig selv", modPoints, R.drawable.iconmod);
+        Points p2 = new Points("Nysgerrighed ", "Du tænker over tingene", nysPoints, R.drawable.iconnysgerrig);
+        Points p3 = new Points("Beskedenhed", "Du er disciplineret", besPoints, R.drawable.iconbeskedenhed);
+        Points p4 = new Points("Taknemmelighed", "Verden er større end dig", takPoints, R.drawable.icontaknemmelighed);
+        Points p5 = new Points("Samarbejde", "Du tænker på fællesskabet", samPoints, R.drawable.iconsamarbejde);
+        Points p6 = new Points("Social Intelligens", "Du er noget for andre", socPoints, R.drawable.iconsocialintelligens);
         points.add(p1);
         points.add(p2);
         points.add(p3);
         points.add(p4);
         points.add(p5);
         points.add(p6);
-        //Collections.sort(points);
+        Collections.sort(points, Comparator.comparing(Points::getPoints));
+
+        Strengths g1 = new Strengths("strengths1", points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints());
+        Strengths g2 = new Strengths("strengths2", points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints());
+        Strengths g3 = new Strengths("strengths3", points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints());
+        Strengths b1 = new Strengths("weakness", points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints());
+        strengths.add(g1);
+        strengths.add(g2);
+        strengths.add(g3);
+        weaknesses.add(b1);
     }
 
     private void getGoodImages() {
@@ -132,7 +148,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        SelectAdapter goodAdapter = new SelectAdapter(this, mod, true);
+        SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
         recyclerViewGood.setAdapter(goodAdapter);
 
 
@@ -140,7 +156,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
-        SelectAdapter badAdapter = new SelectAdapter(this, mod, false);
+        SelectAdapter badAdapter = new SelectAdapter(this, weaknesses, false);
         recyclerViewBad.setAdapter(badAdapter);
 
     }
