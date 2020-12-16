@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.PixelCopy;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -16,11 +17,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
+import Strengths.Points;
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
 
@@ -37,20 +41,16 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private static final String TAG = "RecyclerViewAdapter";
 
     //vars
-    private ArrayList<String> questionList;
-    private ArrayList<String> answerList;
-    private ArrayList<String> imageList;
+    private ArrayList<Points> mPoints;
     private Context mContext;
     private boolean misGood;
 
 
 
 
-    public ResultAdapter(Context context, ArrayList<String> questions, ArrayList<String> answers, ArrayList<String> imageUrls, Boolean isGood) {
-        answerList = answers;
-        questionList = questions;
-        imageList = imageUrls;
-        mContext = context;
+    public ResultAdapter(Context Context, ArrayList<Points> Points, Boolean isGood) {
+        mPoints = Points;
+        mContext = Context;
         misGood = isGood;
     }
 
@@ -69,32 +69,32 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
         //Sorts selectpage arrayList
         if (misGood) {
-            answerList.sort(Collections.reverseOrder());
+            mPoints.sort(Collections.reverseOrder());
 
 
         } else {
-            Collections.sort(answerList);
+            Collections.sort(mPoints, Comparator.comparing(Points::getPoints));
         }
         Glide.with(mContext).asBitmap()
-                .load(imageList.get(position))
+                .load(mPoints.get(position).getIcon())
                 .into(holder.image);
-        holder.answer.setText(answerList.get(position));
-        holder.question.setText(questionList.get(position));
+        holder.answer.setText(mPoints.get(position).getPoints());
+        holder.question.setText(mPoints.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
         Glide.with(mContext).asBitmap()
-                .load(imageList.get(position))
+                .load(mPoints.get(position).getIcon())
                 .into(holder.image);
 
-        holder.answer.setText(answerList.get(position));
-        holder.question.setText(questionList.get(position));
-
+        holder.answer.setText(mPoints.get(position).getPoints());
+        holder.question.setText(mPoints.get(position).getQuestion());
+        holder.image.setImageResource(mPoints.get(position).getIcon());
 
     }
 
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        return mPoints.size();
     }
 
     public static int getCount(){
@@ -111,6 +111,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView question;
         TextView answer;
         ImageView selectConfirm;
+        TextView Title;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -119,6 +120,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             question = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
+            Title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import Adapter.ResultAdapter;
-import Adapter.SelectAdapter;
 import Strengths.Points;
 
 public class ResultPage extends TouchActivityHandler{
@@ -22,13 +21,8 @@ public class ResultPage extends TouchActivityHandler{
     AnimationDrawable animation;
     ImageView characterPlaceholder;
     //vars
-    private ArrayList<String> goodQuestions = new ArrayList<>();
-    private ArrayList<String> goodAnswers = new ArrayList<>();
-    private ArrayList<String> goodSelectImageUrls = new ArrayList<>();
-    private ArrayList<String> badQuestions = new ArrayList<>();
-    private ArrayList<String> badAnswers = new ArrayList<>();
-    private ArrayList<String> badSelectImageUrls = new ArrayList<>();
-
+    ArrayList<Points> goodSelected = new ArrayList<>();
+    ArrayList<Points> badSelected = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +41,8 @@ public class ResultPage extends TouchActivityHandler{
     }
 
     private void getValue() {
-        ArrayList<Points> goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
-        ArrayList<Points> badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
-        int goodSize = goodSelected.size();
-        int badSize = badSelected.size();
-        int iGood = 0;
-        int iBad = 0;
+        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
 
         System.out.println("HELP");
         System.out.println(goodSelected.size());
@@ -60,21 +50,6 @@ public class ResultPage extends TouchActivityHandler{
         System.out.println(badSelected.size());
         System.out.println(badSelected);
 
-        while (iGood < goodSize ){
-            //Den her metode virker kun med billeder som ikke er i xml form
-            goodSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ goodSelected.get(iGood).getIcon())));
-            goodQuestions.add(goodSelected.get(iGood).getQuestion());
-            goodAnswers.add(String.valueOf(goodSelected.get(iGood).getPoints()));
-            iGood++;
-        }
-
-        while (iBad < badSize ){
-            //Den her metode virker kun med billeder som ikke er i xml form
-            badSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ badSelected.get(iBad).getIcon())));
-            badQuestions.add(badSelected.get(iBad).getQuestion());
-            badAnswers.add(String.valueOf(badSelected.get(iBad).getPoints()));
-            iBad++;
-        }
     }
 
     @Override
@@ -89,7 +64,7 @@ public class ResultPage extends TouchActivityHandler{
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ResultAdapter goodAdapter = new ResultAdapter(this, goodQuestions, goodAnswers, goodSelectImageUrls, true);
+        ResultAdapter goodAdapter = new ResultAdapter(this, goodSelected , true);
         recyclerViewGood.setAdapter(goodAdapter);
 
 
@@ -97,10 +72,7 @@ public class ResultPage extends TouchActivityHandler{
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
-        ResultAdapter badAdapter = new ResultAdapter(this, badQuestions, badAnswers, badSelectImageUrls, false);
+        ResultAdapter badAdapter = new ResultAdapter(this, badSelected, false);
         recyclerViewBad.setAdapter(badAdapter);
-
-
-
     }
 }
