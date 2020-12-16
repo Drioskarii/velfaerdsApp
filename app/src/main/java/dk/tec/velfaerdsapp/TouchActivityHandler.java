@@ -67,40 +67,47 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         } else{backward(); }
                     } else { //-----------SWIPE RIGHT TO LEFT-----------
                         //swipe right / forward
-                        if (this.toString().contains("MainActivity")){
-                            if (!MainActivity.tutDone){
+                        if (this.toString().contains("MainActivity")) {
+                            if (!MainActivity.tutDone) {
                                 tutorialDone();
                             }
                             startActivity(forward(this, IntroPage.class));
-                        }
-                        else if (this.toString().contains("The24Strength")){
+                        } else if (this.toString().contains("The24Strength")) {
                             backward();
-                        }
-                        else if (this.toString().contains("IntroPage")){
+                        } else if (this.toString().contains("IntroPage")) {
                             startActivity(forward(this, ModPage.class));
-                        }
-                        else if (this.toString().contains("ModPage")) {
-                            if (ModPage.answeredCount == ModPage.count){ startActivity(forward(this, NysPage.class));}
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
-                        }
-                        else if (this.toString().contains("NysPage")) {
-                            if (NysPage.answeredCount == NysPage.count){ startActivity(forward(this, BesPage.class));}
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
-                        }
-                        else if (this.toString().contains("BesPage")) {
-                            if (BesPage.answeredCount == BesPage.count){ startActivity(forward(this, TakPage.class));}
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
-                        }
-                        else if (this.toString().contains("TakPage")) {
-                            if (TakPage.answeredCount == TakPage.count){ startActivity(forward(this, SamPage.class));}
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
-                        }
-                        else if (this.toString().contains("SamPage")) {
-                            if (SamPage.answeredCount == SamPage.count){ startActivity(forward(this, SocPage.class));}
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
-                        }
-                        else if (this.toString().contains("SocPage")) {
-                            if (SocPage.answeredCount == SocPage.count){
+                        } else if (this.toString().contains("ModPage")) {
+                            if (ModPage.answeredCount == ModPage.count) {
+                                startActivity(forward(this, NysPage.class));
+                            } else {
+                                Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (this.toString().contains("NysPage")) {
+                            if (NysPage.answeredCount == NysPage.count) {
+                                startActivity(forward(this, BesPage.class));
+                            } else {
+                                Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (this.toString().contains("BesPage")) {
+                            if (BesPage.answeredCount == BesPage.count) {
+                                startActivity(forward(this, TakPage.class));
+                            } else {
+                                Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (this.toString().contains("TakPage")) {
+                            if (TakPage.answeredCount == TakPage.count) {
+                                startActivity(forward(this, SamPage.class));
+                            } else {
+                                Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (this.toString().contains("SamPage")) {
+                            if (SamPage.answeredCount == SamPage.count) {
+                                startActivity(forward(this, SocPage.class));
+                            } else {
+                                Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (this.toString().contains("SocPage")) {
+                            if (SocPage.answeredCount == SocPage.count) {
                                 Intent intent = new Intent(this, SelectPage.class);
                                 intent.putParcelableArrayListExtra("ModList", ModAdapter.strengths);
                                 intent.putParcelableArrayListExtra("NysList", NysAdapter.strengths);
@@ -108,14 +115,21 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                                 intent.putParcelableArrayListExtra("TakList", TakAdapter.strengths);
                                 intent.putParcelableArrayListExtra("SamList", SamAdapter.strengths);
                                 intent.putParcelableArrayListExtra("SocList", SocAdapter.strengths);
-                                startActivity(intent);}
-                            else{ Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show(); }
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (this.toString().contains("SelectPage")) {
+                            if (SelectAdapter.goodConfirmCounter == 2){
+                                Intent intent = new Intent(this, ResultPage.class);
+                                intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                                intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
+                                startActivity(intent);
+                            }
+                            else{
+                                Toast.makeText(this, "vælg 2 styker for at fortsætte", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else if (this.toString().contains("SelectPage")){
-                            Intent intent = new Intent(this, ResultPage.class);
-                            intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                            intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
-                            startActivity(intent);}
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
                     }
                 }
