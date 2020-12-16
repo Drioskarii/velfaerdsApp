@@ -67,14 +67,6 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public void onBindViewHolder(@NonNull SelectAdapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        //Sorts selectpage arrayList
-        if (misGood) {
-            mPoints.sort(Collections.reverseOrder());
-
-
-        } else {
-            Collections.sort(mPoints, Comparator.comparing(Points::getPoints));
-        }
         Glide.with(mContext).asBitmap()
                 .load(mPoints.get(position).getIcon())
                 .into(holder.image);
@@ -88,7 +80,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.answer.setText(mPoints.get(position).getPoints());
         holder.question.setText(mPoints.get(position).getQuestion());
         holder.image.setImageResource(mPoints.get(position).getIcon());
-
+        holder.title.setText(mPoints.get(position).getTitle());
     }
 
 
@@ -111,7 +103,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView question;
         TextView answer;
         ImageView selectConfirm;
-        TextView Title;
+        TextView title;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -120,7 +112,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             question = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
-            Title = itemView.findViewById(R.id.select_txtTitle);
+            title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 

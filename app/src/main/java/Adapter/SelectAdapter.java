@@ -64,7 +64,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
-        holder.Title.setText(mStrengths.get(position).getTitle());
+        holder.title.setText(mStrengths.get(position).getTitle());
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -136,7 +136,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView question;
         TextView answer;
         ImageView selectConfirm;
-        TextView Title;
+        TextView title;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -145,7 +145,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             question = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
-            Title = itemView.findViewById(R.id.select_txtTitle);
+            title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 }
