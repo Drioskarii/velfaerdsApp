@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import Adapter.ResultAdapter;
 import Adapter.SelectAdapter;
+import Strengths.Strengths;
 
 public class ResultPage extends TouchActivityHandler{
 
@@ -38,8 +39,8 @@ public class ResultPage extends TouchActivityHandler{
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
-        ArrayList<String> goodSelected = getIntent().getStringArrayListExtra("goodSelectedList");
-        ArrayList<String> badSelected = getIntent().getStringArrayListExtra("badSelectedList");
+        ArrayList<Strengths> goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        ArrayList<Strengths> badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
 
 
         initRecyclerView();
@@ -49,8 +50,8 @@ public class ResultPage extends TouchActivityHandler{
     }
 
     private void getValue() {
-        ArrayList<String> goodSelected = getIntent().getStringArrayListExtra("goodSelectedList");
-        ArrayList<String> badSelected = getIntent().getStringArrayListExtra("badSelectedList");
+        ArrayList<Strengths> goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        ArrayList<Strengths> badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
         int goodSize = goodSelected.size();
         int badSize = badSelected.size();
         int iGood = 0;
