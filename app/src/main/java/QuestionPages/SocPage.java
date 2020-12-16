@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+
 import Strengths.Strengths;
 import QuestionsAdapter.SocAdapter;
 import dk.tec.velfaerdsapp.R;
@@ -42,6 +44,8 @@ public class SocPage extends TouchActivityHandler {
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
+        TextView txtDinAvatar = findViewById(R.id.txtSocDinAvatar);
+        txtDinAvatar.setText(gJob + " " + gName);
     }
 
     public static void checkPoints(){
