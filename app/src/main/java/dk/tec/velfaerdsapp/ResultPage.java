@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import Adapter.ResultAdapter;
 import Adapter.SelectAdapter;
-import Strengths.Strengths;
+import Strengths.Points;
 
 public class ResultPage extends TouchActivityHandler{
 
@@ -47,8 +47,8 @@ public class ResultPage extends TouchActivityHandler{
     }
 
     private void getValue() {
-        ArrayList<Strengths> goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
-        ArrayList<Strengths> badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
+        ArrayList<Points> goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        ArrayList<Points> badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
         int goodSize = goodSelected.size();
         int badSize = badSelected.size();
         int iGood = 0;
@@ -64,7 +64,7 @@ public class ResultPage extends TouchActivityHandler{
             //Den her metode virker kun med billeder som ikke er i xml form
             goodSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ goodSelected.get(iGood).getIcon())));
             goodQuestions.add(goodSelected.get(iGood).getQuestion());
-            goodAnswers.add(String.valueOf(goodSelected.get(iGood).getAnswer()));
+            goodAnswers.add(String.valueOf(goodSelected.get(iGood).getPoints()));
             iGood++;
         }
 
@@ -72,7 +72,7 @@ public class ResultPage extends TouchActivityHandler{
             //Den her metode virker kun med billeder som ikke er i xml form
             badSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ badSelected.get(iBad).getIcon())));
             badQuestions.add(badSelected.get(iBad).getQuestion());
-            badAnswers.add(String.valueOf(badSelected.get(iBad).getAnswer()));
+            badAnswers.add(String.valueOf(badSelected.get(iBad).getPoints()));
             iBad++;
         }
     }
