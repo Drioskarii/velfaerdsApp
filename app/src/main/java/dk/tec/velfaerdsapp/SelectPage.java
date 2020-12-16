@@ -1,49 +1,52 @@
 package dk.tec.velfaerdsapp;
 
 import android.annotation.SuppressLint;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import Adapter.SelectAdapter;
 import Strengths.Strengths;
-
+import Strengths.Points;
 
 public class SelectPage extends TouchActivityHandler {
 
 
     private static final String TAG = "selectPage";
     //vars
-    ArrayList<Strengths> strengths = new ArrayList<>();
+    List<Points> points = new ArrayList<Points>();
+    ArrayList<Strengths> mod = new ArrayList<>();
+    ArrayList<Strengths> nys = new ArrayList<>();
+    ArrayList<Strengths> bes = new ArrayList<>();
+    ArrayList<Strengths> tak = new ArrayList<>();
+    ArrayList<Strengths> sam = new ArrayList<>();
+    ArrayList<Strengths> soc = new ArrayList<>();
+    int modPoints;
+    int nysPoints;
+    int besPoints;
+    int takPoints;
+    int samPoints;
+    int socPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
-        for (Parcelable item : getIntent().getParcelableArrayListExtra("ModList")){
-            strengths.add((Strengths)item);
-        }
-        for (Parcelable item : getIntent().getParcelableArrayListExtra("NysList")){
-            strengths.add((Strengths)item);
-        }
-        for (Parcelable item : getIntent().getParcelableArrayListExtra("BesList")){
-            strengths.add((Strengths)item);
-        }
-        for (Parcelable item : getIntent().getParcelableArrayListExtra("TakList")){
-            strengths.add((Strengths)item);
-        }
-        for (Parcelable item : getIntent().getParcelableArrayListExtra("SamList")){
-            strengths.add((Strengths)item);
-        }
-        for (Parcelable item : getIntent().getParcelableArrayListExtra("SocList")){
-            strengths.add((Strengths)item);
-        }
-
+        getLists();
+        getListPoints();
+        addAndSort();
         getGoodImages();
         getBadImages();
 
@@ -51,6 +54,69 @@ public class SelectPage extends TouchActivityHandler {
         txtSelectDinAvatar.setText(gJob + " " + gName);
     }
 
+    private void getLists(){
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("ModList")){
+            mod.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("NysList")){
+            nys.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("BesList")){
+            bes.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("TakList")){
+            tak.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("SamList")){
+            sam.add((Strengths)item);
+        }
+        for (Parcelable item : getIntent().getParcelableArrayListExtra("SocList")){
+            soc.add((Strengths)item);
+        }
+    }
+
+    private void getListPoints(){
+        for (int i = 0; i < mod.size(); i++){
+            modPoints = modPoints + mod.get(i).getAnswer();
+            Log.d(TAG, "Mod "+modPoints);
+        }
+        for (int i = 0; i < nys.size(); i++){
+            nysPoints = nysPoints + nys.get(i).getAnswer();
+            Log.d(TAG, "Nys "+nysPoints);
+        }
+        for (int i = 0; i < bes.size(); i++){
+            besPoints = besPoints + bes.get(i).getAnswer();
+            Log.d(TAG, "Bes "+besPoints);
+        }
+        for (int i = 0; i < tak.size(); i++){
+            takPoints = takPoints + tak.get(i).getAnswer();
+            Log.d(TAG, "Tak "+takPoints);
+        }
+        for (int i = 0; i < sam.size(); i++){
+            samPoints = samPoints + sam.get(i).getAnswer();
+            Log.d(TAG, "Sam "+samPoints);
+        }
+        for (int i = 0; i < soc.size(); i++){
+            socPoints = socPoints + soc.get(i).getAnswer();
+            Log.d(TAG, "Soc "+socPoints);
+        }
+    }
+
+    private void addAndSort(){
+        Points p1 = new Points(modPoints, R.drawable.iconmod);
+        Points p2 = new Points(nysPoints, R.drawable.iconnysgerrig);
+        Points p3 = new Points(besPoints, R.drawable.iconbeskedenhed);
+        Points p4 = new Points(takPoints, R.drawable.icontaknemmelighed);
+        Points p5 = new Points(samPoints, R.drawable.iconsamarbejde);
+        Points p6 = new Points(socPoints, R.drawable.iconsocialintelligens);
+        points.add(p1);
+        points.add(p2);
+        points.add(p3);
+        points.add(p4);
+        points.add(p5);
+        points.add(p6);
+        //Collections.sort(points);
+    }
 
     private void getGoodImages() {
         initRecyclerView();
@@ -66,7 +132,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
+        SelectAdapter goodAdapter = new SelectAdapter(this, mod, true);
         recyclerViewGood.setAdapter(goodAdapter);
 
 
@@ -74,7 +140,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
-        SelectAdapter badAdapter = new SelectAdapter(this, strengths, false);
+        SelectAdapter badAdapter = new SelectAdapter(this, mod, false);
         recyclerViewBad.setAdapter(badAdapter);
 
     }

@@ -6,7 +6,9 @@
     android:orientation="vertical"
     tools:context=".The24Strengths"
     android:background="@color/white"
-    android:padding="15dp">
+    android:paddingTop="15dp"
+    android:paddingRight="25dp"
+    android:paddingLeft="25dp">
 
 <LinearLayout
     android:layout_width="match_parent"
