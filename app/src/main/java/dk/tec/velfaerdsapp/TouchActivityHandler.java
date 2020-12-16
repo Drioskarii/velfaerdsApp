@@ -127,7 +127,7 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                                 startActivity(intent);
                             }
                             else{
-                                Toast.makeText(this, "vælg 2 styker for at fortsætte", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "vælg 2 styrker for at fortsætte", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
