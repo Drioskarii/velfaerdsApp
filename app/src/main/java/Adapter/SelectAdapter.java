@@ -29,9 +29,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private static final String TAG = "RecyclerViewAdapter";
 
     public static ArrayList<Strengths> goodSelected = new ArrayList<>();
-    public static ArrayList<Strengths> badSelected = new ArrayList<>();
     private static int goodConfirmCounter = 0;
-    private static int badConfirmCounter = 0;
+
 
     //vars
     private ArrayList<Strengths> mStrengths;
@@ -108,34 +107,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                 } else {
                     Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                if (badConfirmCounter <= 4){
-                    if (holder.selectConfirm.isShown()){
-                        holder.selectConfirm.setVisibility(View.GONE);
-                        badConfirmCounter--;
-
-                        badSelected.remove(mStrengths.get(position));
-                        System.out.println("Remove "+mStrengths.get(position));
-                    } else {
-
-                        holder.selectConfirm.setVisibility(View.VISIBLE);
-                        editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
-                        editor.apply();
-
-                        badConfirmCounter++;
-                        System.out.println(badConfirmCounter);
-
-                        badSelected.add(mStrengths.get(position));
-                        System.out.println("added Good"+mStrengths.get(position));
-                    }
-                } else if (holder.selectConfirm.isShown()){
-
-                    holder.selectConfirm.setVisibility(View.GONE);
-                    badConfirmCounter--;
-                    System.out.println(badConfirmCounter);
-                } else {
-                    Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }
@@ -147,11 +118,8 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     }
 
     public static int getCount(){
-        int goodCount = goodConfirmCounter;
-        int badCount = badConfirmCounter;
-        System.out.println("getCount() = "+badConfirmCounter);
         System.out.println("getCount() = "+goodConfirmCounter);
-        return (goodConfirmCounter + badConfirmCounter);
+        return (goodConfirmCounter);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
