@@ -1,8 +1,11 @@
 package Strengths;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Comparator;
 
-public class Points {
+public class Points implements Parcelable {
     private final String title;
     private final String question;
     private final int points;
@@ -15,6 +18,25 @@ public class Points {
         icon = Icon;
     }
 
+    protected Points(Parcel in) {
+        title = in.readString();
+        question = in.readString();
+        points = in.readInt();
+        icon = in.readInt();
+    }
+
+    public static final Creator<Points> CREATOR = new Creator<Points>() {
+        @Override
+        public Points createFromParcel(Parcel in) {
+            return new Points(in);
+        }
+
+        @Override
+        public Points[] newArray(int size) {
+            return new Points[size];
+        }
+    };
+
     public String getTitle() { return title; }
 
     public String getQuestion() { return question; }
@@ -25,5 +47,18 @@ public class Points {
 
     public int getIcon() {
         return icon;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(question);
+        dest.writeInt(points);
+        dest.writeInt(icon);
     }
 }
