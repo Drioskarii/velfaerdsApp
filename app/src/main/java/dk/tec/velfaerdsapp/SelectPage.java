@@ -30,8 +30,8 @@ public class SelectPage extends TouchActivityHandler {
     private static final String TAG = "selectPage";
     //vars
     List<Points> points = new ArrayList<Points>();
-    ArrayList<Strengths> strengths = new ArrayList<>();
-    ArrayList<Strengths> weaknesses = new ArrayList<>();
+    ArrayList<Points> strengths = new ArrayList<>();
+    ArrayList<Points> weaknesses = new ArrayList<>();
     ArrayList<Strengths> mod = new ArrayList<>();
     ArrayList<Strengths> nys = new ArrayList<>();
     ArrayList<Strengths> bes = new ArrayList<>();
@@ -124,10 +124,10 @@ public class SelectPage extends TouchActivityHandler {
         points.add(p6);
         Collections.sort(points, Comparator.comparing(Points::getPoints));
 
-        Strengths g1 = new Strengths("strengths1", points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints());
-        Strengths g2 = new Strengths("strengths2", points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints());
-        Strengths g3 = new Strengths("strengths3", points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints());
-        Strengths b1 = new Strengths("weakness", points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints());
+        Points g1 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon());
+        Points g2 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon());
+        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon());
+        Points b1 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon());
         strengths.add(g1);
         strengths.add(g2);
         strengths.add(g3);

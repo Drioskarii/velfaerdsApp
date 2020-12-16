@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import dk.tec.velfaerdsapp.R;
-import Strengths.Strengths;
+import Strengths.Points;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -28,18 +28,18 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    public static ArrayList<Strengths> goodSelected = new ArrayList<>();
-    public static ArrayList<Strengths> badSelected = new ArrayList<>();
+    public static ArrayList<Points> goodSelected = new ArrayList<>();
+    public static ArrayList<Points> badSelected = new ArrayList<>();
     private static int goodConfirmCounter = 0;
 
 
     //vars
-    private ArrayList<Strengths> mStrengths;
+    private ArrayList<Points> mStrengths;
     private Context mContext;
     private boolean misGood;
 
 
-    public SelectAdapter(Context context, ArrayList<Strengths> strengths, boolean isGood){
+    public SelectAdapter(Context context, ArrayList<Points> strengths, boolean isGood){
         mContext = context;
         mStrengths = strengths;
         misGood = isGood;
@@ -61,7 +61,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         Log.d(TAG, "POSITION: "+position);
         Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
 
-        holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
+        holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
         holder.Title.setText(mStrengths.get(position).getTitle());
@@ -69,7 +69,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        String answerValue = String.valueOf(mStrengths.get(position).getAnswer());
+        String answerValue = String.valueOf(mStrengths.get(position).getPoints());
         String questionValue = mStrengths.get(position).getQuestion();
 
         if (!misGood){
