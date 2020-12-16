@@ -39,10 +39,7 @@ public class ResultPage extends TouchActivityHandler{
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
-        ArrayList<Strengths> goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
-        ArrayList<Strengths> badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
-
-
+        getValue();
         initRecyclerView();
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
@@ -63,7 +60,7 @@ public class ResultPage extends TouchActivityHandler{
         System.out.println(badSelected.size());
         System.out.println(badSelected);
 
-        /*while (iGood < goodSize ){
+        while (iGood < goodSize ){
             //Den her metode virker kun med billeder som ikke er i xml form
             goodSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ goodSelected.get(iGood).getIcon())));
             goodQuestions.add(goodSelected.get(iGood).getQuestion());
@@ -77,7 +74,7 @@ public class ResultPage extends TouchActivityHandler{
             badQuestions.add(badSelected.get(iBad).getQuestion());
             badAnswers.add(String.valueOf(badSelected.get(iBad).getAnswer()));
             iBad++;
-        }*/
+        }
     }
 
     @Override
@@ -88,11 +85,11 @@ public class ResultPage extends TouchActivityHandler{
 
     private void initRecyclerView() {
 
-        /*LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ResultAdapter goodAdapter = new ResultAdapter(this, questions, answers, selectImageUrls, true);
+        ResultAdapter goodAdapter = new ResultAdapter(this, goodQuestions, goodAnswers, goodSelectImageUrls, true);
         recyclerViewGood.setAdapter(goodAdapter);
 
 
@@ -100,8 +97,8 @@ public class ResultPage extends TouchActivityHandler{
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
-        ResultAdapter badAdapter = new ResultAdapter(this, questions, answers, selectImageUrls, false);
-        recyclerViewBad.setAdapter(badAdapter);*/
+        ResultAdapter badAdapter = new ResultAdapter(this, badQuestions, badAnswers, badSelectImageUrls, false);
+        recyclerViewBad.setAdapter(badAdapter);
 
 
 
