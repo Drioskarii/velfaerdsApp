@@ -1,91 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".The24Strengths"
     android:background="@color/white"
-    android:padding="25dp">
+    android:paddingTop="15dp"
+    android:paddingRight="25dp"
+    android:paddingLeft="25dp">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:paddingBottom="24dp">
+
+<ImageButton
+    android:layout_width="65dp"
+    android:layout_height="65dp"
+    android:onClick="modClick"
+    android:background="@drawable/iconmod"
+    />
+
+<ImageButton
+    android:layout_width="65dp"
+    android:layout_height="65dp"
+    android:onClick="nysClick"
+    android:background="@drawable/iconnysgerrig"/>
+
+<ImageButton
+    android:layout_width="65dp"
+    android:layout_height="65dp"
+    android:onClick="besClick"
+    android:background="@drawable/iconbeskedenhed"/>
+
+<ImageButton
+    android:layout_width="65dp"
+    android:layout_height="65dp"
+    android:onClick="takClick"
+    android:background="@drawable/icontaknemmelighed"/>
+
+<ImageButton
+    android:layout_width="65dp"
+    android:layout_height="65dp"
+    android:onClick="samClick"
+    android:background="@drawable/iconsamarbejde"/>
+
+<ImageButton
+    android:layout_width="65dp"
+    android:layout_height="65dp"
+    android:onClick="socClick"
+    android:background="@drawable/iconsocialintelligens"/>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+        <ImageView
+            android:id="@+id/selectedListImage"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:background="@drawable/iconmod"/>
+</LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:paddingBottom="20dp">
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mod"/>
-
-                <ListView
-                    android:id="@+id/modListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
-                </ListView>
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nys"/>
+            android:orientation="vertical">
 
                 <ListView
-                    android:id="@+id/nysListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
-                </ListView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bes"/>
-
-                <ListView
-                    android:id="@+id/besListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
-                </ListView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tak"/>
-
-                <ListView
-                    android:id="@+id/takListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
-                </ListView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sam"/>
-
-                <ListView
-                    android:id="@+id/samListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp">
-                </ListView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Soc"/>
-
-                <ListView
-                    android:id="@+id/socListView"
-                    android:layout_width="match_parent"
+                    android:id="@+id/listView"
+                    android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
-                    android:layout_marginBottom="20dp">
+                    android:layout_weight="1">
                 </ListView>
         </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>
