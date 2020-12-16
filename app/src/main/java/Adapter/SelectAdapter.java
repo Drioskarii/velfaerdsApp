@@ -30,7 +30,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     public static ArrayList<Points> goodSelected = new ArrayList<>();
     public static ArrayList<Points> badSelected = new ArrayList<>();
-    private static int goodConfirmCounter = 0;
+    public static int goodConfirmCounter = 0;
 
 
     //vars
@@ -113,7 +113,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     //System.out.println("Removed: "+goodSelected);
                     System.out.println("Remove " + mStrengths.get(position));
                 } else {
-                    Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "du kan ikke vælge flere svar", Toast.LENGTH_SHORT).show();
                 }
             }
         });
