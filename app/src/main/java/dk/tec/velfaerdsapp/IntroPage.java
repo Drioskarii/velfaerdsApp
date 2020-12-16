@@ -120,7 +120,7 @@ public class IntroPage extends TouchActivityHandler {
             System.out.println("Positionen er:" + position);
             selectedItem = parent.getItemAtPosition(position).toString();
             if (!selectedItem.equals("Vælg køn")) {
-                Toast.makeText(parent.getContext(), "Køn valgt: " + selectedItem, Toast.LENGTH_LONG).show();
+                //Toast.makeText(parent.getContext(), "Køn valgt: " + selectedItem, Toast.LENGTH_LONG).show();
 
                 initRecyclerView();
             }
