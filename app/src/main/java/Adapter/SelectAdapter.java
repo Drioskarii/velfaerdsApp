@@ -77,7 +77,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
             //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
             if(misGood) {
-                if (goodConfirmCounter <= 3) {
+                if (goodConfirmCounter <= 2) {
                     if (holder.selectConfirm.isShown()) {
                         holder.selectConfirm.setVisibility(View.GONE);
                         goodConfirmCounter--;
