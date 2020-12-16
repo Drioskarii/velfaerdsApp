@@ -41,7 +41,9 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/introPage_job"
                 android:textColor="@color/designBlue"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:maxLength="50"
+                android:ems="2"/>
 
             <EditText
                 android:id="@+id/editTextName"
@@ -51,7 +53,9 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/introPage_Name"
                 android:textColor="@color/designBlue"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:maxLength="30"
+                android:ems="2"/>
 
             <Spinner
                 android:id="@+id/spinnerGender"
