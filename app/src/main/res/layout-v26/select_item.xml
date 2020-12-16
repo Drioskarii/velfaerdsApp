@@ -7,7 +7,7 @@
         app:cardBackgroundColor="#00000000"
         app:cardElevation="1dp"
         android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_height="165dp"
         android:layout_margin="10dp"
 
         android:layout_centerInParent="true">
@@ -25,6 +25,7 @@
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imageIcon"
                 android:src="@drawable/ic_launcher_background" />
+
             <ImageView
                 android:id="@+id/selectConfirm"
                 android:src="@drawable/ic_baseline_check_circle_20"
@@ -36,11 +37,12 @@
                 android:layout_marginBottom="5dp"></ImageView>
 
             <TextView
-                android:id="@+id/select_txtQuestion"
+                android:id="@+id/select_txtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_below="@+id/imageIcon"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
                 android:autoSizeMaxTextSize="15sp"
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeTextType="uniform"
@@ -49,10 +51,10 @@
                 android:textColor="@color/designBlue" />
 
             <TextView
-                android:id="@+id/select_txtTitle"
+                android:id="@+id/select_txtQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@+id/select_txtQuestion"
+                android:layout_below="@+id/select_txtTitle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:autoSizeMaxTextSize="15sp"
@@ -66,7 +68,7 @@
                 android:id="@+id/select_txtAnswer"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@+id/select_txtTitle"
+                android:layout_below="@+id/select_txtQuestion"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:autoSizeMaxTextSize="15sp"

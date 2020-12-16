@@ -7,7 +7,7 @@
         app:cardBackgroundColor="#00000000"
         app:cardElevation="1dp"
         android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_height="165dp"
         android:layout_margin="10dp"
 
         android:layout_centerInParent="true">
@@ -16,8 +16,6 @@
             android:id="@+id/onClickbtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="75dp"
@@ -38,13 +36,13 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"></ImageView>
 
-
             <TextView
-                android:id="@+id/select_txtQuestion"
+                android:id="@+id/select_txtTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_below="@+id/imageIcon"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
                 android:autoSizeMaxTextSize="15sp"
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeTextType="uniform"
@@ -53,10 +51,10 @@
                 android:textColor="@color/designBlue" />
 
             <TextView
-                android:id="@+id/select_txtTitle"
+                android:id="@+id/select_txtQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@+id/select_txtQuestion"
+                android:layout_below="@+id/select_txtTitle"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:autoSizeMaxTextSize="15sp"
@@ -70,7 +68,7 @@
                 android:id="@+id/select_txtAnswer"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_below="@+id/select_txtTitle"
+                android:layout_below="@+id/select_txtQuestion"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:autoSizeMaxTextSize="15sp"
