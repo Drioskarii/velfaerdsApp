@@ -38,38 +38,47 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"></ImageView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
 
-                android:text="Question"
-                android:layout_below="@+id/imageIcon"
+            <TextView
                 android:id="@+id/select_txtQuestion"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/designBlue"
-                android:layout_marginBottom="5dp"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeMaxTextSize="15sp"
-                />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="Answer"
-                android:layout_below="@+id/select_txtQuestion"
-                android:id="@+id/select_txtAnswer"
+                android:layout_below="@+id/imageIcon"
                 android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/designBlue"
-                android:layout_marginBottom="5dp"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="8sp"
                 android:autoSizeMaxTextSize="15sp"
-                />
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="Title"
+                android:textColor="@color/designBlue" />
+
+            <TextView
+                android:id="@+id/select_txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/select_txtQuestion"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:autoSizeMaxTextSize="15sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="Question"
+                android:textColor="@color/designBlue" />
+
+            <TextView
+                android:id="@+id/select_txtAnswer"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_below="@+id/select_txtTitle"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:autoSizeMaxTextSize="15sp"
+                android:autoSizeMinTextSize="8sp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="Answer"
+                android:textColor="@color/designBlue" />
 
         </RelativeLayout>
 
