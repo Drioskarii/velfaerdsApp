@@ -29,7 +29,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private static final String TAG = "RecyclerViewAdapter";
 
     public static ArrayList<Strengths> goodSelected = new ArrayList<>();
+    public static ArrayList<Strengths> badSelected = new ArrayList<>();
     private static int goodConfirmCounter = 0;
+    private static int badConfirmCounter = 0;
 
 
     //vars
@@ -63,6 +65,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.answer.setText(String.valueOf(mStrengths.get(position).getAnswer()));
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
+        holder.Title.setText(mStrengths.get(position).getTitle());
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -73,18 +76,18 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             String questionValue = mStrengths.get(position).getQuestion();
 
             //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
-            if(misGood){
-                if (goodConfirmCounter <= 4){
-                    if (holder.selectConfirm.isShown()){
+            if(misGood) {
+                if (goodConfirmCounter <= 3) {
+                    if (holder.selectConfirm.isShown()) {
                         holder.selectConfirm.setVisibility(View.GONE);
                         goodConfirmCounter--;
 
                         goodSelected.remove(mStrengths.get(position));
-                        System.out.println("Remove "+mStrengths.get(position));
+                        System.out.println("Remove " + mStrengths.get(position));
                     } else {
 
                         holder.selectConfirm.setVisibility(View.VISIBLE);
-                        editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
+                        editor.putString(mStrengths.get(position).getQuestion() + "_selected", answerValue + questionValue);
                         editor.apply();
 
                         goodConfirmCounter++;
@@ -92,10 +95,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
                         goodSelected.add(mStrengths.get(position));
                         //System.out.println("added Good"+goodSelected);
-                        System.out.println("added Good"+mStrengths.get(position));
+                        System.out.println("added Good" + mStrengths.get(position));
 
                     }
-                } else if (holder.selectConfirm.isShown()){
+                } else if (holder.selectConfirm.isShown()) {
 
                     holder.selectConfirm.setVisibility(View.GONE);
                     goodConfirmCounter--;
@@ -103,10 +106,39 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
                     goodSelected.remove(mStrengths.get(position));
                     //System.out.println("Removed: "+goodSelected);
-                    System.out.println("Remove "+mStrengths.get(position));
+                    System.out.println("Remove " + mStrengths.get(position));
                 } else {
                     Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
                 }
+            }
+                else {
+                    if (badConfirmCounter <= 1){
+                        if (holder.selectConfirm.isShown()){
+                            holder.selectConfirm.setVisibility(View.GONE);
+                            badConfirmCounter--;
+
+                            badSelected.remove(mStrengths.get(position));
+                            System.out.println("Remove "+mStrengths.get(position));
+                        } else {
+
+                            holder.selectConfirm.setVisibility(View.VISIBLE);
+                            editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
+                            editor.apply();
+
+                            badConfirmCounter++;
+                            System.out.println(badConfirmCounter);
+
+                            badSelected.add(mStrengths.get(position));
+                            System.out.println("added Good"+mStrengths.get(position));
+                        }
+                    } else if (holder.selectConfirm.isShown()){
+
+                        holder.selectConfirm.setVisibility(View.GONE);
+                        badConfirmCounter--;
+                        System.out.println(badConfirmCounter);
+                    } else {
+                        Toast.makeText(mContext, "You have selected too many answers", Toast.LENGTH_SHORT).show();
+                    }
             }
         });
     }
@@ -118,8 +150,9 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     }
 
     public static int getCount(){
+        System.out.println("getCount() = "+badConfirmCounter);
         System.out.println("getCount() = "+goodConfirmCounter);
-        return (goodConfirmCounter);
+        return (goodConfirmCounter + badConfirmCounter);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -128,6 +161,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView question;
         TextView answer;
         ImageView selectConfirm;
+        TextView Title;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -136,6 +170,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             question = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
+            Title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 }
