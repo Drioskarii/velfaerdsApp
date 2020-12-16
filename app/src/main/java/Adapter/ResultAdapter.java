@@ -67,20 +67,16 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public void onBindViewHolder(@NonNull SelectAdapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
 
-        Glide.with(mContext).asBitmap()
-                .load(mPoints.get(position).getIcon())
-                .into(holder.image);
-        holder.answer.setText(mPoints.get(position).getPoints());
-        holder.question.setText(mPoints.get(position).getQuestion());
-        holder.selectConfirm.setVisibility(View.GONE);
-        Glide.with(mContext).asBitmap()
-                .load(mPoints.get(position).getIcon())
-                .into(holder.image);
 
-        holder.answer.setText(mPoints.get(position).getPoints());
+        holder.answer.setText(Integer.toString(mPoints.get(position).getPoints()));
         holder.question.setText(mPoints.get(position).getQuestion());
         holder.image.setImageResource(mPoints.get(position).getIcon());
         holder.title.setText(mPoints.get(position).getTitle());
+        holder.selectConfirm.setVisibility(View.GONE);
+
+        Glide.with(mContext).asBitmap()
+                .load(mPoints.get(position).getIcon())
+                .into(holder.image);
     }
 
 

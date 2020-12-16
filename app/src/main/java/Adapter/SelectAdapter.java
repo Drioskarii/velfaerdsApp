@@ -73,6 +73,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         String questionValue = mStrengths.get(position).getQuestion();
 
         if (!misGood){
+            goodConfirmCounter = 0;
             holder.selectConfirm.setVisibility(View.GONE);
             badSelected.add(mStrengths.get(position));
             editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
