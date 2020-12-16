@@ -1,11 +1,5 @@
 package dk.tec.velfaerdsapp;
 
-import QuestionPages.BesPage;
-import QuestionPages.ModPage;
-import QuestionPages.NysPage;
-import QuestionPages.SamPage;
-import QuestionPages.SocPage;
-import QuestionPages.TakPage;
 import QuestionsAdapter.BesAdapter;
 import QuestionsAdapter.ModAdapter;
 import QuestionsAdapter.NysAdapter;

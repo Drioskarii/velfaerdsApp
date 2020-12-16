@@ -1,4 +1,4 @@
-package QuestionPages;
+package dk.tec.velfaerdsapp;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -12,14 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import Strengths.Strengths;
-import QuestionsAdapter.SamAdapter;
-import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.TouchActivityHandler;
+import QuestionsAdapter.BesAdapter;
 
 //import com.google.android.material.slider.Slider;
 
 
-public class SamPage extends TouchActivityHandler {
+public class BesPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
@@ -33,18 +31,19 @@ public class SamPage extends TouchActivityHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sam_page);
+        setContentView(R.layout.activity_bes_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
-        SamAdapter questionsAdapter = new SamAdapter(SamPage.this, Strengths.getSamList());
+        BesAdapter questionsAdapter = new BesAdapter(BesPage.this, Strengths.getBesList());
         listOfQuestions.setAdapter(questionsAdapter);
 
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
-        TextView txtDinAvatar = findViewById(R.id.txtSamDinAvatar);
+
+    TextView txtDinAvatar = findViewById(R.id.txtBesDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
     }
 

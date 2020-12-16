@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import Strengths.Strengths;
-import QuestionPages.ModPage;
+import dk.tec.velfaerdsapp.ModPage;
 import dk.tec.velfaerdsapp.R;
 
 import static android.content.Context.MODE_PRIVATE;

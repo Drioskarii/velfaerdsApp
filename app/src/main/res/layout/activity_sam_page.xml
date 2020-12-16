@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="QuestionPages.SamPage">
+    tools:context=".SamPage">
 
     <TextView
         android:id="@+id/txtSamDinAvatar"

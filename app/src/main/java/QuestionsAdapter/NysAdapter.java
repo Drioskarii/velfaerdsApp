@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import Strengths.Strengths;
-import QuestionPages.NysPage;
+import dk.tec.velfaerdsapp.NysPage;
 import dk.tec.velfaerdsapp.R;
 
 import static android.content.Context.MODE_PRIVATE;

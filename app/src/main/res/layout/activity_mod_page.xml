@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="QuestionPages.ModPage">
+    tools:context=".ModPage">
 
     <TextView
         android:id="@+id/txtModDinAvatar"

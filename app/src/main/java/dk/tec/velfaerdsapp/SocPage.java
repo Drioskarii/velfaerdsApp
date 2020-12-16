@@ -1,4 +1,4 @@
-package QuestionPages;
+package dk.tec.velfaerdsapp;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import Strengths.Strengths;
 import QuestionsAdapter.SocAdapter;
-import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.TouchActivityHandler;
 
 //import com.google.android.material.slider.Slider;
 

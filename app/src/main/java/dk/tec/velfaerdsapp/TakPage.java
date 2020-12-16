@@ -1,4 +1,4 @@
-package QuestionPages;
+package dk.tec.velfaerdsapp;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -12,14 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import Strengths.Strengths;
-import QuestionsAdapter.ModAdapter;
-import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.TouchActivityHandler;
+import QuestionsAdapter.TakAdapter;
 
 //import com.google.android.material.slider.Slider;
 
 
-public class ModPage extends TouchActivityHandler {
+public class TakPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
@@ -33,19 +31,18 @@ public class ModPage extends TouchActivityHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mod_page);
+        setContentView(R.layout.activity_tak_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
-        ModAdapter questionsAdapter = new ModAdapter(ModPage.this, Strengths.getModList());
+        TakAdapter questionsAdapter = new TakAdapter(TakPage.this, Strengths.getTakList());
         listOfQuestions.setAdapter(questionsAdapter);
 
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
-
-        TextView txtDinAvatar = findViewById(R.id.txtModDinAvatar);
+        TextView txtDinAvatar = findViewById(R.id.txtTakDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
     }
 

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import Strengths.Strengths;
 import dk.tec.velfaerdsapp.R;
-import QuestionPages.TakPage;
+import dk.tec.velfaerdsapp.TakPage;
 
 import static android.content.Context.MODE_PRIVATE;
 

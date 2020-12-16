@@ -23,12 +23,12 @@
         <activity android:name=".The24Strengths" />
         <activity android:name=".EmailPage" />
         <activity android:name=".SelectPage" />
-        <activity android:name="QuestionPages.ModPage" />
-        <activity android:name="QuestionPages.NysPage" />
-        <activity android:name="QuestionPages.BesPage" />
-        <activity android:name="QuestionPages.TakPage" />
-        <activity android:name="QuestionPages.SamPage" />
-        <activity android:name="QuestionPages.SocPage" />
+        <activity android:name=".ModPage" />
+        <activity android:name=".NysPage" />
+        <activity android:name=".BesPage" />
+        <activity android:name=".TakPage" />
+        <activity android:name=".SamPage" />
+        <activity android:name=".SocPage" />
 
         <activity
             android:name=".IntroPage"

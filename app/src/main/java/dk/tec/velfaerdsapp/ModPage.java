@@ -1,4 +1,4 @@
-package QuestionPages;
+package dk.tec.velfaerdsapp;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -12,14 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import Strengths.Strengths;
-import QuestionsAdapter.BesAdapter;
-import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.TouchActivityHandler;
+import QuestionsAdapter.ModAdapter;
 
 //import com.google.android.material.slider.Slider;
 
 
-public class BesPage extends TouchActivityHandler {
+public class ModPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
@@ -33,11 +31,11 @@ public class BesPage extends TouchActivityHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bes_page);
+        setContentView(R.layout.activity_mod_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
-        BesAdapter questionsAdapter = new BesAdapter(BesPage.this, Strengths.getBesList());
+        ModAdapter questionsAdapter = new ModAdapter(ModPage.this, Strengths.getModList());
         listOfQuestions.setAdapter(questionsAdapter);
 
         count = questionsAdapter.getCount();
@@ -45,7 +43,7 @@ public class BesPage extends TouchActivityHandler {
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
 
-    TextView txtDinAvatar = findViewById(R.id.txtBesDinAvatar);
+        TextView txtDinAvatar = findViewById(R.id.txtModDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
     }
 
