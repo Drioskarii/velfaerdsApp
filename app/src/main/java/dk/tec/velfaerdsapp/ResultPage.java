@@ -42,7 +42,6 @@ public class ResultPage extends TouchActivityHandler{
         getValue();
         initRecyclerView();
 
-
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
     }
@@ -56,7 +55,6 @@ public class ResultPage extends TouchActivityHandler{
         System.out.println(goodSelected);
         System.out.println(badSelected.size());
         System.out.println(badSelected);
-
     }
 
     @Override

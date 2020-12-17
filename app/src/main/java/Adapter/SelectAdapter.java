@@ -72,6 +72,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         String answerValue = String.valueOf(mStrengths.get(position).getPoints());
         String questionValue = mStrengths.get(position).getQuestion();
 
+        //ensures that the ResultPage doesn't store old values
         if (goodConfirmCounter == 2){
             goodSelected.clear();
             badSelected.clear();
@@ -106,7 +107,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                         System.out.println(goodConfirmCounter);
 
                         goodSelected.add(mStrengths.get(position));
-                        //System.out.println("added Good"+goodSelected);
                         System.out.println("added Good" + mStrengths.get(position));
 
                     }
@@ -117,7 +117,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     System.out.println(goodConfirmCounter);
 
                     goodSelected.remove(mStrengths.get(position));
-                    //System.out.println("Removed: "+goodSelected);
                     System.out.println("Remove " + mStrengths.get(position));
                 } else {
                     Toast.makeText(mContext, "du kan ikke vælge flere svar", Toast.LENGTH_SHORT).show();
