@@ -20,21 +20,28 @@ public class ResultPage extends TouchActivityHandler{
     //Initialising
     AnimationDrawable animation;
     ImageView characterPlaceholder;
+    TextView questionTxt;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
     ArrayList<Points> badSelected = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
 
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
+        questionTxt = findViewById(R.id.select_txtQuestion);
+
+        goodSelected.clear();
+        badSelected.clear();
 
         getValue();
         initRecyclerView();
+
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
@@ -74,5 +81,12 @@ public class ResultPage extends TouchActivityHandler{
 
         ResultAdapter badAdapter = new ResultAdapter(this, badSelected, false);
         recyclerViewBad.setAdapter(badAdapter);
+    }
+    protected void onRestart() {
+        super.onRestart();
+
+        // first clear the recycler view so items are not populated twice
+        goodSelected.clear();
+        badSelected.clear();
     }
 }

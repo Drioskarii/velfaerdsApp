@@ -49,6 +49,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
 
     public ResultAdapter(Context Context, ArrayList<Points> Points, Boolean isGood) {
+
         mPoints = Points;
         mContext = Context;
         misGood = isGood;
@@ -66,7 +67,6 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull SelectAdapter.ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-
 
         holder.answer.setText(Integer.toString(mPoints.get(position).getPoints()));
         holder.question.setText(mPoints.get(position).getQuestion());

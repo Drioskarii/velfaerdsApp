@@ -30,7 +30,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     public static ArrayList<Points> goodSelected = new ArrayList<>();
     public static ArrayList<Points> badSelected = new ArrayList<>();
-    public static int goodConfirmCounter = 0;
+    public static int goodConfirmCounter;
 
 
     //vars
@@ -72,6 +72,12 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         String answerValue = String.valueOf(mStrengths.get(position).getPoints());
         String questionValue = mStrengths.get(position).getQuestion();
 
+        if (goodConfirmCounter == 2){
+            goodSelected.clear();
+            badSelected.clear();
+        }
+
+        goodConfirmCounter = 0;
         if (!misGood){
             goodConfirmCounter = 0;
             holder.selectConfirm.setVisibility(View.GONE);
