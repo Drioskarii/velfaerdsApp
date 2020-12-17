@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.exoplayer2.ui.PlayerView;
+
+import Adapter.VideoAdapter;
 import Strengths.Strengths;
 import QuestionsAdapter.ModAdapter;
 
@@ -25,6 +28,8 @@ public class ModPage extends TouchActivityHandler {
     public static ImageView imgNextPage;
     public static int count;
     public static int answeredCount;
+    ImageView videobtn;
+    PlayerView playerView;
     ListView listOfQuestions;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -35,6 +40,8 @@ public class ModPage extends TouchActivityHandler {
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
+        videobtn = findViewById(R.id.btnYoutube);
+        playerView = findViewById(R.id.player_view);
         ModAdapter questionsAdapter = new ModAdapter(ModPage.this, Strengths.getModList());
         listOfQuestions.setAdapter(questionsAdapter);
 
@@ -43,9 +50,27 @@ public class ModPage extends TouchActivityHandler {
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
 
+        playerView.setVisibility(View.GONE);
         TextView txtDinAvatar = findViewById(R.id.txtModDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
+
+
+
+
+
+        videobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.VISIBLE);
+                VideoAdapter video = new VideoAdapter(ModPage.this, R.raw.modvid, playerView);
+                video.play();
+
+            }
+        });
+
     }
+
+
 
     public static void checkPoints(){
         imgNextPage.setAlpha(0.0f);

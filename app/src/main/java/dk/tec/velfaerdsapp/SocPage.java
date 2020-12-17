@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.exoplayer2.ui.PlayerView;
+
+import Adapter.VideoAdapter;
 import Strengths.Strengths;
 import QuestionsAdapter.SocAdapter;
 
@@ -25,6 +28,8 @@ public class SocPage extends TouchActivityHandler {
     public static ImageView imgNextPage;
     public static int count;
     public static int answeredCount;
+    ImageView videobtn;
+    PlayerView playerView;
     ListView listOfQuestions;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -35,15 +40,28 @@ public class SocPage extends TouchActivityHandler {
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
+        videobtn = findViewById(R.id.btnYoutube);
+        playerView = findViewById(R.id.player_view);
         SocAdapter questionsAdapter = new SocAdapter(SocPage.this, Strengths.getSocList());
         listOfQuestions.setAdapter(questionsAdapter);
-
+        playerView.setVisibility(View.GONE);
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
         TextView txtDinAvatar = findViewById(R.id.txtSocDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
+
+        videobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.VISIBLE);
+                VideoAdapter video = new VideoAdapter(SocPage.this, R.raw.socvid, playerView);
+                video.play();
+
+            }
+        });
+
     }
 
     public static void checkPoints(){
