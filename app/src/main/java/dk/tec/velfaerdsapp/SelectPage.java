@@ -48,8 +48,10 @@ public class SelectPage extends TouchActivityHandler {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        strengths.clear();
+        weaknesses.clear();
+
         setContentView(R.layout.activity_select_page);
         getLists();
         getListPoints();
@@ -159,11 +161,5 @@ public class SelectPage extends TouchActivityHandler {
 
         SelectAdapter badAdapter = new SelectAdapter(this, weaknesses, false);
         recyclerViewBad.setAdapter(badAdapter);
-    }
-    protected void onRestart() {
-        super.onRestart();
-
-        strengths.clear();
-        weaknesses.clear();
     }
 }
