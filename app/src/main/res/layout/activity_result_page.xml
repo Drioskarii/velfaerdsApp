@@ -28,13 +28,51 @@
             android:textColor="@color/designBlue"
             android:textSize="32sp" />
 
+
+
+
+
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/characterPlaceholder"
-            android:layout_width="match_parent"
+            android:layout_width="360dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="bottom">
+                <ImageView
+                    android:id="@+id/btnYoutube"
+                    android:src="@mipmap/ic_baseline_youtube"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"/>
+            </RelativeLayout>
+
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:id="@+id/player_view"
+                android:layout_width="360dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:background="@android:color/background_dark"
+                app:controller_layout_id="@layout/exo_playback_control_view"
+                app:fastforward_increment="10000"
+                app:hide_on_touch="true"
+                app:player_layout_id="@layout/exo_simple_player_view"
+                app:resize_mode="fit"
+                app:rewind_increment="10000"
+                app:show_timeout="5000"
+                app:use_controller="true" />
+        </FrameLayout>
+
+
 
         <TextView
             android:layout_width="wrap_content"

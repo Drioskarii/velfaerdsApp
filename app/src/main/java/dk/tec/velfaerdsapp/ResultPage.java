@@ -3,15 +3,21 @@ package dk.tec.velfaerdsapp;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.exoplayer2.ui.PlayerView;
+
 import java.util.ArrayList;
 
+import javax.xml.transform.Result;
+
 import Adapter.ResultAdapter;
+import Adapter.VideoAdapter;
 import Strengths.Points;
 
 public class ResultPage extends TouchActivityHandler{
@@ -21,6 +27,8 @@ public class ResultPage extends TouchActivityHandler{
     AnimationDrawable animation;
     ImageView characterPlaceholder;
     TextView questionTxt;
+    ImageView videobtn;
+    PlayerView playerView;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
     ArrayList<Points> badSelected = new ArrayList<>();
@@ -30,12 +38,13 @@ public class ResultPage extends TouchActivityHandler{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
-
+        videobtn = findViewById(R.id.btnYoutube);
+        playerView = findViewById(R.id.player_view);
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
         questionTxt = findViewById(R.id.select_txtQuestion);
-
+        playerView.setVisibility(View.GONE);
         goodSelected.clear();
         badSelected.clear();
 
@@ -44,6 +53,17 @@ public class ResultPage extends TouchActivityHandler{
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
+
+        videobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.VISIBLE);
+                VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
+                video.play();
+
+            }
+        });
+
     }
 
     private void getValue() {

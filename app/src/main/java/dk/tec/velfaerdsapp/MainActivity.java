@@ -15,16 +15,22 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.exoplayer2.ui.PlayerView;
+
+import Adapter.VideoAdapter;
+
 public class MainActivity extends TouchActivityHandler {
 
     private static final String TAG = "mainActivity";
     final Handler handler = new Handler();
     Runnable myRunnable;
+    PlayerView playerView;
     public static boolean tutDone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        playerView = findViewById(R.id.player_view);
         SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
         settings1.edit().clear().apply();
         SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
@@ -46,6 +52,9 @@ public class MainActivity extends TouchActivityHandler {
                 }
             }, 4000);
         }
+
+        VideoAdapter video = new VideoAdapter(MainActivity.this, R.raw.intvid, playerView);
+        video.play();
     }
 
     public void logoClicked(View view) {
