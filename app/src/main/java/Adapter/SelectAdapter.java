@@ -80,6 +80,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
         goodConfirmCounter = 0;
         if (!misGood){
+            badSelected.clear();
             goodConfirmCounter = 0;
             holder.selectConfirm.setVisibility(View.GONE);
             badSelected.add(mStrengths.get(position));

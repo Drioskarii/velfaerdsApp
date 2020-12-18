@@ -160,10 +160,4 @@ public class SelectPage extends TouchActivityHandler {
         SelectAdapter badAdapter = new SelectAdapter(this, weaknesses, false);
         recyclerViewBad.setAdapter(badAdapter);
     }
-    protected void onRestart() {
-        super.onRestart();
-
-        strengths.clear();
-        weaknesses.clear();
-    }
 }
