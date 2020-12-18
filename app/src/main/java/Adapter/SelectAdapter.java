@@ -65,6 +65,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
         holder.title.setText(mStrengths.get(position).getTitle());
+        holder.image.setImageResource(mStrengths.get(position).getIcon());
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();

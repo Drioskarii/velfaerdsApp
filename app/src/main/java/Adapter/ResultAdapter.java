@@ -49,7 +49,6 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
 
     public ResultAdapter(Context Context, ArrayList<Points> Points, Boolean isGood) {
-
         mPoints = Points;
         mContext = Context;
         misGood = isGood;
