@@ -2,11 +2,14 @@ package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -104,5 +107,9 @@ public class ModAdapter extends BaseAdapter {
         });
         ModPage.checkPoints();
         return itemView;
+    }
+
+    public static int dpToPx(int dp, Context context){
+        return dp * ((int) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 }
