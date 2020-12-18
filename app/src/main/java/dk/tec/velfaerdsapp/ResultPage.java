@@ -80,11 +80,4 @@ public class ResultPage extends TouchActivityHandler{
         ResultAdapter badAdapter = new ResultAdapter(this, badSelected, false);
         recyclerViewBad.setAdapter(badAdapter);
     }
-    protected void onRestart() {
-        super.onRestart();
-
-        // first clear the recycler view so items are not populated twice
-        goodSelected.clear();
-        badSelected.clear();
-    }
 }

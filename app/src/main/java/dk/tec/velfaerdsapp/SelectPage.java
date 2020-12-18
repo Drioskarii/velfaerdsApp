@@ -48,8 +48,6 @@ public class SelectPage extends TouchActivityHandler {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        strengths.clear();
-        weaknesses.clear();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_page);
