@@ -50,7 +50,7 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         strengths.clear();
-        weaknesses.clear();
+//        weaknesses.clear();
 
         setContentView(R.layout.activity_select_page);
         getLists();
@@ -134,7 +134,7 @@ public class SelectPage extends TouchActivityHandler {
         strengths.add(g1);
         strengths.add(g2);
         strengths.add(g3);
-        weaknesses.add(b1);
+        //weaknesses.add(b1);
     }
 
     private void getGoodImages() {
@@ -155,11 +155,11 @@ public class SelectPage extends TouchActivityHandler {
         recyclerViewGood.setAdapter(goodAdapter);
 
 
-        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+/*        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
         SelectAdapter badAdapter = new SelectAdapter(this, weaknesses, false);
-        recyclerViewBad.setAdapter(badAdapter);
+        recyclerViewBad.setAdapter(badAdapter);*/
     }
 }

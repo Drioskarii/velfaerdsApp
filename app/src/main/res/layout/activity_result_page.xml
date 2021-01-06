@@ -89,7 +89,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewGood"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:textColor="@color/designBlue"/>
@@ -97,7 +97,7 @@
             style="@style/Divider"
             android:layout_marginBottom="5dp" />
 
-        <TextView
+<!--        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Svaghed"
@@ -118,7 +118,7 @@
 
         <View
             style="@style/Divider"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp" />-->
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -31,7 +31,7 @@ public class ResultPage extends TouchActivityHandler{
     PlayerView playerView;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
-    ArrayList<Points> badSelected = new ArrayList<>();
+//    ArrayList<Points> badSelected = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ResultPage extends TouchActivityHandler{
         questionTxt = findViewById(R.id.select_txtQuestion);
         playerView.setVisibility(View.GONE);
         goodSelected.clear();
-        badSelected.clear();
+//        badSelected.clear();
 
         getValue();
         initRecyclerView();
@@ -68,13 +68,13 @@ public class ResultPage extends TouchActivityHandler{
 
     private void getValue() {
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
-        badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
+//        badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
 
         System.out.println("HELP");
         System.out.println(goodSelected.size());
         System.out.println(goodSelected);
-        System.out.println(badSelected.size());
-        System.out.println(badSelected);
+//        System.out.println(badSelected.size());
+//        System.out.println(badSelected);
     }
 
     @Override
@@ -93,17 +93,17 @@ public class ResultPage extends TouchActivityHandler{
         recyclerViewGood.setAdapter(goodAdapter);
 
 
-        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+/*        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
         recyclerViewBad.setLayoutManager(layoutManagerBad);
 
         ResultAdapter badAdapter = new ResultAdapter(this, badSelected, false);
-        recyclerViewBad.setAdapter(badAdapter);
+        recyclerViewBad.setAdapter(badAdapter);*/
     }
     protected void onRestart() {
         super.onRestart();
 
         goodSelected.clear();
-        badSelected.clear();
+//        badSelected.clear();
     }
 }

@@ -86,10 +86,10 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     public static int getCount(){
         int goodCount = goodConfirmCounter;
-        int badCount = badConfirmCounter;
-        System.out.println("getCount() = "+badConfirmCounter);
+        //int badCount = badConfirmCounter;
+       // System.out.println("getCount() = "+badConfirmCounter);
         System.out.println("getCount() = "+goodConfirmCounter);
-        return goodConfirmCounter + badConfirmCounter;
+        return goodConfirmCounter;// + badConfirmCounter;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

@@ -29,7 +29,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private static final String TAG = "RecyclerViewAdapter";
 
     public static ArrayList<Points> goodSelected = new ArrayList<>();
-    public static ArrayList<Points> badSelected = new ArrayList<>();
+    //public static ArrayList<Points> badSelected = new ArrayList<>();
     public static int goodConfirmCounter;
 
 
@@ -76,15 +76,15 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         //ensures that the ResultPage doesn't store old values
         if (goodConfirmCounter == 2){
             goodSelected.clear();
-            badSelected.clear();
+           // badSelected.clear();
         }
 
         goodConfirmCounter = 0;
         if (!misGood){
-            badSelected.clear();
+          //  badSelected.clear();
             goodConfirmCounter = 0;
             holder.selectConfirm.setVisibility(View.GONE);
-            badSelected.add(mStrengths.get(position));
+          //  badSelected.add(mStrengths.get(position));
             editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
             editor.apply();
         }

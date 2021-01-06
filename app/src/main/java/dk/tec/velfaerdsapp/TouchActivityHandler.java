@@ -117,7 +117,7 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                             if (SelectAdapter.goodConfirmCounter == 2){
                                 Intent intent = new Intent(this, ResultPage.class);
                                 intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                                intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
+                                //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
                                 startActivity(intent);
                             }
                             else{
