@@ -50,9 +50,8 @@ public class BesPage extends TouchActivityHandler {
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
 
-    TextView txtDinAvatar = findViewById(R.id.txtBesDinAvatar);
+        TextView txtDinAvatar = findViewById(R.id.txtBesDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
-
 
         videobtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +62,6 @@ public class BesPage extends TouchActivityHandler {
 
             }
         });
-
     }
 
     public static void checkPoints(){
