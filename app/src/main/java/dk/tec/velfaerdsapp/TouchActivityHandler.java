@@ -69,6 +69,8 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                         } else if (this.toString().contains("The24Strength")) {
                             backward();
                         } else if (this.toString().contains("IntroPage")) {
+                            startActivity(forward(this, QuestionTutorial.class));
+                        } else if (this.toString().contains("QuestionTutorial")) {
                             startActivity(forward(this, ModPage.class));
                         } else if (this.toString().contains("ModPage")) {
                             if (ModPage.answeredCount == ModPage.count) {
