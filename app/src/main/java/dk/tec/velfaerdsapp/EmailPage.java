@@ -28,6 +28,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import Strengths.Points;
+
 public class EmailPage extends TouchActivityHandler {
 
     private static final String TAG = "emailPage";
@@ -35,6 +37,11 @@ public class EmailPage extends TouchActivityHandler {
     List<EditText> editTextList = new ArrayList<>();
     TableLayout tableLayout;
     int maxEmails = 0;
+    ArrayList<Points> goodSelected = new ArrayList<>();
+    String questions;
+    String title;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,11 +168,34 @@ public class EmailPage extends TouchActivityHandler {
         }
         Log.i("Send email", "");
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList2");
+
+
+        if(goodSelected.isEmpty()){
+            System.out.println("Arraylisten er tom");
+            System.out.println("Find mig her");
+            System.out.print(goodSelected);
+        }else{
+            System.out.println("Der er Data i Arraylisten");
+            for(int int1 = 0; int1 < goodSelected.size(); int1++)
+            {
+                System.out.println(goodSelected.get(int1).getPoints());
+                System.out.println(goodSelected.get(int1).getQuestion());
+                System.out.println(goodSelected.get(int1).getIcon());
+                System.out.println(goodSelected.get(int1).getTitle());
+            }
+        }
+
+
+
         emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "De 24 værdier");
         //Skal laves om til at indeholde svar fra shared preferences ELLER intent, hvad end vi går videre med
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Question 1: 4 \nQuestion 2: 2\nQuestion 3: 2 \nQuestion 4: 2 \nQuestion 5: 1");
+
+        
+
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
             Log.i("Sent email", "");

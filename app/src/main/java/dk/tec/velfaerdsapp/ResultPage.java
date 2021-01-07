@@ -103,7 +103,7 @@ public class ResultPage extends TouchActivityHandler{
     protected void onRestart() {
         super.onRestart();
 
-        goodSelected.clear();
+//        goodSelected.clear();
 //        badSelected.clear();
     }
 }

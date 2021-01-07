@@ -1,5 +1,6 @@
 package dk.tec.velfaerdsapp;
 
+import Adapter.ResultAdapter;
 import QuestionsAdapter.BesAdapter;
 import QuestionsAdapter.ModAdapter;
 import QuestionsAdapter.NysAdapter;
@@ -124,7 +125,11 @@ public class TouchActivityHandler extends AppCompatActivity implements GestureDe
                                 Toast.makeText(this, "vælg 2 styrker for at fortsætte", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else if (this.toString().contains("ResultPage")){startActivity(forward(this, EmailPage.class));}
+                        else if (this.toString().contains("ResultPage")){
+                            Intent intent = new Intent(this, EmailPage.class);
+                            intent.putParcelableArrayListExtra("goodSelectedList2", ResultAdapter.goodSelected);
+                            startActivity(intent);
+                        }
                     }
                 }
         }

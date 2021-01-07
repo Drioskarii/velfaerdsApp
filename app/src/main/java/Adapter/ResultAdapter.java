@@ -33,8 +33,8 @@ import static android.content.Context.MODE_PRIVATE;
 public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
 
 
-    public static ArrayList<String> goodSelected = new ArrayList<String>();
-    public static ArrayList<String> badSelected = new ArrayList<String>();
+    public static ArrayList<Points> goodSelected = new ArrayList<>();
+    public static ArrayList<String> badSelected = new ArrayList<>();
     private static int goodConfirmCounter = 0;
     private static int badConfirmCounter = 0;
 
