@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -147,9 +148,10 @@ public class SelectPage extends TouchActivityHandler {
 
     @SuppressLint("NewApi")
     private void initRecyclerView() {
-        LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        //LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
-        recyclerViewGood.setLayoutManager(layoutManagerGood);
+        recyclerViewGood.setLayoutManager(gridLayoutManager);
 
         SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
         recyclerViewGood.setAdapter(goodAdapter);
@@ -162,4 +164,6 @@ public class SelectPage extends TouchActivityHandler {
         SelectAdapter badAdapter = new SelectAdapter(this, weaknesses, false);
         recyclerViewBad.setAdapter(badAdapter);*/
     }
+
+
 }
