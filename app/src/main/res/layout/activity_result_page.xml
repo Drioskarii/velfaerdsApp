@@ -93,9 +93,6 @@
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             android:textColor="@color/designBlue"/>
-        <View
-            style="@style/Divider"
-            android:layout_marginBottom="5dp" />
 
 <!--        <TextView
             android:layout_width="wrap_content"

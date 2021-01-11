@@ -64,7 +64,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
         holder.question.setText(mStrengths.get(position).getQuestion());
         holder.selectConfirm.setVisibility(View.GONE);
-        holder.title.setText(mStrengths.get(position).getTitle());
+//      holder.title.setText(mStrengths.get(position).getTitle());
         holder.image.setImageResource(mStrengths.get(position).getIcon());
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
@@ -76,6 +76,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         //ensures that the ResultPage doesn't store old values
         if (goodConfirmCounter == 2){
             goodSelected.clear();
+
            // badSelected.clear();
         }
 
@@ -144,7 +145,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView question;
         TextView answer;
         ImageView selectConfirm;
-        TextView title;
+        //TextView title;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -153,7 +154,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             question = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
-            title = itemView.findViewById(R.id.select_txtTitle);
+            //title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 }

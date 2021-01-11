@@ -7,7 +7,7 @@
     app:cardBackgroundColor="#00000000"
     app:cardElevation="1dp"
     android:layout_width="390dp"
-    android:layout_height="300dp"
+    android:layout_height="305dp"
     android:layout_margin="10dp"
     android:layout_centerInParent="true">
 
@@ -15,8 +15,7 @@
     <RelativeLayout
         android:id="@+id/onClickbtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageIcon"
@@ -26,7 +25,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background" />
 
@@ -40,8 +39,22 @@
             android:layout_marginBottom="5dp"
             android:src="@drawable/ic_baseline_check_circle_20" />
 
+        <!--        <TextView
+                    android:id="@+id/select_txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/imageIcon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15sp"
+                    android:autoSizeMaxTextSize="15sp"
+                    android:autoSizeMinTextSize="8sp"
+                    android:autoSizeTextType="uniform"
+                    android:gravity="center"
+                    android:text="Title"
+                    android:textColor="@color/designBlue" />-->
+
         <TextView
-            android:id="@+id/select_txtTitle"
+            android:id="@+id/select_txtAnswer"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_below="@+id/imageIcon"
@@ -51,42 +64,27 @@
             android:autoSizeMinTextSize="8sp"
             android:autoSizeTextType="uniform"
             android:gravity="center"
-            android:text="Title"
+            android:text="Answer"
             android:textColor="@color/designBlue" />
 
         <TextView
             android:id="@+id/select_txtQuestion"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_below="@+id/select_txtTitle"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/select_txtAnswer"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:autoSizeMaxTextSize="15sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeTextType="uniform"
-            android:gravity="center"
+            android:textSize="23sp"
+            android:textAlignment="center"
             android:text="Question"
             android:textColor="@color/designBlue" />
-
-        <TextView
-            android:id="@+id/select_txtAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_below="@+id/select_txtQuestion"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15sp"
-            android:autoSizeMaxTextSize="15sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:text="Answer"
-            android:textColor="@color/designBlue" />
-
-
     </RelativeLayout>
 
     <View style="@style/Divider"
-        android:layout_marginTop="295dp"
+        android:layout_marginTop="300dp"
         android:layout_marginBottom="5dp"/>
 </androidx.cardview.widget.CardView>
 
