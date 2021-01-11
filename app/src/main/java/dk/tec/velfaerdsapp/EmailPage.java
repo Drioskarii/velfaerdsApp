@@ -64,6 +64,7 @@ public class EmailPage extends TouchActivityHandler {
                 addEmail(this.tableLayout, s1);
             }
         }
+        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
     }
 
     public void addEmail(View view, String email) {
@@ -168,7 +169,7 @@ public class EmailPage extends TouchActivityHandler {
         }
         Log.i("Send email", "");
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList2");
+
 
 
         if(goodSelected.isEmpty()){
