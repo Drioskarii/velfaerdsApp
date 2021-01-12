@@ -6,7 +6,7 @@
     app:cardMaxElevation="2dp"
     app:cardBackgroundColor="#00000000"
     app:cardElevation="1dp"
-    android:layout_width="390dp"
+    android:layout_width="360dp"
     android:layout_height="305dp"
     android:layout_margin="10dp"
     android:layout_centerInParent="true">
