@@ -1,5 +1,6 @@
 package dk.tec.velfaerdsapp;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,11 +25,13 @@ public class ResultPage extends TouchActivityHandler{
 
     private static final String TAG = "ResultatPage";
     //Initialising
+    private boolean videoWatched3 = false;
     AnimationDrawable animation;
     ImageView characterPlaceholder;
     TextView questionTxt;
     ImageView videobtn;
     PlayerView playerView;
+    ImageView skipVideo;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
 //    ArrayList<Points> badSelected = new ArrayList<>();
@@ -40,9 +43,13 @@ public class ResultPage extends TouchActivityHandler{
         setContentView(R.layout.activity_result_page);
         videobtn = findViewById(R.id.btnYoutube);
         playerView = findViewById(R.id.player_view);
+        skipVideo = findViewById(R.id.SkipVideo);
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
         characterPlaceholder.setBackgroundResource(R.drawable.animation);
+        VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
         animation = (AnimationDrawable) characterPlaceholder.getBackground();
+        playerView.setVisibility(playerView.GONE);
+        skipVideo.setVisibility(skipVideo.GONE);
         questionTxt = findViewById(R.id.select_txtQuestion);
         playerView.setVisibility(View.GONE);
         goodSelected.clear();
@@ -54,11 +61,31 @@ public class ResultPage extends TouchActivityHandler{
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("videoWatched7", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        videoWatched3 = sharedPreferences.getBoolean("videoWatched7", false);
+        if (!videoWatched3){
+            playerView.setVisibility(View.VISIBLE);
+            video.play();
+            video.playVideo();
+            editor.putBoolean("videoWatched7", videoWatched3 = true);
+            editor.apply();
+        }
+
+        skipVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.GONE);
+                skipVideo.setVisibility(skipVideo.GONE);
+                video.pauseVideo();
+            }
+        });
+
         videobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
-                VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
+                skipVideo.setVisibility(skipVideo.VISIBLE);
                 video.play();
 
             }

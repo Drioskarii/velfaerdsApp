@@ -57,6 +57,15 @@ public class VideoAdapter {
     }
 
 
+    public void playVideo() {
+        exoplayer.setPlayWhenReady(true);
+    }
+
+    public void pauseVideo() {
+        exoplayer.setPlayWhenReady(false);
+    }
+
+
 
     public void play() {
 
@@ -69,8 +78,7 @@ public class VideoAdapter {
         playerView.setPlayer(exoplayer);
         playerView.setKeepScreenOn(true);
 
-        //Pause on initialise
-        exoplayer.setPlayWhenReady(false);
+
 
 
         exoplayer.addListener(new Player.EventListener() {
@@ -92,6 +100,9 @@ public class VideoAdapter {
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
 
+                if (playbackState == Player.STATE_ENDED){
+                    playerView.setVisibility(View.GONE);
+                }
 
             }
 

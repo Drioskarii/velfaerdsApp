@@ -14,14 +14,12 @@
         android:gravity="center"
         android:paddingTop="4dp"
         android:orientation="horizontal">
-        <ImageButton android:id="@id/exo_rew"
-            style="@style/ExoMediaButton.Rewind"/>
+
         <ImageButton android:id="@id/exo_play"
             style="@style/ExoMediaButton.Play"/>
         <ImageButton android:id="@id/exo_pause"
             style="@style/ExoMediaButton.Pause"/>
-        <ImageButton android:id="@id/exo_ffwd"
-            style="@style/ExoMediaButton.FastForward"/>
+
 
     </LinearLayout>
     <LinearLayout

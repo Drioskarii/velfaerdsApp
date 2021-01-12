@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.google.android.exoplayer2.ui.PlayerView;
 
 import Adapter.VideoAdapter;
+import QuestionsAdapter.SamAdapter;
 import Strengths.Strengths;
 import QuestionsAdapter.SocAdapter;
 
@@ -24,6 +26,7 @@ public class SocPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
+    private boolean videoWatched3 = false;
     public static ProgressBar questionsProgressBar;
     public static ImageView imgNextPage;
     public static int count;
@@ -31,6 +34,7 @@ public class SocPage extends TouchActivityHandler {
     ImageView videobtn;
     PlayerView playerView;
     ListView listOfQuestions;
+    ImageView skipVideo;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -41,10 +45,13 @@ public class SocPage extends TouchActivityHandler {
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
         videobtn = findViewById(R.id.btnYoutube);
+        skipVideo = findViewById(R.id.SkipVideo);
         playerView = findViewById(R.id.player_view);
         SocAdapter questionsAdapter = new SocAdapter(SocPage.this, Strengths.getSocList());
+        VideoAdapter video = new VideoAdapter(SocPage.this, R.raw.socvid, playerView);
         listOfQuestions.setAdapter(questionsAdapter);
-        playerView.setVisibility(View.GONE);
+        playerView.setVisibility(playerView.GONE);
+        skipVideo.setVisibility(skipVideo.GONE);
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
@@ -52,15 +59,40 @@ public class SocPage extends TouchActivityHandler {
         TextView txtDinAvatar = findViewById(R.id.txtSocDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
 
+
+        SharedPreferences sharedPreferences = getSharedPreferences("videoWatched5", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        videoWatched3 = sharedPreferences.getBoolean("videoWatched5", false);
+        if (!videoWatched3){
+            playerView.setVisibility(View.VISIBLE);
+            video.play();
+            video.playVideo();
+            editor.putBoolean("videoWatched5", videoWatched3 = true);
+            editor.apply();
+        }
+
+
+
+
+        skipVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.GONE);
+                skipVideo.setVisibility(skipVideo.GONE);
+                video.pauseVideo();
+            }
+        });
+
         videobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
-                VideoAdapter video = new VideoAdapter(SocPage.this, R.raw.socvid, playerView);
+                skipVideo.setVisibility(skipVideo.VISIBLE);
                 video.play();
 
             }
         });
+
 
     }
 
