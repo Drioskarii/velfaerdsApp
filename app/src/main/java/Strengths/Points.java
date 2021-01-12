@@ -10,12 +10,14 @@ public class Points implements Parcelable {
     private final String question;
     private final int points;
     private final int icon;
+    private final int maxPoints;
 
-    public Points(String Title, String Question, int Points, int Icon) {
+    public Points(String Title, String Question, int Points, int Icon, int MaxPoints) {
         title = Title;
         question = Question;
         points = Points;
         icon = Icon;
+        maxPoints = MaxPoints;
     }
 
     protected Points(Parcel in) {
@@ -23,6 +25,7 @@ public class Points implements Parcelable {
         question = in.readString();
         points = in.readInt();
         icon = in.readInt();
+        maxPoints = in.readInt();
     }
 
     public static final Creator<Points> CREATOR = new Creator<Points>() {
@@ -49,6 +52,8 @@ public class Points implements Parcelable {
         return icon;
     }
 
+    public int getMaxPoints() { return maxPoints; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -56,9 +61,12 @@ public class Points implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
         dest.writeString(title);
         dest.writeString(question);
         dest.writeInt(points);
         dest.writeInt(icon);
+        dest.writeInt(maxPoints);
     }
+
 }
