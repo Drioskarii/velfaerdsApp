@@ -70,7 +70,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.answer.setText(Integer.toString(mPoints.get(position).getPoints()));
         holder.question.setText(mPoints.get(position).getQuestion());
         holder.image.setImageResource(mPoints.get(position).getIcon());
-        holder.title.setText(mPoints.get(position).getTitle());
+        //holder.title.setText(mPoints.get(position).getTitle());
         holder.selectConfirm.setVisibility(View.GONE);
 
         Glide.with(mContext).asBitmap()
@@ -107,7 +107,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             question = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
-            title = itemView.findViewById(R.id.select_txtTitle);
+            //title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 

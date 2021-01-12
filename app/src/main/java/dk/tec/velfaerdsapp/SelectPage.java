@@ -114,12 +114,12 @@ public class SelectPage extends TouchActivityHandler {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void addAndSort(){
-        Points p1 = new Points("Mod", "Du tør være dig selv", modPoints, R.drawable.iconmod);
-        Points p2 = new Points("Nysgerrighed ", "Du tænker over tingene", nysPoints, R.drawable.iconnysgerrig);
-        Points p3 = new Points("Beskedenhed", "Du er disciplineret", besPoints, R.drawable.iconbeskedenhed);
-        Points p4 = new Points("Taknemmelighed", "Verden er større end dig", takPoints, R.drawable.icontaknemmelighed);
-        Points p5 = new Points("Samarbejde", "Du tænker på fællesskabet", samPoints, R.drawable.iconsamarbejde);
-        Points p6 = new Points("Social Intelligens", "Du er noget for andre", socPoints, R.drawable.iconsocialintelligens);
+        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod);
+        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig);
+        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed);
+        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed);
+        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde);
+        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens);
         points.add(p1);
         points.add(p2);
         points.add(p3);

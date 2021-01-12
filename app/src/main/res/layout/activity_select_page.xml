@@ -18,7 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/txtSelectDinAvatar"
@@ -30,7 +31,10 @@
                 android:textColor="@color/designBlue"
                 android:text="Din Avatar"/>
         </LinearLayout>
-
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
         <LinearLayout
             android:orientation="vertical"
             android:layout_height="wrap_content"
@@ -48,6 +52,7 @@
             <View style="@style/Divider"
                 android:id="@+id/topScore"/>
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewGood"
                 android:layout_width="match_parent"
@@ -55,9 +60,6 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:orientation="vertical"/>
-
-            <View style="@style/Divider"
-                android:layout_marginBottom="5dp"/>
 
             <!--<TextView
                 android:layout_width="wrap_content"
@@ -82,5 +84,6 @@
             <View style="@style/Divider"
                 android:layout_marginBottom="5dp"/>-->
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </LinearLayout>
