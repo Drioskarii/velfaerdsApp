@@ -172,6 +172,8 @@ public class EmailPage extends TouchActivityHandler {
 
 
 
+        //Udskrivning af Arraylisten fra intent
+
         if(goodSelected.isEmpty()){
             System.out.println("Arraylisten er tom");
             System.out.println("Find mig her");
@@ -193,7 +195,7 @@ public class EmailPage extends TouchActivityHandler {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "De 24 værdier");
         //Skal laves om til at indeholde svar fra shared preferences ELLER intent, hvad end vi går videre med
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Question 1: 4 \nQuestion 2: 2\nQuestion 3: 2 \nQuestion 4: 2 \nQuestion 5: 1");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Navn: "+ gName + "\n Job: " + gJob +"\n\n\nFørste Karaktertræk: \n Title: " + goodSelected.get(0).getTitle() + "\n Spørgsmål: " + goodSelected.get(0).getQuestion() + "\n Svar: " + goodSelected.get(0).getPoints() + "\n\n Anden Karaktertræk: \n Title: " + goodSelected.get(1).getTitle() + "\n Spørgsmål: " + goodSelected.get(1).getQuestion() + "\n Svar: " + goodSelected.get(1).getPoints());
 
         
 
