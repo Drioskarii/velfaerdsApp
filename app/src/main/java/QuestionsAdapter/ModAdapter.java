@@ -59,7 +59,7 @@ public class ModAdapter extends BaseAdapter {
         SeekBar mSeekBar = itemView.findViewById(R.id.seekBar);
         questionsConfirm.setImageResource(R.drawable.ic_baseline_remove_circle_20);
         mSeekBar.setProgress(tempStrengths.getAnswer());
-        mSeekBar.setMax(5);
+        mSeekBar.setMax(4);
 
         mTxtTitle.setText(tempStrengths.getTitle());
         mTxtQuestion.setText(tempStrengths.getQuestion());

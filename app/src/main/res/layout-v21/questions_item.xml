@@ -66,8 +66,7 @@
                     android:layout_height="wrap_content">
                     <SeekBar
                         android:id="@+id/seekBar"
-                        android:min="1"
-                        android:max="5"
+                        android:max="4"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
                         android:layout_width="match_parent"
