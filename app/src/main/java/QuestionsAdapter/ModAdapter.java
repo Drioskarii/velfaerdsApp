@@ -2,6 +2,7 @@ package QuestionsAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import Strengths.Strengths;
@@ -47,6 +50,7 @@ public class ModAdapter extends BaseAdapter {
         return position;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View getView(int position, View itemView, ViewGroup parent) {
 
@@ -85,7 +89,7 @@ public class ModAdapter extends BaseAdapter {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                int progress = seekBar.getProgress();
+                int progress = seekBar.getProgress() + 1;
                 tempStrengths.setAnswer(progress);
                 //Insert data into the SharedPreferences
                 if (strengths.contains(tempStrengths)) {

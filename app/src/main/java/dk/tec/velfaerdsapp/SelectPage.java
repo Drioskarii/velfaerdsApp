@@ -46,7 +46,7 @@ public class SelectPage extends TouchActivityHandler {
     int samPoints;
     int socPoints;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +112,6 @@ public class SelectPage extends TouchActivityHandler {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private void addAndSort(){
         Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod, 20);
         Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig, 20);
@@ -126,14 +125,19 @@ public class SelectPage extends TouchActivityHandler {
         points.add(p4);
         points.add(p5);
         points.add(p6);
-        Collections.sort(points, Comparator.comparing(Points::getPoints));
 
-        Points g5 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxPoints());
-        Points g4 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxPoints());
-        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxPoints());
-        Points g2 = new Points(points.get(2).getTitle(), points.get(2).getQuestion(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxPoints());
-        Points g1 = new Points(points.get(1).getTitle(), points.get(1).getQuestion(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxPoints());
-        Points g0 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
+        Collections.sort(points, new Comparator<Points>(){
+            public int compare(Points obj1, Points obj2) {
+                return Integer.valueOf(obj2.getPoints()).compareTo(Integer.valueOf(obj1.getPoints()));
+            }
+        });
+
+        Points g0 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxPoints());
+        Points g1 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxPoints());
+        Points g2 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxPoints());
+        Points g3 = new Points(points.get(2).getTitle(), points.get(2).getQuestion(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxPoints());
+        Points g4 = new Points(points.get(1).getTitle(), points.get(1).getQuestion(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxPoints());
+        Points g5 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
 
         Points b1 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
         strengths.add(g5);

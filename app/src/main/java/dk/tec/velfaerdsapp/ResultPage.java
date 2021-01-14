@@ -44,10 +44,10 @@ public class ResultPage extends TouchActivityHandler{
         videobtn = findViewById(R.id.btnYoutube);
         playerView = findViewById(R.id.player_view);
         skipVideo = findViewById(R.id.SkipVideo);
-        characterPlaceholder = findViewById(R.id.characterPlaceholder);
-        characterPlaceholder.setBackgroundResource(R.drawable.animation);
+        //characterPlaceholder = findViewById(R.id.characterPlaceholder);
+        //characterPlaceholder.setBackgroundResource(R.drawable.animation);
         VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
-        animation = (AnimationDrawable) characterPlaceholder.getBackground();
+        //animation = (AnimationDrawable) characterPlaceholder.getBackground();
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
         questionTxt = findViewById(R.id.select_txtQuestion);
@@ -102,12 +102,6 @@ public class ResultPage extends TouchActivityHandler{
         System.out.println(goodSelected);
 //        System.out.println(badSelected.size());
 //        System.out.println(badSelected);
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        animation.start();
     }
 
     private void initRecyclerView() {
