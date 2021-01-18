@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ public class ModPage extends TouchActivityHandler {
 
     private static final String TAG = "questionsPage";
 
+    private boolean videoWatched2 = false;
     public static ProgressBar questionsProgressBar;
     public static ImageView imgNextPage;
     public static int count;
@@ -31,6 +33,7 @@ public class ModPage extends TouchActivityHandler {
     ImageView videobtn;
     PlayerView playerView;
     ListView listOfQuestions;
+    ImageView skipVideo;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -41,28 +44,47 @@ public class ModPage extends TouchActivityHandler {
         listOfQuestions = findViewById(R.id.listOfQuestions);
         imgNextPage = findViewById(R.id.imgNextPage);
         videobtn = findViewById(R.id.btnYoutube);
+        skipVideo = findViewById(R.id.SkipVideo);
         playerView = findViewById(R.id.player_view);
         ModAdapter questionsAdapter = new ModAdapter(ModPage.this, Strengths.getModList());
+        VideoAdapter video = new VideoAdapter(ModPage.this, R.raw.modvid, playerView);
         listOfQuestions.setAdapter(questionsAdapter);
-
+        playerView.setVisibility(playerView.GONE);
+        skipVideo.setVisibility(skipVideo.GONE);
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
         checkPoints();
-
-        playerView.setVisibility(View.GONE);
         TextView txtDinAvatar = findViewById(R.id.txtModDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
 
 
 
+        SharedPreferences sharedPreferences = getSharedPreferences("videoWatched3", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        videoWatched2 = sharedPreferences.getBoolean("videoWatched3", false);
+        if (!videoWatched2){
+            playerView.setVisibility(View.VISIBLE);
+            video.play();
+            video.playVideo();
+            editor.putBoolean("videoWatched3", videoWatched2 = true);
+            editor.apply();
+        }
 
+        skipVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.GONE);
+                skipVideo.setVisibility(skipVideo.GONE);
+                video.pauseVideo();
+            }
+        });
 
         videobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
-                VideoAdapter video = new VideoAdapter(ModPage.this, R.raw.modvid, playerView);
+                skipVideo.setVisibility(skipVideo.VISIBLE);
                 video.play();
 
             }

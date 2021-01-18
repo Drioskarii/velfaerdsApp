@@ -46,7 +46,7 @@ public class SelectPage extends TouchActivityHandler {
     int samPoints;
     int socPoints;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,29 +112,49 @@ public class SelectPage extends TouchActivityHandler {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private void addAndSort(){
-        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod);
-        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig);
-        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed);
-        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed);
-        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde);
-        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens);
+        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod, 20);
+        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig, 20);
+        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed, 15);
+        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed, 25);
+        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde, 15);
+        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens,15);
         points.add(p1);
         points.add(p2);
         points.add(p3);
         points.add(p4);
         points.add(p5);
         points.add(p6);
-        Collections.sort(points, Comparator.comparing(Points::getPoints));
 
-        Points g1 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon());
-        Points g2 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon());
-        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon());
-        Points b1 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon());
-        strengths.add(g1);
-        strengths.add(g2);
+        Collections.sort(points, new Comparator<Points>(){
+            public int compare(Points obj1, Points obj2) {
+                return Integer.valueOf(obj2.getPoints()).compareTo(Integer.valueOf(obj1.getPoints()));
+            }
+        });
+
+        Points g0 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxPoints());
+        Points g1 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxPoints());
+        Points g2 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxPoints());
+        Points g3 = new Points(points.get(2).getTitle(), points.get(2).getQuestion(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxPoints());
+        Points g4 = new Points(points.get(1).getTitle(), points.get(1).getQuestion(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxPoints());
+        Points g5 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
+
+        Points b1 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
+        strengths.add(g5);
+        strengths.add(g4);
         strengths.add(g3);
+        if (points.get(2).getPoints() == points.get(2).getMaxPoints()){
+            strengths.add(g2);
+            Log.d(TAG, "ADDED:2");
+        }
+        if (points.get(1).getPoints() == points.get(1).getMaxPoints()){
+            strengths.add(g1);
+            Log.d(TAG, "ADDED:1");
+        }
+        if (points.get(0).getPoints() == points.get(0).getMaxPoints()) {
+            Log.d(TAG, "ADDED:0");
+            strengths.add(g0);
+        }
         //weaknesses.add(b1);
     }
 

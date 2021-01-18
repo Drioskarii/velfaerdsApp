@@ -10,7 +10,7 @@ public class Strengths implements Parcelable{
     private final String question;
     private final String identity;
     private int answer;
-    static int progress = 3;
+    static int progress = 2;
 
     public Strengths(String Identity, String Title, String Question, int Answer) {
         title = Title;  

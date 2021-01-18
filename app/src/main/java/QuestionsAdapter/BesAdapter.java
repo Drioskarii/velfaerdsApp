@@ -57,7 +57,7 @@ public class BesAdapter extends BaseAdapter {
         SeekBar mSeekBar = itemView.findViewById(R.id.seekBar);
         questionsConfirm.setImageResource(R.drawable.ic_baseline_remove_circle_20);
         mSeekBar.setProgress(tempStrengths.getAnswer());
-        mSeekBar.setMax(5);
+        mSeekBar.setMax(4);
 
         mTxtTitle.setText(tempStrengths.getTitle());
         mTxtQuestion.setText(tempStrengths.getQuestion());
@@ -83,7 +83,7 @@ public class BesAdapter extends BaseAdapter {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                int progress = seekBar.getProgress();
+                int progress = seekBar.getProgress() + 1;
                 tempStrengths.setAnswer(progress);
                 //Insert data into the SharedPreferences
                 if (strengths.contains(tempStrengths)) {

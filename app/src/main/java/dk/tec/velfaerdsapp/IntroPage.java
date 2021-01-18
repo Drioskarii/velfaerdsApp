@@ -71,9 +71,9 @@ public class IntroPage extends TouchActivityHandler {
                         R.layout.contact_spinner_row_nothing_selected,
                         this));
 
-        characterPlaceholder = findViewById(R.id.characterPlaceholder);
-        characterPlaceholder.setBackgroundResource(R.drawable.animation);
-        animation = (AnimationDrawable) characterPlaceholder.getBackground();
+        //characterPlaceholder = findViewById(R.id.characterPlaceholder);
+        //characterPlaceholder.setBackgroundResource(R.drawable.animation);
+        //animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
         getImages();
         spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -194,12 +194,6 @@ public class IntroPage extends TouchActivityHandler {
             textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
         } else{ }
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        animation.start();
     }
 }
 
