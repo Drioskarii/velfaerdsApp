@@ -71,7 +71,6 @@ public class TakAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            TakPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -96,14 +95,12 @@ public class TakAdapter extends BaseAdapter {
                     TakPage.answeredCount++;
                     TakPage.questionsProgressBar.setProgress(TakPage.answeredCount);
                 }
-                TakPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        TakPage.checkPoints();
         return itemView;
     }
 }

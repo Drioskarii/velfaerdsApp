@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,8 +23,7 @@ import Adapter.VideoAdapter;
 public class MainActivity extends TouchActivityHandler {
 
     private static final String TAG = "mainActivity";
-    final Handler handler = new Handler();
-    Runnable myRunnable;
+    Button btnBack, btnForward;
     PlayerView playerView;
     public static boolean tutDone;
     @Override
@@ -31,6 +31,8 @@ public class MainActivity extends TouchActivityHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         playerView = findViewById(R.id.player_view);
+        btnBack = findViewById(R.id.btn_main_back);
+        btnForward = findViewById(R.id.btn_main_forward);
         SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
         settings1.edit().clear().apply();
         SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
@@ -40,21 +42,22 @@ public class MainActivity extends TouchActivityHandler {
         SharedPreferences settings4 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
         settings4.edit().clear().apply();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("tutorialState", MODE_PRIVATE);
-        String s1 = sharedPreferences.getString("tutorialState", "");
-        tutDone = s1.contains("true");
-        if (!tutDone) {
-            tutorialFrame();
-            handler.postDelayed(myRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    tutorialText();
-                }
-            }, 4000);
-        }
-
         VideoAdapter video = new VideoAdapter(MainActivity.this, R.raw.intvid, playerView);
         video.play();
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(newPage(MainActivity.this, The24Strengths.class));
+            }
+        });
+
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(newPage(MainActivity.this, IntroPage.class));
+            }
+        });
     }
 
     public void logoClicked(View view) {
@@ -75,51 +78,5 @@ public class MainActivity extends TouchActivityHandler {
         intent.setData(Uri.parse(url));
         startActivity(intent);
         }
-    }
-
-    public void tutorialFrame(){
-        RelativeLayout relativeLayout = findViewById(R.id.layoutTutorial);
-        if (tutDone){
-            relativeLayout.animate().alpha(0.0f).setDuration(1000);
-        }
-        else {
-            relativeLayout.setAlpha(0.0f);
-            relativeLayout.animate().alpha(1.0f).setDuration(1000);
-            relativeLayout.setVisibility(View.VISIBLE);
-
-            RelativeLayout relLeft = findViewById(R.id.swipeLeftView);
-            RelativeLayout relRight = findViewById(R.id.swipeRightView);
-
-            ObjectAnimator scaleLeft = ObjectAnimator.ofPropertyValuesHolder(
-                    relLeft,
-                    PropertyValuesHolder.ofFloat("scaleX", 0.8f),
-                    PropertyValuesHolder.ofFloat("scaleY", 0.975f));
-            ObjectAnimator scaleRight = ObjectAnimator.ofPropertyValuesHolder(
-                    relRight,
-                    PropertyValuesHolder.ofFloat("scaleX", 0.8f),
-                    PropertyValuesHolder.ofFloat("scaleY", 0.975f));
-            scaleLeft.setDuration(1000);
-            scaleRight.setDuration(1000);
-
-            scaleLeft.setRepeatCount(ValueAnimator.INFINITE);
-            scaleLeft.setRepeatMode(ObjectAnimator.REVERSE);
-            scaleRight.setRepeatCount(ValueAnimator.INFINITE);
-            scaleRight.setRepeatMode(ObjectAnimator.REVERSE);
-
-            scaleLeft.start();
-            scaleRight.start();
-
-            TextView txtTutorial = findViewById(R.id.txtTutorial);
-            txtTutorial.setAlpha(0.0f);
-            txtTutorial.animate().alpha(1.0f).setDuration(1000);
-            txtTutorial.setText("De hvide streger indikere, hvor du kan slide!");
-        }
-    }
-
-    public void tutorialText(){
-        TextView txtTutorial = findViewById(R.id.txtTutorial);
-        txtTutorial.animate().alpha(0.0f).setDuration(1000);
-        txtTutorial.setText("Prøv det!");
-        txtTutorial.animate().alpha(1.0f).setDuration(1000);
     }
 }

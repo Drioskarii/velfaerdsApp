@@ -33,7 +33,7 @@ import Strengths.Points;
 public class EmailPage extends TouchActivityHandler {
 
     private static final String TAG = "emailPage";
-
+    Button btnBack;
     List<EditText> editTextList = new ArrayList<>();
     TableLayout tableLayout;
     int maxEmails = 0;
@@ -48,6 +48,8 @@ public class EmailPage extends TouchActivityHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_page);
         tableLayout = findViewById(R.id.tableLayout);
+        btnBack = findViewById(R.id.btn_email_back);
+        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
 
         ImageView btnNewMail = findViewById(R.id.btnNewMail);
         btnNewMail.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +66,13 @@ public class EmailPage extends TouchActivityHandler {
                 addEmail(this.tableLayout, s1);
             }
         }
-        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
     }
 
     public void addEmail(View view, String email) {

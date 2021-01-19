@@ -234,22 +234,6 @@
             </TextView>
 
             <TextView
-                android:layout_row="1"
-                android:layout_column="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:shadowColor="@color/orange"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="@string/_2"
-                android:textAlignment="center"
-                android:textColor="@color/orange"
-                android:textSize="20sp">
-            </TextView>
-
-            <TextView
                 android:layout_row="2"
                 android:layout_column="0"
                 android:layout_width="wrap_content"
@@ -275,22 +259,6 @@
             </TextView>
 
             <TextView
-                android:layout_row="3"
-                android:layout_column="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:shadowColor="@color/lightgreen"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="@string/_4"
-                android:textAlignment="center"
-                android:textColor="@color/lightgreen"
-                android:textSize="20sp">
-            </TextView>
-
-            <TextView
                 android:layout_row="4"
                 android:layout_column="0"
                 android:layout_width="wrap_content"
@@ -312,9 +280,41 @@
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="God">
+                android:text="Meget god">
             </TextView>
         </GridLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_questionstut_back"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Tilbage"
+                android:textColor="@color/designBlue"
+                android:background="@color/designWhite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_questionstut_forward"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/designWhite"
+                android:text="Videre"
+                android:textColor="@color/designBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

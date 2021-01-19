@@ -7,10 +7,13 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.exoplayer2.ui.PlayerView;
 import Adapter.VideoAdapter;
 import Strengths.Strengths;
@@ -25,9 +28,9 @@ public class SamPage extends TouchActivityHandler {
 
     private boolean videoWatched3 = false;
     public static ProgressBar questionsProgressBar;
-    public static ImageView imgNextPage;
     public static int count;
     public static int answeredCount;
+    Button btnBack, btnForward;
     ImageView videobtn;
     PlayerView playerView;
     ListView listOfQuestions;
@@ -40,7 +43,8 @@ public class SamPage extends TouchActivityHandler {
         setContentView(R.layout.activity_sam_page);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
-        imgNextPage = findViewById(R.id.imgNextPage);
+        btnBack = findViewById(R.id.btn_sam_back);
+        btnForward = findViewById(R.id.btn_sam_forward);
         videobtn = findViewById(R.id.btnYoutube);
         skipVideo = findViewById(R.id.SkipVideo);
         playerView = findViewById(R.id.player_view);
@@ -52,7 +56,6 @@ public class SamPage extends TouchActivityHandler {
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
-        checkPoints();
         TextView txtDinAvatar = findViewById(R.id.txtSamDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
 
@@ -90,32 +93,22 @@ public class SamPage extends TouchActivityHandler {
             }
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
 
-    }
-
-    public static void checkPoints(){
-        imgNextPage.setAlpha(0.0f);
-
-        if (answeredCount == count){
-            imgNextPage.setVisibility(View.VISIBLE);
-            imgNextPage.animate().alpha(1.0f).setDuration(1000);
-            imageBounce();
-        }
-        else {
-            imgNextPage.setVisibility(View.GONE);
-        }
-    }
-
-    public static void imageBounce(){
-        ObjectAnimator pulse = ObjectAnimator.ofPropertyValuesHolder(
-                imgNextPage,
-                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
-                PropertyValuesHolder.ofFloat("scaleY", 1.2f));
-        pulse.setDuration(1500);
-
-        pulse.setRepeatCount(ValueAnimator.INFINITE);
-        pulse.setRepeatMode(ObjectAnimator.REVERSE);
-
-        pulse.start();
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answeredCount == count) {
+                    startActivity(newPage(SamPage.this, SocPage.class));
+                } else {
+                    Toast.makeText(SamPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

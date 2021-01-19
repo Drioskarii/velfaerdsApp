@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 public class IntroPage extends TouchActivityHandler {
 
     private static final String TAG = "IntroPage";
+    Button btnBack, btnForward;
     //Initialising
     private EditText enterName;
     private EditText enterJob;
@@ -55,6 +57,8 @@ public class IntroPage extends TouchActivityHandler {
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
         spinnerGender = findViewById(R.id.spinnerGender);
+        btnBack = findViewById(R.id.btn_intro_back);
+        btnForward = findViewById(R.id.btn_intro_forward);
 
         //Insert specific data stored in sharedPrefs
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
@@ -85,6 +89,20 @@ public class IntroPage extends TouchActivityHandler {
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
                 // your code here
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
+
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(newPage(IntroPage.this, QuestionTutorial.class));
             }
         });
     }

@@ -2,6 +2,7 @@ package dk.tec.velfaerdsapp;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -17,19 +18,26 @@ public class The24Strengths extends TouchActivityHandler {
 
     ListView listView;
     ImageView imageView;
-
+    Button btnBack;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(activity_the24_strength);
-
-       imageView = findViewById(R.id.selectedListImage);
+        setContentView(activity_the24_strength);
+        btnBack = findViewById(R.id.btn_the24strengths_back);
+        imageView = findViewById(R.id.selectedListImage);
         listView = findViewById(R.id.listView);
         The24StrengthsAdapter modAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getModList());
         listView.setAdapter(modAdapter);
         imageView.setImageResource(R.drawable.iconmod);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
     }
 
 

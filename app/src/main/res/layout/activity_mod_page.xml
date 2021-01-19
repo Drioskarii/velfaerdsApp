@@ -101,13 +101,37 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right">
-        <ImageView
-            android:id="@+id/imgNextPage"
-            android:src="@mipmap/ic_baseline_arrow_right"
-            android:layout_width="70dp"
-            android:layout_height="50dp">
-        </ImageView>
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_mod_back"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Tilbage"
+                android:textColor="@color/designBlue"
+                android:background="@color/designWhite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_mod_forward"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/designWhite"
+                android:text="Videre"
+                android:textColor="@color/designBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </LinearLayout>

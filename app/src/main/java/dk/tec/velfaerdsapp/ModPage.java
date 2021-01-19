@@ -7,10 +7,12 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.exoplayer2.ui.PlayerView;
 
@@ -27,9 +29,9 @@ public class ModPage extends TouchActivityHandler {
 
     private boolean videoWatched2 = false;
     public static ProgressBar questionsProgressBar;
-    public static ImageView imgNextPage;
     public static int count;
     public static int answeredCount;
+    Button btnBack, btnForward;
     ImageView videobtn;
     PlayerView playerView;
     ListView listOfQuestions;
@@ -40,9 +42,10 @@ public class ModPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mod_page);
+        btnBack = findViewById(R.id.btn_mod_back);
+        btnForward = findViewById(R.id.btn_mod_forward);
         questionsProgressBar = findViewById(R.id.questionsProgressBar);
         listOfQuestions = findViewById(R.id.listOfQuestions);
-        imgNextPage = findViewById(R.id.imgNextPage);
         videobtn = findViewById(R.id.btnYoutube);
         skipVideo = findViewById(R.id.SkipVideo);
         playerView = findViewById(R.id.player_view);
@@ -54,7 +57,6 @@ public class ModPage extends TouchActivityHandler {
         count = questionsAdapter.getCount();
         questionsProgressBar.setMax(questionsAdapter.getCount());
         questionsProgressBar.setProgress(answeredCount);
-        checkPoints();
         TextView txtDinAvatar = findViewById(R.id.txtModDinAvatar);
         txtDinAvatar.setText(gJob + " " + gName);
 
@@ -90,33 +92,22 @@ public class ModPage extends TouchActivityHandler {
             }
         });
 
-    }
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
 
-
-
-    public static void checkPoints(){
-        imgNextPage.setAlpha(0.0f);
-
-        if (answeredCount == count){
-            imgNextPage.setVisibility(View.VISIBLE);
-            imgNextPage.animate().alpha(1.0f).setDuration(1000);
-            imageBounce();
-        }
-        else {
-            imgNextPage.setVisibility(View.GONE);
-        }
-    }
-
-    public static void imageBounce(){
-        ObjectAnimator pulse = ObjectAnimator.ofPropertyValuesHolder(
-                imgNextPage,
-                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
-                PropertyValuesHolder.ofFloat("scaleY", 1.2f));
-        pulse.setDuration(1500);
-
-        pulse.setRepeatCount(ValueAnimator.INFINITE);
-        pulse.setRepeatMode(ObjectAnimator.REVERSE);
-
-        pulse.start();
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (answeredCount == count) {
+                    startActivity(newPage(ModPage.this, NysPage.class));
+                } else {
+                    Toast.makeText(ModPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

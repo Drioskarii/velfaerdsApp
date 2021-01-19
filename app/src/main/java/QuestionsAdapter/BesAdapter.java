@@ -71,7 +71,6 @@ public class BesAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            BesPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -96,14 +95,12 @@ public class BesAdapter extends BaseAdapter {
                     BesPage.answeredCount++;
                     BesPage.questionsProgressBar.setProgress(BesPage.answeredCount);
                 }
-                BesPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        BesPage.checkPoints();
         return itemView;
     }
 }

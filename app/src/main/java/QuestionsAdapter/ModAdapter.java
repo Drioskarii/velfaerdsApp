@@ -77,7 +77,6 @@ public class ModAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            ModPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -102,14 +101,12 @@ public class ModAdapter extends BaseAdapter {
                     ModPage.answeredCount++;
                     ModPage.questionsProgressBar.setProgress(ModPage.answeredCount);
                 }
-                ModPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        ModPage.checkPoints();
         return itemView;
     }
 

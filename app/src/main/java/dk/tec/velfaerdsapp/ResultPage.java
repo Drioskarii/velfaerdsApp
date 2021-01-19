@@ -1,10 +1,12 @@
 package dk.tec.velfaerdsapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import javax.xml.transform.Result;
 
 import Adapter.ResultAdapter;
+import Adapter.SelectAdapter;
 import Adapter.VideoAdapter;
 import Strengths.Points;
 
@@ -28,6 +31,7 @@ public class ResultPage extends TouchActivityHandler{
     private boolean videoWatched3 = false;
     AnimationDrawable animation;
     ImageView characterPlaceholder;
+    Button btnBack, btnForward;
     TextView questionTxt;
     ImageView videobtn;
     PlayerView playerView;
@@ -41,6 +45,8 @@ public class ResultPage extends TouchActivityHandler{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
+        btnBack = findViewById(R.id.btn_result_back);
+        btnForward = findViewById(R.id.btn_result_forward);
         videobtn = findViewById(R.id.btnYoutube);
         playerView = findViewById(R.id.player_view);
         skipVideo = findViewById(R.id.SkipVideo);
@@ -91,6 +97,21 @@ public class ResultPage extends TouchActivityHandler{
             }
         });
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
+
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultPage.this, EmailPage.class);
+                intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getValue() {

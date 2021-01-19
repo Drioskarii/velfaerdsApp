@@ -1,12 +1,16 @@
 package dk.tec.velfaerdsapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -30,6 +34,7 @@ public class SelectPage extends TouchActivityHandler {
 
     private static final String TAG = "selectPage";
     //vars
+    Button btnBack, btnForward;
     List<Points> points = new ArrayList<Points>();
     ArrayList<Points> strengths = new ArrayList<>();
     ArrayList<Points> weaknesses = new ArrayList<>();
@@ -51,9 +56,10 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         strengths.clear();
-//        weaknesses.clear();
-
+        //weaknesses.clear();
         setContentView(R.layout.activity_select_page);
+        btnBack = findViewById(R.id.btn_select_back);
+        btnForward = findViewById(R.id.btn_select_forward);
         getLists();
         getListPoints();
         addAndSort();
@@ -62,6 +68,28 @@ public class SelectPage extends TouchActivityHandler {
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtSelectDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+            }
+        });
+
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SelectAdapter.goodConfirmCounter == 2){
+                    Intent intent = new Intent(SelectPage.this, ResultPage.class);
+                    intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                    //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(SelectPage.this, "vælg 2 styrker for at fortsætte", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void getLists(){
@@ -88,28 +116,28 @@ public class SelectPage extends TouchActivityHandler {
     private void getListPoints(){
         for (int i = 0; i < mod.size(); i++){
             modPoints = modPoints + mod.get(i).getAnswer();
-            Log.d(TAG, "Mod "+modPoints);
         }
         for (int i = 0; i < nys.size(); i++){
             nysPoints = nysPoints + nys.get(i).getAnswer();
-            Log.d(TAG, "Nys "+nysPoints);
         }
         for (int i = 0; i < bes.size(); i++){
             besPoints = besPoints + bes.get(i).getAnswer();
-            Log.d(TAG, "Bes "+besPoints);
         }
         for (int i = 0; i < tak.size(); i++){
             takPoints = takPoints + tak.get(i).getAnswer();
-            Log.d(TAG, "Tak "+takPoints);
         }
         for (int i = 0; i < sam.size(); i++){
             samPoints = samPoints + sam.get(i).getAnswer();
-            Log.d(TAG, "Sam "+samPoints);
         }
         for (int i = 0; i < soc.size(); i++){
             socPoints = socPoints + soc.get(i).getAnswer();
-            Log.d(TAG, "Soc "+socPoints);
         }
+        modPoints = modPoints / mod.size();
+        nysPoints = nysPoints / nys.size();
+        besPoints = besPoints / bes.size();
+        takPoints = takPoints / tak.size();
+        samPoints = samPoints / tak.size();
+        socPoints = socPoints / soc.size();
     }
 
     private void addAndSort(){

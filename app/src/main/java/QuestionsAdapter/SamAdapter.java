@@ -71,7 +71,6 @@ public class SamAdapter extends BaseAdapter {
             //insert data if not empty
             questionsConfirm.setImageResource(R.drawable.ic_baseline_check_circle_20);
             mSeekBar.setProgress(Integer.parseInt(s1));
-            SamPage.checkPoints();
         }
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -96,14 +95,12 @@ public class SamAdapter extends BaseAdapter {
                     SamPage.answeredCount++;
                     SamPage.questionsProgressBar.setProgress(SamPage.answeredCount);
                 }
-                SamPage.checkPoints();
 
 
                 editor.putString(tempStrengths.getIdentity(), String.valueOf  (progress));
                 editor.apply();
             }
         });
-        SamPage.checkPoints();
         return itemView;
     }
 }
