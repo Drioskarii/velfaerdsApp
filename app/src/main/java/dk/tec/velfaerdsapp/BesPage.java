@@ -101,6 +101,7 @@ public class BesPage extends TouchActivityHandler {
             public void onClick(View v) {
                 if (answeredCount == count) {
                     startActivity(newPage(BesPage.this, TakPage.class));
+                    video.pauseVideo();
                 } else {
                     Toast.makeText(BesPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
                 }

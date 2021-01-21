@@ -107,6 +107,7 @@ public class TakPage extends TouchActivityHandler {
             public void onClick(View v) {
                 if (answeredCount == count) {
                     startActivity(newPage(TakPage.this, SamPage.class));
+                    video.pauseVideo();
                 } else {
                     Toast.makeText(TakPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
                 }

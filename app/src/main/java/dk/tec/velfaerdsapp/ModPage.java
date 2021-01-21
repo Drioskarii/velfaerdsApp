@@ -104,6 +104,7 @@ public class ModPage extends TouchActivityHandler {
             public void onClick(View v) {
                 if (answeredCount == count) {
                     startActivity(newPage(ModPage.this, NysPage.class));
+                    video.pauseVideo();
                 } else {
                     Toast.makeText(ModPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
                 }

@@ -44,6 +44,7 @@ public class MainActivity extends TouchActivityHandler {
 
         VideoAdapter video = new VideoAdapter(MainActivity.this, R.raw.intvid, playerView);
         video.play();
+        video.playVideo();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

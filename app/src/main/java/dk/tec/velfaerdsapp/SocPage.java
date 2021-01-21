@@ -118,6 +118,7 @@ public class SocPage extends TouchActivityHandler {
                     intent.putParcelableArrayListExtra("TakList", TakAdapter.strengths);
                     intent.putParcelableArrayListExtra("SamList", SamAdapter.strengths);
                     intent.putParcelableArrayListExtra("SocList", SocAdapter.strengths);
+                    video.pauseVideo();
                     startActivity(intent);
                 } else {
                     Toast.makeText(SocPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();

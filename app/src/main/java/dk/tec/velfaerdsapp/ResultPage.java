@@ -108,6 +108,7 @@ public class ResultPage extends TouchActivityHandler{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ResultPage.this, EmailPage.class);
+                video.pauseVideo();
                 intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
                 startActivity(intent);
             }
