@@ -51,6 +51,7 @@ public class EmailPage extends TouchActivityHandler {
         btnBack = findViewById(R.id.btn_email_back);
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
 
+
         ImageView btnNewMail = findViewById(R.id.btnNewMail);
         btnNewMail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +60,7 @@ public class EmailPage extends TouchActivityHandler {
             }
         });
 
+        addEmail(findViewById(R.id.btnNewMail), null);
         SharedPreferences sharedPreferences = getSharedPreferences("emailArray", MODE_PRIVATE);
         for (int i = 0; i < sharedPreferences.getAll().size(); i++){
             String s1 = sharedPreferences.getString("email_"+i, "");
