@@ -78,7 +78,8 @@ public class Strengths implements Parcelable{
         //Beskedenhed
         /*questionList.add(new Strengths("q_bes1", "BESKEDENHED","Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", progress));
         questionList.add(new Strengths("q_bes2", "OMTANKE","Du tænker dig altid om, inden du gør eller siger noget. Du er meget grundig og træffer altid fornuftige valg.", progress));
-        */questionList.add(new Strengths("q_bes3", "SELVKONTROL","Du har stor selvdisciplin. Du tager ikke beslutninger med dine følelser og impulser.", progress));
+        questionList.add(new Strengths("q_bes3", "DØMMEKRAFT", "Du er god til at se ting fra flere vinkler. Du er grundig og drager sjældent forhastede konklusioner.", progress));
+        */questionList.add(new Strengths("q_bes4", "SELVKONTROL","Du har stor selvdisciplin. Du tager ikke beslutninger med dine følelser og impulser.", progress));
 
         return questionList;
     }
@@ -100,7 +101,8 @@ public class Strengths implements Parcelable{
         //Samarbejde
         /*questionList.add(new Strengths("q_sam1", "SAMARBEJDE","Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", progress));
         questionList.add(new Strengths("q_sam2", "RETFÆRDIGHED","Det er vigtigt for dig, at alle bliver behandlet ordentligt - også selvom du ikke er enig med dem.", progress));
-        */questionList.add(new Strengths("q_sam3", "LEDERSKAB","Du kan godt lide at gå forrest og tager gerne styringen i en gruppe. Andre lytter til dig og kan godt lide dine idéer.", progress));
+        questionList.add(new Strengths("q_sam3", "TILGIVELSE","Du værer ikke nag, når andre sårer dig. Du ved, at alle begår fejl. Hos dig får folk en ny chance", progress));
+        */questionList.add(new Strengths("q_sam4", "LEDERSKAB","Du kan godt lide at gå forrest og tager gerne styringen i en gruppe. Andre lytter til dig og kan godt lide dine idéer.", progress));
 
         return questionList;
     }
