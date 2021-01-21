@@ -51,6 +51,7 @@ public class BesPage extends TouchActivityHandler {
         playerView = findViewById(R.id.player_view);
         BesAdapter questionsAdapter = new BesAdapter(BesPage.this, Strengths.getBesList());
         VideoAdapter video = new VideoAdapter(BesPage.this, R.raw.besvid, playerView);
+        video.play();
         listOfQuestions.setAdapter(questionsAdapter);
         count = questionsAdapter.getCount();
         playerView.setVisibility(playerView.GONE);
@@ -62,7 +63,6 @@ public class BesPage extends TouchActivityHandler {
         videoWatched1 = sharedPreferences.getBoolean("videoWatched", false);
         if (!videoWatched1){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched", videoWatched1 = true);
             editor.apply();
@@ -84,7 +84,6 @@ public class BesPage extends TouchActivityHandler {
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
 
             }
         });

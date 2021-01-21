@@ -50,6 +50,7 @@ public class SamPage extends TouchActivityHandler {
         playerView = findViewById(R.id.player_view);
         SamAdapter questionsAdapter = new SamAdapter(SamPage.this, Strengths.getSamList());
         VideoAdapter video = new VideoAdapter(SamPage.this, R.raw.samvid, playerView);
+        video.play();
         listOfQuestions.setAdapter(questionsAdapter);
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
@@ -65,7 +66,6 @@ public class SamPage extends TouchActivityHandler {
         videoWatched3 = sharedPreferences.getBoolean("videoWatched4", false);
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched4", videoWatched3 = true);
             editor.apply();
@@ -88,7 +88,6 @@ public class SamPage extends TouchActivityHandler {
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
 
             }
         });

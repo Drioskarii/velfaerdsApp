@@ -51,6 +51,7 @@ public class ModPage extends TouchActivityHandler {
         playerView = findViewById(R.id.player_view);
         ModAdapter questionsAdapter = new ModAdapter(ModPage.this, Strengths.getModList());
         VideoAdapter video = new VideoAdapter(ModPage.this, R.raw.modvid, playerView);
+        video.play();
         listOfQuestions.setAdapter(questionsAdapter);
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
@@ -67,7 +68,6 @@ public class ModPage extends TouchActivityHandler {
         videoWatched2 = sharedPreferences.getBoolean("videoWatched3", false);
         if (!videoWatched2){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched3", videoWatched2 = true);
             editor.apply();
@@ -87,7 +87,7 @@ public class ModPage extends TouchActivityHandler {
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
+
 
             }
         });
@@ -102,6 +102,8 @@ public class ModPage extends TouchActivityHandler {
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 if (answeredCount == count) {
                     startActivity(newPage(ModPage.this, NysPage.class));
                     video.pauseVideo();
