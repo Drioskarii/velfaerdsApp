@@ -53,6 +53,7 @@ public class ResultPage extends TouchActivityHandler{
         //characterPlaceholder = findViewById(R.id.characterPlaceholder);
         //characterPlaceholder.setBackgroundResource(R.drawable.animation);
         VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
+        video.play();
         //animation = (AnimationDrawable) characterPlaceholder.getBackground();
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
@@ -72,7 +73,6 @@ public class ResultPage extends TouchActivityHandler{
         videoWatched3 = sharedPreferences.getBoolean("videoWatched7", false);
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched7", videoWatched3 = true);
             editor.apply();
@@ -92,7 +92,6 @@ public class ResultPage extends TouchActivityHandler{
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
 
             }
         });
@@ -108,9 +107,9 @@ public class ResultPage extends TouchActivityHandler{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ResultPage.this, EmailPage.class);
-                video.pauseVideo();
                 intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
                 startActivity(intent);
+                video.pauseVideo();
             }
         });
     }

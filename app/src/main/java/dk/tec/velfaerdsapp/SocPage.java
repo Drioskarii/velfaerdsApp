@@ -57,6 +57,7 @@ public class SocPage extends TouchActivityHandler {
         playerView = findViewById(R.id.player_view);
         SocAdapter questionsAdapter = new SocAdapter(SocPage.this, Strengths.getSocList());
         VideoAdapter video = new VideoAdapter(SocPage.this, R.raw.socvid, playerView);
+        video.play();
         listOfQuestions.setAdapter(questionsAdapter);
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
@@ -72,7 +73,6 @@ public class SocPage extends TouchActivityHandler {
         videoWatched3 = sharedPreferences.getBoolean("videoWatched5", false);
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched5", videoWatched3 = true);
             editor.apply();
@@ -95,7 +95,6 @@ public class SocPage extends TouchActivityHandler {
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
 
             }
         });
@@ -118,8 +117,8 @@ public class SocPage extends TouchActivityHandler {
                     intent.putParcelableArrayListExtra("TakList", TakAdapter.strengths);
                     intent.putParcelableArrayListExtra("SamList", SamAdapter.strengths);
                     intent.putParcelableArrayListExtra("SocList", SocAdapter.strengths);
-                    video.pauseVideo();
                     startActivity(intent);
+                    video.pauseVideo();
                 } else {
                     Toast.makeText(SocPage.this, "Besvar alle spørgsmål for at fortsætte", Toast.LENGTH_SHORT).show();
                 }

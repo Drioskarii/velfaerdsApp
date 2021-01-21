@@ -51,6 +51,7 @@ public class NysPage extends TouchActivityHandler {
         playerView = findViewById(R.id.player_view);
         NysAdapter questionsAdapter = new NysAdapter(NysPage.this, Strengths.getNysList());
         VideoAdapter video = new VideoAdapter(NysPage.this, R.raw.nysvid, playerView);
+        video.play();
         listOfQuestions.setAdapter(questionsAdapter);
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
@@ -66,7 +67,6 @@ public class NysPage extends TouchActivityHandler {
         videoWatched3 = sharedPreferences.getBoolean("videoWatched2", false);
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched2", videoWatched3 = true);
             editor.apply();
@@ -89,7 +89,6 @@ public class NysPage extends TouchActivityHandler {
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
 
             }
         });

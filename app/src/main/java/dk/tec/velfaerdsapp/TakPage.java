@@ -52,6 +52,7 @@ public class TakPage extends TouchActivityHandler {
         playerView = findViewById(R.id.player_view);
         TakAdapter questionsAdapter = new TakAdapter(TakPage.this, Strengths.getTakList());
         VideoAdapter video = new VideoAdapter(TakPage.this, R.raw.takvid, playerView);
+        video.play();
         listOfQuestions.setAdapter(questionsAdapter);
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
@@ -67,7 +68,6 @@ public class TakPage extends TouchActivityHandler {
         videoWatched3 = sharedPreferences.getBoolean("videoWatched6", false);
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
-            video.play();
             video.playVideo();
             editor.putBoolean("videoWatched6", videoWatched3 = true);
             editor.apply();
@@ -90,7 +90,6 @@ public class TakPage extends TouchActivityHandler {
             public void onClick(View v) {
                 playerView.setVisibility(View.VISIBLE);
                 skipVideo.setVisibility(skipVideo.VISIBLE);
-                video.play();
 
             }
         });

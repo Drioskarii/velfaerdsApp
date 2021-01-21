@@ -57,6 +57,7 @@ public class MainActivity extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 startActivity(newPage(MainActivity.this, IntroPage.class));
+                video.pauseVideo();
             }
         });
     }
