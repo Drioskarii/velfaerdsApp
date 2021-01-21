@@ -24,10 +24,10 @@ public class AvatarAdapter extends RecyclerView.Adapter<AvatarAdapter.ViewHolder
 
     //vars
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mImageUrls = new ArrayList<>();
     private Context mContext;
 
-    public AvatarAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
+    public AvatarAdapter(Context context, ArrayList<String> names, ArrayList<Integer> imageUrls) {
         mNames = names;
         mImageUrls = imageUrls;
         mContext = context;

@@ -11,7 +11,6 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,10 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class IntroPage extends TouchActivityHandler {
@@ -35,9 +33,9 @@ public class IntroPage extends TouchActivityHandler {
     private ArrayList<String> mNames1 = new ArrayList<>();
     private ArrayList<String> mNames2 = new ArrayList<>();
     private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls1 = new ArrayList<>();
-    private ArrayList<String> mImageUrls2 = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Integer> mImageUrls1 = new ArrayList<Integer>();
+    private ArrayList<Integer> mImageUrls2 = new ArrayList<Integer>();
+    private ArrayList<Integer> mImageUrls = new ArrayList<Integer>();
 
     AnimationDrawable animation;
     ImageView characterPlaceholder;
@@ -153,37 +151,19 @@ public class IntroPage extends TouchActivityHandler {
     private void getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        mImageUrls.add("https://sigurdbarrett.dk/wp-content/uploads/2020/09/Syng-julen-ind-med-Sigurd-og-Bjornen-Bjorn-FORSIDE.jpg");
-        mImageUrls1.add("https://sigurdbarrett.dk/wp-content/uploads/2020/09/Syng-julen-ind-med-Sigurd-og-Bjornen-Bjorn-FORSIDE.jpg");
-        mNames.add("Sigurd");
-        mNames1.add("Sigurd");
+        mImageUrls.add(R.drawable.tndmand_mod);
+        mImageUrls1.add(R.drawable.tndmand_mod);
+        mNames.add("");
+        mNames1.add("Mand");
 
-        mImageUrls.add("https://spejder.dk/sites/default/files/styles/page_width_16_9/public/laks_track.jpg?itok=VN5da_ab");
-        mImageUrls1.add("https://spejder.dk/sites/default/files/styles/page_width_16_9/public/laks_track.jpg?itok=VN5da_ab");
-        mNames.add("Lakserytteren");
-        mNames1.add("Lakserytteren");
-
-        mImageUrls.add("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg/1920px-Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg");
-        mImageUrls1.add("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg/1920px-Hr._Sk%C3%A6g_som_%C3%A5rets_%C3%A6resjulemand_2015.jpg");
-        mNames.add("Hr. Skæg");
-        mNames1.add("Hr. Skæg");
+        mImageUrls.add(R.drawable.tndkvinde_mod);
+        mImageUrls2.add(R.drawable.tndkvinde_mod);
+        mNames.add("");
+        mNames2.add("Kvinde");
 
 
-        mImageUrls.add("https://musikhuzet.dk/nonsec/Pix05/20121212114418.jpg.ashx?Width=760");
-        mImageUrls2.add("https://musikhuzet.dk/nonsec/Pix05/20121212114418.jpg.ashx?Width=760");
-        mNames.add("Katrine");
-        mNames2.add("Katrine");
-
-        mImageUrls.add("https://images.sn.dk/37/1327237_0_398_0_0_0_0_4.jpg");
-        mImageUrls2.add("https://images.sn.dk/37/1327237_0_398_0_0_0_0_4.jpg");
-        mNames.add("Mille");
-        mNames2.add("Mille");
 
 
-        mImageUrls.add("https://asset.dr.dk/imagescaler/?protocol=http&server=dr-billeder-s3-cdn.dr.dk&file=%2FDR%2FPublic%2F97110746b7a5da1930088ab986ba0bd4dab7af63.jpg&scaleAfter=crop&quality=70&w=720&h=480");
-        mImageUrls2.add("https://asset.dr.dk/imagescaler/?protocol=http&server=dr-billeder-s3-cdn.dr.dk&file=%2FDR%2FPublic%2F97110746b7a5da1930088ab986ba0bd4dab7af63.jpg&scaleAfter=crop&quality=70&w=720&h=480");
-        mNames.add("Silja");
-        mNames2.add("Silja");
 
 
     }
@@ -198,19 +178,30 @@ public class IntroPage extends TouchActivityHandler {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
 
+
+
         int selectedID =  spinnerGender.getSelectedItemPosition();
         if(selectedID == 1){
             AvatarAdapter adapter = new AvatarAdapter(this, mNames1, mImageUrls1);
             textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
+
+            gkøn = 1;
+
         } else if(selectedID == 2){
             AvatarAdapter adapter = new AvatarAdapter(this, mNames2, mImageUrls2);
             textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
+
+            gkøn = 2;
+
         }else if(selectedID == 3){
             AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
             textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
+
+            gkøn = 3;
+
         } else{ }
     }
 }
