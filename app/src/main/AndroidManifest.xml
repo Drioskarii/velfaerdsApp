@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VelfaerdsApp">
-        <activity android:name=".QuestionTutorial"></activity>
+        <activity android:name=".SelectAvatar"></activity>
+        <activity android:name=".QuestionTutorial" />
         <activity android:name=".ResultPage" />
         <activity android:name=".TouchActivityHandler" />
         <activity android:name=".The24Strengths" />

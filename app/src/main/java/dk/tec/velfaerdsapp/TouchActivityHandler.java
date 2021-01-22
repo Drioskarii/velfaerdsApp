@@ -25,7 +25,7 @@ public class TouchActivityHandler extends AppCompatActivity {
 
     public static String gName;
     public static String gJob;
-    public static int gkøn;
+    public static int gKøn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

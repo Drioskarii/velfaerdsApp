@@ -64,7 +64,6 @@ public class SelectPage extends TouchActivityHandler {
         getListPoints();
         addAndSort();
         getGoodImages();
-        getBadImages();
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtSelectDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
@@ -80,10 +79,17 @@ public class SelectPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 if (SelectAdapter.goodConfirmCounter == 2){
-                    Intent intent = new Intent(SelectPage.this, ResultPage.class);
-                    intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                    //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
-                    startActivity(intent);
+                    if (SelectAdapter.goodSelected.get(0).getPoints() == 5 && SelectAdapter.goodSelected.get(1).getPoints() == 5) {
+                        Intent intent = new Intent(SelectPage.this, SelectAvatar.class);
+                        intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                        //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(SelectPage.this, ResultPage.class);
+                        intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                        //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
+                        startActivity(intent);
+                    }
                 }
                 else{
                     Toast.makeText(SelectPage.this, "vælg 2 styrker for at fortsætte", Toast.LENGTH_SHORT).show();
@@ -187,10 +193,6 @@ public class SelectPage extends TouchActivityHandler {
     }
 
     private void getGoodImages() {
-        initRecyclerView();
-    }
-
-    private void getBadImages() {
         initRecyclerView();
     }
 

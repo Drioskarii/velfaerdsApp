@@ -186,23 +186,15 @@ public class IntroPage extends TouchActivityHandler {
             textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
 
-            gkøn = 1;
+            gKøn = 1;
 
-        } else if(selectedID == 2){
+        } else if(selectedID == 2) {
             AvatarAdapter adapter = new AvatarAdapter(this, mNames2, mImageUrls2);
             textView.setVisibility(TextView.VISIBLE);
             recyclerView.setAdapter(adapter);
 
-            gkøn = 2;
-
-        }else if(selectedID == 3){
-            AvatarAdapter adapter = new AvatarAdapter(this, mNames, mImageUrls);
-            textView.setVisibility(TextView.VISIBLE);
-            recyclerView.setAdapter(adapter);
-
-            gkøn = 3;
-
-        } else{ }
+            gKøn = 2;
+        }
     }
 }
 
