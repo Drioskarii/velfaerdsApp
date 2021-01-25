@@ -166,28 +166,35 @@ public class SelectPage extends TouchActivityHandler {
             }
         });
 
-        Points g0 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxPoints());
-        Points g1 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxPoints());
-        Points g2 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxPoints());
-        Points g3 = new Points(points.get(2).getTitle(), points.get(2).getQuestion(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxPoints());
-        Points g4 = new Points(points.get(1).getTitle(), points.get(1).getQuestion(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxPoints());
-        Points g5 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
+        Points g5 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxPoints());
+        Points g4 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxPoints());
+        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxPoints());
+        Points g2 = new Points(points.get(2).getTitle(), points.get(2).getQuestion(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxPoints());
+        Points g1 = new Points(points.get(1).getTitle(), points.get(1).getQuestion(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxPoints());
+        Points g0 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
 
         Points b1 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
-        strengths.add(g5);
-        strengths.add(g4);
-        strengths.add(g3);
-        if (points.get(2).getPoints() == points.get(2).getMaxPoints()){
-            strengths.add(g2);
-            Log.d(TAG, "ADDED:2");
+        strengths.add(g0);
+        strengths.add(g1);
+        strengths.add(g2);
+        if (points.get(3).getPoints() == 5){
+            strengths.add(g3);
+            Log.d(TAG, "ADDED:3");
+            Log.d(TAG, "ADDED:1"+points.get(0).getPoints());
+            Log.d(TAG, "ADDED:2"+points.get(1).getPoints());
+            Log.d(TAG, "ADDED:3"+points.get(2).getPoints());
+            Log.d(TAG, "ADDED:4"+points.get(3).getPoints());
+            Log.d(TAG, "ADDED:5"+points.get(4).getPoints());
+            Log.d(TAG, "ADDED:6"+points.get(5).getPoints());
+
         }
-        if (points.get(1).getPoints() == points.get(1).getMaxPoints()){
-            strengths.add(g1);
-            Log.d(TAG, "ADDED:1");
+        if (points.get(4).getPoints() == 5){
+            strengths.add(g4);
+            Log.d(TAG, "ADDED:4");
         }
-        if (points.get(0).getPoints() == points.get(0).getMaxPoints()) {
-            Log.d(TAG, "ADDED:0");
-            strengths.add(g0);
+        if (points.get(5).getPoints() == 5) {
+            Log.d(TAG, "ADDED:5");
+            strengths.add(g5);
         }
         //weaknesses.add(b1);
     }

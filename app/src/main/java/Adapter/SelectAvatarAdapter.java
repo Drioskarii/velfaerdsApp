@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import Strengths.Points;
 import dk.tec.velfaerdsapp.R;
+import dk.tec.velfaerdsapp.TouchActivityHandler;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -60,11 +61,17 @@ import static android.content.Context.MODE_PRIVATE;
             Log.d(TAG, "POSITION: "+position);
             Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
 
+            TouchActivityHandler tah = new TouchActivityHandler();
             holder.selectConfirm.setVisibility(View.GONE);
             holder.title.setText(mStrengths.get(position).getTitle());
-            holder.image.setImageResource(mStrengths.get(position).getIcon());
+            if (mStrengths.get(position).getTitle().contains("Mod")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_mod);} else{holder.image.setImageResource(R.drawable.tndkvinde_mod);}}
+            if (mStrengths.get(position).getTitle().contains("Nys")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_nys);} else{holder.image.setImageResource(R.drawable.tndkvinde_nys);}}
+            if (mStrengths.get(position).getTitle().contains("Bes")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_bes);} else{holder.image.setImageResource(R.drawable.tndkvinde_bes);}}
+            if (mStrengths.get(position).getTitle().contains("Tak")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_tak);} else{holder.image.setImageResource(R.drawable.tndkvinde_tak);}}
+            if (mStrengths.get(position).getTitle().contains("Sam")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_sam);} else{holder.image.setImageResource(R.drawable.tndkvinde_sam);}}
+            if (mStrengths.get(position).getTitle().contains("Soc")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_soc);} else{holder.image.setImageResource(R.drawable.tndkvinde_soc);}}
 
-            SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectAvatarArray", MODE_PRIVATE);
+            SharedPreferences sharedPref = holder.title.getContext().getSharedPreferences("selectAvatarArray", MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
 
             String answerValue = String.valueOf(mStrengths.get(position).getPoints());
@@ -139,7 +146,6 @@ import static android.content.Context.MODE_PRIVATE;
         public static class ViewHolder extends RecyclerView.ViewHolder{
             ImageView image;
             RelativeLayout btn;
-            TextView answer;
             ImageView selectConfirm;
             TextView title;
 
@@ -148,7 +154,7 @@ import static android.content.Context.MODE_PRIVATE;
                 btn = itemView.findViewById(R.id.onClickbtn);
                 image = itemView.findViewById(R.id.imageIcon);
                 selectConfirm = itemView.findViewById(R.id.selectConfirm);
-                title = itemView.findViewById(R.id.select_txtTitle);
+                title = itemView.findViewById(R.id.select_txtAnswer);
             }
         }
     }

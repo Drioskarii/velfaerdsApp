@@ -62,7 +62,7 @@ public class SelectAvatar extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recycleViewSelectAvatar);
         recyclerViewGood.setLayoutManager(gridLayoutManager);
 
-        //SelectAvatarAdapter goodAdapter = new SelectAvatarAdapter(this, goodSelected, true);
-        //recyclerViewGood.setAdapter(goodAdapter);
+        SelectAvatarAdapter goodAdapter = new SelectAvatarAdapter(this, goodSelected, true);
+        recyclerViewGood.setAdapter(goodAdapter);
     }
 }
