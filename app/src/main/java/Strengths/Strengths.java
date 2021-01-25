@@ -55,10 +55,10 @@ public class Strengths implements Parcelable{
     public static ArrayList<Strengths> getModList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //MOD
-        /*questionList.add(new Strengths("q_mod1", "MOD","Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", progress));
+        questionList.add(new Strengths("q_mod1", "MOD","Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", progress));
         questionList.add(new Strengths("q_mod2", "VEDHOLDENHED","Du giver sjældent op. Når du er gået i gang med noget, så gør du det også færdigt. Også selvom det er svært!", progress));
         questionList.add(new Strengths("q_mod3","ENTUSIASME"," Når du bliver optaget af noget, går du 100 % ind i det. Du er begejstret og engageret – du har drive!.", progress));
-        */questionList.add(new Strengths("q_mod4","ÆRLIGHED","Du taler altid sandt og du gør sjældent ting, der går imod dine værdier og principper.", progress));
+        questionList.add(new Strengths("q_mod4","ÆRLIGHED","Du taler altid sandt og du gør sjældent ting, der går imod dine værdier og principper.", progress));
         return questionList;
     }
 
