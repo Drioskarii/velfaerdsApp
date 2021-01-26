@@ -68,7 +68,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         Log.d(TAG, "onBindViewHolder: called.");
 
         holder.answer.setText(Integer.toString(mPoints.get(position).getPoints()));
-        holder.question.setText(mPoints.get(position).getQuestion());
+        holder.description.setText(mPoints.get(position).getDescription());
         holder.image.setImageResource(mPoints.get(position).getIcon());
         //holder.title.setText(mPoints.get(position).getTitle());
         holder.selectConfirm.setVisibility(View.GONE);
@@ -95,7 +95,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder{
         CircleImageView image;
         RelativeLayout btn;
-        TextView question;
+        TextView description;
         TextView answer;
         ImageView selectConfirm;
         TextView title;
@@ -104,7 +104,7 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             super(itemView);
             btn = itemView.findViewById(R.id.onClickbtn);
             image = itemView.findViewById(R.id.imageIcon);
-            question = itemView.findViewById(R.id.select_txtQuestion);
+            description = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
             //title = itemView.findViewById(R.id.select_txtTitle);

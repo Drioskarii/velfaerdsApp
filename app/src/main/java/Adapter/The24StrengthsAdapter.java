@@ -53,7 +53,7 @@ public class The24StrengthsAdapter extends BaseAdapter  {
         Strengths tempStrengths = (Strengths) getItem(position);
 
         mTxtTitle.setText(tempStrengths.getTitle());
-        mTxtQuestion.setText(tempStrengths.getQuestion());
+        mTxtQuestion.setText(tempStrengths.getDescription());
 
         return itemView;
     }

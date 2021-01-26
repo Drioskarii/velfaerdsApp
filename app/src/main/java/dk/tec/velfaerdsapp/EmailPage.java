@@ -193,7 +193,7 @@ public class EmailPage extends TouchActivityHandler {
             for(int int1 = 0; int1 < goodSelected.size(); int1++)
             {
                 System.out.println(goodSelected.get(int1).getPoints());
-                System.out.println(goodSelected.get(int1).getQuestion());
+                System.out.println(goodSelected.get(int1).getDescription());
                 System.out.println(goodSelected.get(int1).getIcon());
                 System.out.println(goodSelected.get(int1).getTitle());
             }
@@ -205,7 +205,7 @@ public class EmailPage extends TouchActivityHandler {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "De 24 værdier");
         //Skal laves om til at indeholde svar fra shared preferences ELLER intent, hvad end vi går videre med
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Navn: "+ gName + "\n Job: " + gJob +"\n\n\nFørste Karaktertræk: \n Title: " + goodSelected.get(0).getTitle() + "\n Spørgsmål: " + goodSelected.get(0).getQuestion() + "\n Svar: " + goodSelected.get(0).getPoints() + "\n\n Anden Karaktertræk: \n Title: " + goodSelected.get(1).getTitle() + "\n Spørgsmål: " + goodSelected.get(1).getQuestion() + "\n Svar: " + goodSelected.get(1).getPoints());
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Navn: "+ gName + "\n Job: " + gJob +"\n\n\nFørste Karaktertræk: \n Title: " + goodSelected.get(0).getTitle() + "\n Spørgsmål: " + goodSelected.get(0).getDescription() + "\n Svar: " + goodSelected.get(0).getPoints() + "\n\n Anden Karaktertræk: \n Title: " + goodSelected.get(1).getTitle() + "\n Spørgsmål: " + goodSelected.get(1).getDescription() + "\n Svar: " + goodSelected.get(1).getPoints());
 
         
 

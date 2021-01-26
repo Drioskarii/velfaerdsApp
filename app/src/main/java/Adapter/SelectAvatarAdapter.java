@@ -59,7 +59,7 @@ import static android.content.Context.MODE_PRIVATE;
             Log.d(TAG, "onBindViewHolder: called.");
             //Sorts selectpage arrayList
             Log.d(TAG, "POSITION: "+position);
-            Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
+            Log.d(TAG, "QUESTION: "+mStrengths.get(position).getDescription());
 
             TouchActivityHandler tah = new TouchActivityHandler();
             holder.selectConfirm.setVisibility(View.GONE);
@@ -75,7 +75,7 @@ import static android.content.Context.MODE_PRIVATE;
             SharedPreferences.Editor editor = sharedPref.edit();
 
             String answerValue = String.valueOf(mStrengths.get(position).getPoints());
-            String questionValue = mStrengths.get(position).getQuestion();
+            String questionValue = mStrengths.get(position).getDescription();
 
             //ensures that the ResultPage doesn't store old values
             if (goodConfirmCounter == 1){
@@ -90,7 +90,7 @@ import static android.content.Context.MODE_PRIVATE;
                 goodConfirmCounter = 0;
                 holder.selectConfirm.setVisibility(View.GONE);
                 //  badSelected.add(mStrengths.get(position));
-                editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
+                editor.putString(mStrengths.get(position).getDescription()+"_selected",answerValue+questionValue);
                 editor.apply();
             }
 
@@ -107,7 +107,7 @@ import static android.content.Context.MODE_PRIVATE;
                         } else {
 
                             holder.selectConfirm.setVisibility(View.VISIBLE);
-                            editor.putString(mStrengths.get(position).getQuestion() + "_selected", answerValue + questionValue);
+                            editor.putString(mStrengths.get(position).getDescription() + "_selected", answerValue + questionValue);
                             editor.apply();
 
                             goodConfirmCounter++;

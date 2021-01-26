@@ -5,27 +5,40 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
+//////////////////////////////////////////////////////////
+// Strengths bliver brugt som et interface for
+// QuestionsPage (ModPage/NysPage/BesPage osv.)
+//////////////////////////////////////////////////////////
+
 public class Strengths implements Parcelable{
+    //Title indeholder titlen (Mod, Nysgerrighed, Beskedenhed osv.)
     private final String title;
-    private final String question;
+    //Description indeholder beskrivelsen af en af de 6 kategorierne
+    private final String description;
+    //Identity indeholder en "identity" der bruges til at checke om spørgsmålet er besvaret.
     private final String identity;
+    //Answer indeholder personens svar for hver spørgsmål.
     private int answer;
+    //Progress fungere som en Placeholder for "Answer".
     static int progress = 2;
 
-    public Strengths(String Identity, String Title, String Question, int Answer) {
-        title = Title;  
-        question = Question;
+    //Default Constructor til Strengths
+    public Strengths(String Identity, String Title, String Description, int Answer) {
+        title = Title;
+        description = Description;
         identity = Identity;
         answer = Answer;
     }
 
+    //Parcelable Constructor for Strengths
     protected Strengths(Parcel in) {
         title = in.readString();
-        question = in.readString();
+        description = in.readString();
         identity = in.readString();
         answer = in.readInt();
     }
 
+    //Parcelable Creator for Strengths, denne metode er implementeret som default
     public static final Creator<Strengths> CREATOR = new Creator<Strengths>() {
         @Override
         public Strengths createFromParcel(Parcel in) {
@@ -38,20 +51,26 @@ public class Strengths implements Parcelable{
         }
     };
 
+    //denne metode returner Title
     public String getTitle() {
         return title;
     }
 
-    public String getQuestion(){
-        return question;
+    //denne metode returner Description
+    public String getDescription(){
+        return description;
     }
 
+    //denne metode returner Identity
     public String getIdentity() { return identity; }
 
+    //denne metode returner Answer
     public int getAnswer() { return answer; }
 
+    //denne metode sætter Answer
     public int setAnswer(int Answer) {this.answer = Answer; return Answer;}
 
+    //her bliver mod listen udfyldt.
     public static ArrayList<Strengths> getModList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //MOD
@@ -62,6 +81,7 @@ public class Strengths implements Parcelable{
         return questionList;
     }
 
+    //her bliver nysgerrighedslisten udfyldt.
     public static ArrayList<Strengths> getNysList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //Nysgerrighed
@@ -73,6 +93,7 @@ public class Strengths implements Parcelable{
         return questionList;
     }
 
+    //her bliver beskedenhedslisten udfyldt.
     public static ArrayList<Strengths> getBesList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //Beskedenhed
@@ -84,6 +105,7 @@ public class Strengths implements Parcelable{
         return questionList;
     }
 
+    //her bliver taknemlighedslisten udfyldt.
     public static ArrayList<Strengths> getTakList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //Taknemmelighed
@@ -96,6 +118,7 @@ public class Strengths implements Parcelable{
         return questionList;
     }
 
+    //her bliver samarbejde listen udfyldt.
     public static ArrayList<Strengths> getSamList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //Samarbejde
@@ -107,6 +130,7 @@ public class Strengths implements Parcelable{
         return questionList;
     }
 
+    //her bliver social intelligens listen udfyldt.
     public static ArrayList<Strengths> getSocList(){
         ArrayList<Strengths> questionList = new ArrayList<>();
         //Social Intelligens
@@ -121,11 +145,11 @@ public class Strengths implements Parcelable{
     public int describeContents() {
         return 0;
     }
-//
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(question);
+        dest.writeString(description);
         dest.writeString(identity);
         dest.writeInt(answer);
     }

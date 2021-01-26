@@ -147,12 +147,12 @@ public class SelectPage extends TouchActivityHandler {
     }
 
     private void addAndSort(){
-        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod, 5);
-        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig, 5);
-        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed, 5);
-        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed, 5);
-        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde, 5);
-        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens,5);
+        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod);
+        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig);
+        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed);
+        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed);
+        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde);
+        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens);
         points.add(p1);
         points.add(p2);
         points.add(p3);
@@ -166,14 +166,14 @@ public class SelectPage extends TouchActivityHandler {
             }
         });
 
-        Points g5 = new Points(points.get(5).getTitle(), points.get(5).getQuestion(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxPoints());
-        Points g4 = new Points(points.get(4).getTitle(), points.get(4).getQuestion(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxPoints());
-        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getQuestion(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxPoints());
-        Points g2 = new Points(points.get(2).getTitle(), points.get(2).getQuestion(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxPoints());
-        Points g1 = new Points(points.get(1).getTitle(), points.get(1).getQuestion(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxPoints());
-        Points g0 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
+        Points g5 = new Points(points.get(5).getTitle(), points.get(5).getDescription(), points.get(5).getPoints(), points.get(5).getIcon());
+        Points g4 = new Points(points.get(4).getTitle(), points.get(4).getDescription(), points.get(4).getPoints(), points.get(4).getIcon());
+        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getDescription(), points.get(3).getPoints(), points.get(3).getIcon());
+        Points g2 = new Points(points.get(2).getTitle(), points.get(2).getDescription(), points.get(2).getPoints(), points.get(2).getIcon());
+        Points g1 = new Points(points.get(1).getTitle(), points.get(1).getDescription(), points.get(1).getPoints(), points.get(1).getIcon());
+        Points g0 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon());
 
-        Points b1 = new Points(points.get(0).getTitle(), points.get(0).getQuestion(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxPoints());
+        Points b1 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon());
         strengths.add(g0);
         strengths.add(g1);
         strengths.add(g2);

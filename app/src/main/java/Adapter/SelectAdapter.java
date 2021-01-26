@@ -59,10 +59,10 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         Log.d(TAG, "onBindViewHolder: called.");
         //Sorts selectpage arrayList
         Log.d(TAG, "POSITION: "+position);
-        Log.d(TAG, "QUESTION: "+mStrengths.get(position).getQuestion());
+        Log.d(TAG, "QUESTION: "+mStrengths.get(position).getDescription());
 
         holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
-        holder.question.setText(mStrengths.get(position).getQuestion());
+        holder.description.setText(mStrengths.get(position).getDescription());
         holder.selectConfirm.setVisibility(View.GONE);
 //      holder.title.setText(mStrengths.get(position).getTitle());
         holder.image.setImageResource(mStrengths.get(position).getIcon());
@@ -71,7 +71,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         SharedPreferences.Editor editor = sharedPref.edit();
 
         String answerValue = String.valueOf(mStrengths.get(position).getPoints());
-        String questionValue = mStrengths.get(position).getQuestion();
+        String questionValue = mStrengths.get(position).getDescription();
 
         //ensures that the ResultPage doesn't store old values
         if (goodConfirmCounter == 2){
@@ -86,7 +86,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             goodConfirmCounter = 0;
             holder.selectConfirm.setVisibility(View.GONE);
           //  badSelected.add(mStrengths.get(position));
-            editor.putString(mStrengths.get(position).getQuestion()+"_selected",answerValue+questionValue);
+            editor.putString(mStrengths.get(position).getDescription()+"_selected",answerValue+questionValue);
             editor.apply();
         }
 
@@ -103,7 +103,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
                     } else {
 
                         holder.selectConfirm.setVisibility(View.VISIBLE);
-                        editor.putString(mStrengths.get(position).getQuestion() + "_selected", answerValue + questionValue);
+                        editor.putString(mStrengths.get(position).getDescription() + "_selected", answerValue + questionValue);
                         editor.apply();
 
                         goodConfirmCounter++;
@@ -142,7 +142,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
         RelativeLayout btn;
-        TextView question;
+        TextView description;
         TextView answer;
         ImageView selectConfirm;
         //TextView title;
@@ -151,7 +151,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             super(itemView);
             btn = itemView.findViewById(R.id.onClickbtn);
             image = itemView.findViewById(R.id.imageIcon);
-            question = itemView.findViewById(R.id.select_txtQuestion);
+            description = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
             //title = itemView.findViewById(R.id.select_txtTitle);

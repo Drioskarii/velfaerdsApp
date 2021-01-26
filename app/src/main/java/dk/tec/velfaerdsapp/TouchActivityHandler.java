@@ -23,8 +23,16 @@ import android.widget.Toast;
 
 public class TouchActivityHandler extends AppCompatActivity {
 
+    //////////////////////////////////////////////////////////
+    // TouchActivityHandler håndtere variabler og metoder der genbruges på diverse sider.
+    // alle sider extender TouchActivityHandler, sådan at de alle kan tilgå metoderne
+    //////////////////////////////////////////////////////////
+
+    //gName indeholder personens navn fra IntroPage
     public static String gName;
+    //gJob indeholder personens job fra IntroPage
     public static String gJob;
+    //gKøn indeholder personens køn fra IntroPage
     public static int gKøn;
 
     @Override
@@ -32,20 +40,17 @@ public class TouchActivityHandler extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    //public static int dpToPx(int dp, Context context){
-    //    return dp * ((int) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-    //}
-
-    //Forward er altid swipe ( højre mod venstre )
+    //Denne metode bruges til at åbne nye sider.
     public Intent newPage(Context context, Class toClass) {
         return new Intent(context, toClass);
     }
 
-    //Backward er altid swipe ( venstre mod højre )
+    //Denne metode bruges til at lukke sider.
     public void closePage() {
         finish();
     }
 
+    //Denne metode gør at hvis en person bruger tilbage knappen på deres telefon, så lukkes siden korrekt.
     @Override
     public void onBackPressed() {
         finish();

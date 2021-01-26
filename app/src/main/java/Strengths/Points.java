@@ -5,29 +5,40 @@ import android.os.Parcelable;
 
 import java.util.Comparator;
 
-public class Points implements Parcelable {
-    private final String title;
-    private final String question;
-    private final int points;
-    private final int icon;
-    private final int maxPoints;
+//////////////////////////////////////////////////////////
+// Points bliver brugt som et Interface for at sende
+// Data videre med Intent.
+// Points implementere Parcelable for at kunne sende data
+// dataen som en arrayliste med objekter.
+//////////////////////////////////////////////////////////
 
-    public Points(String Title, String Question, int Points, int Icon, int MaxPoints) {
+public class Points implements Parcelable {
+    //Title indeholder titlen (Mod, Nysgerrighed, Beskedenhed osv.)
+    private final String title;
+    //Description indeholder beskrivelsen af en af de 6 kategorierne
+    private final String description;
+    //Points indeholder det samlede antal af point personen har opnået.
+    private final int points;
+    //Icon indeholder det ikon der matcher en af de 6 hovedkategorier
+    private final int icon;
+
+    //Default Constructor for Points
+    public Points(String Title, String Description, int Points, int Icon) {
         title = Title;
-        question = Question;
+        description = Description;
         points = Points;
         icon = Icon;
-        maxPoints = MaxPoints;
     }
 
+    //Parcelable Constructor for Points
     protected Points(Parcel in) {
         title = in.readString();
-        question = in.readString();
+        description = in.readString();
         points = in.readInt();
         icon = in.readInt();
-        maxPoints = in.readInt();
     }
 
+    //Parcelable Creator for Points, denne metode er implementeret som default
     public static final Creator<Points> CREATOR = new Creator<Points>() {
         @Override
         public Points createFromParcel(Parcel in) {
@@ -40,19 +51,21 @@ public class Points implements Parcelable {
         }
     };
 
+    //denne metode returner Title
     public String getTitle() { return title; }
 
-    public String getQuestion() { return question; }
+    //denne metode returner Description
+    public String getDescription() { return description; }
 
+    //denne metode returner Points
     public int getPoints() {
         return points;
     }
 
+    //denne metode returner Icon
     public int getIcon() {
         return icon;
     }
-
-    public int getMaxPoints() { return maxPoints; }
 
     @Override
     public int describeContents() {
@@ -63,10 +76,9 @@ public class Points implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
 
         dest.writeString(title);
-        dest.writeString(question);
+        dest.writeString(description);
         dest.writeInt(points);
         dest.writeInt(icon);
-        dest.writeInt(maxPoints);
     }
 
 }

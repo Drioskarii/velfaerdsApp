@@ -60,7 +60,7 @@ public class NysAdapter extends BaseAdapter {
         mSeekBar.setMax(4);
 
         mTxtTitle.setText(tempStrengths.getTitle());
-        mTxtQuestion.setText(tempStrengths.getQuestion());
+        mTxtQuestion.setText(tempStrengths.getDescription());
 
         SharedPreferences sharedPref = mSeekBar.getContext().getSharedPreferences("questionArray", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
