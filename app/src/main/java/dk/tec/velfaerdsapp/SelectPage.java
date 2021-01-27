@@ -30,14 +30,18 @@ import Strengths.Strengths;
 import Strengths.Points;
 
 public class SelectPage extends TouchActivityHandler {
-
+//////////////////////////////////////////////////////////
+//Her bliver point talt op og soteret
+//Og dataen bliver sendt til SelectAdapter
+//Der er nogle Clears i programmet og de er det for at sikre sig at det forkerte data ikke bliver sendt flere gange
+//////////////////////////////////////////////////////////
 
     private static final String TAG = "selectPage";
+
     //vars
     Button btnBack, btnForward;
     List<Points> points = new ArrayList<Points>();
     ArrayList<Points> strengths = new ArrayList<>();
-    ArrayList<Points> weaknesses = new ArrayList<>();
     ArrayList<Strengths> mod = new ArrayList<>();
     ArrayList<Strengths> nys = new ArrayList<>();
     ArrayList<Strengths> bes = new ArrayList<>();
@@ -56,7 +60,6 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         strengths.clear();
-        //weaknesses.clear();
         setContentView(R.layout.activity_select_page);
         btnBack = findViewById(R.id.btn_select_back);
         btnForward = findViewById(R.id.btn_select_forward);
@@ -68,6 +71,7 @@ public class SelectPage extends TouchActivityHandler {
         TextView txtSelectDinAvatar = findViewById(R.id.txtSelectDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
 
+        //Her lukker du siden
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +79,7 @@ public class SelectPage extends TouchActivityHandler {
             }
         });
 
+        //Her bliver der tjekket hvis der er 2 af elementerne på SelectPagen som er valgt
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,12 +87,10 @@ public class SelectPage extends TouchActivityHandler {
                     if (SelectAdapter.goodSelected.get(0).getPoints() == 5 && SelectAdapter.goodSelected.get(1).getPoints() == 5) {
                         Intent intent = new Intent(SelectPage.this, SelectAvatar.class);
                         intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                        //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
                         startActivity(intent);
                     }else{
                         Intent intent = new Intent(SelectPage.this, ResultPage.class);
                         intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                        //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
                         startActivity(intent);
                     }
                 }
@@ -97,7 +100,7 @@ public class SelectPage extends TouchActivityHandler {
             }
         });
     }
-
+    //her henter den listerne fra et intent
     private void getLists(){
         for (Parcelable item : getIntent().getParcelableArrayListExtra("ModList")){
             mod.add((Strengths)item);
@@ -119,6 +122,7 @@ public class SelectPage extends TouchActivityHandler {
         }
     }
 
+    //Her henter den svarende
     private void getListPoints(){
         for (int i = 0; i < mod.size(); i++){
             modPoints = modPoints + mod.get(i).getAnswer();
@@ -138,6 +142,8 @@ public class SelectPage extends TouchActivityHandler {
         for (int i = 0; i < soc.size(); i++){
             socPoints = socPoints + soc.get(i).getAnswer();
         }
+
+        //Her regner den gennemsnitted ud og indsætter dem ind i deres variabler
         modPoints = modPoints / mod.size();
         nysPoints = nysPoints / nys.size();
         besPoints = besPoints / bes.size();
@@ -147,6 +153,7 @@ public class SelectPage extends TouchActivityHandler {
     }
 
     private void addAndSort(){
+        //her putter du værdierne ind i deres objekter
         Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod);
         Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig);
         Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed);
@@ -160,6 +167,7 @@ public class SelectPage extends TouchActivityHandler {
         points.add(p5);
         points.add(p6);
 
+        //her bliver det soteret det højeste tal først
         Collections.sort(points, new Comparator<Points>(){
             public int compare(Points obj1, Points obj2) {
                 return Integer.valueOf(obj2.getPoints()).compareTo(Integer.valueOf(obj1.getPoints()));
@@ -172,7 +180,6 @@ public class SelectPage extends TouchActivityHandler {
         Points g2 = new Points(points.get(2).getTitle(), points.get(2).getDescription(), points.get(2).getPoints(), points.get(2).getIcon());
         Points g1 = new Points(points.get(1).getTitle(), points.get(1).getDescription(), points.get(1).getPoints(), points.get(1).getIcon());
         Points g0 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon());
-
         Points b1 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon());
         strengths.add(g0);
         strengths.add(g1);
@@ -196,30 +203,22 @@ public class SelectPage extends TouchActivityHandler {
             Log.d(TAG, "ADDED:5");
             strengths.add(g5);
         }
-        //weaknesses.add(b1);
     }
 
     private void getGoodImages() {
         initRecyclerView();
     }
-
+    //Her bliver Recyclerviewet oprettet
     @SuppressLint("NewApi")
     private void initRecyclerView() {
-        //LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(gridLayoutManager);
 
+        //her bliver dataen sendt til SelectAdapter
         SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
         recyclerViewGood.setAdapter(goodAdapter);
 
-
-/*        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
-        recyclerViewBad.setLayoutManager(layoutManagerBad);
-
-        SelectAdapter badAdapter = new SelectAdapter(this, weaknesses, false);
-        recyclerViewBad.setAdapter(badAdapter);*/
     }
 
 

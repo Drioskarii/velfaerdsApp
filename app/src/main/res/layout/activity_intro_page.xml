@@ -76,23 +76,6 @@
             android:orientation="vertical"
             tools:context=".IntroPage">
 
-            <TextView
-                android:id="@+id/txtCustomAvatar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/din_avatar"
-                android:textAlignment="center"
-                android:textColor="@color/designBlue"
-                android:textSize="32sp" />
-
-
-            <ImageView
-                android:id="@+id/characterPlaceholder"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp" />
-
 
             <TextView
                 android:id="@+id/txtCustomAvatarPreset"
@@ -122,6 +105,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
+
+            android:gravity="center|bottom"
+            android:padding="5dp"
+            android:layout_margin="5dp"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

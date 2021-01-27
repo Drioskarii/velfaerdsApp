@@ -26,10 +26,16 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder> {
 
+//////////////////////////////////////////////////////////
+// Her opretter du ViewHolderen
+// Indsætter data
+// og tjekker dataen igennem for de forskellige kriterier
+//////////////////////////////////////////////////////////
+
     private static final String TAG = "RecyclerViewAdapter";
 
+    //Her laver du et array
     public static ArrayList<Points> goodSelected = new ArrayList<>();
-    //public static ArrayList<Points> badSelected = new ArrayList<>();
     public static int goodConfirmCounter;
 
 
@@ -38,7 +44,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     private Context mContext;
     private boolean misGood;
 
-
+    //Her tager du de værdier ud som du får på selectPagen
     public SelectAdapter(Context context, ArrayList<Points> strengths, boolean isGood){
         mContext = context;
         mStrengths = strengths;
@@ -46,6 +52,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
     }
 
+    //Her bliver der lavet en ny ViewHolder.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,18 +60,21 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+    //Her binder du din data til ViewHolderen
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called.");
-        //Sorts selectpage arrayList
+
+        //Sortere selectpage arrayList
         Log.d(TAG, "POSITION: "+position);
         Log.d(TAG, "QUESTION: "+mStrengths.get(position).getDescription());
 
+        //Her vælger du hvad der skal være i den ViewHolder
         holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
         holder.description.setText(mStrengths.get(position).getDescription());
         holder.selectConfirm.setVisibility(View.GONE);
-//      holder.title.setText(mStrengths.get(position).getTitle());
+//
         holder.image.setImageResource(mStrengths.get(position).getIcon());
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
@@ -73,25 +83,21 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         String answerValue = String.valueOf(mStrengths.get(position).getPoints());
         String questionValue = mStrengths.get(position).getDescription();
 
-        //ensures that the ResultPage doesn't store old values
+        //Her sikre vi os at result page ikke holder på de gamle værdier
         if (goodConfirmCounter == 2){
             goodSelected.clear();
-
-           // badSelected.clear();
         }
 
         goodConfirmCounter = 0;
         if (!misGood){
-          //  badSelected.clear();
             goodConfirmCounter = 0;
             holder.selectConfirm.setVisibility(View.GONE);
-          //  badSelected.add(mStrengths.get(position));
             editor.putString(mStrengths.get(position).getDescription()+"_selected",answerValue+questionValue);
             editor.apply();
         }
 
         holder.btn.setOnClickListener(v -> {
-            //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
+            //Her sikre du dig at din data gemmes i en SharedPrefs og at svaret bliver makeret. Her kan du også vælge hvor mange max svar som brugeren kan svare på
             if(misGood) {
                 if (goodConfirmCounter < 2) {
                     if (holder.selectConfirm.isShown()) {
@@ -138,7 +144,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         System.out.println("getCount() = "+goodConfirmCounter);
         return (goodConfirmCounter);
     }
-
     public static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
         RelativeLayout btn;
@@ -147,6 +152,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         ImageView selectConfirm;
         //TextView title;
 
+    //Her sætter du Ider på de ting du lavede i ViewHolderen overn over
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             btn = itemView.findViewById(R.id.onClickbtn);
@@ -154,7 +160,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
             description = itemView.findViewById(R.id.select_txtQuestion);
             answer = itemView.findViewById(R.id.select_txtAnswer);
             selectConfirm = itemView.findViewById(R.id.selectConfirm);
-            //title = itemView.findViewById(R.id.select_txtTitle);
         }
     }
 }
