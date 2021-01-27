@@ -41,6 +41,7 @@ public class SelectPage extends TouchActivityHandler {
     //vars
     Button btnBack, btnForward;
     List<Points> points = new ArrayList<Points>();
+
     ArrayList<Points> strengths = new ArrayList<>();
     ArrayList<Strengths> mod = new ArrayList<>();
     ArrayList<Strengths> nys = new ArrayList<>();
@@ -48,6 +49,7 @@ public class SelectPage extends TouchActivityHandler {
     ArrayList<Strengths> tak = new ArrayList<>();
     ArrayList<Strengths> sam = new ArrayList<>();
     ArrayList<Strengths> soc = new ArrayList<>();
+
     int modPoints;
     int nysPoints;
     int besPoints;

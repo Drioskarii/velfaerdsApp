@@ -74,7 +74,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
         holder.description.setText(mStrengths.get(position).getDescription());
         holder.selectConfirm.setVisibility(View.GONE);
-//
         holder.image.setImageResource(mStrengths.get(position).getIcon());
 
         SharedPreferences sharedPref = holder.answer.getContext().getSharedPreferences("selectArray", MODE_PRIVATE);
@@ -150,7 +149,6 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView description;
         TextView answer;
         ImageView selectConfirm;
-        //TextView title;
 
     //Her sætter du Ider på de ting du lavede i ViewHolderen overn over
         public ViewHolder(@NonNull View itemView) {
