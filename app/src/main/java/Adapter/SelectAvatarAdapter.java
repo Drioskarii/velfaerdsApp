@@ -26,8 +26,15 @@ import static android.content.Context.MODE_PRIVATE;
 
     public class SelectAvatarAdapter extends RecyclerView.Adapter<Adapter.SelectAvatarAdapter.ViewHolder> {
 
+//////////////////////////////////////////////////////////
+// Her opretter du ViewHolderen
+// Indsætter data fra SelectAvatar
+// og tjekker dataen igennem for de forskellige kriterier
+//////////////////////////////////////////////////////////
+
         private static final String TAG = "RecyclerViewAdapter";
 
+        //Her laver du et array
         public static ArrayList<Points> goodSelected = new ArrayList<>();
         public static int goodConfirmCounter;
 
@@ -37,7 +44,7 @@ import static android.content.Context.MODE_PRIVATE;
         private Context mContext;
         private boolean misGood;
 
-
+        //Her tager du de værdier ud som du får på selectPagen
         public SelectAvatarAdapter(Context context, ArrayList<Points> strengths, boolean isGood){
             mContext = context;
             mStrengths = strengths;
@@ -45,6 +52,7 @@ import static android.content.Context.MODE_PRIVATE;
 
         }
 
+        //Her bliver der lavet en ny ViewHolder.
         @NonNull
         @Override
         public Adapter.SelectAvatarAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,16 +60,19 @@ import static android.content.Context.MODE_PRIVATE;
             return new Adapter.SelectAvatarAdapter.ViewHolder(view);
         }
 
-
+        //Her binder du din data til ViewHolderen
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onBindViewHolder(@NonNull Adapter.SelectAvatarAdapter.ViewHolder holder, int position) {
             Log.d(TAG, "onBindViewHolder: called.");
-            //Sorts selectpage arrayList
+
+            //Sortere selectpage arrayList
             Log.d(TAG, "POSITION: "+position);
             Log.d(TAG, "QUESTION: "+mStrengths.get(position).getDescription());
 
             TouchActivityHandler tah = new TouchActivityHandler();
+
+            //Her vælger du hvad der skal stå i den ViewHolder
             holder.selectConfirm.setVisibility(View.GONE);
             holder.title.setText(mStrengths.get(position).getTitle());
             if (mStrengths.get(position).getTitle().contains("Mod")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_mod);} else{holder.image.setImageResource(R.drawable.tndkvinde_mod);}}
@@ -77,25 +88,25 @@ import static android.content.Context.MODE_PRIVATE;
             String answerValue = String.valueOf(mStrengths.get(position).getPoints());
             String questionValue = mStrengths.get(position).getDescription();
 
-            //ensures that the ResultPage doesn't store old values
+    //Her sikre vi os at result page ikke holder på de gamle værdier
             if (goodConfirmCounter == 1){
                 goodSelected.clear();
 
-                // badSelected.clear();
+
             }
 
             goodConfirmCounter = 0;
             if (!misGood){
-                //  badSelected.clear();
+
                 goodConfirmCounter = 0;
                 holder.selectConfirm.setVisibility(View.GONE);
-                //  badSelected.add(mStrengths.get(position));
+
                 editor.putString(mStrengths.get(position).getDescription()+"_selected",answerValue+questionValue);
                 editor.apply();
             }
 
             holder.btn.setOnClickListener(v -> {
-                //Ensures the data is saved in SharedPrefs and the answer is marked. It also ensures that a there is a maximum amount of selected the user can make.
+                //Her sikre du dig at din data gemmes i en SharedPrefs og at svaret bliver makeret. Her kan du også vælge hvor mange max svar som brugeren kan svare på
                 if(misGood) {
                     if (goodConfirmCounter < 1) {
                         if (holder.selectConfirm.isShown()) {
@@ -149,6 +160,7 @@ import static android.content.Context.MODE_PRIVATE;
             ImageView selectConfirm;
             TextView title;
 
+            //Her sætter du Id'er på de ting du lavede i ViewHolderen overn over
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
                 btn = itemView.findViewById(R.id.onClickbtn);

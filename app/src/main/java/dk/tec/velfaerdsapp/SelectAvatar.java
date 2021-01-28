@@ -19,6 +19,10 @@ import Strengths.Points;
 
 public class SelectAvatar extends TouchActivityHandler {
 
+ //////////////////////////////////////////////////////////
+//Her bliver point talt op og soteret
+//Og dataen bliver sendt til SelectAvatar
+//////////////////////////////////////////////////////////
     private static final String TAG = "selectAvatar";
     Button btnBack, btnForward;
     ArrayList<Points> goodSelected = new ArrayList<>();
@@ -34,6 +38,7 @@ public class SelectAvatar extends TouchActivityHandler {
 
         initRecyclerView();
 
+        //her er tilbage knappen
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,13 +46,13 @@ public class SelectAvatar extends TouchActivityHandler {
             }
         });
 
+        //her er fremad knappen.
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (true){
                 Intent intent = new Intent(SelectAvatar.this, ResultPage.class);
                 intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                //intent.putParcelableArrayListExtra("badSelectedList", SelectAdapter.badSelected);
                 startActivity(intent);
                 } else{
                     Toast.makeText(SelectAvatar.this, "vælg din avatar for at fortsætte", Toast.LENGTH_SHORT).show();
@@ -58,10 +63,12 @@ public class SelectAvatar extends TouchActivityHandler {
 
     @SuppressLint("NewApi")
     private void initRecyclerView() {
+        //Her bliver Recyclerviewet oprettet
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);
         RecyclerView recyclerViewGood = findViewById(R.id.recycleViewSelectAvatar);
         recyclerViewGood.setLayoutManager(gridLayoutManager);
 
+        //her bliver dataen sendt til SelectAvatarAdapter
         SelectAvatarAdapter goodAdapter = new SelectAvatarAdapter(this, goodSelected, true);
         recyclerViewGood.setAdapter(goodAdapter);
     }

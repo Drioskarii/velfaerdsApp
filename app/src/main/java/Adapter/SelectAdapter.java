@@ -1,4 +1,4 @@
-package Adapter;
+ package Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -28,7 +28,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
 
 //////////////////////////////////////////////////////////
 // Her opretter du ViewHolderen
-// Indsætter data
+// Indsætter data fra selectPage
 // og tjekker dataen igennem for de forskellige kriterier
 //////////////////////////////////////////////////////////
 
@@ -70,7 +70,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         Log.d(TAG, "POSITION: "+position);
         Log.d(TAG, "QUESTION: "+mStrengths.get(position).getDescription());
 
-        //Her vælger du hvad der skal være i den ViewHolder
+        //Her vælger du hvad der skal stå i den ViewHolder
         holder.answer.setText(String.valueOf(mStrengths.get(position).getPoints()));
         holder.description.setText(mStrengths.get(position).getDescription());
         holder.selectConfirm.setVisibility(View.GONE);
@@ -150,7 +150,7 @@ public class SelectAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
         TextView answer;
         ImageView selectConfirm;
 
-    //Her sætter du Ider på de ting du lavede i ViewHolderen overn over
+    //Her sætter du Id'er på de ting du lavede i ViewHolderen overn over
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             btn = itemView.findViewById(R.id.onClickbtn);
