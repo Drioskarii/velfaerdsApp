@@ -86,15 +86,14 @@ public class SelectPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 if (SelectAdapter.goodConfirmCounter == 2){
-                    if (SelectAdapter.goodSelected.get(0).getPoints() == 5 && SelectAdapter.goodSelected.get(1).getPoints() == 5) {
-                        Intent intent = new Intent(SelectPage.this, SelectAvatar.class);
-                        intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                        startActivity(intent);
+                    Intent intent;
+                    if (SelectAdapter.goodSelected.get(0).getPoints() == SelectAdapter.goodSelected.get(1).getPoints()) {
+                        intent = new Intent(SelectPage.this, SelectAvatar.class);
                     }else{
-                        Intent intent = new Intent(SelectPage.this, ResultPage.class);
-                        intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
-                        startActivity(intent);
+                        intent = new Intent(SelectPage.this, ResultPage.class);
                     }
+                    intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(SelectPage.this, "vælg 2 styrker for at fortsætte", Toast.LENGTH_SHORT).show();
@@ -156,12 +155,12 @@ public class SelectPage extends TouchActivityHandler {
 
     private void addAndSort(){
         //her putter du værdierne ind i deres objekter
-        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod);
-        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig);
-        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed);
-        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed);
-        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde);
-        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens);
+        Points p1 = new Points("Mod", "Du er ikke bange for at kaste dig ud i nye udfordringer. Du siger din mening og tør at gå dine egne veje.", modPoints, R.drawable.iconmod, 20);
+        Points p2 = new Points("Nysgerrighed ", "Du stiller altid spørgsmål og er god til fordybe dig. Ligesom Spørge Jørgen, der altid spørger “hvorfor dit og hvorfor dat”.", nysPoints, R.drawable.iconnysgerrig, 20);
+        Points p3 = new Points("Beskedenhed", "Du er ikke “Se mig! Se mig!”-typen. Heller ikke når du er for sej og alting kører for dig.", besPoints, R.drawable.iconbeskedenhed, 20);
+        Points p4 = new Points("Taknemmelighed", "Du sætter pris på både det store og de små ting i livet og ‘Tak’ er et ord, du bruger rigtig tit. Folk omkring dig ved, at de betyder noget for dig.", takPoints, R.drawable.icontaknemmelighed,25);
+        Points p5 = new Points("Samarbejde", "Andre kan altid regne med dig. Du er god til at få gruppearbejde til at fungere og nyder fællesskaber.", samPoints, R.drawable.iconsamarbejde, 20);
+        Points p6 = new Points("Social Intelligens", "Du er god til at sætte dig ind i andres tanker og idéer. Folk omkring dig føler sig godt tilpas i dit selskab.", socPoints, R.drawable.iconsocialintelligens, 15);
         points.add(p1);
         points.add(p2);
         points.add(p3);
@@ -176,33 +175,22 @@ public class SelectPage extends TouchActivityHandler {
             }
         });
 
-        Points g5 = new Points(points.get(5).getTitle(), points.get(5).getDescription(), points.get(5).getPoints(), points.get(5).getIcon());
-        Points g4 = new Points(points.get(4).getTitle(), points.get(4).getDescription(), points.get(4).getPoints(), points.get(4).getIcon());
-        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getDescription(), points.get(3).getPoints(), points.get(3).getIcon());
-        Points g2 = new Points(points.get(2).getTitle(), points.get(2).getDescription(), points.get(2).getPoints(), points.get(2).getIcon());
-        Points g1 = new Points(points.get(1).getTitle(), points.get(1).getDescription(), points.get(1).getPoints(), points.get(1).getIcon());
-        Points g0 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon());
-        Points b1 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon());
+        Points g5 = new Points(points.get(5).getTitle(), points.get(5).getDescription(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxpoints());
+        Points g4 = new Points(points.get(4).getTitle(), points.get(4).getDescription(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxpoints());
+        Points g3 = new Points(points.get(3).getTitle(), points.get(3).getDescription(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxpoints());
+        Points g2 = new Points(points.get(2).getTitle(), points.get(2).getDescription(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxpoints());
+        Points g1 = new Points(points.get(1).getTitle(), points.get(1).getDescription(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxpoints());
+        Points g0 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxpoints());
         strengths.add(g0);
         strengths.add(g1);
         strengths.add(g2);
         if (points.get(3).getPoints() == 5){
             strengths.add(g3);
-            Log.d(TAG, "ADDED:3");
-            Log.d(TAG, "ADDED:1"+points.get(0).getPoints());
-            Log.d(TAG, "ADDED:2"+points.get(1).getPoints());
-            Log.d(TAG, "ADDED:3"+points.get(2).getPoints());
-            Log.d(TAG, "ADDED:4"+points.get(3).getPoints());
-            Log.d(TAG, "ADDED:5"+points.get(4).getPoints());
-            Log.d(TAG, "ADDED:6"+points.get(5).getPoints());
-
         }
         if (points.get(4).getPoints() == 5){
             strengths.add(g4);
-            Log.d(TAG, "ADDED:4");
         }
         if (points.get(5).getPoints() == 5) {
-            Log.d(TAG, "ADDED:5");
             strengths.add(g5);
         }
     }

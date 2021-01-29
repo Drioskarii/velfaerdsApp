@@ -8,6 +8,7 @@ import QuestionsAdapter.SamAdapter;
 import Adapter.SelectAdapter;
 import QuestionsAdapter.SocAdapter;
 import QuestionsAdapter.TakAdapter;
+import Strengths.Points;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class TouchActivityHandler extends AppCompatActivity {
 

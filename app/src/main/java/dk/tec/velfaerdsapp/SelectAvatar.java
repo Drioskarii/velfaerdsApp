@@ -53,9 +53,9 @@ public class SelectAvatar extends TouchActivityHandler {
                 if (true){
                 Intent intent = new Intent(SelectAvatar.this, ResultPage.class);
                 //Den valgte i adapteren
-                intent.putParcelableArrayListExtra("SelectedList", SelectAdapter.goodSelected);
+                intent.putParcelableArrayListExtra("singleSelected", SelectAvatarAdapter.goodSelected);
                 //Begge to
-                intent.putParcelableArrayListExtra("BothElements", goodSelected);
+                intent.putParcelableArrayListExtra("goodSelectedList", goodSelected);
                 startActivity(intent);
                 } else{
                     Toast.makeText(SelectAvatar.this, "vælg din avatar for at fortsætte", Toast.LENGTH_SHORT).show();

@@ -21,13 +21,16 @@ public class Points implements Parcelable {
     private final int points;
     //Icon indeholder det ikon der matcher en af de 6 hovedkategorier
     private final int icon;
+    //MaxPoints indeholder det max antal points kategorien kan have
+    private final int maxpoints;
 
     //Default Constructor for Points
-    public Points(String Title, String Description, int Points, int Icon) {
+    public Points(String Title, String Description, int Points, int Icon, int MaxPoints) {
         title = Title;
         description = Description;
         points = Points;
         icon = Icon;
+        maxpoints = MaxPoints;
     }
 
     //Parcelable Constructor for Points
@@ -36,6 +39,7 @@ public class Points implements Parcelable {
         description = in.readString();
         points = in.readInt();
         icon = in.readInt();
+        maxpoints = in.readInt();
     }
 
     //Parcelable Creator for Points, denne metode er implementeret som default
@@ -67,6 +71,8 @@ public class Points implements Parcelable {
         return icon;
     }
 
+    public int getMaxpoints() { return maxpoints; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -79,6 +85,7 @@ public class Points implements Parcelable {
         dest.writeString(description);
         dest.writeInt(points);
         dest.writeInt(icon);
+        dest.writeInt(maxpoints);
     }
 
 }

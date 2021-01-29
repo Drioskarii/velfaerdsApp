@@ -1,5 +1,6 @@
 package dk.tec.velfaerdsapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
@@ -29,7 +30,6 @@ public class ResultPage extends TouchActivityHandler{
     private static final String TAG = "ResultatPage";
     //Initialising
     private boolean videoWatched3 = false;
-    AnimationDrawable animation;
     ImageView characterPlaceholder;
     Button btnBack, btnForward;
     TextView questionTxt;
@@ -37,9 +37,10 @@ public class ResultPage extends TouchActivityHandler{
     PlayerView playerView;
     ImageView skipVideo;
     //vars
-    ArrayList<Points> Selected = new ArrayList<>();
-    ArrayList<Points> Both = new ArrayList<>();
+    ArrayList<Points> goodSelected = new ArrayList<>();
+    ArrayList<Points> singleSelected = new ArrayList<>();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -52,16 +53,7 @@ public class ResultPage extends TouchActivityHandler{
         videobtn = findViewById(R.id.btnYoutube);
         playerView = findViewById(R.id.player_view);
         skipVideo = findViewById(R.id.SkipVideo);
-
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
-        TouchActivityHandler tah = new TouchActivityHandler();
-        //Her sættes avatar ikonet
-        if (Selected.get(0).getTitle().contains("Mod")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_mod);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_mod);}}
-        if (Selected.get(0).getTitle().contains("Nys")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_nys);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_nys);}}
-        if (Selected.get(0).getTitle().contains("Bes")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_bes);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_bes);}}
-        if (Selected.get(0).getTitle().contains("Tak")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_tak);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_tak);}}
-        if (Selected.get(0).getTitle().contains("Sam")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_sam);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_sam);}}
-        if (Selected.get(0).getTitle().contains("Soc")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_soc);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_soc);}}
 
         //Activivere vores Video Adapter da der bliver afspillet en video omkring sine bedste styrker
         VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
@@ -70,18 +62,33 @@ public class ResultPage extends TouchActivityHandler{
         skipVideo.setVisibility(skipVideo.GONE);
         questionTxt = findViewById(R.id.select_txtQuestion);
         playerView.setVisibility(View.GONE);
-        Both.clear();
+        goodSelected.clear();
 
-        getValue();
+        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
         initRecyclerView();
+
+        if (goodSelected.get(0).getPoints() == goodSelected.get(1).getPoints()){
+            singleSelected = getIntent().getParcelableArrayListExtra("singleSelected");
+            //Her checkes hvilket element der er blevet hentet og sætter ikonet så det passer.
+            if (singleSelected.get(0).getTitle().contains("Mod")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_mod);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_mod);}}
+            if (singleSelected.get(0).getTitle().contains("Nys")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_nys);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_nys);}}
+            if (singleSelected.get(0).getTitle().contains("Bes")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_bes);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_bes);}}
+            if (singleSelected.get(0).getTitle().contains("Tak")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_tak);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_tak);}}
+            if (singleSelected.get(0).getTitle().contains("Sam")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_sam);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_sam);}}
+            if (singleSelected.get(0).getTitle().contains("Soc")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_soc);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_soc);}}
+        }
+        else if (goodSelected.get(0).getPoints() > goodSelected.get(1).getPoints()){
+            setIcon(0);
+        }
+        else if (goodSelected.get(1).getPoints() > goodSelected.get(0).getPoints()){
+            setIcon(1);
+        }
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
 
         // Køre funktionen getValue, som vi laver længere nede i programmet.
-        getValue();
         initRecyclerView();
-
 
         //Henter Oplysninger fra SharedPreferences, i dette tilfælge tjekkes der om du har set den video før. hvis ikke så afspilles den.
         SharedPreferences sharedPreferences = getSharedPreferences("videoWatched7", MODE_PRIVATE);
@@ -134,10 +141,13 @@ public class ResultPage extends TouchActivityHandler{
         });
     }
 
-    //en funktion som henter oplysninger fra de vælge styrker
-    private void getValue() {
-        Selected = getIntent().getParcelableArrayListExtra("SelectedList");
-        Both = getIntent().getParcelableArrayListExtra("BothElements");
+    private void setIcon(int position){
+        if (goodSelected.get(position).getTitle().contains("Mod")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_mod);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_mod);}}
+        if (goodSelected.get(position).getTitle().contains("Nys")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_nys);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_nys);}}
+        if (goodSelected.get(position).getTitle().contains("Bes")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_bes);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_bes);}}
+        if (goodSelected.get(position).getTitle().contains("Tak")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_tak);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_tak);}}
+        if (goodSelected.get(position).getTitle().contains("Sam")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_sam);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_sam);}}
+        if (goodSelected.get(position).getTitle().contains("Soc")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_soc);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_soc);}}
     }
 
     //Dette er en funktion for selve udskiften af resultaten, hvordan siden ser ud.
@@ -147,10 +157,10 @@ public class ResultPage extends TouchActivityHandler{
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ResultAdapter goodAdapter = new ResultAdapter(this, Both , true);
+        ResultAdapter goodAdapter = new ResultAdapter(this, goodSelected , true);
         recyclerViewGood.setAdapter(goodAdapter);
-
     }
+
     protected void onRestart() {
         super.onRestart();
     }
