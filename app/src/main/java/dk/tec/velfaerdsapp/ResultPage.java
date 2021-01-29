@@ -38,36 +38,37 @@ public class ResultPage extends TouchActivityHandler{
     ImageView skipVideo;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
-//    ArrayList<Points> badSelected = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
+
+        //Henter ID til Variablerne vi har oprettet.
         btnBack = findViewById(R.id.btn_result_back);
         btnForward = findViewById(R.id.btn_result_forward);
         videobtn = findViewById(R.id.btnYoutube);
         playerView = findViewById(R.id.player_view);
         skipVideo = findViewById(R.id.SkipVideo);
-        //characterPlaceholder = findViewById(R.id.characterPlaceholder);
-        //characterPlaceholder.setBackgroundResource(R.drawable.animation);
+
+        //Activivere vores Video Adapter da der bliver afspillet en video omkring sine bedste styrker
         VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
         video.play();
-        //animation = (AnimationDrawable) characterPlaceholder.getBackground();
         playerView.setVisibility(playerView.GONE);
         skipVideo.setVisibility(skipVideo.GONE);
         questionTxt = findViewById(R.id.select_txtQuestion);
         playerView.setVisibility(View.GONE);
         goodSelected.clear();
-//        badSelected.clear();
-
-        getValue();
-        initRecyclerView();
-
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
 
+        // Køre funktionen getValue, som vi laver længere nede i programmet.
+        getValue();
+        initRecyclerView();
+
+
+        //Henter Oplysninger fra SharedPreferences, i dette tilfælge tjekkes der om du har set den video før. hvis ikke så afspilles den.
         SharedPreferences sharedPreferences = getSharedPreferences("videoWatched7", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         videoWatched3 = sharedPreferences.getBoolean("videoWatched7", false);
@@ -78,6 +79,7 @@ public class ResultPage extends TouchActivityHandler{
             editor.apply();
         }
 
+        //sætter en knap til at pause en video.
         skipVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +89,7 @@ public class ResultPage extends TouchActivityHandler{
             }
         });
 
+        //sætter en knap til at have mulighed for at skippe videoen, dog kun hvis den får afvide fra sharedPreferences at man har set videoen før.
         videobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +99,7 @@ public class ResultPage extends TouchActivityHandler{
             }
         });
 
+        //Knap til at gå tilbage i programmet
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +107,7 @@ public class ResultPage extends TouchActivityHandler{
             }
         });
 
+        //Knap til at gå frem i programmet
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,17 +119,12 @@ public class ResultPage extends TouchActivityHandler{
         });
     }
 
+    //en funktion som henter oplysninger fra de vælge styrker
     private void getValue() {
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
-//        badSelected = getIntent().getParcelableArrayListExtra("badSelectedList");
-
-        System.out.println("HELP");
-        System.out.println(goodSelected.size());
-        System.out.println(goodSelected);
-//        System.out.println(badSelected.size());
-//        System.out.println(badSelected);
     }
 
+    //Dette er en funktion for selve udskiften af resultaten, hvordan siden ser ud.
     private void initRecyclerView() {
 
         LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -134,18 +134,8 @@ public class ResultPage extends TouchActivityHandler{
         ResultAdapter goodAdapter = new ResultAdapter(this, goodSelected , true);
         recyclerViewGood.setAdapter(goodAdapter);
 
-
-/*        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
-        recyclerViewBad.setLayoutManager(layoutManagerBad);
-
-        ResultAdapter badAdapter = new ResultAdapter(this, badSelected, false);
-        recyclerViewBad.setAdapter(badAdapter);*/
     }
     protected void onRestart() {
         super.onRestart();
-
-//        goodSelected.clear();
-//        badSelected.clear();
     }
 }

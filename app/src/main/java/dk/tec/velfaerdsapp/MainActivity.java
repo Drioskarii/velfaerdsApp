@@ -30,9 +30,13 @@ public class MainActivity extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Sætter Variabler for main Activity
         playerView = findViewById(R.id.player_view);
         btnBack = findViewById(R.id.btn_main_back);
         btnForward = findViewById(R.id.btn_main_forward);
+
+        //Sletter alle gemte variabler som var blevet sat før hen.
         SharedPreferences settings1 = getSharedPreferences("introValues", Context.MODE_PRIVATE);
         settings1.edit().clear().apply();
         SharedPreferences settings2 = getSharedPreferences("questionArray", Context.MODE_PRIVATE);
@@ -42,10 +46,12 @@ public class MainActivity extends TouchActivityHandler {
         SharedPreferences settings4 = getSharedPreferences("emailArray", Context.MODE_PRIVATE);
         settings4.edit().clear().apply();
 
+        //Starter VideoAdapteren som gør vi kan få startet en video.
         VideoAdapter video = new VideoAdapter(MainActivity.this, R.raw.intvid, playerView);
         video.play();
         video.playVideo();
 
+        //Registreres Tilbage knap til at gå til "The24Strengths" siden
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +59,7 @@ public class MainActivity extends TouchActivityHandler {
             }
         });
 
+        //Registeres Fremmad knap til at gå til "IntroPage" som er den næste i programmet
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +69,8 @@ public class MainActivity extends TouchActivityHandler {
         });
     }
 
+
+    //Dette er en funktion som gør at der bliver åbnet en ny Activity som åbner en side med deres Logos Hjemmeside.
     public void logoClicked(View view) {
         if (tutDone) {
         String url = "";

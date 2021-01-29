@@ -20,7 +20,7 @@ public class The24Strengths extends TouchActivityHandler {
     ImageView imageView;
     Button btnBack;
 
-
+    //OnCreate "Når siden åbner" Sættes alle variablerne som bruges på siden.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +28,13 @@ public class The24Strengths extends TouchActivityHandler {
         btnBack = findViewById(R.id.btn_the24strengths_back);
         imageView = findViewById(R.id.selectedListImage);
         listView = findViewById(R.id.listView);
+
+        //Sætter variabler til en klik funktion
         The24StrengthsAdapter modAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getModList());
         listView.setAdapter(modAdapter);
         imageView.setImageResource(R.drawable.iconmod);
 
+        //Sætter tilbage knap for at lukke siden ned og gå tilbage til Forsiden af programmet
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +44,7 @@ public class The24Strengths extends TouchActivityHandler {
     }
 
 
-
+    // opretter klik funktioner, som udvider de forskellige kategorier, da der kun vises de 6 Kategorier i starten.
     public void modClick(View view) {
         The24StrengthsAdapter modAdapter = new The24StrengthsAdapter(The24Strengths.this, Strengths.getModList());
         listView.setAdapter(modAdapter);
