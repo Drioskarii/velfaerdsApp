@@ -37,7 +37,8 @@ public class ResultPage extends TouchActivityHandler{
     PlayerView playerView;
     ImageView skipVideo;
     //vars
-    ArrayList<Points> goodSelected = new ArrayList<>();
+    ArrayList<Points> Selected = new ArrayList<>();
+    ArrayList<Points> Both = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,16 @@ public class ResultPage extends TouchActivityHandler{
         playerView = findViewById(R.id.player_view);
         skipVideo = findViewById(R.id.SkipVideo);
 
+        characterPlaceholder = findViewById(R.id.characterPlaceholder);
+        TouchActivityHandler tah = new TouchActivityHandler();
+        //Her sættes avatar ikonet
+        if (Selected.get(0).getTitle().contains("Mod")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_mod);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_mod);}}
+        if (Selected.get(0).getTitle().contains("Nys")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_nys);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_nys);}}
+        if (Selected.get(0).getTitle().contains("Bes")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_bes);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_bes);}}
+        if (Selected.get(0).getTitle().contains("Tak")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_tak);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_tak);}}
+        if (Selected.get(0).getTitle().contains("Sam")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_sam);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_sam);}}
+        if (Selected.get(0).getTitle().contains("Soc")){ if (tah.gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_soc);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_soc);}}
+
         //Activivere vores Video Adapter da der bliver afspillet en video omkring sine bedste styrker
         VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
         video.play();
@@ -59,7 +70,11 @@ public class ResultPage extends TouchActivityHandler{
         skipVideo.setVisibility(skipVideo.GONE);
         questionTxt = findViewById(R.id.select_txtQuestion);
         playerView.setVisibility(View.GONE);
-        goodSelected.clear();
+        Both.clear();
+
+        getValue();
+        initRecyclerView();
+
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
 
@@ -121,7 +136,8 @@ public class ResultPage extends TouchActivityHandler{
 
     //en funktion som henter oplysninger fra de vælge styrker
     private void getValue() {
-        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        Selected = getIntent().getParcelableArrayListExtra("SelectedList");
+        Both = getIntent().getParcelableArrayListExtra("BothElements");
     }
 
     //Dette er en funktion for selve udskiften af resultaten, hvordan siden ser ud.
@@ -131,7 +147,7 @@ public class ResultPage extends TouchActivityHandler{
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ResultAdapter goodAdapter = new ResultAdapter(this, goodSelected , true);
+        ResultAdapter goodAdapter = new ResultAdapter(this, Both , true);
         recyclerViewGood.setAdapter(goodAdapter);
 
     }

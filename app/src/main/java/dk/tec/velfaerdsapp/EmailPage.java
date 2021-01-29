@@ -33,42 +33,49 @@ import Strengths.Points;
 public class EmailPage extends TouchActivityHandler {
 
     private static final String TAG = "emailPage";
+    //Tilbage knap
     Button btnBack;
+    //Dette er en liste der indeholder "EditText" bokse.
     List<EditText> editTextList = new ArrayList<>();
+    //XML TableLayout
     TableLayout tableLayout;
+    //Max emails, så knappen ikke kan spammes.
     int maxEmails = 0;
     ArrayList<Points> goodSelected = new ArrayList<>();
-    String questions;
-    String title;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_page);
+        //Her sættes variablerne til elementer på XML siden
         tableLayout = findViewById(R.id.tableLayout);
         btnBack = findViewById(R.id.btn_email_back);
+        //Gemmer intent fra forrige side til array variablen.
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
 
-
+        //Her laves en knap ud af et Imageview.
         ImageView btnNewMail = findViewById(R.id.btnNewMail);
         btnNewMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addEmail(v, null);
+                addEmail(null);
             }
         });
 
-        addEmail(findViewById(R.id.btnNewMail), null);
+        //Her kaldes metoden for at initiere den første Email.
+        addEmail(null);
+
+        //Her findes dataen i sharedPreferences og loopes igennem for at se om der er oprættede nogen objekter tidligere.
+        //Dette gør det muligt at lukke siden og åbne den igen, uden at miste alt det indtastede data.
         SharedPreferences sharedPreferences = getSharedPreferences("emailArray", MODE_PRIVATE);
         for (int i = 0; i < sharedPreferences.getAll().size(); i++){
             String s1 = sharedPreferences.getString("email_"+i, "");
             if (s1.length() > 0) {
-                addEmail(this.tableLayout, s1);
+                addEmail(s1);
             }
         }
 
+        //Her sættes tilbage knappen
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,14 +84,18 @@ public class EmailPage extends TouchActivityHandler {
         });
     }
 
-    public void addEmail(View view, String email) {
+    //addEmail Metode der modtager en Email tekst.
+    public void addEmail(String email) {
+        //Check for at se om vi er nået max emails, ellers opret ny.
         if (tableLayout.getChildCount() >= 8){
 
         }else  {
             ++maxEmails;
             TableRow tableRow = new TableRow(this);
+            //Her opretter vi et nyt Tablerow og lægger det som child til parent.
             tableRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
 
+            //Her oprettes en ny EditText og sættes teksten.
             EditText editText = new EditText(this);
             if (email != null){
                 editText.setText(email);
@@ -95,17 +106,22 @@ public class EmailPage extends TouchActivityHandler {
                 } else{
                     editText.setHint("Indtast Email");
                 }
-
             }
+            //Her sættes parametre på EditText, såsom at den skal verificere at det er en rigtig Email og at teksten skal sættes i centrum.
             editText.setTag("mails");
             editText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+            //Her sætter vi igen layout parameterne, denne gang til EditText og lægger den inde i tableRow længere nede.
             editText.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1));
             int maxLength = 30;
+            //Her sættes et indputfilter der skal forhindre at emails bliver længere end 30 karaktere.
             InputFilter[] filterArr = new InputFilter[1];
             filterArr[0] = new InputFilter.LengthFilter(maxLength);
+            //Her sættes filteret på EditText.
             editText.setFilters(filterArr);
+            //Her Tilføjes editText til tableRow.
             tableRow.addView(editText);
+            //Her sættes en "TextWatcher" på editText, der skal udfører nogle handlinger når teksten ændres.
             editText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -119,25 +135,28 @@ public class EmailPage extends TouchActivityHandler {
 
                 @Override
                 public void afterTextChanged(Editable s) {
+                    //her checker vi om editTextList listen indeholder dette view, og så fjerner vi det.
                     if (editTextList.contains(editText)){
                         editTextList.remove(editText);
                     }
+                    //Her checker vi om editText texten er valideret som en Email, ved brug af "validate" metoden længere nede.
+                    //Hvis den er godkendt bliver den tilføjet til editText listen.
                     if (validate(editText.getText().toString())){
                         editTextList.add(editText);
                     }
                 }
             });
 
-            //creating button
+            //Her oprettes slet knappen ved siden af email teksten, så emailen kan fjernes.
             Button btnDelete = new Button(this);
-            //button Parameters
+            //Her sættes knappens parametere, her bruges metoden dpToPx til at sætte knappens størrelse.
             btnDelete.setBackgroundResource(R.drawable.ic_baseline_cancel_24);
             btnDelete.setLayoutParams(new TableRow.LayoutParams(dpToPx(24, this), dpToPx(24, EmailPage.this)));
-            //adding button
+            //Her tilføjes knappen til tableRow.
             tableRow.addView(btnDelete);
-            //adds tableRow to Tablelayout
+            //Her tilføjer vi til sidst tableRow to Tablelayout
             tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-            //remove email row
+            //Her sættes en "Listener" på btnDelete, der sletter email objektet
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -153,21 +172,19 @@ public class EmailPage extends TouchActivityHandler {
             }
         }
     }
-
-
-
-    //pixels til dp
+    
+    //pixels til dp metode.
     public static int dpToPx(int dp, Context context){
         return dp * ((int) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
+    //validate metode.
     public static boolean validate(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
+    //Send Mail Metode.
     public void sendMail(View view) {
-
-
         String[] TO = new String[tableLayout.getChildCount()];
         int i=0;
         while (i < tableLayout.getChildCount())

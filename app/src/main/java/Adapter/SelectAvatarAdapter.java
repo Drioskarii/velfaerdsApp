@@ -38,7 +38,6 @@ import static android.content.Context.MODE_PRIVATE;
         public static ArrayList<Points> goodSelected = new ArrayList<>();
         public static int goodConfirmCounter;
 
-
         //vars
         private ArrayList<Points> mStrengths;
         private Context mContext;
@@ -49,7 +48,6 @@ import static android.content.Context.MODE_PRIVATE;
             mContext = context;
             mStrengths = strengths;
             misGood = isGood;
-
         }
 
         //Her bliver der lavet en ny ViewHolder.
@@ -75,6 +73,7 @@ import static android.content.Context.MODE_PRIVATE;
             //Her vælger du hvad der skal stå i den ViewHolder
             holder.selectConfirm.setVisibility(View.GONE);
             holder.title.setText(mStrengths.get(position).getTitle());
+            holder.setNullQuestion.setText("");
             if (mStrengths.get(position).getTitle().contains("Mod")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_mod);} else{holder.image.setImageResource(R.drawable.tndkvinde_mod);}}
             if (mStrengths.get(position).getTitle().contains("Nys")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_nys);} else{holder.image.setImageResource(R.drawable.tndkvinde_nys);}}
             if (mStrengths.get(position).getTitle().contains("Bes")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_bes);} else{holder.image.setImageResource(R.drawable.tndkvinde_bes);}}
@@ -91,7 +90,6 @@ import static android.content.Context.MODE_PRIVATE;
     //Her sikre vi os at result page ikke holder på de gamle værdier
             if (goodConfirmCounter == 1){
                 goodSelected.clear();
-
 
             }
 
@@ -159,6 +157,7 @@ import static android.content.Context.MODE_PRIVATE;
             RelativeLayout btn;
             ImageView selectConfirm;
             TextView title;
+            TextView setNullQuestion;
 
             //Her sætter du Id'er på de ting du lavede i ViewHolderen overn over
             public ViewHolder(@NonNull View itemView) {
@@ -166,7 +165,8 @@ import static android.content.Context.MODE_PRIVATE;
                 btn = itemView.findViewById(R.id.onClickbtn);
                 image = itemView.findViewById(R.id.imageIcon);
                 selectConfirm = itemView.findViewById(R.id.selectConfirm);
-                title = itemView.findViewById(R.id.select_txtAnswer);
+                title = itemView.findViewById(R.id.select_txtQuestion);
+                setNullQuestion = itemView.findViewById(R.id.select_txtAnswer);
             }
         }
     }
