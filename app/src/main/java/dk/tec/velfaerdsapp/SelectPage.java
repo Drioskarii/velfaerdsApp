@@ -61,6 +61,7 @@ public class SelectPage extends TouchActivityHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //her bliver dataen i strengths slettet for at sikre at den gamle data ikke bliver sendt flere gange
         strengths.clear();
         setContentView(R.layout.activity_select_page);
         btnBack = findViewById(R.id.btn_select_back);
@@ -92,6 +93,7 @@ public class SelectPage extends TouchActivityHandler {
                     }else{
                         intent = new Intent(SelectPage.this, ResultPage.class);
                     }
+                    //goodSelecter bliver puttet ind i et array og bliver sendre vidre
                     intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
                     startActivity(intent);
                 }
@@ -198,6 +200,7 @@ public class SelectPage extends TouchActivityHandler {
     private void getGoodImages() {
         initRecyclerView();
     }
+
     //Her bliver Recyclerviewet oprettet
     @SuppressLint("NewApi")
     private void initRecyclerView() {

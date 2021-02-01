@@ -52,9 +52,9 @@ public class SelectAvatar extends TouchActivityHandler {
             public void onClick(View v) {
                 if (true){
                 Intent intent = new Intent(SelectAvatar.this, ResultPage.class);
-                //Den valgte i adapteren
+                //Den valgte avatar bliver puttet ind i et intent
                 intent.putParcelableArrayListExtra("singleSelected", SelectAvatarAdapter.goodSelected);
-                //Begge to
+                // denne liste bliver sendt vidre
                 intent.putParcelableArrayListExtra("goodSelectedList", goodSelected);
                 startActivity(intent);
                 } else{
