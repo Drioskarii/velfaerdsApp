@@ -41,20 +41,19 @@ public class VideoAdapter {
     public static ArrayList<Strengths> strengths;
     private Context mContext;
     int Raw;
+    public boolean videoEnd;
     SimpleExoPlayer exoplayer;
     PlayerView playerView;
     ImageView fullscreenButton;
     boolean fullscreen = false;
     FrameLayout.LayoutParams paramsNotFullscreen;
 
-
     public VideoAdapter(Context context, int video, PlayerView pView){
         mContext = context;
         Raw = video;
         playerView = pView;
-
-
     }
+
 
 
     public void playVideo() {
@@ -102,6 +101,7 @@ public class VideoAdapter {
 
                 if (playbackState == Player.STATE_ENDED){
                     playerView.setVisibility(View.GONE);
+                    videoEnd = true;
                 }
 
             }

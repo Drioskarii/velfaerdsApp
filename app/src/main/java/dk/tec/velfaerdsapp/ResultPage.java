@@ -32,6 +32,7 @@ public class ResultPage extends TouchActivityHandler{
     private boolean videoWatched3 = false;
     ImageView characterPlaceholder;
     Button btnBack, btnForward;
+    public boolean videoEnd = false;
     TextView questionTxt;
     ImageView videobtn;
     PlayerView playerView;
@@ -97,8 +98,8 @@ public class ResultPage extends TouchActivityHandler{
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
             video.playVideo();
-            editor.putBoolean("videoWatched7", videoWatched3 = true);
-            editor.apply();
+//            editor.putBoolean("videoWatched7", videoWatched3 = true);
+//            editor.apply();
         }
 
         //sætter en knap til at pause en video.

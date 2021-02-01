@@ -25,9 +25,14 @@ import java.util.ArrayList;
 
 public class IntroPage extends TouchActivityHandler {
 
+    //////////////////////////////////////////////////////////
+    // Intropage er til at indsætte sine informationer
+    // samt få vist sin avatar
+    //////////////////////////////////////////////////////////
+
+    //Vars
     private static final String TAG = "IntroPage";
     Button btnBack, btnForward;
-    //Initialising
     private EditText enterName;
     private EditText enterJob;
     private ArrayList<String> mNames1 = new ArrayList<>();
@@ -36,12 +41,7 @@ public class IntroPage extends TouchActivityHandler {
     private ArrayList<Integer> mImageUrls1 = new ArrayList<Integer>();
     private ArrayList<Integer> mImageUrls2 = new ArrayList<Integer>();
     private ArrayList<Integer> mImageUrls = new ArrayList<Integer>();
-
-    AnimationDrawable animation;
-    ImageView characterPlaceholder;
-
     String selectedItem = "";
-    FrameLayout.LayoutParams paramsNotFullscreen;
     Spinner spinnerGender;
 
 
@@ -50,7 +50,7 @@ public class IntroPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Binding to ID's
+        //Binding til XML objekter
         setContentView(R.layout.activity_intro_page);
         enterName = findViewById(R.id.editTextName);
         enterJob = findViewById(R.id.editTextJob);
@@ -58,13 +58,14 @@ public class IntroPage extends TouchActivityHandler {
         btnBack = findViewById(R.id.btn_intro_back);
         btnForward = findViewById(R.id.btn_intro_forward);
 
-        //Insert specific data stored in sharedPrefs
+        //Hent data fra Shared prefs
         SharedPreferences sharedPreferences = getSharedPreferences("introValues", MODE_PRIVATE);
         String s1 = sharedPreferences.getString("gName", "");
         String s2 = sharedPreferences.getString("gJob", "");
         enterName.setText(s1);
         enterJob.setText(s2);
 
+        //Menu til at vælge sit køn
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.køn_array, R.layout.spinner_item_nomargin);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(
@@ -73,11 +74,11 @@ public class IntroPage extends TouchActivityHandler {
                         R.layout.contact_spinner_row_nothing_selected,
                         this));
 
-        //characterPlaceholder = findViewById(R.id.characterPlaceholder);
-        //characterPlaceholder.setBackgroundResource(R.drawable.animation);
-        //animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
+        //Indsæt avatar baseret på køn, på siden
         getImages();
+
+
         spinnerGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -86,10 +87,10 @@ public class IntroPage extends TouchActivityHandler {
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
             }
         });
 
+        // Listener til back button (Gå tilbage til forrige page)
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +98,7 @@ public class IntroPage extends TouchActivityHandler {
             }
         });
 
+        // Listener til forward button (Gå frem til næste page)
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,8 +110,8 @@ public class IntroPage extends TouchActivityHandler {
     @Override
     protected void onPause() {
         super.onPause();
-        //This garbage works that's pretty cool, this saves info in SharedPrefs
-        //Make object.png
+
+        //Indsætter data til shared prefs
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();
         int selectedID = spinnerGender.getSelectedItemPosition();
@@ -117,7 +119,6 @@ public class IntroPage extends TouchActivityHandler {
         SharedPreferences sharedPref = getSharedPreferences("introValues", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        //Inset data into the SharedPreferences
         editor.putString("gName", name);
         editor.putString("gJob", job);
         editor.putInt("gGender" , selectedID);
@@ -126,11 +127,9 @@ public class IntroPage extends TouchActivityHandler {
         gName = name;
         gJob = job;
 
-
     }
 
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {
-
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             System.out.println("Positionen er:" + position);
@@ -141,13 +140,12 @@ public class IntroPage extends TouchActivityHandler {
                 initRecyclerView();
             }
         }
-
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
     }
 
+    //Indsætter avatar på siden
     private void getImages() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
@@ -160,14 +158,9 @@ public class IntroPage extends TouchActivityHandler {
         mImageUrls2.add(R.drawable.tndkvinde_mod);
         mNames.add("");
         mNames2.add("Kvinde");
-
-
-
-
-
-
     }
 
+    // Jeg har ingen ide hva den her gør...
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: init recyclerview");
 
