@@ -212,8 +212,5 @@ public class SelectPage extends TouchActivityHandler {
         //her bliver dataen sendt til SelectAdapter
         SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
         recyclerViewGood.setAdapter(goodAdapter);
-
     }
-
-
 }
