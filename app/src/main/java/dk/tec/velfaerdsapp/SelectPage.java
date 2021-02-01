@@ -201,9 +201,10 @@ public class SelectPage extends TouchActivityHandler {
         initRecyclerView();
     }
 
-    //Her bliver Recyclerviewet oprettet
+
     @SuppressLint("NewApi")
     private void initRecyclerView() {
+        //Her bliver Recyclerviewet oprettet
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(gridLayoutManager);
