@@ -89,17 +89,6 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:visibility="invisible"/>
-
-            <View style="@style/Divider" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
-
-            <View style="@style/Divider" />
-
             </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
