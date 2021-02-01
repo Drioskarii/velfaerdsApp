@@ -57,7 +57,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"></ImageView>
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
 
         <GridLayout
@@ -106,7 +106,7 @@
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/seekBarTxt2"
@@ -124,7 +124,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/seekBarTxt1"
                     app:layout_constraintRight_toLeftOf="@+id/seekBarTxt3"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/seekBarTxt3"
@@ -142,7 +142,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/seekBarTxt2"
                     app:layout_constraintRight_toLeftOf="@+id/seekBarTxt4"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/seekBarTxt4"
@@ -160,7 +160,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/seekBarTxt3"
                     app:layout_constraintRight_toLeftOf="@+id/seekBarTxt5"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/seekBarTxt5"
@@ -179,10 +179,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintLeft_toRightOf="@+id/seekBarTxt4"
                     app:layout_constraintTop_toTopOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </GridLayout>
-
         <View style="@style/DividerThick" />
     </LinearLayout>
 
@@ -195,13 +193,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:textSize="20dp"
-            android:text="Her kan du se betydningen for, hver svarmulighed">
-        </TextView>
+            android:text="Her kan du se betydningen for, hver svarmulighed"/>
 
         <GridLayout
             android:layout_width="match_parent"
@@ -209,6 +207,7 @@
             android:paddingTop="10dp"
             android:rowCount="5"
             android:columnCount="2">
+
             <TextView
                 android:layout_row="0"
                 android:layout_column="0"
@@ -221,8 +220,8 @@
                 android:shadowRadius="3"
                 android:text="@string/_1"
                 android:textColor="@color/red"
-                android:textSize="20sp">
-            </TextView>
+                android:textSize="20sp"/>
+
             <TextView
                 android:layout_row="0"
                 android:layout_column="1"
@@ -230,8 +229,7 @@
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ikke god">
-            </TextView>
+                android:text="Ikke god"/>
 
             <TextView
                 android:layout_row="2"
@@ -246,8 +244,8 @@
                 android:text="@string/_3"
                 android:textAlignment="center"
                 android:textColor="@color/yellow"
-                android:textSize="20sp">
-            </TextView>
+                android:textSize="20sp"/>
+
             <TextView
                 android:layout_row="2"
                 android:layout_column="1"
@@ -255,8 +253,7 @@
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Middel">
-            </TextView>
+                android:text="Middel"/>
 
             <TextView
                 android:layout_row="4"
@@ -271,8 +268,8 @@
                 android:text="@string/_5"
                 android:textAlignment="center"
                 android:textColor="@color/green"
-                android:textSize="20sp">
-            </TextView>
+                android:textSize="20sp"/>
+
             <TextView
                 android:layout_row="4"
                 android:layout_column="1"
@@ -280,8 +277,7 @@
                 android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meget god">
-            </TextView>
+                android:text="Meget god"/>
         </GridLayout>
     </LinearLayout>
 
@@ -297,6 +293,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
