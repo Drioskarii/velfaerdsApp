@@ -90,44 +90,32 @@
                 android:textSize="15sp"
                 android:visibility="invisible"/>
             </LinearLayout>
-        <LinearLayout
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:layout_marginTop="450dp">
 
-            android:gravity="center|bottom"
-            android:padding="5dp"
-            android:layout_margin="5dp"
+            <Button
+                android:id="@+id/btn_intro_back"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Tilbage"
+                android:textColor="@color/designBlue"
+                android:background="@color/designWhite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:id="@+id/btn_intro_back"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Tilbage"
-                    android:textColor="@color/designBlue"
-                    android:background="@color/designWhite"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                    android:id="@+id/btn_intro_forward"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/designWhite"
-                    android:text="Videre"
-                    android:textColor="@color/designBlue"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
+            <Button
+                android:id="@+id/btn_intro_forward"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/designWhite"
+                android:text="Videre"
+                android:textColor="@color/designBlue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
