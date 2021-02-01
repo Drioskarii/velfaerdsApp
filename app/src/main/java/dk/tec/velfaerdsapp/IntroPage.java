@@ -35,7 +35,6 @@ public class IntroPage extends TouchActivityHandler {
     Button btnBack, btnForward;
     private EditText enterName;
     private EditText enterJob;
-    String selectedItem = "";
     Spinner spinnerGender;
 
     @Override
