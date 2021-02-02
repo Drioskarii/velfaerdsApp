@@ -83,10 +83,11 @@ public class SelectPage extends TouchActivityHandler {
             }
         });
 
-        //Her bliver der tjekket hvis der er 2 af elementerne på SelectPagen som er valgt
+
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Her bliver der tjekket hvis der er 2 af elementerne på SelectPagen som er valgt
                 if (SelectAdapter.goodConfirmCounter == 2){
                     Intent intent;
                     if (SelectAdapter.goodSelected.get(0).getPoints() == SelectAdapter.goodSelected.get(1).getPoints()) {
@@ -94,6 +95,7 @@ public class SelectPage extends TouchActivityHandler {
                     }else{
                         if (newPoints.get(0).getPoints() > newPoints.get(1).getPoints())
                         { posChosen = 0; } else{ posChosen = 1; }
+                        //her tjekker den efter køn
                         if (newPoints.get(posChosen).getTitle().contains("Mod")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_mod;} else{gAvatar = R.drawable.tndkvinde_mod;}}
                         if (newPoints.get(posChosen).getTitle().contains("Nys")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_nys;} else{gAvatar = R.drawable.tndkvinde_nys;}}
                         if (newPoints.get(posChosen).getTitle().contains("Bes")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_bes;} else{gAvatar = R.drawable.tndkvinde_bes;}}
@@ -185,16 +187,18 @@ public class SelectPage extends TouchActivityHandler {
                 return Integer.valueOf(obj2.getPoints()).compareTo(Integer.valueOf(obj1.getPoints()));
             }
         });
-
+        //her taver vi værdierne fra points arrayet og putter det ind i Points g'erne efter de er sorteret.
         Points g5 = new Points(points.get(5).getTitle(), points.get(5).getDescription(), points.get(5).getPoints(), points.get(5).getIcon(), points.get(5).getMaxpoints());
         Points g4 = new Points(points.get(4).getTitle(), points.get(4).getDescription(), points.get(4).getPoints(), points.get(4).getIcon(), points.get(4).getMaxpoints());
         Points g3 = new Points(points.get(3).getTitle(), points.get(3).getDescription(), points.get(3).getPoints(), points.get(3).getIcon(), points.get(3).getMaxpoints());
         Points g2 = new Points(points.get(2).getTitle(), points.get(2).getDescription(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxpoints());
         Points g1 = new Points(points.get(1).getTitle(), points.get(1).getDescription(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxpoints());
         Points g0 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxpoints());
+        //her opretter man det man kan vælge på SelectPage
         newPoints.add(g0);
         newPoints.add(g1);
         newPoints.add(g2);
+        //Her bliver der oprettet flere hvis flere points er på 5
         if (points.get(3).getPoints() == 5){
             newPoints.add(g3);
         }
@@ -204,6 +208,7 @@ public class SelectPage extends TouchActivityHandler {
         if (points.get(5).getPoints() == 5) {
             newPoints.add(g5);
         }
+
     }
 
     private void getGoodImages() {
@@ -218,7 +223,7 @@ public class SelectPage extends TouchActivityHandler {
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(gridLayoutManager);
 
-        //her bliver dataen sendt til SelectAdapter
+        //her bliver dataen sendt til SelectAdapter så recycler viewet kan vise det frem
         SelectAdapter goodAdapter = new SelectAdapter(this, newPoints, true);
         recyclerViewGood.setAdapter(goodAdapter);
     }
