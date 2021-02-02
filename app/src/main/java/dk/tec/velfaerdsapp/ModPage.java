@@ -114,6 +114,7 @@ public class ModPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 closePage();
+                video.pauseVideo();
             }
         });
 

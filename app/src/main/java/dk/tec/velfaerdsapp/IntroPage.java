@@ -100,7 +100,6 @@ public class IntroPage extends TouchActivityHandler {
     protected void onPause() {
         super.onPause();
 
-        //Indsætter data til shared prefs
         String name = "" + enterName.getText();
         String job = "" + enterJob.getText();
         int selectedID = spinnerGender.getSelectedItemPosition();

@@ -120,6 +120,7 @@ public class SocPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 closePage();
+                video.pauseVideo();
             }
         });
 

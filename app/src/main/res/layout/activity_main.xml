@@ -78,24 +78,27 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:gravity="center|bottom"
         android:padding="5dp"
         android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
 
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutLogos">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp">
 
             <Button
                 android:id="@+id/btn_main_back"
@@ -117,6 +120,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

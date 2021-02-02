@@ -112,6 +112,7 @@ public class SamPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 closePage();
+                video.pauseVideo();
             }
         });
 
