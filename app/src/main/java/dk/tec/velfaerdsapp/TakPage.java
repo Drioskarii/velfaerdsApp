@@ -114,6 +114,7 @@ public class TakPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
                 closePage();
+                video.pauseVideo();
             }
         });
 
@@ -125,7 +126,7 @@ public class TakPage extends TouchActivityHandler {
                 //Sætter sharedpref når vidoen slutter.
                 if (video.videoEnd)
                 {
-                    editor.putBoolean("videoWatched4", videoWatched3 = true);
+                    editor.putBoolean("videoWatched6", videoWatched3 = true);
                     editor.apply();
                 }
 
