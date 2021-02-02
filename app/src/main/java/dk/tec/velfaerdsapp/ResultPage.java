@@ -97,9 +97,10 @@ public class ResultPage extends TouchActivityHandler{
         videoWatched3 = sharedPreferences.getBoolean("videoWatched7", false);
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
+            skipVideo.setVisibility(skipVideo.VISIBLE);
             video.playVideo();
-//            editor.putBoolean("videoWatched7", videoWatched3 = true);
-//            editor.apply();
+            editor.putBoolean("videoWatched7", videoWatched3 = true);
+            editor.apply();
         }
 
         //sætter en knap til at pause en video.
