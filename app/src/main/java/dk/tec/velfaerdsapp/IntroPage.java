@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -91,7 +92,13 @@ public class IntroPage extends TouchActivityHandler {
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(newPage(IntroPage.this, QuestionTutorial.class));
+
+                if (gKøn == 0 || gName == null || gJob == null) {
+                    Toast.makeText(IntroPage.this, "Udfyld siden for at fortsætte", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    startActivity(newPage(IntroPage.this, QuestionTutorial.class));
+                }
             }
         });
     }
