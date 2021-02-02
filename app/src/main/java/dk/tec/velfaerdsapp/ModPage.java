@@ -85,6 +85,9 @@ public class ModPage extends TouchActivityHandler {
         //Starter videoen på entry, hvis man ikke har set videoen før.
         if (!videoWatched2){
             playerView.setVisibility(View.VISIBLE);
+            skipVideo.setVisibility(skipVideo.VISIBLE);
+            editor.putBoolean("videoWatched3", videoWatched2 = true);
+            editor.apply();
             video.playVideo();
         }
 
@@ -123,21 +126,8 @@ public class ModPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
 
-                //Sætter sharedpref når vidoen slutter.
-                if (video.videoEnd)
-                {
-                    editor.putBoolean("videoWatched3", videoWatched2 = true);
-                    editor.apply();
-                }
-
-                //Condition til at videoen skal ses færdig før man går videre.
-                if(!video.videoEnd && !videoWatched2) {
-                    Toast.makeText(ModPage.this, "Se videoen færdig for at fortsætte", Toast.LENGTH_SHORT).show();
-                    System.out.println(video.videoEnd);
-                }
-
                 //Condition til at man kan gå videre hvis alle spørgsmål er svaret.
-                else if (answeredCount == count) {
+                if (answeredCount == count) {
                     startActivity(newPage(ModPage.this, NysPage.class));
                     video.pauseVideo();
                 }

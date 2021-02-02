@@ -91,6 +91,9 @@ public class SocPage extends TouchActivityHandler {
         //Starter videoen på entry, hvis man ikke har set videoen før.
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
+            skipVideo.setVisibility(skipVideo.VISIBLE);
+            editor.putBoolean("videoWatched5", videoWatched3 = true);
+            editor.apply();
             video.playVideo();
 
         }
@@ -129,21 +132,8 @@ public class SocPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
 
-                //Sætter sharedpref når vidoen slutter.
-                if (video.videoEnd)
-                {
-                    editor.putBoolean("videoWatched5", videoWatched3 = true);
-                    editor.apply();
-                }
-
-                //Condition til at videoen skal ses færdig før man går videre.
-                if(!video.videoEnd && !videoWatched3) {
-                    Toast.makeText(SocPage.this, "Se videoen færdig for at fortsætte", Toast.LENGTH_SHORT).show();
-                    System.out.println(video.videoEnd);
-                }
-
                 //Condition til at man kan gå videre hvis alle spørgsmål er svaret.
-                else if(SocPage.answeredCount == SocPage.count) {
+                if(SocPage.answeredCount == SocPage.count) {
                     Intent intent = new Intent(SocPage.this, SelectPage.class);
                     intent.putParcelableArrayListExtra("ModList", ModAdapter.strengths);
                     intent.putParcelableArrayListExtra("NysList", NysAdapter.strengths);

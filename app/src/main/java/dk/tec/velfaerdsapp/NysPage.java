@@ -85,6 +85,9 @@ public class NysPage extends TouchActivityHandler {
         //Starter videoen på entry, hvis man ikke har set videoen før.
         if (!videoWatched3){
             playerView.setVisibility(View.VISIBLE);
+            skipVideo.setVisibility(skipVideo.VISIBLE);
+            editor.putBoolean("videoWatched2", videoWatched3 = true);
+            editor.apply();
             video.playVideo();
         }
 
@@ -122,21 +125,8 @@ public class NysPage extends TouchActivityHandler {
             @Override
             public void onClick(View v) {
 
-                //Sætter sharedpref når vidoen slutter.
-                if (video.videoEnd)
-                {
-                    editor.putBoolean("videoWatched2", videoWatched3 = true);
-                    editor.apply();
-                }
-
-                //Condition til at videoen skal ses færdig før man går videre.
-                if(!video.videoEnd && !videoWatched3) {
-                    Toast.makeText(NysPage.this, "Se videoen færdig for at fortsætte", Toast.LENGTH_SHORT).show();
-                    System.out.println(video.videoEnd);
-                }
-
                 //Condition til at man kan gå videre hvis alle spørgsmål er svaret.
-                else if (answeredCount == count) {
+                if (answeredCount == count) {
                     startActivity(newPage(NysPage.this, BesPage.class));
                     video.pauseVideo();
                 }

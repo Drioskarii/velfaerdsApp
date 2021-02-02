@@ -85,6 +85,9 @@ public class BesPage extends TouchActivityHandler {
         //Starter videoen på entry, hvis man ikke har set videoen før.
         if (!videoWatched1){
             playerView.setVisibility(View.VISIBLE);
+            skipVideo.setVisibility(skipVideo.VISIBLE);
+            editor.putBoolean("videoWatched", videoWatched1 = true);
+            editor.apply();
             video.playVideo();
         }
 
@@ -121,19 +124,6 @@ public class BesPage extends TouchActivityHandler {
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Sætter sharedpref når vidoen slutter.
-                if (video.videoEnd)
-                {
-                    editor.putBoolean("videoWatched", videoWatched1 = true);
-                    editor.apply();
-                }
-
-                //Condition til at videoen skal ses færdig før man går videre.
-                if(!video.videoEnd && !videoWatched1) {
-                    Toast.makeText(BesPage.this, "Se videoen færdig for at fortsætte", Toast.LENGTH_SHORT).show();
-                    System.out.println(video.videoEnd);
-                }
 
                 //Condition til at man kan gå videre hvis alle spørgsmål er svaret.
                 if (answeredCount == count) {
