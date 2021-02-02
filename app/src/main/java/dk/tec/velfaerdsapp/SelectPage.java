@@ -42,8 +42,8 @@ public class SelectPage extends TouchActivityHandler {
     //vars
     Button btnBack, btnForward;
     List<Points> points = new ArrayList<Points>();
+    ArrayList<Points> newPoints = new ArrayList<>();
 
-    ArrayList<Points> strengths = new ArrayList<>();
     ArrayList<Strengths> mod = new ArrayList<>();
     ArrayList<Strengths> nys = new ArrayList<>();
     ArrayList<Strengths> bes = new ArrayList<>();
@@ -63,7 +63,7 @@ public class SelectPage extends TouchActivityHandler {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //her bliver dataen i strengths slettet for at sikre at den gamle data ikke bliver sendt flere gange
-        strengths.clear();
+        newPoints.clear();
         setContentView(R.layout.activity_select_page);
         btnBack = findViewById(R.id.btn_select_back);
         btnForward = findViewById(R.id.btn_select_forward);
@@ -92,14 +92,14 @@ public class SelectPage extends TouchActivityHandler {
                     if (SelectAdapter.goodSelected.get(0).getPoints() == SelectAdapter.goodSelected.get(1).getPoints()) {
                         intent = new Intent(SelectPage.this, SelectAvatar.class);
                     }else{
-                        if (strengths.get(0).getPoints() > strengths.get(1).getPoints())
+                        if (newPoints.get(0).getPoints() > newPoints.get(1).getPoints())
                         { posChosen = 0; } else{ posChosen = 1; }
-                        if (strengths.get(posChosen).getTitle().contains("Mod")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_mod;} else{gAvatar = R.drawable.tndkvinde_mod;}}
-                        if (strengths.get(posChosen).getTitle().contains("Nys")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_nys;} else{gAvatar = R.drawable.tndkvinde_nys;}}
-                        if (strengths.get(posChosen).getTitle().contains("Bes")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_bes;} else{gAvatar = R.drawable.tndkvinde_bes;}}
-                        if (strengths.get(posChosen).getTitle().contains("Tak")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_tak;} else{gAvatar = R.drawable.tndkvinde_tak;}}
-                        if (strengths.get(posChosen).getTitle().contains("Sam")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_sam;} else{gAvatar = R.drawable.tndkvinde_sam;}}
-                        if (strengths.get(posChosen).getTitle().contains("Soc")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_soc;} else{gAvatar = R.drawable.tndkvinde_soc;}}
+                        if (newPoints.get(posChosen).getTitle().contains("Mod")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_mod;} else{gAvatar = R.drawable.tndkvinde_mod;}}
+                        if (newPoints.get(posChosen).getTitle().contains("Nys")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_nys;} else{gAvatar = R.drawable.tndkvinde_nys;}}
+                        if (newPoints.get(posChosen).getTitle().contains("Bes")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_bes;} else{gAvatar = R.drawable.tndkvinde_bes;}}
+                        if (newPoints.get(posChosen).getTitle().contains("Tak")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_tak;} else{gAvatar = R.drawable.tndkvinde_tak;}}
+                        if (newPoints.get(posChosen).getTitle().contains("Sam")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_sam;} else{gAvatar = R.drawable.tndkvinde_sam;}}
+                        if (newPoints.get(posChosen).getTitle().contains("Soc")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_soc;} else{gAvatar = R.drawable.tndkvinde_soc;}}
                         intent = new Intent(SelectPage.this, ResultPage.class);}
 
                     //goodSelecter bliver puttet ind i et array og bliver sendre vidre
@@ -192,17 +192,17 @@ public class SelectPage extends TouchActivityHandler {
         Points g2 = new Points(points.get(2).getTitle(), points.get(2).getDescription(), points.get(2).getPoints(), points.get(2).getIcon(), points.get(2).getMaxpoints());
         Points g1 = new Points(points.get(1).getTitle(), points.get(1).getDescription(), points.get(1).getPoints(), points.get(1).getIcon(), points.get(1).getMaxpoints());
         Points g0 = new Points(points.get(0).getTitle(), points.get(0).getDescription(), points.get(0).getPoints(), points.get(0).getIcon(), points.get(0).getMaxpoints());
-        strengths.add(g0);
-        strengths.add(g1);
-        strengths.add(g2);
+        newPoints.add(g0);
+        newPoints.add(g1);
+        newPoints.add(g2);
         if (points.get(3).getPoints() == 5){
-            strengths.add(g3);
+            newPoints.add(g3);
         }
         if (points.get(4).getPoints() == 5){
-            strengths.add(g4);
+            newPoints.add(g4);
         }
         if (points.get(5).getPoints() == 5) {
-            strengths.add(g5);
+            newPoints.add(g5);
         }
     }
 
@@ -219,7 +219,7 @@ public class SelectPage extends TouchActivityHandler {
         recyclerViewGood.setLayoutManager(gridLayoutManager);
 
         //her bliver dataen sendt til SelectAdapter
-        SelectAdapter goodAdapter = new SelectAdapter(this, strengths, true);
+        SelectAdapter goodAdapter = new SelectAdapter(this, newPoints, true);
         recyclerViewGood.setAdapter(goodAdapter);
     }
 }

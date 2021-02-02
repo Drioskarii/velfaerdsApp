@@ -24,6 +24,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TouchActivityHandler extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class TouchActivityHandler extends AppCompatActivity {
     public static String gJob;
     //gKøn indeholder personens køn fra IntroPage
     public static int gKøn;
-
+    //gKøn indeholder personens avatar fra SelectAvatar
     public static int gAvatar;
 
     @Override

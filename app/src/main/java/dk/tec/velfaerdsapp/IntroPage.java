@@ -92,7 +92,11 @@ public class IntroPage extends TouchActivityHandler {
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (spinnerGender.getSelectedItem() == null || gName == null || gJob == null) {
+                String name = "" + enterName.getText();
+                String job = "" + enterJob.getText();
+                gName = name;
+                gJob = job;
+                if (gName == "" || gJob == "" || gKøn == 0) {
                     Toast.makeText(IntroPage.this, "Udfyld siden for at fortsætte", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -105,13 +109,6 @@ public class IntroPage extends TouchActivityHandler {
     @Override
     protected void onPause() {
         super.onPause();
-
-        String name = "" + enterName.getText();
-        String job = "" + enterJob.getText();
-        int selectedID = spinnerGender.getSelectedItemPosition();
-
-        gName = name;
-        gJob = job;
     }
 }
 
