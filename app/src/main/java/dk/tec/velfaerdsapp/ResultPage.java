@@ -39,7 +39,6 @@ public class ResultPage extends TouchActivityHandler{
     ImageView skipVideo;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
-    ArrayList<Points> singleSelected = new ArrayList<>();
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -67,23 +66,7 @@ public class ResultPage extends TouchActivityHandler{
 
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
         initRecyclerView();
-
-        if (goodSelected.get(0).getPoints() == goodSelected.get(1).getPoints()){
-            singleSelected = getIntent().getParcelableArrayListExtra("singleSelected");
-            //Her checkes hvilket element der er blevet hentet og sætter ikonet så det passer.
-            if (singleSelected.get(0).getTitle().contains("Mod")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_mod);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_mod);}}
-            if (singleSelected.get(0).getTitle().contains("Nys")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_nys);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_nys);}}
-            if (singleSelected.get(0).getTitle().contains("Bes")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_bes);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_bes);}}
-            if (singleSelected.get(0).getTitle().contains("Tak")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_tak);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_tak);}}
-            if (singleSelected.get(0).getTitle().contains("Sam")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_sam);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_sam);}}
-            if (singleSelected.get(0).getTitle().contains("Soc")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_soc);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_soc);}}
-        }
-        else if (goodSelected.get(0).getPoints() > goodSelected.get(1).getPoints()){
-            setIcon(0);
-        }
-        else if (goodSelected.get(1).getPoints() > goodSelected.get(0).getPoints()){
-            setIcon(1);
-        }
+        characterPlaceholder.setImageResource(gAvatar);
 
         TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
         txtSelectDinAvatar.setText(gJob + " " + gName);
@@ -142,15 +125,6 @@ public class ResultPage extends TouchActivityHandler{
                 video.pauseVideo();
             }
         });
-    }
-
-    private void setIcon(int position){
-        if (goodSelected.get(position).getTitle().contains("Mod")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_mod);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_mod);}}
-        if (goodSelected.get(position).getTitle().contains("Nys")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_nys);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_nys);}}
-        if (goodSelected.get(position).getTitle().contains("Bes")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_bes);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_bes);}}
-        if (goodSelected.get(position).getTitle().contains("Tak")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_tak);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_tak);}}
-        if (goodSelected.get(position).getTitle().contains("Sam")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_sam);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_sam);}}
-        if (goodSelected.get(position).getTitle().contains("Soc")){ if (gKøn == 1){characterPlaceholder.setImageResource(R.drawable.tndmand_soc);} else{characterPlaceholder.setImageResource(R.drawable.tndkvinde_soc);}}
     }
 
     //Dette er en funktion for selve udskiften af resultaten, hvordan siden ser ud.

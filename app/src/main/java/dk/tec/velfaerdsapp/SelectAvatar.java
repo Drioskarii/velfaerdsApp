@@ -50,11 +50,15 @@ public class SelectAvatar extends TouchActivityHandler {
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (true){
+                if (SelectAvatarAdapter.goodConfirmCounter == 1){
                 Intent intent = new Intent(SelectAvatar.this, ResultPage.class);
-                //Den valgte avatar bliver puttet ind i et intent
-                intent.putParcelableArrayListExtra("singleSelected", SelectAvatarAdapter.goodSelected);
-                // denne liste bliver sendt vidre
+                    if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Mod")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_mod;} else{gAvatar = R.drawable.tndkvinde_mod;}}
+                    if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Nys")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_nys;} else{gAvatar = R.drawable.tndkvinde_nys;}}
+                    if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Bes")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_bes;} else{gAvatar = R.drawable.tndkvinde_bes;}}
+                    if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Tak")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_tak;} else{gAvatar = R.drawable.tndkvinde_tak;}}
+                    if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Sam")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_sam;} else{gAvatar = R.drawable.tndkvinde_sam;}}
+                    if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Soc")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_soc;} else{gAvatar = R.drawable.tndkvinde_soc;}}
+                    // denne liste bliver sendt vidre
                 intent.putParcelableArrayListExtra("goodSelectedList", goodSelected);
                 startActivity(intent);
                 } else{
@@ -64,7 +68,6 @@ public class SelectAvatar extends TouchActivityHandler {
         });
     }
 
-    @SuppressLint("NewApi")
     private void initRecyclerView() {
         //Her bliver Recyclerviewet oprettet
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);

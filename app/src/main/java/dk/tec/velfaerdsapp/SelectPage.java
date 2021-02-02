@@ -26,6 +26,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import Adapter.SelectAdapter;
+import Adapter.SelectAvatarAdapter;
 import Strengths.Strengths;
 import Strengths.Points;
 
@@ -56,7 +57,7 @@ public class SelectPage extends TouchActivityHandler {
     int takPoints;
     int samPoints;
     int socPoints;
-
+    int posChosen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +92,16 @@ public class SelectPage extends TouchActivityHandler {
                     if (SelectAdapter.goodSelected.get(0).getPoints() == SelectAdapter.goodSelected.get(1).getPoints()) {
                         intent = new Intent(SelectPage.this, SelectAvatar.class);
                     }else{
-                        intent = new Intent(SelectPage.this, ResultPage.class);
-                    }
+                        if (strengths.get(0).getPoints() > strengths.get(1).getPoints())
+                        { posChosen = 0; } else{ posChosen = 1; }
+                        if (strengths.get(posChosen).getTitle().contains("Mod")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_mod;} else{gAvatar = R.drawable.tndkvinde_mod;}}
+                        if (strengths.get(posChosen).getTitle().contains("Nys")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_nys;} else{gAvatar = R.drawable.tndkvinde_nys;}}
+                        if (strengths.get(posChosen).getTitle().contains("Bes")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_bes;} else{gAvatar = R.drawable.tndkvinde_bes;}}
+                        if (strengths.get(posChosen).getTitle().contains("Tak")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_tak;} else{gAvatar = R.drawable.tndkvinde_tak;}}
+                        if (strengths.get(posChosen).getTitle().contains("Sam")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_sam;} else{gAvatar = R.drawable.tndkvinde_sam;}}
+                        if (strengths.get(posChosen).getTitle().contains("Soc")){ if (TouchActivityHandler.gKøn == 1){gAvatar = R.drawable.tndmand_soc;} else{gAvatar = R.drawable.tndkvinde_soc;}}
+                        intent = new Intent(SelectPage.this, ResultPage.class);}
+
                     //goodSelecter bliver puttet ind i et array og bliver sendre vidre
                     intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
                     startActivity(intent);

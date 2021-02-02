@@ -92,8 +92,7 @@ public class IntroPage extends TouchActivityHandler {
         btnForward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (gKøn == 0 || gName == null || gJob == null) {
+                if (spinnerGender.getSelectedItem() == null || gName == null || gJob == null) {
                     Toast.makeText(IntroPage.this, "Udfyld siden for at fortsætte", Toast.LENGTH_SHORT).show();
                 }
                 else {

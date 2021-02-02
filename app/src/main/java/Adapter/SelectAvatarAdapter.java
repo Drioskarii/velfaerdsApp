@@ -59,35 +59,20 @@ import static android.content.Context.MODE_PRIVATE;
         }
 
         //Her binder du din data til ViewHolderen
-        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void onBindViewHolder(@NonNull Adapter.SelectAvatarAdapter.ViewHolder holder, int position) {
-            Log.d(TAG, "onBindViewHolder: called.");
-
-            //Sortere selectpage arrayList
-            Log.d(TAG, "POSITION: "+position);
-            Log.d(TAG, "QUESTION: "+mStrengths.get(position).getDescription());
-
-            TouchActivityHandler tah = new TouchActivityHandler();
-
             //Her vælger du hvad der skal stå i den ViewHolder
             holder.selectConfirm.setVisibility(View.GONE);
             holder.title.setText(mStrengths.get(position).getTitle());
             holder.setNullQuestion.setText("");
-            if (mStrengths.get(position).getTitle().contains("Mod")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_mod);} else{holder.image.setImageResource(R.drawable.tndkvinde_mod);}}
-            if (mStrengths.get(position).getTitle().contains("Nys")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_nys);} else{holder.image.setImageResource(R.drawable.tndkvinde_nys);}}
-            if (mStrengths.get(position).getTitle().contains("Bes")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_bes);} else{holder.image.setImageResource(R.drawable.tndkvinde_bes);}}
-            if (mStrengths.get(position).getTitle().contains("Tak")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_tak);} else{holder.image.setImageResource(R.drawable.tndkvinde_tak);}}
-            if (mStrengths.get(position).getTitle().contains("Sam")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_sam);} else{holder.image.setImageResource(R.drawable.tndkvinde_sam);}}
-            if (mStrengths.get(position).getTitle().contains("Soc")){ if (tah.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_soc);} else{holder.image.setImageResource(R.drawable.tndkvinde_soc);}}
+            if (mStrengths.get(position).getTitle().contains("Mod")){ if (TouchActivityHandler.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_mod);} else{holder.image.setImageResource(R.drawable.tndkvinde_mod);}}
+            if (mStrengths.get(position).getTitle().contains("Nys")){ if (TouchActivityHandler.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_nys);} else{holder.image.setImageResource(R.drawable.tndkvinde_nys);}}
+            if (mStrengths.get(position).getTitle().contains("Bes")){ if (TouchActivityHandler.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_bes);} else{holder.image.setImageResource(R.drawable.tndkvinde_bes);}}
+            if (mStrengths.get(position).getTitle().contains("Tak")){ if (TouchActivityHandler.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_tak);} else{holder.image.setImageResource(R.drawable.tndkvinde_tak);}}
+            if (mStrengths.get(position).getTitle().contains("Sam")){ if (TouchActivityHandler.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_sam);} else{holder.image.setImageResource(R.drawable.tndkvinde_sam);}}
+            if (mStrengths.get(position).getTitle().contains("Soc")){ if (TouchActivityHandler.gKøn == 1){holder.image.setImageResource(R.drawable.tndmand_soc);} else{holder.image.setImageResource(R.drawable.tndkvinde_soc);}}
 
-            SharedPreferences sharedPref = holder.title.getContext().getSharedPreferences("selectAvatarArray", MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-
-            String answerValue = String.valueOf(mStrengths.get(position).getPoints());
-            String questionValue = mStrengths.get(position).getDescription();
-
-    //Her sikre vi os at result page ikke holder på de gamle værdier
+            //Her sikre vi os at result page ikke holder på de gamle værdier
             if (goodConfirmCounter == 1){
                 goodSelected.clear();
 
@@ -98,9 +83,6 @@ import static android.content.Context.MODE_PRIVATE;
 
                 goodConfirmCounter = 0;
                 holder.selectConfirm.setVisibility(View.GONE);
-
-                editor.putString(mStrengths.get(position).getDescription()+"_selected",answerValue+questionValue);
-                editor.apply();
             }
 
             holder.btn.setOnClickListener(v -> {
@@ -112,18 +94,14 @@ import static android.content.Context.MODE_PRIVATE;
                             goodConfirmCounter--;
 
                             goodSelected.remove(mStrengths.get(position));
-                            System.out.println("Remove " + mStrengths.get(position));
                         } else {
 
                             holder.selectConfirm.setVisibility(View.VISIBLE);
-                            editor.putString(mStrengths.get(position).getDescription() + "_selected", answerValue + questionValue);
-                            editor.apply();
 
                             goodConfirmCounter++;
                             System.out.println(goodConfirmCounter);
 
                             goodSelected.add(mStrengths.get(position));
-                            System.out.println("added Good" + mStrengths.get(position));
 
                         }
                     } else if (holder.selectConfirm.isShown()) {
@@ -133,7 +111,6 @@ import static android.content.Context.MODE_PRIVATE;
                         System.out.println(goodConfirmCounter);
 
                         goodSelected.remove(mStrengths.get(position));
-                        System.out.println("Remove " + mStrengths.get(position));
                     } else {
                         Toast.makeText(mContext, "du kan ikke vælge flere svar", Toast.LENGTH_SHORT).show();
                     }
@@ -148,7 +125,6 @@ import static android.content.Context.MODE_PRIVATE;
         }
 
         public static int getCount(){
-            System.out.println("getCount() = "+goodConfirmCounter);
             return (goodConfirmCounter);
         }
 

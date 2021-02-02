@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -37,6 +38,8 @@ public class TouchActivityHandler extends AppCompatActivity {
     public static String gJob;
     //gKøn indeholder personens køn fra IntroPage
     public static int gKøn;
+
+    public static int gAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
