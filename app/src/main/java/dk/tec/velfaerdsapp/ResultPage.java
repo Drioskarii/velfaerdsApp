@@ -39,6 +39,7 @@ public class ResultPage extends TouchActivityHandler{
     ImageView skipVideo;
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
+    ArrayList<Points> topFive = new ArrayList<>();
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -65,6 +66,11 @@ public class ResultPage extends TouchActivityHandler{
         goodSelected.clear();
 
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        topFive = getIntent().getParcelableArrayListExtra("topFive");
+        topFive = getIntent().getParcelableArrayListExtra("topFive");
+
+        System.out.println(topFive);
+        System.out.println("Above is topFive");
         initRecyclerView();
         characterPlaceholder.setImageResource(gAvatar);
 

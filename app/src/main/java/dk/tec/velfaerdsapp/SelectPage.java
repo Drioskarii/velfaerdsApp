@@ -44,6 +44,8 @@ public class SelectPage extends TouchActivityHandler {
     List<Points> points = new ArrayList<Points>();
     ArrayList<Points> newPoints = new ArrayList<>();
 
+    ArrayList<Points> topFive = new ArrayList<>();
+
     ArrayList<Strengths> mod = new ArrayList<>();
     ArrayList<Strengths> nys = new ArrayList<>();
     ArrayList<Strengths> bes = new ArrayList<>();
@@ -106,10 +108,13 @@ public class SelectPage extends TouchActivityHandler {
 
                     //goodSelecter bliver puttet ind i et array og bliver sendre vidre
                     intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                    intent.putParcelableArrayListExtra("topFive", topFive);
+                    System.out.println(topFive.toString());
                     startActivity(intent);
                 }
                 else{
                     Toast.makeText(SelectPage.this, "vælg 2 styrker for at fortsætte", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -198,6 +203,13 @@ public class SelectPage extends TouchActivityHandler {
         newPoints.add(g0);
         newPoints.add(g1);
         newPoints.add(g2);
+
+        //All Strengths
+        topFive.add(g1);
+        topFive.add(g2);
+        topFive.add(g3);
+        topFive.add(g4);
+        topFive.add(g5);
         //Her bliver der oprettet flere hvis flere points er på 5
         if (points.get(3).getPoints() == 5){
             newPoints.add(g3);

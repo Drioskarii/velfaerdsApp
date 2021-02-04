@@ -26,6 +26,7 @@ public class SelectAvatar extends TouchActivityHandler {
     private static final String TAG = "selectAvatar";
     Button btnBack, btnForward;
     ArrayList<Points> goodSelected = new ArrayList<>();
+    ArrayList<Points> topFive = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,9 @@ public class SelectAvatar extends TouchActivityHandler {
         btnForward = findViewById(R.id.btn_selectAvatar_forward);
 
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
-
+        topFive = getIntent().getParcelableArrayListExtra("topFive");
+        System.out.println(topFive);
+        System.out.println("Above is topFive");
         initRecyclerView();
 
         //her er tilbage knappen
@@ -59,7 +62,8 @@ public class SelectAvatar extends TouchActivityHandler {
                     if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Sam")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_sam;} else{gAvatar = R.drawable.tndkvinde_sam;}}
                     if (SelectAvatarAdapter.goodSelected.get(0).getTitle().contains("Soc")){ if (gKøn == 1){gAvatar = R.drawable.tndmand_soc;} else{gAvatar = R.drawable.tndkvinde_soc;}}
                     // denne liste bliver sendt vidre
-                intent.putParcelableArrayListExtra("goodSelectedList", goodSelected);
+                    intent.putParcelableArrayListExtra("goodSelectedList", goodSelected);
+                    intent.putParcelableArrayListExtra("topFive", topFive);
                 startActivity(intent);
                 } else{
                     Toast.makeText(SelectAvatar.this, "vælg din avatar for at fortsætte", Toast.LENGTH_SHORT).show();
