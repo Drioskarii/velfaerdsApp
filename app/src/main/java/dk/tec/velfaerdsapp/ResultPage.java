@@ -67,7 +67,6 @@ public class ResultPage extends TouchActivityHandler{
 
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
         topFive = getIntent().getParcelableArrayListExtra("topFive");
-        topFive = getIntent().getParcelableArrayListExtra("topFive");
 
         System.out.println(topFive);
         System.out.println("Above is topFive");
