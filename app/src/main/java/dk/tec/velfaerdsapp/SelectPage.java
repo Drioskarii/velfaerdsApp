@@ -205,11 +205,11 @@ public class SelectPage extends TouchActivityHandler {
         newPoints.add(g2);
 
         //All Strengths
+        topFive.add(g0);
         topFive.add(g1);
         topFive.add(g2);
         topFive.add(g3);
         topFive.add(g4);
-        topFive.add(g5);
         //Her bliver der oprettet flere hvis flere points er på 5
         if (points.get(3).getPoints() == 5){
             newPoints.add(g3);

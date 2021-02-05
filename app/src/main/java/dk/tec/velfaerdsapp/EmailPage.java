@@ -52,7 +52,7 @@ public class EmailPage extends TouchActivityHandler {
         tableLayout = findViewById(R.id.tableLayout);
         btnBack = findViewById(R.id.btn_email_back);
         //Gemmer intent fra forrige side til array variablen.
-        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        goodSelected = getIntent().getParcelableArrayListExtra("resultList");
 
         //Her laves en knap ud af et Imageview.
         ImageView btnNewMail = findViewById(R.id.btnNewMail);

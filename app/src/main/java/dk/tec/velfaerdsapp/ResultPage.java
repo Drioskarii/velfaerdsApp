@@ -3,8 +3,7 @@ package dk.tec.velfaerdsapp;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.AnimationDrawable;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.exoplayer2.ui.PlayerView;
 
 import java.util.ArrayList;
-
-import javax.xml.transform.Result;
+import java.util.HashSet;
+import java.util.Set;
 
 import Adapter.ResultAdapter;
 import Adapter.SelectAdapter;
@@ -40,6 +39,7 @@ public class ResultPage extends TouchActivityHandler{
     //vars
     ArrayList<Points> goodSelected = new ArrayList<>();
     ArrayList<Points> topFive = new ArrayList<>();
+    ArrayList<Points> result = new ArrayList<>();
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -56,6 +56,7 @@ public class ResultPage extends TouchActivityHandler{
         skipVideo = findViewById(R.id.SkipVideo);
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
 
+
         //Activivere vores Video Adapter da der bliver afspillet en video omkring sine bedste styrker
         VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
         video.play();
@@ -68,8 +69,28 @@ public class ResultPage extends TouchActivityHandler{
         goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
         topFive = getIntent().getParcelableArrayListExtra("topFive");
 
-        System.out.println(topFive);
-        System.out.println("Above is topFive");
+        System.out.println(goodSelected);
+        System.out.println("puregoodselect");
+
+
+
+        result.addAll(topFive);
+        result.addAll(goodSelected);
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < result.size(); i++) {
+            String m = result.get(i).getTitle();
+            if (!set.add(m)) {
+                System.out.println(result.get(i).getTitle());
+                result.remove(result.get(i));
+            }
+        }
+        result.remove(result.size()-1);
+
+
+
+        System.out.println(result);
+        System.out.println("altergoodselect");
+
         initRecyclerView();
         characterPlaceholder.setImageResource(gAvatar);
 
@@ -125,7 +146,8 @@ public class ResultPage extends TouchActivityHandler{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ResultPage.this, EmailPage.class);
-                intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                //intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                intent.putParcelableArrayListExtra("resultList", result);
                 startActivity(intent);
                 video.pauseVideo();
             }
@@ -139,7 +161,7 @@ public class ResultPage extends TouchActivityHandler{
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ResultAdapter goodAdapter = new ResultAdapter(this, goodSelected , true);
+        ResultAdapter goodAdapter = new ResultAdapter(this, result , true);
         recyclerViewGood.setAdapter(goodAdapter);
     }
 
