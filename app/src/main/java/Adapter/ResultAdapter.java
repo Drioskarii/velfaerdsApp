@@ -36,7 +36,6 @@ public class ResultAdapter extends RecyclerView.Adapter<SelectAdapter.ViewHolder
     public static ArrayList<Points> goodSelected = new ArrayList<>();
     public static ArrayList<String> badSelected = new ArrayList<>();
     private static int goodConfirmCounter = 0;
-    private static int badConfirmCounter = 0;
 
     private static final String TAG = "RecyclerViewAdapter";
 

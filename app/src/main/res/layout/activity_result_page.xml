@@ -7,170 +7,142 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp">
-
-    <LinearLayout
-        android:id="@+id/Resultpage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ResultPage">
-
-        <TextView
-            android:id="@+id/txtResultDinAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/Resultpage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Din Avatar"
-            android:textAlignment="center"
-            android:textColor="@color/designBlue"
-            android:textSize="32sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ResultPage"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+
+            <TextView
+                android:id="@+id/txtResultDinAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Din Avatar"
+                android:textAlignment="center"
+                android:textColor="@color/designBlue"
+                android:textSize="32sp" />
 
 
-
-
-
-
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-        <ImageView
-            android:id="@+id/characterPlaceholder"
-            android:layout_width="360dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_gravity="bottom">
-                <ImageView
-                    android:id="@+id/btnYoutube"
-                    android:src="@mipmap/ic_baseline_youtube"
-                    android:layout_width="40dp"
-                    android:layout_height="20dp"/>
-            </RelativeLayout>
-
-            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-                android:id="@+id/player_view"
+                android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/characterPlaceholder"
                 android:layout_width="360dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                android:background="@android:color/background_dark"
-                app:controller_layout_id="@layout/exo_playback_control_view"
-                app:fastforward_increment="10000"
-                app:hide_on_touch="true"
-                app:player_layout_id="@layout/exo_simple_player_view"
-                app:resize_mode="fit"
-                app:rewind_increment="10000"
-                app:show_timeout="5000"
-                app:use_controller="true" />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="bottom">
+                    <ImageView
+                        android:id="@+id/btnYoutube"
+                        android:src="@mipmap/ic_baseline_youtube"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"/>
+                </RelativeLayout>
 
-            <RelativeLayout
+                <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                    android:id="@+id/player_view"
+                    android:layout_width="360dp"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:background="@android:color/background_dark"
+                    app:controller_layout_id="@layout/exo_playback_control_view"
+                    app:fastforward_increment="10000"
+                    app:hide_on_touch="true"
+                    app:player_layout_id="@layout/exo_simple_player_view"
+                    app:resize_mode="fit"
+                    app:rewind_increment="10000"
+                    app:show_timeout="5000"
+                    app:use_controller="true" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <ImageView
+                        android:id="@+id/SkipVideo"
+                        android:src="@drawable/ic_baseline_close_24"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+                </RelativeLayout>
+
+            </FrameLayout>
+
+
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|bottom"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                >
-                <ImageView
-                    android:id="@+id/SkipVideo"
-                    android:src="@drawable/ic_baseline_close_24"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"/>
-            </RelativeLayout>
+                android:text="Karaktertræk"
+                android:textColor="@color/designBlue"/>
 
-        </FrameLayout>
+            <View
+                android:id="@+id/topScore"
+                style="@style/Divider"/>
 
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Karaktertræk"
-            android:textColor="@color/designBlue"/>
-
-        <View
-            android:id="@+id/topScore"
-            style="@style/Divider"/>
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewGood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:textColor="@color/designBlue"/>
-
-<!--        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Svaghed"
-            android:textColor="@color/designBlue"/>
-        <View
-            style="@style/Divider"
-            android:layout_marginBottom="5dp" />
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewBad"
-            android:layout_width="match_parent"
-            android:layout_height="170dp"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            android:textColor="@color/designBlue"/>
-
-        <View
-            style="@style/Divider"
-            android:layout_marginBottom="5dp" />-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-
-            android:gravity="center|bottom"
-            android:padding="5dp"
-            android:layout_margin="5dp"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewGood"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="310dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:scrollbars="vertical"
+                android:textColor="@color/designBlue"/>
 
-                <Button
-                    android:id="@+id/btn_result_back"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Tilbage"
-                    android:textColor="@color/designBlue"
-                    android:background="@color/designWhite"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
 
-                <Button
-                    android:id="@+id/btn_result_forward"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/designWhite"
-                    android:text="Videre"
-                    android:textColor="@color/designBlue"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:gravity="center|bottom"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btn_result_back"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tilbage"
+                        android:textColor="@color/designBlue"
+                        android:background="@color/designWhite"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_result_forward"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/designWhite"
+                        android:text="Videre"
+                        android:textColor="@color/designBlue"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
     </ScrollView>
 </LinearLayout>

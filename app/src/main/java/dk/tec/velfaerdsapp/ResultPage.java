@@ -157,7 +157,7 @@ public class ResultPage extends TouchActivityHandler{
     //Dette er en funktion for selve udskiften af resultaten, hvordan siden ser ud.
     private void initRecyclerView() {
 
-        LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
