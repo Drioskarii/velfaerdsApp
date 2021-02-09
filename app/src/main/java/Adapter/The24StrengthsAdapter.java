@@ -1,28 +1,17 @@
 package Adapter;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import dk.tec.velfaerdsapp.QuestionsPage;
 import dk.tec.velfaerdsapp.R;
-import dk.tec.velfaerdsapp.Strengths;
-import dk.tec.velfaerdsapp.The24Strengths;
-import dk.tec.velfaerdsapp.The24StrengthsBoxes;
-
-import static android.content.Context.MODE_PRIVATE;
+import Strengths.Strengths;
 
 public class The24StrengthsAdapter extends BaseAdapter  {
 
@@ -58,15 +47,13 @@ public class The24StrengthsAdapter extends BaseAdapter  {
             itemView = LayoutInflater.from(mContext).inflate(R.layout.the24strengths_item, parent, false);
         }
 
-        ImageView mImageIcon = itemView.findViewById(R.id.imageIcon24);
         TextView mTxtTitle = itemView.findViewById(R.id.the24_txtTitle);
         TextView mTxtQuestion = itemView.findViewById(R.id.the24_txtQuestion);
 
         Strengths tempStrengths = (Strengths) getItem(position);
 
-        mImageIcon.setImageResource(tempStrengths.getIcon());
         mTxtTitle.setText(tempStrengths.getTitle());
-        mTxtQuestion.setText(tempStrengths.getQuestion());
+        mTxtQuestion.setText(tempStrengths.getDescription());
 
         return itemView;
     }

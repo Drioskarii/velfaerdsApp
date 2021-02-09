@@ -1,105 +1,171 @@
 package dk.tec.velfaerdsapp;
 
-import android.graphics.drawable.AnimationDrawable;
-import android.net.Uri;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
+
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.exoplayer2.ui.PlayerView;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import Adapter.ResultAdapter;
 import Adapter.SelectAdapter;
+import Adapter.VideoAdapter;
+import Strengths.Points;
 
 public class ResultPage extends TouchActivityHandler{
 
     private static final String TAG = "ResultatPage";
     //Initialising
-    AnimationDrawable animation;
+    private boolean videoWatched3 = false;
     ImageView characterPlaceholder;
+    Button btnBack, btnForward;
+    public boolean videoEnd = false;
+    TextView questionTxt;
+    ImageView videobtn;
+    PlayerView playerView;
+    ImageView skipVideo;
     //vars
-    private ArrayList<String> goodQuestions = new ArrayList<>();
-    private ArrayList<String> goodAnswers = new ArrayList<>();
-    private ArrayList<String> goodSelectImageUrls = new ArrayList<>();
-    private ArrayList<String> badQuestions = new ArrayList<>();
-    private ArrayList<String> badAnswers = new ArrayList<>();
-    private ArrayList<String> badSelectImageUrls = new ArrayList<>();
+    ArrayList<Points> goodSelected = new ArrayList<>();
+    ArrayList<Points> topFive = new ArrayList<>();
+    ArrayList<Points> result = new ArrayList<>();
 
-
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
 
+        //Henter ID til Variablerne vi har oprettet.
+        btnBack = findViewById(R.id.btn_result_back);
+        btnForward = findViewById(R.id.btn_result_forward);
+        videobtn = findViewById(R.id.btnYoutube);
+        playerView = findViewById(R.id.player_view);
+        skipVideo = findViewById(R.id.SkipVideo);
         characterPlaceholder = findViewById(R.id.characterPlaceholder);
-        characterPlaceholder.setBackgroundResource(R.drawable.animation);
-        animation = (AnimationDrawable) characterPlaceholder.getBackground();
 
-        ArrayList<String> goodSelected = getIntent().getStringArrayListExtra("goodSelectedList");
-        ArrayList<String> badSelected = getIntent().getStringArrayListExtra("badSelectedList");
 
+        //Activivere vores Video Adapter da der bliver afspillet en video omkring sine bedste styrker
+        VideoAdapter video = new VideoAdapter(ResultPage.this, R.raw.refvid, playerView);
+        video.play();
+        playerView.setVisibility(playerView.GONE);
+        skipVideo.setVisibility(skipVideo.GONE);
+        questionTxt = findViewById(R.id.select_txtQuestion);
+        playerView.setVisibility(View.GONE);
+        goodSelected.clear();
+
+        goodSelected = getIntent().getParcelableArrayListExtra("goodSelectedList");
+        topFive = getIntent().getParcelableArrayListExtra("topFive");
+
+        System.out.println(goodSelected);
+        System.out.println("puregoodselect");
+
+
+
+        result.addAll(topFive);
+        result.addAll(goodSelected);
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < result.size(); i++) {
+            String m = result.get(i).getTitle();
+            if (!set.add(m)) {
+                System.out.println(result.get(i).getTitle());
+                result.remove(result.get(i));
+            }
+        }
+        result.remove(result.size()-1);
+
+
+
+        System.out.println(result);
+        System.out.println("altergoodselect");
 
         initRecyclerView();
+        characterPlaceholder.setImageResource(gAvatar);
 
-    }
+        TextView txtSelectDinAvatar = findViewById(R.id.txtResultDinAvatar);
+        txtSelectDinAvatar.setText(gJob + " " + gName);
 
-    private void getValue() {
-        ArrayList<String> goodSelected = getIntent().getStringArrayListExtra("goodSelectedList");
-        ArrayList<String> badSelected = getIntent().getStringArrayListExtra("badSelectedList");
-        int goodSize = goodSelected.size();
-        int badSize = badSelected.size();
-        int iGood = 0;
-        int iBad = 0;
+        // Køre funktionen getValue, som vi laver længere nede i programmet.
+        initRecyclerView();
 
-        System.out.println("HELP");
-        System.out.println(goodSelected.size());
-        System.out.println(goodSelected);
-        System.out.println(badSelected.size());
-        System.out.println(badSelected);
-
-        /*while (iGood < goodSize ){
-            //Den her metode virker kun med billeder som ikke er i xml form
-            goodSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ goodSelected.get(iGood).getIcon())));
-            goodQuestions.add(goodSelected.get(iGood).getQuestion());
-            goodAnswers.add(String.valueOf(goodSelected.get(iGood).getAnswer()));
-            iGood++;
+        //Henter Oplysninger fra SharedPreferences, i dette tilfælge tjekkes der om du har set den video før. hvis ikke så afspilles den.
+        SharedPreferences sharedPreferences = getSharedPreferences("videoWatched7", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        videoWatched3 = sharedPreferences.getBoolean("videoWatched7", false);
+        if (!videoWatched3){
+            playerView.setVisibility(View.VISIBLE);
+            skipVideo.setVisibility(skipVideo.VISIBLE);
+            video.playVideo();
+            editor.putBoolean("videoWatched7", videoWatched3 = true);
+            editor.apply();
         }
 
-        while (iBad < badSize ){
-            //Den her metode virker kun med billeder som ikke er i xml form
-            badSelectImageUrls.add(String.valueOf(Uri.parse("android.resource://dk.tec.velfaerdsapp/"+ badSelected.get(iBad).getIcon())));
-            badQuestions.add(badSelected.get(iBad).getQuestion());
-            badAnswers.add(String.valueOf(badSelected.get(iBad).getAnswer()));
-            iBad++;
-        }*/
+        //sætter en knap til at pause en video.
+        skipVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.GONE);
+                skipVideo.setVisibility(skipVideo.GONE);
+                video.pauseVideo();
+            }
+        });
+
+        //sætter en knap til at have mulighed for at skippe videoen, dog kun hvis den får afvide fra sharedPreferences at man har set videoen før.
+        videobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerView.setVisibility(View.VISIBLE);
+                skipVideo.setVisibility(skipVideo.VISIBLE);
+
+            }
+        });
+
+        //Knap til at gå tilbage i programmet
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closePage();
+                video.pauseVideo();
+            }
+        });
+
+        //Knap til at gå frem i programmet
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultPage.this, EmailPage.class);
+                //intent.putParcelableArrayListExtra("goodSelectedList", SelectAdapter.goodSelected);
+                intent.putParcelableArrayListExtra("resultList", result);
+                startActivity(intent);
+                video.pauseVideo();
+            }
+        });
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        animation.start();
-    }
-
+    //Dette er en funktion for selve udskiften af resultaten, hvordan siden ser ud.
     private void initRecyclerView() {
 
-        /*LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManagerGood = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         RecyclerView recyclerViewGood = findViewById(R.id.recyclerViewGood);
         recyclerViewGood.setLayoutManager(layoutManagerGood);
 
-        ResultAdapter goodAdapter = new ResultAdapter(this, questions, answers, selectImageUrls, true);
+        ResultAdapter goodAdapter = new ResultAdapter(this, result , true);
         recyclerViewGood.setAdapter(goodAdapter);
+    }
 
-
-        LinearLayoutManager layoutManagerBad = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerViewBad = findViewById(R.id.recyclerViewBad);
-        recyclerViewBad.setLayoutManager(layoutManagerBad);
-
-        ResultAdapter badAdapter = new ResultAdapter(this, questions, answers, selectImageUrls, false);
-        recyclerViewBad.setAdapter(badAdapter);*/
-
-
-
+    protected void onRestart() {
+        super.onRestart();
     }
 }

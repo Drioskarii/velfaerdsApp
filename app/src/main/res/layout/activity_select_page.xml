@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".SelectPage"
-    android:background="@drawable/gradient_background">
+    android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:ignore="MissingConstraints"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp">
 
@@ -20,156 +19,90 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            tools:ignore="MissingConstraints">
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/txtSelectDinAvatar"
                 android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|top"
-                android:textSize="38sp"
-                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textColor="@color/designBlue"
+                android:text="Din Avatar"/>
 
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="@string/v_lg_de_vigtigste"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:text="@string/v_lg_de_5_vigtigste_svar"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
         </LinearLayout>
-        <LinearLayout
-
-            android:orientation="vertical"
-            android:layout_height="wrap_content"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            tools:ignore="MissingConstraints">
-
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_height="wrap_content"
-                android:text="@string/h_jeste_svar"
-
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:textColor="@color/white"/>
-
-            <View style="@style/Divider"
-                android:id="@+id/topScore"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewGood"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="4dp"
-                android:orientation="horizontal">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:gravity="center">
 
-            <View style="@style/Divider"
-                android:layout_marginBottom="5dp"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vælg de 2 karaktertræk der passer bedst til dig"
+                    android:textColor="@color/designBlue"
+                    android:textAlignment="center"
+                    android:textSize="20sp"/>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <View style="@style/Divider"
+                    android:id="@+id/topScore"/>
 
-                <ProgressBar
-                    android:id="@+id/goodProgressBar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp"
 
-                    android:max="5"
-                    android:progress="3"
-
-                    android:background="#fff"
-                    android:progressDrawable="@drawable/custom_progressbar"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-                <RelativeLayout
-                    android:layout_gravity="center_horizontal"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewGood"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="30dp">
-                    <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="3/5"/>
-                </RelativeLayout>
-            </FrameLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="vertical"/>
 
-            <TextView
-                android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/laveste_svar"
-
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
-                android:textColor="@color/white"/>
-
-            <View style="@style/Divider"
-                android:id="@+id/bottomScore"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewBad"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/layoutCustomAvatar"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="4dp"
-                android:orientation="horizontal">
-            </androidx.recyclerview.widget.RecyclerView>
-
-
-
-            <View style="@style/Divider"
-                android:layout_marginBottom="5dp"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ProgressBar
-                    android:id="@+id/badProgressBar"
-                    android:layout_width="fill_parent"
-                    android:layout_height="20dp"
-
-                    android:max="5"
-                    android:progress="3"
-
-                    android:background="#fff"
-                    android:progressDrawable="@drawable/custom_progressbar"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
                 <RelativeLayout
-                    android:layout_gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="3/5"/>
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+
+                    android:layout_alignParentBottom="true"
+                    android:gravity="bottom"
+
+                    android:padding="5dp"
+                    android:layout_margin="5dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+
+                            android:id="@+id/btn_select_back"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="Tilbage"
+
+                            android:textColor="@color/designBlue"
+                            android:background="@color/designWhite"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/btn_select_forward"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:background="@color/designWhite"
+                            android:text="Videre"
+                            android:textColor="@color/designBlue"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </RelativeLayout>
-            </FrameLayout>
-        </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

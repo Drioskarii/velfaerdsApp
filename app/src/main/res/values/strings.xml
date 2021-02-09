@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Velfærdsteknologi</string>
+    <string name="app_name">Styrk Dig Selv</string>
     <string name="emailPage_Email">Indtast E-mail</string>
     <string name="introPage_Name">Indtast navn</string>
     <string name="introPage_job">Indtast job</string>
@@ -7,10 +7,9 @@
     <string name="send_resultat">Send Resultat</string>
     <string name="de_24_sp_rgsm_l">De 24 Spørgsmål</string>
     <string name="v_lg_de_vigtigste">Vælg De Vigtigste</string>
-    <string name="v_lg_de_5_vigtigste_svar">Vælg de 5 vigtigste svar</string>
-    <string name="h_jeste_svar">Højeste svar</string>
-    <string name="laveste_svar">Laveste Svar</string>
-    <string name="IntroPage_Title">Introducer Din Avatar</string>
+    <string name="h_jeste_svar">Vælg 2 af dine styrker</string>
+    <string name="laveste_svar">Svaghed</string>
+    <string name="IntroPage_Title">Byg din Avatar</string>
     <string name="din_avatar">Din Avatar</string>
     <string name="v_lg_en_eksisterende">Vælg en eksisterende</string>
     <string name="_1">1</string>

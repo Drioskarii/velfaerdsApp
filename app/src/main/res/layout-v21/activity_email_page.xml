@@ -6,9 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".EmailPage"
-    android:background="@drawable/gradient_background">
+    android:background="@color/white"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
+    tools:context=".EmailPage">
 
         <LinearLayout
             android:layout_gravity="center"
@@ -22,12 +23,8 @@
                 android:layout_gravity="center"
                 android:text="@string/send_resultat"
                 android:textSize="32sp"
-                android:textColor="@color/white"
+                android:textColor="@color/designBlue"
                 android:fontFamily="sans-serif"
-                android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowDy="2"
-                android:shadowRadius="3"
                 android:layout_marginBottom="50dp"/>
 
             <LinearLayout
@@ -50,25 +47,72 @@
                 android:rowCount="1"
                 android:columnCount="2">
 
-                <ImageView
-                    android:id="@+id/btnNewMail"
-                    android:layout_height="57dp"
-                    android:layout_width="70dp"
-                    android:layout_gravity="center"
+                <RelativeLayout
                     android:layout_columnWeight="1"
                     android:layout_column="0"
-                    android:background="@drawable/addemail"
-                    android:gravity="center"/>
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:id="@+id/btnNewMail"
+                        android:layout_height="57dp"
+                        android:layout_width="70dp"
+                        android:background="@drawable/addemail"
+                        android:gravity="center"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_below="@id/btnNewMail"
+                        android:text="Tilføj Email"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/sendMail"
-                    android:layout_height="57dp"
-                    android:layout_width="70dp"
-                    android:layout_gravity="center"
+                <RelativeLayout
                     android:layout_columnWeight="1"
                     android:layout_column="1"
-                    android:background="@drawable/sendmail"
-                    android:onClick="sendMail" />
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:id="@+id/sendMail"
+                        android:layout_height="57dp"
+                        android:layout_width="70dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/sendmail"
+                        android:onClick="sendMail"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_below="@id/sendMail"
+                        android:text="Afsend"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
             </GridLayout>
         </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+
+        android:gravity="center|bottom"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_email_back"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="@color/designWhite"
+                android:text="Tilbage"
+                android:textColor="@color/designBlue"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </LinearLayout>

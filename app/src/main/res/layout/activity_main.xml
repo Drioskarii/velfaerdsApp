@@ -6,8 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/gradient_background"
-    >
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/layoutTitleBar"
@@ -23,21 +22,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txtForside_text"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="3"
-            android:textSize="40sp"
-            />
+            android:textColor="@color/designBlue"
+            android:textSize="32sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutLogos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +44,9 @@
             android:contentDescription="@string/imgLogoVfVOE_contentDescription"
             android:onClick="logoClicked"
             android:src="@drawable/logo_vfvoe" />
+
         <View style="@style/Divider" />
+
         <ImageView
             android:id="@+id/imgLogoTec"
             android:layout_width="300sp"
@@ -60,102 +55,70 @@
             android:contentDescription="@string/imgLogoTec_contentDescription"
             android:onClick="logoClicked"
             android:src="@drawable/logo_tec" />
+
         <View style="@style/Divider" />
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/player_view"
+            android:layout_width="350dp"
+            android:layout_height="260dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:background="@android:color/background_dark"
+            app:controller_layout_id="@layout/exo_playback_control_view"
+            app:fastforward_increment="10000"
+            app:hide_on_touch="true"
+            app:player_layout_id="@layout/exo_simple_player_view"
+            app:resize_mode="fit"
+            app:rewind_increment="10000"
+            app:show_timeout="5000"
+            app:use_controller="true" />
+
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/layoutTutorial"
-        android:animateLayoutChanges="true"
-        android:visibility="invisible"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#B3000000">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
 
-        <TextView
-            android:id="@+id/txtTutorial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginEnd="40dp"
-            android:text="De hvide streger indikere, hvor du kan slide!"
-            android:textSize="30sp" />
+        android:gravity="center|bottom"
+        android:padding="5dp"
+        android:layout_margin="5dp"
 
-        <RelativeLayout
-            android:id="@+id/swipeLeftView"
-            android:layout_width="15dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:background="@color/white"
-            android:layout_margin="5dp"
-            ></RelativeLayout>
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
 
-        <RelativeLayout
-            android:id="@+id/swipeRightView"
-            android:layout_width="15dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:background="@color/white"
-            android:layout_margin="5dp"
-            ></RelativeLayout>
+            <Button
+                android:id="@+id/btn_main_back"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="De 24 Styrker"
+                android:textColor="@color/designBlue"
+                android:background="@color/designWhite"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/txtSwipeLeft"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:textAlignment="center"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="450dp"
-            android:layout_marginStart="50dp"
-            android:fontFamily="sans-serif"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="3"
-            android:text="Swipe mod højre for at se de 24 styrker"
-            android:textColor="@color/white"
-            android:textSize="17sp"></TextView>
+            <Button
+                android:id="@+id/btn_main_forward"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Videre"
+                android:textColor="@color/designBlue"
+                android:background="@color/designWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtSwipeRight"
-            android:layout_width="150dp"
-            android:layout_height="70dp"
-            android:textAlignment="center"
-            android:layout_marginTop="450dp"
-            android:layout_marginEnd="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:fontFamily="sans-serif"
-            android:shadowColor="@color/black"
-            android:shadowDx="2"
-            android:shadowDy="2"
-            android:shadowRadius="3"
-            android:text="Swipe mod venstre for at fortsætte"
-            android:textColor="@color/white"
-            android:textSize="17sp"></TextView>
-
-        <ImageView
-            android:id="@+id/imgSwipeBackward"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:layout_below="@+id/txtSwipeLeft"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="75dp"
-            android:contentDescription="@string/SwipeBackward_contentDescription"
-            android:src="@drawable/swipebackward"></ImageView>
-
-        <ImageView
-            android:id="@+id/imgSwipeForward"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:layout_below="@+id/txtSwipeRight"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="75dp"
-            android:contentDescription="@string/SwipeForward_contentDescription"
-            android:src="@drawable/swipeforward"></ImageView>
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

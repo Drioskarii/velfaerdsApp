@@ -3,6 +3,5 @@
     <string-array name="køn_array">
         <item>Mand</item>
         <item>Kvinde</item>
-        <item>Andet</item>
     </string-array>
 </resources>
