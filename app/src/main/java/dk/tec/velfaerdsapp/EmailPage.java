@@ -221,7 +221,7 @@ public class EmailPage extends TouchActivityHandler {
         String body = "<div>Div1</div><div>Div2</div>";
         emailIntent.setType("message/rfc822");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "De 24 værdier");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Styrk Dig Selv Resultat");
         //Skal laves om til at indeholde svar fra shared preferences ELLER intent, hvad end vi går videre med
         //emailIntent.putExtra(Intent.EXTRA_TEXT, "Navn: "+ gName + "\n Job: " + gJob +"\n\n\nFørste Karaktertræk: \n Title: " + goodSelected.get(0).getTitle() + "\n Spørgsmål: " + goodSelected.get(0).getDescription() + "\n Svar: " + goodSelected.get(0).getPoints() + "\n\n Anden Karaktertræk: \n Title: " + goodSelected.get(1).getTitle() + "\n Spørgsmål: " + goodSelected.get(1).getDescription() + "\n Svar: " + goodSelected.get(1).getPoints());
         //emailIntent.putExtra(Intent.EXTRA_TEXT, "<div>Div 1</div>" + "<div>Div 2</div>");

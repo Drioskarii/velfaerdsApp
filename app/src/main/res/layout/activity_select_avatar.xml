@@ -45,7 +45,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vælg de 2 karaktertræk der passer bedst til dig"
+                        android:text="Vælg det ikon, som din avatar skal have. Hvilket karaktertræk passer bedst på din avatar?"
                         android:textColor="@color/designBlue"
                         android:textAlignment="center"
                         android:textSize="20sp"/>
